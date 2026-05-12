@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FormaElan — Formations en ligne pour entrepreneurs du numérique</title>
+  <meta name="description" content="Formations en ligne SEO, IA et Copywriting pour freelances et entrepreneurs. Des méthodes concrètes, des résultats mesurables." />
+  <!-- Canonical -->
+  <link rel="canonical" href="https://formaelan.fr/" />
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://formaelan.fr/" />
+  <meta property="og:site_name"   content="FormaElan" />
+  <meta property="og:locale"      content="fr_FR" />
+  <meta property="og:title"       content="FormaElan — Formations en ligne pour entrepreneurs du numérique" />
+  <meta property="og:description" content="Formations en ligne SEO, IA et Copywriting pour freelances et entrepreneurs. Des méthodes concrètes, des résultats mesurables." />
+  <meta property="og:image"       content="https://formaelan.fr/img/og-cover.jpg" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="FormaElan — Formations en ligne pour entrepreneurs du numérique" />
+  <meta name="twitter:description" content="Formations en ligne SEO, IA et Copywriting pour freelances et entrepreneurs. Des méthodes concrètes, des résultats mesurables." />
+  <meta name="twitter:image"       content="https://formaelan.fr/img/og-cover.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ======================================================
+       NAVBAR
+  ====================================================== -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text"><span>Forma</span>Elan</div>
+    </a>
+
+    <ul class="navbar-links">
+      <li><a href="#formations">Formations</a></li>
+      <li><a href="#pourquoi">Pourquoi nous</a></li>
+      <li><a href="#temoignages">Lancement</a></li>
+    </ul>
+
+    <div class="navbar-actions">
+      <!-- Toggle Dark / Light -->
+      <label class="theme-toggle" title="Changer le thème">
+        <input type="checkbox" id="themeToggleInput" />
+        <div class="track">
+          <div class="thumb">🌙</div>
+        </div>
+      </label>
+      <a href="#formations" class="btn-nav">Voir les formations</a>
+    </div>
+
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+
+  <!-- ======================================================
+       HERO
+  ====================================================== -->
+  <section class="hero" id="accueil">
+    <!-- Fond -->
+    <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;"></canvas>
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+
+    <!-- Contenu -->
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="dot"></div>
+        Formations 100% en ligne · Résultats garantis
+      </div>
+
+      <h1 class="hero-title">
+        Passe au niveau<br />
+        <span class="gradient-text">supérieur</span> en ligne
+      </h1>
+
+      <p class="hero-subtitle">
+        Des formations concrètes en SEO, IA et Copywriting pour freelances et entrepreneurs qui veulent des résultats rapides et mesurables.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#formations" class="btn btn-primary btn-lg">
+          Découvrir les formations ↓
+        </a>
+        <a href="#temoignages" class="btn btn-secondary btn-lg">
+          Voir les avis
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="number"><span data-counter="5">0</span></div>
+          <div class="label">Formations disponibles</div>
+        </div>
+        <div class="hero-stat">
+          <div class="number"><span data-counter="29">0</span>€</div>
+          <div class="label">À partir de</div>
+        </div>
+        <div class="hero-stat">
+          <div class="number">100%</div>
+          <div class="label">En ligne · À ton rythme</div>
+        </div>
+        <div class="hero-stat">
+          <div class="number">🔒</div>
+          <div class="label">Paiement sécurisé Stripe</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+       FORMATIONS
+  ====================================================== -->
+  <section class="formations-section" id="formations">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">⚡ Nos formations</div>
+        <h2 class="section-title">
+          Choisissez votre<br /><span class="gradient-text">transformation</span>
+        </h2>
+        <p class="section-subtitle">
+          Des programmes intensifs et directement applicables, créés par des praticiens actifs.
+        </p>
+      </div>
+
+      <!-- Grille générée par JS -->
+      <div class="formations-grid" id="formationsGrid"></div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+       POURQUOI FORMAÉLAN
+  ====================================================== -->
+  <section class="features-section" id="pourquoi">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">💡 Notre différence</div>
+        <h2 class="section-title">
+          Pourquoi <span class="gradient-text">FormaElan</span> ?
+        </h2>
+        <p class="section-subtitle">Pas de théorie inutile. Que du concret.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal" data-delay="0">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-title">100% actionnable</div>
+          <div class="feature-desc">Chaque module contient des exercices pratiques que tu appliques immédiatement dans ton activité.</div>
+        </div>
+        <div class="feature-card reveal" data-delay="100">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">Résultats concrets</div>
+          <div class="feature-desc">Nos formations sont conçues pour que tu voies des résultats concrets rapidement.</div>
+        </div>
+        <div class="feature-card reveal" data-delay="200">
+          <div class="feature-icon">🔒</div>
+          <div class="feature-title">Paiement sécurisé</div>
+          <div class="feature-desc">Accès sécurisé par Stripe, la référence mondiale du paiement en ligne.</div>
+        </div>
+        <div class="feature-card reveal" data-delay="300">
+          <div class="feature-icon">🔄</div>
+          <div class="feature-title">Mises à jour incluses</div>
+          <div class="feature-desc">Le digital évolue vite. Tes formations aussi — mises à jour régulières incluses dans ton accès.</div>
+        </div>
+        <div class="feature-card reveal" data-delay="400">
+          <div class="feature-icon">🏆</div>
+          <div class="feature-title">Certificat de réussite</div>
+          <div class="feature-desc">Un certificat valorisable sur LinkedIn et ton portfolio à la fin de chaque formation.</div>
+        </div>
+        <div class="feature-card reveal" data-delay="500">
+          <div class="feature-icon">📱</div>
+          <div class="feature-title">Accès à vie</div>
+          <div class="feature-desc">Une fois la formation achetée, tu y accèdes quand tu veux, depuis n'importe quel appareil.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+       PROCHAINEMENT
+  ====================================================== -->
+  <section class="testimonials-section" id="temoignages">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">🚀 Lancement</div>
+        <h2 class="section-title">
+          Sois parmi les <span class="gradient-text">premiers</span>
+        </h2>
+        <p class="section-subtitle">
+          FormaElan est en cours de lancement. Les premières formations sont disponibles dès maintenant.
+        </p>
+      </div>
+
+      <div class="features-grid" style="max-width:900px;margin:0 auto;">
+        <div class="feature-card reveal" data-delay="0">
+          <div class="feature-icon">📚</div>
+          <div class="feature-title">Contenu de qualité</div>
+          <div class="feature-desc">Des formations construites autour de méthodes concrètes et directement applicables à ton activité.</div>
+        </div>
+        <div class="feature-card reveal" data-delay="150">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">Accès immédiat</div>
+          <div class="feature-desc">Dès ton paiement confirmé, tu accèdes instantanément à l'intégralité de ta formation.</div>
+        </div>
+        <div class="feature-card reveal" data-delay="300">
+          <div class="feature-icon">🔄</div>
+          <div class="feature-title">Contenu évolutif</div>
+          <div class="feature-desc">Les formations sont mises à jour régulièrement pour rester en phase avec les évolutions du marché.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+       CTA FINAL
+  ====================================================== -->
+  <section class="cta-section">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+
+    <div class="cta-box reveal">
+      <div class="hero-badge" style="margin-bottom:1.2rem">
+        <div class="dot"></div>
+        Paiement sécurisé par Stripe
+      </div>
+      <h2 class="cta-title">
+        Prêt à <span class="gradient-text">passer à l'action</span> ?
+      </h2>
+      <p class="cta-subtitle">
+        Découvre nos formations et commence dès aujourd'hui.
+      </p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="#formations" class="btn btn-primary btn-lg">Voir toutes les formations</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+       FOOTER
+  ====================================================== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">⚡ <span>Forma</span>Elan</div>
+          <p>Des formations en ligne concrètes pour entrepreneurs et freelances du numérique. Résultats garantis ou remboursés.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Formations</h4>
+          <ul>
+            <li><a href="pages/seo-saas.html">SEO pour SaaS</a></li>
+            <li><a href="pages/ia-freelance.html">IA pour Freelance</a></li>
+            <li><a href="pages/copywriting-ecom.html">Copywriting E-commerce</a></li>
+            <li><a href="pages/seo-ecom.html">SEO pour E-commerce</a></li>
+            <li><a href="pages/optimiser-ia.html">Optimiser son IA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Légal</h4>
+          <ul>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">CGV</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 FormaElan — Tous droits réservés</span>
+        <span>Fait avec ⚡ en France</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ======================================================
+       SCRIPTS
+  ====================================================== -->
+  <script src="js/formations.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Génération dynamique des cartes formations
+    const grid = document.getElementById('formationsGrid');
+
+    function renderStars(note) {
+      const full  = Math.floor(note);
+      const half  = note % 1 >= 0.5 ? 1 : 0;
+      const empty = 5 - full - half;
+      return '★'.repeat(full) + (half ? '½' : '') + '☆'.repeat(empty);
+    }
+
+    function badgeLabel(badge) {
+      const map = { bestseller: '🔥 Best-seller', popular: '⚡ Populaire', new: '✨ Nouveau' };
+      return map[badge] || '';
+    }
+
+    FORMATIONS.forEach((f, i) => {
+      const card = document.createElement('article');
+      card.className = 'card reveal';
+      card.dataset.delay = i * 100;
+      card.innerHTML = `
+        <div class="card-badge badge-${f.badge}">${badgeLabel(f.badge)}</div>
+        <div class="card-visual" style="background:${f.couleur};">
+          <div class="card-glow" style="background:radial-gradient(circle at center, ${f.couleurGlow}, transparent 70%);"></div>
+          <div class="card-icon">${f.icon}</div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">${f.categorie}</div>
+          <h3 class="card-title">${f.titre}</h3>
+          <p class="card-desc">${f.description.substring(0, 120)}…</p>
+          <div class="card-meta">
+            <div class="card-meta-item">⏱ ${f.duree}</div>
+            <div class="card-meta-item">📚 ${f.modules} modules</div>
+            <div class="card-meta-item">👥 ${f.etudiants.toLocaleString('fr-FR')} étudiants</div>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">
+              <span class="price">${f.prix} €</span>
+              <span class="price-old">${f.prixAncien} €</span>
+            </div>
+            <div class="card-stars" data-note="${f.note}">
+              ${renderStars(f.note)}
+              <span>(${f.avis})</span>
+            </div>
+          </div>
+        </div>
+      `;
+      card.addEventListener('click', () => {
+        window.location.href = `pages/${f.slug}.html`;
+      });
+      grid.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>

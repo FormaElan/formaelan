@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Ton système IA personnel — Optimiser son IA · FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/formations.css"/>
+</head>
+<body>
+
+<nav class="r-nav">
+  <a href="../../index.html" class="r-nav-logo"><span>Forma</span>Elan</a>
+  <div class="r-breadcrumb">
+    <a href="../../index.html">Accueil</a> /
+    <a href="../../pages/optimiser-ia.html">Optimiser son IA</a> /
+    <span>Chapitre 7</span>
+  </div>
+</nav>
+
+<div class="r-layout">
+
+  <aside class="r-sidebar">
+    <div class="r-sidebar-title">Sommaire</div>
+    <a href="ch1-sous-exploites-ia.html" class="r-ch-link"><div class="r-ch-num">1</div>Pourquoi tu sous-exploites ton IA</a>
+    <a href="ch2-tokens-contexte.html" class="r-ch-link"><div class="r-ch-num">2</div>Tokens &amp; contexte</a>
+    <a href="ch3-prompt-bases.html" class="r-ch-link"><div class="r-ch-num">3</div>Prompt — les bases</a>
+    <a href="ch4-prompt-avance.html" class="r-ch-link"><div class="r-ch-num">4</div>Prompt — avancé</a>
+    <a href="ch5-choisir-modele.html" class="r-ch-link"><div class="r-ch-num">5</div>Choisir son modèle</a>
+    <a href="ch6-reduire-couts.html" class="r-ch-link"><div class="r-ch-num">6</div>Réduire ses coûts</a>
+    <a href="ch7-systeme-ia-personnel.html" class="r-ch-link active"><div class="r-ch-num">7</div>Ton système IA</a>
+    <div class="r-sidebar-sep"></div>
+    <a href="../../pages/optimiser-ia.html" class="r-ch-link" style="font-size:.78rem;color:var(--muted)">← Page de la formation</a>
+  </aside>
+
+  <main class="r-main">
+    <section class="r-chapter" id="ch7">
+
+      <div class="r-ch-header">
+        <div class="r-ch-badge">7</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 7</div>
+          <h2>Construire ton système IA personnel</h2>
+          <div class="dur">⏱ 40 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Tu as maintenant tous les éléments : tu comprends les tokens, tu sais structurer un prompt, tu sais choisir ton modèle, tu as une bibliothèque et des instructions persistantes. Ce dernier chapitre assemble tout ça en un système cohérent, durable, et qui s'améliore dans le temps — avec une veille efficace et un plan d'action 30 jours pour ancrer tes nouvelles habitudes.
+      </div>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 300" role="img" aria-label="Pyramide de la mémoire IA : court terme, moyen terme, long terme">
+          <rect width="640" height="300" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">PYRAMIDE DE MÉMOIRE IA — COMPENSER L'ABSENCE DE MÉMOIRE NATIVE</text>
+
+          <!-- Niveau 3 — Court terme (bas) -->
+          <polygon points="80,260 560,260 500,200 140,200" fill="rgba(26,158,143,0.12)" stroke="rgba(26,158,143,0.4)" stroke-width="1.5"/>
+          <text x="320" y="228" text-anchor="middle" fill="#1A9E8F" font-size="11" font-weight="800" font-family="Inter">COURT TERME — La conversation</text>
+          <text x="320" y="246" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">L'historique de la session actuelle · Contexte disponible mais volatile · Se perd à la fermeture</text>
+
+          <!-- Niveau 2 — Moyen terme (milieu) -->
+          <polygon points="140,200 500,200 440,130 200,130" fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.4)" stroke-width="1.5"/>
+          <text x="320" y="158" text-anchor="middle" fill="#818CF8" font-size="11" font-weight="800" font-family="Inter">MOYEN TERME — Fichiers de contexte</text>
+          <text x="320" y="174" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Documents projets · System prompts · Bibliothèque de prompts · Mis à jour régulièrement</text>
+          <text x="320" y="190" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Compensent l'absence de mémoire en fournissant le contexte au début de session</text>
+
+          <!-- Niveau 1 — Long terme (haut) -->
+          <polygon points="200,130 440,130 380,60 260,60" fill="rgba(242,108,58,0.15)" stroke="rgba(242,108,58,0.4)" stroke-width="1.5"/>
+          <text x="320" y="89" text-anchor="middle" fill="#F26C3A" font-size="11" font-weight="800" font-family="Inter">LONG TERME — Ton système</text>
+          <text x="320" y="106" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Instructions persistantes · Workflows documentés · Habitudes ancrées</text>
+
+          <text x="320" y="285" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Un utilisateur expert compense manuellement l'absence de mémoire IA avec une architecture à 3 niveaux</text>
+        </svg>
+        <div class="r-svg-caption">Figure 7.1 — La pyramide de mémoire IA : court, moyen et long terme pour compenser l'absence de mémoire native</div>
+      </div>
+
+      <h3 class="r-section-title">7.1 — Construire son fichier de contexte personnel</h3>
+      <p class="r-text">Un fichier de contexte personnel est ta carte d'identité IA — le document que tu fournis à n'importe quel modèle pour qu'il te comprenne immédiatement, sans que tu aies à te réexpliquer. C'est l'une des choses les plus simples à créer et l'une des plus impactantes sur ta productivité quotidienne.</p>
+      <ul class="r-list">
+        <li><strong>Structure recommandée en 5 blocs :</strong>
+          <br>① <strong>Qui je suis</strong> — Profession, secteur, années d'expérience, spécialité
+          <br>② <strong>Mon audience / mes clients</strong> — Profil type, niveau de langage attendu, ce qu'ils cherchent
+          <br>③ <strong>Mes préférences de communication</strong> — Tutoiement, longueur des réponses, format préféré, exemples à éviter
+          <br>④ <strong>Mes règles non négociables</strong> — "Ne jamais inventer de chiffres", "signaler l'incertitude", "pas de jargon corporatif"
+          <br>⑤ <strong>Mon contexte actuel</strong> — Projet en cours, priorité de la semaine, contraintes
+        </li>
+        <li><strong>La longueur idéale :</strong> 200-400 mots. Au-delà, tu commences à remplir ta fenêtre de contexte inutilement. Chaque phrase doit être nécessaire — si tu peux la supprimer sans que l'IA perde de l'information utile, supprime-la.</li>
+        <li><strong>Version générale vs versions spécifiques :</strong> Commence par un fichier de contexte général (ton profil). Ensuite, crée des versions spécifiques pour tes projets récurrents, en ajoutant seulement les informations supplémentaires nécessaires pour ce contexte.</li>
+        <li><strong>Où le stocker :</strong> Un document dans Google Drive, Notion, ou même un simple fichier texte sur ton bureau. L'important est qu'il soit accessible en 10 secondes — sinon tu ne l'utiliseras pas.</li>
+      </ul>
+
+      <div class="r-tip"><strong>Modèle de démarrage :</strong> "Je suis [métier] spécialisé en [domaine]. Mon audience principale : [description]. Je préfère les réponses en [format], avec tutoiement, longueur maximale [X mots]. Règle absolue : ne jamais inventer de données — indique toujours l'incertitude. Projet actuel : [description en 1 phrase]."</div>
+
+      <h3 class="r-section-title">7.2 — Veille IA : rester à jour sans se noyer</h3>
+      <p class="r-text">Le secteur IA évolue à une vitesse sans précédent — un nouveau modèle majeur sort toutes les 6-8 semaines. Il est impossible de tout suivre. Et c'est exactement ce qu'il ne faut pas essayer de faire. L'objectif est une veille ciblée et efficace : 15-20 minutes par semaine, pas plus.</p>
+      <ul class="r-list">
+        <li><strong>Les 3 sources suffisantes :</strong>
+          <br>① Un agrégateur IA hebdomadaire (The Rundown AI, Ben's Bites — newsletters gratuites) pour les nouveautés importantes
+          <br>② Le blog officiel d'Anthropic et d'OpenAI pour les annonces de modèles qui te concernent directement
+          <br>③ Un ou deux praticiens sur LinkedIn ou X dont tu valides la qualité — pas des influenceurs "hype", des utilisateurs qui partagent des retours d'expérience concrets
+        </li>
+        <li><strong>Ce qui mérite ton attention :</strong> Nouvelles fonctionnalités dans les outils que tu utilises déjà, changements de prix ou de limites, nouveaux cas d'usage proches de tes tâches. Ignore le reste — les "GPT-5 va changer le monde" sont bruit jusqu'à ce que tu puisses tester toi-même.</li>
+        <li><strong>Le test plutôt que la lecture :</strong> Quand un nouvel outil ou modèle sort, teste-le sur une de tes tâches habituelles pendant 20 minutes. Cette expérience directe vaut 10 articles de comparaison. Si ça ne surpasse pas ce que tu utilises déjà sur tes cas réels, passe à autre chose.</li>
+        <li><strong>Bloquer du temps hebdomadaire :</strong> 15-20 minutes le vendredi ou le lundi matin. Lis ta newsletter, clique sur 2-3 liens vraiment pertinents, ignore le reste. Une veille disciplinée et courte vaut bien plus qu'une veille obsessionnelle et épuisante.</li>
+      </ul>
+
+      <h3 class="r-section-title">7.3 — Plan d'action 30 jours pour ancrer tes habitudes</h3>
+      <p class="r-text">Les connaissances de cette formation n'ont de valeur que si tu les pratiques. Ce plan te guide semaine par semaine pour installer les nouvelles habitudes progressivement — sans te demander de tout changer en même temps.</p>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 260" role="img" aria-label="Roadmap 30 jours pour ancrer ses habitudes IA">
+          <rect width="640" height="260" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">PLAN D'ACTION 30 JOURS — INSTALLER SES HABITUDES IA</text>
+
+          <!-- Timeline -->
+          <line x1="60" y1="100" x2="590" y2="100" stroke="#334155" stroke-width="2"/>
+
+          <!-- Semaine 1 -->
+          <circle cx="100" cy="100" r="14" fill="rgba(26,158,143,0.2)" stroke="#1A9E8F" stroke-width="2"/>
+          <text x="100" y="105" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="800" font-family="Inter">S1</text>
+          <rect x="34" y="120" width="132" height="90" rx="6" fill="rgba(26,158,143,0.06)" stroke="rgba(26,158,143,0.3)" stroke-width="1"/>
+          <text x="100" y="138" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">Diagnostic &amp; bases</text>
+          <text x="100" y="154" text-anchor="middle" fill="#94A3B8" font-size="7.5" font-family="Inter">• Appliquer RCTF</text>
+          <text x="100" y="168" text-anchor="middle" fill="#94A3B8" font-size="7.5" font-family="Inter">• Configurer sys prompt</text>
+          <text x="100" y="182" text-anchor="middle" fill="#94A3B8" font-size="7.5" font-family="Inter">• Créer 3 prompts base</text>
+          <text x="100" y="196" text-anchor="middle" fill="#64748B" font-size="7" font-family="Inter">Jours 1–7</text>
+
+          <!-- Semaine 2 -->
+          <circle cx="240" cy="100" r="14" fill="rgba(99,102,241,0.2)" stroke="rgba(99,102,241,0.6)" stroke-width="2"/>
+          <text x="240" y="105" text-anchor="middle" fill="#818CF8" font-size="9" font-weight="800" font-family="Inter">S2</text>
+          <rect x="174" y="120" width="132" height="90" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.25)" stroke-width="1"/>
+          <text x="240" y="138" text-anchor="middle" fill="#818CF8" font-size="9" font-weight="700" font-family="Inter">Bibliothèque</text>
+          <text x="240" y="154" text-anchor="middle" fill="#94A3B8" font-size="7.5" font-family="Inter">• Sauvegarder prompts</text>
+          <text x="240" y="168" text-anchor="middle" fill="#94A3B8" font-size="7.5" font-family="Inter">• Organiser par catégorie</text>
+          <text x="240" y="182" text-anchor="middle" fill="#94A3B8" font-size="7.5" font-family="Inter">• Créer fichier contexte</text>
+          <text x="240" y="196" text-anchor="middle" fill="#64748B" font-size="7" font-family="Inter">Jours 8–14</text>
+
+          <!-- Semaine 3 -->
+          <circle cx="400" cy="100" r="14" fill="rgba(245,158,11,0.2)" stroke="rgba(245,158,11,0.6)" stroke-width="2"/>
+          <text x="400" y="105" text-anchor="middle" fill="#F59E0B" font-size="9" font-weight="800" font-family="Inter">S3</text>
+          <rect x="334" y="120" width="132" height="90" rx="6" fill="rgba(245,158,11,0.06)" stroke="rgba(245,158,11,0.25)" stroke-width="1"/>
+          <text x="400" y="138" text-anchor="middle" fill="#F59E0B" font-size="9" font-weight="700" font-family="Inter">Optimisation</text>
+          <text x="400" y="154" text-anchor="middle" fill="#94A3B8" font-size="7.5" font-family="Inter">• Tester modèles alternatifs</text>
+          <text x="400" y="168" text-anchor="middle" fill="#94A3B8" font-size="7.5" font-family="Inter">• Mettre à jour sys prompt</text>
+          <text x="400" y="182" text-anchor="middle" fill="#94A3B8" font-size="7.5" font-family="Inter">• Itérer 5 prompts</text>
+          <text x="400" y="196" text-anchor="middle" fill="#64748B" font-size="7" font-family="Inter">Jours 15–21</text>
+
+          <!-- Semaine 4 -->
+          <circle cx="550" cy="100" r="14" fill="rgba(242,108,58,0.2)" stroke="rgba(242,108,58,0.6)" stroke-width="2"/>
+          <text x="550" y="105" text-anchor="middle" fill="#F26C3A" font-size="9" font-weight="800" font-family="Inter">S4</text>
+          <rect x="484" y="120" width="132" height="90" rx="6" fill="rgba(242,108,58,0.06)" stroke="rgba(242,108,58,0.25)" stroke-width="1"/>
+          <text x="550" y="138" text-anchor="middle" fill="#F26C3A" font-size="9" font-weight="700" font-family="Inter">Système complet</text>
+          <text x="550" y="154" text-anchor="middle" fill="#94A3B8" font-size="7.5" font-family="Inter">• Bilan 30 jours</text>
+          <text x="550" y="168" text-anchor="middle" fill="#94A3B8" font-size="7.5" font-family="Inter">• Identifier tâches restantes</text>
+          <text x="550" y="182" text-anchor="middle" fill="#94A3B8" font-size="7.5" font-family="Inter">• Veille hebdo en place</text>
+          <text x="550" y="196" text-anchor="middle" fill="#64748B" font-size="7" font-family="Inter">Jours 22–30</text>
+
+          <text x="320" y="244" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Une habitude à la fois — la régularité prime sur la perfection</text>
+        </svg>
+        <div class="r-svg-caption">Figure 7.2 — Roadmap 30 jours : installer ses nouvelles habitudes IA progressivement</div>
+      </div>
+
+      <ul class="r-list">
+        <li><strong>Semaine 1 — Diagnostic et bases :</strong> Applique RCTF sur toutes tes demandes IA cette semaine. Configure ton system prompt (instructions personnalisées). Crée 3 prompts de base pour tes usages les plus fréquents. Objectif : ressentir la différence immédiate.</li>
+        <li><strong>Semaine 2 — Bibliothèque :</strong> Sauvegarde chaque prompt qui obtient ≥4/5. Organise ta bibliothèque en 4-5 catégories. Écris ton fichier de contexte personnel (200 mots). Objectif : avoir un actif de 8-10 prompts réutilisables.</li>
+        <li><strong>Semaine 3 — Optimisation :</strong> Teste un modèle alternatif sur 3 de tes tâches habituelles. Mets à jour ton system prompt avec ce que tu as appris. Itère et améliore 5 prompts de ta bibliothèque. Objectif : consolider et affiner ce qui fonctionne.</li>
+        <li><strong>Semaine 4 — Système complet :</strong> Fais le bilan : quelles tâches restent chronophages malgré l'IA ? Installe ta routine de veille hebdomadaire (15 min). Identifie la prochaine compétence IA à développer. Objectif : un système qui tourne en autonomie.</li>
+      </ul>
+
+      <div class="r-tip"><strong>L'indicateur de succès à 30 jours :</strong> Tu n'y penses plus — l'utilisation de RCTF, la consultation de ta bibliothèque et la gestion du context rot sont devenues automatiques. C'est quand les habitudes disparaissent de ta conscience qu'elles sont vraiment ancrées.</div>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 7 &amp; Bilan de formation</div>
+        <ul>
+          <li>Un fichier de contexte personnel (200-400 mots, 5 blocs) est la base de ton système IA — il compense l'absence de mémoire native et t'économise du temps à chaque session.</li>
+          <li>La veille IA efficace tient en 15-20 min/semaine : 1 newsletter, les blogs officiels des outils que tu utilises, 2-3 praticiens de confiance. Teste plutôt que lis.</li>
+          <li>Le plan 30 jours installe les habitudes progressivement : RCTF d'abord, bibliothèque ensuite, optimisation modèles, puis système complet.</li>
+          <li><strong>Ce que tu sais maintenant faire :</strong> Structurer un prompt avec RCTF · Gérer le context rot · Choisir le bon modèle · Construire une bibliothèque · Créer des instructions persistantes · Veiller efficacement sur l'IA.</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="ch6-reduire-couts.html" class="prev">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Réduire ses coûts</span>
+          </div>
+        </a>
+        <a href="../../pages/optimiser-ia.html" class="next">
+          <div>
+            <span class="ch-label">Formation terminée</span>
+            <span class="ch-name">Retour à la page formation</span>
+          </div>
+        </a>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

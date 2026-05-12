@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">Formation — FormaElan</title>
+  <meta name="description" id="pageDesc" content="Formation FormaElan" />
+  <!-- Canonical -->
+  <link rel="canonical" id="pageCanonical" href="https://formaelan.fr/pages/" />
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="FormaElan" />
+  <meta property="og:locale"      content="fr_FR" />
+  <meta property="og:url"         id="ogUrl"   content="" />
+  <meta property="og:title"       id="ogTitle" content="" />
+  <meta property="og:description" id="ogDesc"  content="" />
+  <meta property="og:image"       id="ogImage" content="" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       id="twTitle" content="" />
+  <meta name="twitter:description" id="twDesc"  content="" />
+  <meta name="twitter:image"       id="twImage" content="" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* ── Sections spécifiques aux pages formation ── */
+
+    /* Barre de progression sticky */
+    .progress-bar {
+      position: fixed;
+      top: 70px; left: 0;
+      height: 3px;
+      background: var(--gradient-accent);
+      width: 0%;
+      z-index: 999;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    /* Formateur */
+    .formateur-card {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-glass);
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+    }
+    .formateur-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--gradient-accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 800; color: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 0 24px var(--accent-glow);
+    }
+    .formateur-nom { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.2rem; }
+    .formateur-role { font-size: 0.82rem; color: var(--text-accent); margin-bottom: 0.8rem; }
+    .formateur-bio { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem; }
+    .formateur-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .formateur-stat .val { font-size: 1.3rem; font-weight: 800;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .formateur-stat .lbl { font-size: 0.75rem; color: var(--text-secondary); }
+
+    /* Avant / Après */
+    .avant-apres-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+    .avant-item, .apres-item {
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      line-height: 1.5;
+    }
+    .avant-item {
+      background: rgba(239,68,68,0.07);
+      border: 1px solid rgba(239,68,68,0.2);
+      color: var(--text-secondary);
+    }
+    .apres-item {
+      background: rgba(34,197,94,0.07);
+      border: 1px solid rgba(34,197,94,0.2);
+      color: var(--text-secondary);
+    }
+    .avant-item .ico { color: #ef4444; flex-shrink: 0; }
+    .apres-item .ico { color: #22c55e; flex-shrink: 0; }
+
+    /* Ressources */
+    .ressources-list li {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-glass);
+      background: var(--bg-card);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      transition: border-color var(--transition), transform var(--transition);
+      cursor: default;
+    }
+    .ressources-list li:hover {
+      border-color: var(--border-glow);
+      transform: translateX(4px);
+    }
+    .ressources-list li .r-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    /* FAQ */
+    .faq-item {
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.7rem;
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+    .faq-item:hover { border-color: var(--border-glow); }
+    .faq-question {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 1.2rem;
+      cursor: pointer;
+      background: var(--bg-card);
+      font-size: 0.93rem; font-weight: 600;
+      user-select: none;
+      transition: background var(--transition);
+    }
+    .faq-question:hover { background: var(--bg-card-hover); }
+    .faq-arrow { font-size: 0.7rem; color: var(--text-secondary); transition: transform var(--transition); }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-reponse {
+      display: none;
+      padding: 1rem 1.2rem;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-glass);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    .faq-item.open .faq-reponse { display: block; }
+
+    /* Onglets contenu */
+    .tabs-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-glass);
+      padding-bottom: 0;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem; font-weight: 600;
+      border: none; background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition);
+      margin-bottom: -1px;
+    }
+    .tab-btn:hover { color: var(--text-primary); }
+    .tab-btn.active {
+      color: var(--text-accent);
+      border-bottom-color: var(--accent);
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Sticky sidebar desktop */
+    @media (min-width: 901px) {
+      .sticky-sidebar { position: sticky; top: 90px; }
+    }
+    @media (max-width: 900px) {
+      .avant-apres-grid { grid-template-columns: 1fr; }
+      .formateur-card { flex-direction: column; }
+      .two-col-layout { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barre de lecture -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="../index.html" class="navbar-logo">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text"><span>Forma</span>Elan</div>
+    </a>
+    <ul class="navbar-links">
+      <li><a href="../index.html#formations">Formations</a></li>
+      <li><a href="../index.html#pourquoi">Pourquoi nous</a></li>
+      <li><a href="../index.html#temoignages">Témoignages</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <label class="theme-toggle" title="Changer le thème">
+        <input type="checkbox" id="themeToggleInput" />
+        <div class="track"><div class="thumb">🌙</div></div>
+      </label>
+      <a href="../index.html" class="btn-nav">← Retour</a>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       HERO FORMATION
+  ═══════════════════════════════════════════════════════ -->
+  <section class="formation-hero" id="formationHero">
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+
+    <div class="formation-hero-inner">
+
+      <!-- Gauche : infos -->
+      <div>
+        <div class="formation-breadcrumb">
+          <a href="../index.html">Accueil</a> /
+          <a href="../index.html#formations">Formations</a> /
+          <span id="breadcrumbTitre"></span>
+        </div>
+
+        <div class="formation-meta-top">
+          <span class="section-tag" id="metaCategorie"></span>
+          <span class="section-tag" id="metaNiveau"
+            style="background:var(--cyan-glow);border-color:var(--cyan);color:var(--cyan)"></span>
+        </div>
+
+        <h1 class="formation-title" id="formationTitre"></h1>
+        <p class="formation-intro" id="formationIntro"></p>
+
+        <div class="formation-meta-row">
+          <div class="meta-item">⏱ <strong id="metaDuree"></strong></div>
+          <div class="meta-item">📚 <strong id="metaModules"></strong> modules</div>
+          <div class="meta-item">👥 <strong id="metaEtudiants"></strong> étudiants</div>
+          <div class="meta-item" id="metaNoteRow"></div>
+        </div>
+
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="#acheter" class="btn btn-primary btn-lg">🔒 Accéder maintenant</a>
+          <a href="#programme" class="btn btn-secondary">Voir le programme ↓</a>
+        </div>
+      </div>
+
+      <!-- Droite : card paiement sticky -->
+      <div class="sticky-sidebar">
+        <div class="payment-card" id="acheter">
+          <div style="text-align:center;margin-bottom:1.2rem;">
+            <div class="price-main" id="prixMain"></div>
+            <div class="price-old" id="prixAncien"></div>
+            <div class="discount-badge" id="discountBadge"></div>
+          </div>
+
+          <!-- Bouton branché sur stripe.js -->
+          <button class="btn btn-primary" id="btnAcheter"
+            style="width:100%;justify-content:center;margin-bottom:0.8rem;font-size:1rem;">
+            🔒 Accéder maintenant
+          </button>
+
+          <p style="font-size:0.75rem;color:var(--text-secondary);text-align:center;margin-bottom:1rem;">
+            Paiement 100% sécurisé · Accès immédiat · <strong>Stripe</strong>
+          </p>
+
+          <div class="payment-includes">
+            <h4>Cette formation inclut</h4>
+            <ul id="inclusList"></ul>
+          </div>
+
+          <div style="margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--border-glass);
+                      font-size:0.8rem;color:var(--text-secondary);text-align:center;">
+            🔒 Accès sécurisé par Stripe
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       CONTENU PRINCIPAL (onglets)
+  ═══════════════════════════════════════════════════════ -->
+  <div style="background:var(--bg-secondary);padding:4rem 0;">
+    <div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+
+      <!-- Onglets -->
+      <div class="tabs-bar">
+        <button class="tab-btn active" data-tab="programme">📚 Programme</button>
+        <button class="tab-btn" data-tab="objectifs">🎯 Objectifs</button>
+        <button class="tab-btn" data-tab="formateur">👤 Formateur</button>
+        <button class="tab-btn" data-tab="avantapres">⚡ Avant / Après</button>
+        <button class="tab-btn" data-tab="ressources">📦 Ressources</button>
+        <button class="tab-btn" data-tab="faq">❓ FAQ</button>
+      </div>
+
+      <div class="two-col-layout"
+        style="display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:start;">
+
+        <!-- COLONNE PRINCIPALE -->
+        <div>
+
+          <!-- Programme -->
+          <div class="tab-panel active" id="tab-programme">
+            <div class="formation-section">
+              <h2 id="programme">Programme complet</h2>
+              <div id="programmeAccordeon"></div>
+            </div>
+          </div>
+
+          <!-- Objectifs -->
+          <div class="tab-panel" id="tab-objectifs">
+            <div class="formation-section">
+              <h2>Ce que tu vas maîtriser</h2>
+              <div class="objectifs-grid" id="objectifsGrid"></div>
+              <div style="margin-top:2rem;">
+                <h2>Pour qui est cette formation ?</h2>
+                <div id="pourQuiList" style="display:flex;flex-direction:column;gap:0.6rem;margin-top:1rem;"></div>
+              </div>
+              <div style="margin-top:2rem;">
+                <h2>Prérequis</h2>
+                <p id="prerequisText"
+                  style="color:var(--text-secondary);font-size:0.95rem;line-height:1.7;
+                         padding:1rem 1.2rem;background:var(--bg-card);border:1px solid var(--border-glass);
+                         border-radius:var(--radius-sm);margin-top:1rem;"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formateur -->
+          <div class="tab-panel" id="tab-formateur">
+            <div class="formation-section">
+              <h2>Ton formateur</h2>
+              <div class="formateur-card" id="formateurCard"></div>
+            </div>
+          </div>
+
+          <!-- Avant / Après -->
+          <div class="tab-panel" id="tab-avantapres">
+            <div class="formation-section">
+              <h2>Avant / Après la formation</h2>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.8rem;">
+                <div style="text-align:center;padding:0.5rem;font-size:0.8rem;font-weight:700;
+                            color:#ef4444;background:rgba(239,68,68,0.07);
+                            border-radius:var(--radius-sm);border:1px solid rgba(239,68,68,0.2);">
+                  ✗ Avant
+                </div>
+                <div style="text-align:center;padding:0.5rem;font-size:0.8rem;font-weight:700;
+                            color:#22c55e;background:rgba(34,197,94,0.07);
+                            border-radius:var(--radius-sm);border:1px solid rgba(34,197,94,0.2);">
+                  ✓ Après
+                </div>
+              </div>
+              <div id="avantApresGrid"></div>
+            </div>
+          </div>
+
+          <!-- Ressources -->
+          <div class="tab-panel" id="tab-ressources">
+            <div class="formation-section">
+              <h2>Ressources incluses</h2>
+              <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1.2rem;">
+                Téléchargeables dès ton accès à la formation.
+              </p>
+              <ul class="ressources-list" id="ressourcesList"></ul>
+            </div>
+          </div>
+
+          <!-- FAQ -->
+          <div class="tab-panel" id="tab-faq">
+            <div class="formation-section">
+              <h2>Questions fréquentes</h2>
+              <div id="faqAccordeon"></div>
+            </div>
+          </div>
+
+        </div><!-- fin colonne principale -->
+
+        <!-- COLONNE DROITE : mini card recap visible depuis onglets -->
+        <div class="sticky-sidebar" style="padding-top:0.5rem;">
+          <div class="payment-card" style="margin-top:0;">
+            <div style="text-align:center;margin-bottom:1rem;">
+              <div class="price-main" id="prixMain2"></div>
+              <div class="price-old" id="prixAncien2"></div>
+            </div>
+            <button class="btn btn-primary" id="btnAcheter2"
+              style="width:100%;justify-content:center;margin-bottom:0.8rem;">
+              🔒 Je m'inscris
+            </button>
+            <div class="payment-includes">
+              <h4>Inclus dans la formation</h4>
+              <ul id="inclusList2"></ul>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- fin two-col-layout -->
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       CTA FINAL
+  ═══════════════════════════════════════════════════════ -->
+  <section class="cta-section" style="padding:5rem 2rem;">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+      <div class="cta-box reveal">
+        <div class="hero-badge" style="margin-bottom:1.2rem;">
+          <div class="dot"></div>
+          Paiement sécurisé par Stripe
+        </div>
+        <h2 class="cta-title" id="ctaTitle"></h2>
+        <p class="cta-subtitle" id="ctaSubtitle"></p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-primary btn-lg" id="btnAcheterCta">🔒 Je m'inscris maintenant</button>
+        <a href="../index.html" class="btn btn-secondary">Voir d'autres formations</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">⚡ <span>Forma</span>Elan</div>
+          <p>Des formations en ligne concrètes pour entrepreneurs et freelances du numérique.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Formations</h4>
+          <ul>
+            <li><a href="seo-saas.html">SEO pour SaaS</a></li>
+            <li><a href="ia-freelance.html">IA pour Freelance</a></li>
+            <li><a href="copywriting-ecom.html">Copywriting E-commerce</a></li>
+            <li><a href="seo-ecom.html">SEO pour E-commerce</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Légal</h4>
+          <ul>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">CGV</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 FormaElan — Tous droits réservés</span>
+        <span>Fait avec ⚡ en France</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════════════════════════ -->
+  <script src="../js/formations.js"></script>
+  <script src="../js/stripe.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+
+    // ── 0. Récupérer la formation selon le slug ──────────────
+    const slug = window.location.pathname.split('/').pop().replace('.html', '');
+    const f    = FORMATION_BY_SLUG[slug];
+
+    if (!f) {
+      document.body.innerHTML = '<div style="padding:6rem 2rem;text-align:center;">'
+        + '<h1 style="margin-bottom:1rem;">Formation introuvable</h1>'
+        + '<a href="../index.html" class="btn btn-primary">← Retour à l\'accueil</a></div>';
+    } else {
+
+      // ── 1. Meta & titres ──────────────────────────────────
+      document.getElementById('pageTitle').textContent       = `${f.titre} — FormaElan`;
+      document.getElementById('pageDesc').content            = f.sousTitre;
+
+      // ── SEO : canonical + Open Graph + Twitter ────────────
+      const BASE    = 'https://formaelan.fr';
+      const pageUrl = `${BASE}/pages/${slug}.html`;
+      const ogImg   = `${BASE}/img/og-cover.jpg`;
+      document.getElementById('pageCanonical').href  = pageUrl;
+      document.getElementById('ogUrl').content       = pageUrl;
+      document.getElementById('ogTitle').content     = `${f.titre} — FormaElan`;
+      document.getElementById('ogDesc').content      = f.description;
+      document.getElementById('ogImage').content     = ogImg;
+      document.getElementById('twTitle').content     = `${f.titre} — FormaElan`;
+      document.getElementById('twDesc').content      = f.description;
+      document.getElementById('twImage').content     = ogImg;
+
+      document.getElementById('breadcrumbTitre').textContent  = f.titre;
+      document.getElementById('metaCategorie').textContent   = f.categorie;
+      document.getElementById('metaNiveau').textContent      = f.niveau;
+      document.getElementById('formationTitre').textContent  = f.titre;
+      document.getElementById('formationIntro').textContent  = f.sousTitre;
+      document.getElementById('metaDuree').textContent       = f.duree;
+      document.getElementById('metaModules').textContent     = f.modules;
+      document.getElementById('metaEtudiants').textContent   = f.etudiants.toLocaleString('fr-FR');
+      document.getElementById('metaNoteRow').innerHTML       =
+        `⭐ <strong>${f.note}/5</strong> <span style="color:var(--text-secondary);font-size:.82rem;">(${f.avis} avis)</span>`;
+
+      // Hero couleur
+      document.getElementById('formationHero').style.background =
+        `linear-gradient(160deg, var(--bg-primary) 0%, var(--bg-secondary) 100%)`;
+
+      // ── 2. Carte paiement ─────────────────────────────────
+      const disc = Math.round((1 - f.prix / f.prixAncien) * 100);
+      ['', '2'].forEach(sfx => {
+        const pm = document.getElementById('prixMain'  + sfx);
+        const pa = document.getElementById('prixAncien'+ sfx);
+        if (pm) pm.textContent = `${f.prix} €`;
+        if (pa) pa.textContent = `Prix original : ${f.prixAncien} €`;
+      });
+      document.getElementById('discountBadge').textContent =
+        `🎉 ${disc}% de réduction — Offre limitée`;
+
+
+      const inclus = [
+        `${f.duree} de contenu vidéo HD`,
+        `${f.modules} modules structurés`,
+        'Accès à vie + mises à jour',
+        f.certif ? 'Certificat de réussite' : null,
+        'Ressources téléchargeables',
+        '🔒 Paiement sécurisé par Stripe',
+      ].filter(Boolean);
+
+      ['inclusList', 'inclusList2'].forEach(id => {
+        const ul = document.getElementById(id);
+        if (!ul) return;
+        inclus.forEach(item => {
+          const li = document.createElement('li');
+          li.innerHTML = `<span class="check">✓</span> ${item}`;
+          ul.appendChild(li);
+        });
+      });
+
+      // ── 3. Boutons acheter → stripe.js ────────────────────
+      ['btnAcheter', 'btnAcheter2', 'btnAcheterCta'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) btn.addEventListener('click', () => {
+          if (typeof FormaElanStripe !== 'undefined') {
+            FormaElanStripe.checkout(f.slug, f.prix, f.titre);
+          } else {
+            alert('Système de paiement bientôt disponible !\n\nFormation : ' + f.titre + '\nPrix : ' + f.prix + ' €');
+          }
+        });
+      });
+
+      // ── 4. Programme (accordéon) ──────────────────────────
+      f.programme.forEach((mod, i) => {
+        const div = document.createElement('div');
+        div.className = 'programme-module';
+        div.innerHTML = `
+          <div class="module-header">
+            <div class="module-title">
+              <span class="module-num">${i + 1}</span>
+              ${mod.titre}
+            </div>
+            <div style="display:flex;align-items:center;gap:.8rem;">
+              ${mod.duree ? `<span style="font-size:.75rem;color:var(--text-secondary);">⏱ ${mod.duree}</span>` : ''}
+              <span class="module-arrow">▼</span>
+            </div>
+          </div>
+          <div class="module-body">
+            <ul>
+              ${mod.lecons.map(l => `<li><span class="lesson-icon">▶</span> ${l}</li>`).join('')}
+            </ul>
+          </div>`;
+        document.getElementById('programmeAccordeon').appendChild(div);
+      });
+
+      // ── 5. Objectifs ──────────────────────────────────────
+      f.objectifs.forEach(obj => {
+        const div = document.createElement('div');
+        div.className = 'objectif-item';
+        div.innerHTML = `<span class="check">✓</span> ${obj}`;
+        document.getElementById('objectifsGrid').appendChild(div);
+      });
+
+      // Pour qui
+      f.pourQui.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'objectif-item';
+        div.innerHTML = `<span class="check">👤</span> ${item}`;
+        document.getElementById('pourQuiList').appendChild(div);
+      });
+
+      document.getElementById('prerequisText').textContent = f.prerequis;
+
+      // ── 6. Formateur ──────────────────────────────────────
+      const fc = document.getElementById('formateurCard');
+      fc.innerHTML = `
+        <div class="formateur-avatar">${f.formateur.avatar}</div>
+        <div>
+          <div class="formateur-nom">${f.formateur.nom}</div>
+          <div class="formateur-role">${f.formateur.role}</div>
+          <p class="formateur-bio">${f.formateur.bio}</p>
+          <div class="formateur-stats">
+            ${f.formateur.stats.map(s =>
+              `<div class="formateur-stat">
+                <div class="val">${s.val}</div>
+                <div class="lbl">${s.label}</div>
+              </div>`).join('')}
+          </div>
+        </div>`;
+
+      // ── 7. Avant / Après ──────────────────────────────────
+      const aag = document.getElementById('avantApresGrid');
+      f.avantApres.forEach(aa => {
+        const row = document.createElement('div');
+        row.className = 'avant-apres-grid';
+        row.style.marginBottom = '0.5rem';
+        row.innerHTML = `
+          <div class="avant-item"><span class="ico">✗</span> ${aa.avant}</div>
+          <div class="apres-item"><span class="ico">✓</span> ${aa.apres}</div>`;
+        aag.appendChild(row);
+      });
+
+      // ── 8. Ressources ─────────────────────────────────────
+      const icons = ['📊','🤖','📋','⚙️','📈','📝','🔧'];
+      f.ressources.forEach((r, i) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="r-icon">${icons[i % icons.length]}</span> ${r}`;
+        document.getElementById('ressourcesList').appendChild(li);
+      });
+
+      // ── 9. FAQ (accordéon) ────────────────────────────────
+      f.faq.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'faq-item';
+        div.innerHTML = `
+          <div class="faq-question">
+            ${item.q}
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-reponse">${item.r}</div>`;
+        div.querySelector('.faq-question').addEventListener('click', () => {
+          const open = div.classList.contains('open');
+          document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+          if (!open) div.classList.add('open');
+        });
+        document.getElementById('faqAccordeon').appendChild(div);
+      });
+
+      // ── 10. CTA bas ───────────────────────────────────────
+      document.getElementById('ctaTitle').innerHTML =
+        `Prêt à maîtriser <span class="gradient-text">${f.titre}</span> ?`;
+      document.getElementById('ctaSubtitle').textContent =
+        `Rejoins ${f.etudiants.toLocaleString('fr-FR')} étudiants et commence dès aujourd'hui.`;
+
+      // ── 11. Onglets ───────────────────────────────────────
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+        });
+      });
+
+    } // fin if(f)
+
+    // ── 12. Barre de progression lecture ──────────────────
+    window.addEventListener('scroll', () => {
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const pct  = docH > 0 ? (window.scrollY / docH * 100) : 0;
+      document.getElementById('progressBar').style.width = pct + '%';
+    });
+
+  </script>
+</body>
+</html>

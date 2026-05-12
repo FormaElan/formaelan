@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>SEO Technique pour SaaS — SEO pour SaaS · FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/formations.css"/>
+</head>
+<body>
+
+<nav class="r-nav">
+  <a href="../../index.html" class="r-nav-logo"><span>Forma</span>Elan</a>
+  <div class="r-breadcrumb">
+    <a href="../../index.html">Accueil</a> /
+    <a href="../../pages/seo-saas.html">SEO pour SaaS</a> /
+    <span>Chapitre 4</span>
+  </div>
+</nav>
+
+<div class="r-layout">
+
+  <aside class="r-sidebar">
+    <div class="r-sidebar-title">Sommaire</div>
+    <a href="ch1-fondamentaux.html" class="r-ch-link"><div class="r-ch-num">1</div>Fondamentaux SEO SaaS</a>
+    <a href="ch2-mots-cles.html" class="r-ch-link"><div class="r-ch-num">2</div>Mots-clés intent-driven</a>
+    <a href="ch3-content-clusters.html" class="r-ch-link"><div class="r-ch-num">3</div>Content Clusters</a>
+    <a href="ch4-seo-technique.html" class="r-ch-link active"><div class="r-ch-num">4</div>SEO Technique</a>
+    <a href="ch5-link-building.html" class="r-ch-link"><div class="r-ch-num">5</div>Link Building B2B</a>
+    <a href="ch6-contenu-convertit.html" class="r-ch-link"><div class="r-ch-num">6</div>Contenu qui convertit</a>
+    <a href="ch7-mesure-reporting.html" class="r-ch-link"><div class="r-ch-num">7</div>Mesure &amp; Reporting</a>
+    <a href="ch8-automatisation-ia.html" class="r-ch-link"><div class="r-ch-num">8</div>Automatisation &amp; IA</a>
+    <div class="r-sidebar-sep"></div>
+    <a href="../../pages/seo-saas.html" class="r-ch-link" style="font-size:.78rem;color:var(--muted)">← Page de la formation</a>
+  </aside>
+
+  <main class="r-main">
+    <section class="r-chapter" id="ch4">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">4</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 4</div>
+          <h2>SEO technique pour SaaS</h2>
+          <div class="dur">⏱ 45 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Le SEO technique d'un SaaS a ses propres pièges : des milliers de pages /app générées dynamiquement, des routes authentifiées que Google ne peut pas crawler, des Core Web Vitals sacrifiés pour des features produit. Ce chapitre couvre les points techniques qui font une vraie différence.
+      </div>
+
+      <!-- SVG 7 : Dashboard Core Web Vitals -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 280" role="img" aria-label="Dashboard Core Web Vitals LCP FID CLS">
+          <rect width="640" height="280" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Core Web Vitals — Tableau de bord de performance</text>
+
+          <!-- LCP gauge -->
+          <text x="110" y="55" text-anchor="middle" fill="#E2E8F0" font-size="11" font-weight="700" font-family="Inter">LCP</text>
+          <text x="110" y="70" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Largest Contentful Paint</text>
+          <!-- arc background -->
+          <path d="M 40,155 A 70,70 0 0,1 180,155" stroke="#2D3748" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <!-- arc good = 0-2.5s = 100% green -->
+          <path d="M 40,155 A 70,70 0 0,1 180,155" stroke="#22C55E" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="220" stroke-dashoffset="66"/>
+          <text x="110" y="148" text-anchor="middle" fill="#22C55E" font-size="22" font-weight="900" font-family="Inter">2.1s</text>
+          <text x="110" y="166" text-anchor="middle" fill="#22C55E" font-size="9" font-weight="700" font-family="Inter">● GOOD</text>
+          <text x="40" y="172" fill="#475569" font-size="8" font-family="Inter">0s</text>
+          <text x="175" y="172" fill="#475569" font-size="8" font-family="Inter">4s+</text>
+          <rect x="30" y="185" width="160" height="40" rx="8" fill="#17202E"/>
+          <text x="110" y="201" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Cible : &lt; 2.5s · Actuel : 2.1s</text>
+          <text x="110" y="218" text-anchor="middle" fill="#22C55E" font-size="8" font-weight="700" font-family="Inter">✓ Dans les clous</text>
+
+          <!-- INP gauge -->
+          <text x="320" y="55" text-anchor="middle" fill="#E2E8F0" font-size="11" font-weight="700" font-family="Inter">INP</text>
+          <text x="320" y="70" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Interaction to Next Paint</text>
+          <path d="M 250,155 A 70,70 0 0,1 390,155" stroke="#2D3748" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <path d="M 250,155 A 70,70 0 0,1 390,155" stroke="#F59E0B" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="220" stroke-dashoffset="110"/>
+          <text x="320" y="148" text-anchor="middle" fill="#F59E0B" font-size="22" font-weight="900" font-family="Inter">240ms</text>
+          <text x="320" y="166" text-anchor="middle" fill="#F59E0B" font-size="9" font-weight="700" font-family="Inter">◐ NEEDS WORK</text>
+          <text x="250" y="172" fill="#475569" font-size="8" font-family="Inter">0ms</text>
+          <text x="378" y="172" fill="#475569" font-size="8" font-family="Inter">500ms</text>
+          <rect x="240" y="185" width="160" height="40" rx="8" fill="#17202E"/>
+          <text x="320" y="201" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Cible : &lt; 200ms · Actuel : 240ms</text>
+          <text x="320" y="218" text-anchor="middle" fill="#F59E0B" font-size="8" font-weight="700" font-family="Inter">⚠ Optimisation requise</text>
+
+          <!-- CLS gauge -->
+          <text x="530" y="55" text-anchor="middle" fill="#E2E8F0" font-size="11" font-weight="700" font-family="Inter">CLS</text>
+          <text x="530" y="70" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Cumulative Layout Shift</text>
+          <path d="M 460,155 A 70,70 0 0,1 600,155" stroke="#2D3748" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <path d="M 460,155 A 70,70 0 0,1 600,155" stroke="#22C55E" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="220" stroke-dashoffset="176"/>
+          <text x="530" y="148" text-anchor="middle" fill="#22C55E" font-size="22" font-weight="900" font-family="Inter">0.04</text>
+          <text x="530" y="166" text-anchor="middle" fill="#22C55E" font-size="9" font-weight="700" font-family="Inter">● GOOD</text>
+          <text x="460" y="172" fill="#475569" font-size="8" font-family="Inter">0</text>
+          <text x="590" y="172" fill="#475569" font-size="8" font-family="Inter">0.25+</text>
+          <rect x="450" y="185" width="160" height="40" rx="8" fill="#17202E"/>
+          <text x="530" y="201" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Cible : &lt; 0.1 · Actuel : 0.04</text>
+          <text x="530" y="218" text-anchor="middle" fill="#22C55E" font-size="8" font-weight="700" font-family="Inter">✓ Excellent</text>
+
+          <!-- Score global -->
+          <rect x="200" y="238" width="240" height="30" rx="8" fill="rgba(26,158,143,0.15)" stroke="rgba(26,158,143,0.3)" stroke-width="1"/>
+          <text x="320" y="258" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="700" font-family="Inter">Score global CWV : 2 / 3 métriques dans le vert · Action : optimiser INP</text>
+        </svg>
+        <div class="r-svg-caption">Figure 4.1 — Dashboard Core Web Vitals : LCP (vitesse chargement), INP (réactivité), CLS (stabilité visuelle). Objectif : les 3 dans le vert.</div>
+      </div>
+
+      <h3 class="r-section-title">4.1 — Le piège des pages /app</h3>
+      <p class="r-text">La majorité des SaaS génèrent des milliers de pages derrière /app, /dashboard, /user, etc. Ces pages ne doivent jamais être indexées — mais elles consomment du crawl budget si elles ne sont pas bloquées correctement.</p>
+      <ul class="r-list">
+        <li><strong style="color:var(--text)">Robots.txt :</strong> <code style="background:var(--bg3);padding:.1rem .3rem;border-radius:3px;font-size:.82rem">Disallow: /app/</code> bloque le crawl mais pas l'indexation si des liens externes pointent dessus.</li>
+        <li><strong style="color:var(--text)">Meta noindex :</strong> plus sûr pour les pages authentifiées. Combine avec robots.txt pour maximiser la protection.</li>
+        <li><strong style="color:var(--text)">Canonical :</strong> pour les pages dynamiques avec paramètres (?sort=, ?filter=), utilise le canonical pour éviter le duplicate content.</li>
+      </ul>
+
+      <h3 class="r-section-title">4.2 — Structured Data pour les SaaS</h3>
+      <ul class="r-list">
+        <li><strong style="color:var(--text)">SoftwareApplication :</strong> schema.org pour ton produit — permet d'apparaître dans les rich results avec note, prix, OS compatibles.</li>
+        <li><strong style="color:var(--text)">FAQ schema :</strong> sur tes pages de vente et landing pages SEO pour occuper plus de place dans les SERP.</li>
+        <li><strong style="color:var(--text)">HowTo schema :</strong> pour tes tutoriels et guides techniques — booste le CTR sur les requêtes TOFU.</li>
+        <li><strong style="color:var(--text)">Article schema :</strong> sur tous tes articles de blog avec datePublished et dateModified — indique la fraîcheur à Google.</li>
+      </ul>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 4</div>
+        <ul>
+          <li>Bloque /app et toutes les pages authentifiées avec robots.txt + noindex</li>
+          <li>Cible LCP &lt; 2.5s, INP &lt; 200ms, CLS &lt; 0.1 — mesure dans Search Console</li>
+          <li>Implémente SoftwareApplication schema sur ta homepage produit</li>
+          <li>Les images non compressées sont souvent la cause #1 du mauvais LCP</li>
+        </ul>
+      </div>
+
+      <!-- Figure 4.2 : Architecture SEO d'un site SaaS -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 300" role="img" aria-label="Architecture SEO d'un site SaaS — pages indexables vs bloquées">
+          <rect width="640" height="300" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Architecture SEO SaaS — Indexable vs Bloqué</text>
+
+          <!-- Colonne gauche : indexable -->
+          <text x="160" y="50" text-anchor="middle" fill="#22C55E" font-size="10" font-weight="700" font-family="Inter">INDEXABLE ✓</text>
+          <rect x="40" y="60" width="240" height="34" rx="8" fill="rgba(34,197,94,0.15)" stroke="#22C55E" stroke-width="1.5"/>
+          <text x="160" y="82" text-anchor="middle" fill="#22C55E" font-size="10" font-weight="700" font-family="Inter">/ Homepage + /pricing</text>
+
+          <rect x="40" y="106" width="112" height="28" rx="6" fill="rgba(26,158,143,0.2)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="96" y="124" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">/blog/*</text>
+
+          <rect x="168" y="106" width="112" height="28" rx="6" fill="rgba(99,102,241,0.2)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="224" y="124" text-anchor="middle" fill="#6366F1" font-size="9" font-weight="700" font-family="Inter">/features/* /use-cases/*</text>
+
+          <rect x="40" y="148" width="112" height="28" rx="6" fill="rgba(26,158,143,0.2)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="96" y="166" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">/alternatives/* /vs-*</text>
+
+          <rect x="168" y="148" width="112" height="28" rx="6" fill="rgba(99,102,241,0.2)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="224" y="166" text-anchor="middle" fill="#6366F1" font-size="9" font-weight="700" font-family="Inter">/integrations/*</text>
+
+          <!-- Ligne séparatrice -->
+          <line x1="320" y1="45" x2="320" y2="265" stroke="#2D3748" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <text x="320" y="40" text-anchor="middle" fill="#2D3748" font-size="9" font-family="Inter">────</text>
+
+          <!-- Colonne droite : bloqué -->
+          <text x="480" y="50" text-anchor="middle" fill="#EF4444" font-size="10" font-weight="700" font-family="Inter">BLOQUÉ ✗</text>
+          <rect x="360" y="60" width="240" height="34" rx="8" fill="rgba(239,68,68,0.12)" stroke="#EF4444" stroke-width="1.5"/>
+          <text x="480" y="82" text-anchor="middle" fill="#EF4444" font-size="10" font-weight="700" font-family="Inter">/app/* /dashboard/* /settings/*</text>
+
+          <rect x="360" y="106" width="112" height="28" rx="6" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.4)" stroke-width="1"/>
+          <text x="416" y="124" text-anchor="middle" fill="#EF4444" font-size="9" font-family="Inter">/user/* /account/*</text>
+
+          <rect x="488" y="106" width="112" height="28" rx="6" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.4)" stroke-width="1"/>
+          <text x="544" y="124" text-anchor="middle" fill="#EF4444" font-size="9" font-family="Inter">/api/* /admin/*</text>
+
+          <!-- Méthode de blocage -->
+          <rect x="360" y="148" width="240" height="28" rx="6" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
+          <text x="480" y="162" text-anchor="middle" fill="#F59E0B" font-size="9" font-weight="700" font-family="Inter">robots.txt Disallow + meta noindex</text>
+          <text x="480" y="174" text-anchor="middle" fill="#F59E0B" font-size="8" font-family="Inter">(double protection requise)</text>
+
+          <!-- Note crawl budget -->
+          <rect x="40" y="210" width="560" height="42" rx="8" fill="rgba(26,158,143,0.07)" stroke="rgba(26,158,143,0.2)" stroke-width="1"/>
+          <text x="320" y="228" text-anchor="middle" fill="#94A3B8" font-size="9" font-weight="700" font-family="Inter">Crawl Budget : Googlebot alloue un nombre fixe de pages à crawler par site.</text>
+          <text x="320" y="244" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Pages /app non bloquées = budget gaspillé = pages SEO moins fréquemment recrawlées.</text>
+        </svg>
+        <div class="r-svg-caption">Figure 4.2 — Séparer clairement les zones indexables (blog, features, pricing) des zones applicatives bloquées préserve le crawl budget.</div>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="ch3-content-clusters.html">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Architecture &amp; Content Clusters</span>
+          </div>
+        </a>
+        <a href="ch5-link-building.html" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">Link Building B2B</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

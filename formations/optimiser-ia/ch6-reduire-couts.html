@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Réduire ses coûts — Optimiser son IA · FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/formations.css"/>
+</head>
+<body>
+
+<nav class="r-nav">
+  <a href="../../index.html" class="r-nav-logo"><span>Forma</span>Elan</a>
+  <div class="r-breadcrumb">
+    <a href="../../index.html">Accueil</a> /
+    <a href="../../pages/optimiser-ia.html">Optimiser son IA</a> /
+    <span>Chapitre 6</span>
+  </div>
+</nav>
+
+<div class="r-layout">
+
+  <aside class="r-sidebar">
+    <div class="r-sidebar-title">Sommaire</div>
+    <a href="ch1-sous-exploites-ia.html" class="r-ch-link"><div class="r-ch-num">1</div>Pourquoi tu sous-exploites ton IA</a>
+    <a href="ch2-tokens-contexte.html" class="r-ch-link"><div class="r-ch-num">2</div>Tokens &amp; contexte</a>
+    <a href="ch3-prompt-bases.html" class="r-ch-link"><div class="r-ch-num">3</div>Prompt — les bases</a>
+    <a href="ch4-prompt-avance.html" class="r-ch-link"><div class="r-ch-num">4</div>Prompt — avancé</a>
+    <a href="ch5-choisir-modele.html" class="r-ch-link"><div class="r-ch-num">5</div>Choisir son modèle</a>
+    <a href="ch6-reduire-couts.html" class="r-ch-link active"><div class="r-ch-num">6</div>Réduire ses coûts</a>
+    <a href="ch7-systeme-ia-personnel.html" class="r-ch-link"><div class="r-ch-num">7</div>Ton système IA</a>
+    <div class="r-sidebar-sep"></div>
+    <a href="../../pages/optimiser-ia.html" class="r-ch-link" style="font-size:.78rem;color:var(--muted)">← Page de la formation</a>
+  </aside>
+
+  <main class="r-main">
+    <section class="r-chapter" id="ch6">
+
+      <div class="r-ch-header">
+        <div class="r-ch-badge">6</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 6</div>
+          <h2>Réduire ses coûts, optimiser son workflow</h2>
+          <div class="dur">⏱ 45 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Que tu paies un abonnement fixe ou que tu utilises l'API, optimiser ses coûts IA ne signifie pas utiliser l'IA moins — ça signifie l'utiliser mieux. Moins de répétition, plus de réutilisation, des instructions qui persistent. Ce chapitre te montre comment construire un workflow IA où le temps gagné croît à chaque semaine d'utilisation.
+      </div>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 280" role="img" aria-label="Structure d'une bibliothèque de prompts personnels bien organisée">
+          <rect width="640" height="280" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">BIBLIOTHÈQUE DE PROMPTS — STRUCTURE RECOMMANDÉE</text>
+
+          <!-- Dossier racine -->
+          <rect x="240" y="38" width="160" height="34" rx="6" fill="rgba(26,158,143,0.2)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="320" y="60" text-anchor="middle" fill="#1A9E8F" font-size="11" font-weight="800" font-family="Inter">📁 Mes Prompts IA</text>
+
+          <!-- Lignes de dossier -->
+          <line x1="320" y1="72" x2="320" y2="95" stroke="#334155" stroke-width="1.2"/>
+          <line x1="110" y1="95" x2="530" y2="95" stroke="#334155" stroke-width="1.2"/>
+          <line x1="110" y1="95" x2="110" y2="115" stroke="#334155" stroke-width="1.2"/>
+          <line x1="215" y1="95" x2="215" y2="115" stroke="#334155" stroke-width="1.2"/>
+          <line x1="320" y1="95" x2="320" y2="115" stroke="#334155" stroke-width="1.2"/>
+          <line x1="425" y1="95" x2="425" y2="115" stroke="#334155" stroke-width="1.2"/>
+          <line x1="530" y1="95" x2="530" y2="115" stroke="#334155" stroke-width="1.2"/>
+
+          <!-- Sous-dossiers -->
+          <rect x="44" y="115" width="132" height="30" rx="5" fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.35)" stroke-width="1"/>
+          <text x="110" y="134" text-anchor="middle" fill="#818CF8" font-size="9" font-weight="600" font-family="Inter">📁 Rédaction</text>
+
+          <rect x="150" y="115" width="132" height="30" rx="5" fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.35)" stroke-width="1"/>
+          <text x="216" y="134" text-anchor="middle" fill="#818CF8" font-size="9" font-weight="600" font-family="Inter">📁 Analyse</text>
+
+          <rect x="256" y="115" width="132" height="30" rx="5" fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.35)" stroke-width="1"/>
+          <text x="322" y="134" text-anchor="middle" fill="#818CF8" font-size="9" font-weight="600" font-family="Inter">📁 Code</text>
+
+          <rect x="362" y="115" width="132" height="30" rx="5" fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.35)" stroke-width="1"/>
+          <text x="428" y="134" text-anchor="middle" fill="#818CF8" font-size="9" font-weight="600" font-family="Inter">📁 Email / Comm.</text>
+
+          <rect x="468" y="115" width="100" height="30" rx="5" fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.35)" stroke-width="1"/>
+          <text x="518" y="134" text-anchor="middle" fill="#818CF8" font-size="9" font-weight="600" font-family="Inter">📁 Autre</text>
+
+          <!-- Exemples de fichiers sous Rédaction -->
+          <line x1="110" y1="145" x2="110" y2="165" stroke="#1E3A5F" stroke-width="1"/>
+          <rect x="44" y="165" width="132" height="24" rx="4" fill="rgba(30,41,59,0.8)" stroke="#334155" stroke-width="0.8"/>
+          <text x="110" y="181" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">📄 article-blog-seo.md</text>
+
+          <line x1="110" y1="189" x2="110" y2="205" stroke="#1E3A5F" stroke-width="1"/>
+          <rect x="44" y="205" width="132" height="24" rx="4" fill="rgba(30,41,59,0.8)" stroke="#334155" stroke-width="0.8"/>
+          <text x="110" y="221" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">📄 post-linkedin.md</text>
+
+          <!-- Exemples de fichiers sous Email -->
+          <line x1="428" y1="145" x2="428" y2="165" stroke="#1E3A5F" stroke-width="1"/>
+          <rect x="362" y="165" width="132" height="24" rx="4" fill="rgba(30,41,59,0.8)" stroke="#334155" stroke-width="0.8"/>
+          <text x="428" y="181" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">📄 relance-prospect.md</text>
+
+          <line x1="428" y1="189" x2="428" y2="205" stroke="#1E3A5F" stroke-width="1"/>
+          <rect x="362" y="205" width="132" height="24" rx="4" fill="rgba(30,41,59,0.8)" stroke="#334155" stroke-width="0.8"/>
+          <text x="428" y="221" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">📄 onboarding-client.md</text>
+
+          <text x="320" y="262" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Chaque fichier = 1 prompt · Format Markdown · Nom descriptif pour retrouver facilement</text>
+        </svg>
+        <div class="r-svg-caption">Figure 6.1 — Structure recommandée pour ta bibliothèque de prompts personnels</div>
+      </div>
+
+      <h3 class="r-section-title">6.1 — Instructions persistantes : Custom GPTs et Projects Claude</h3>
+      <p class="r-text">La perte de temps la plus courante chez les utilisateurs d'IA : réexpliquer leur contexte à chaque nouvelle conversation. Les instructions persistantes règlent ce problème définitivement — une configuration, une seule fois, appliquée automatiquement à toutes tes sessions.</p>
+      <ul class="r-list">
+        <li><strong>ChatGPT — Instructions personnalisées :</strong> Dans les réglages, section "Instructions personnalisées". Deux champs : "ce que ChatGPT doit savoir sur toi" (ton profil, ton secteur) et "comment ChatGPT doit te répondre" (longueur, ton, format). Ces instructions s'appliquent à toutes les conversations sauf si tu les désactives.</li>
+        <li><strong>ChatGPT — Custom GPTs :</strong> Plus puissant. Tu crées un "assistant" dédié à une tâche précise, avec ses propres instructions, ses propres exemples, et éventuellement ses propres connaissances (fichiers uploadés). Un Custom GPT "Rédacteur Blog" n'est pas le même que ton Custom GPT "Analyste de données".</li>
+        <li><strong>Claude — Projects :</strong> L'équivalent Claude des Custom GPTs. Un Project contient des instructions système, des documents de référence (jusqu'à plusieurs PDFs), et l'historique de toutes les conversations du projet. Idéal pour un projet long terme ou un client récurrent.</li>
+        <li><strong>Le gain concret :</strong> Au lieu de coller 200 mots de contexte à chaque session, tu démarre avec une question directe. L'IA sait déjà qui tu es et comment te répondre. Économie estimée : 5-15 minutes par jour pour un utilisateur intensif.</li>
+      </ul>
+
+      <h3 class="r-section-title">6.2 — Construire sa bibliothèque de prompts personnels</h3>
+      <p class="r-text">Un prompt optimisé est un actif. Si tu ne le sauvegardes pas, tu le perds — et tu devras recommencer le travail d'itération depuis zéro la prochaine fois. Une bibliothèque de prompts bien organisée est l'un des investissements IA les plus rentables que tu puisses faire.</p>
+      <ul class="r-list">
+        <li><strong>Le format recommandé :</strong> Un fichier Markdown par prompt, avec : le titre de la tâche, le prompt complet, 2-3 notes d'utilisation (contexte idéal, modèle recommandé, variantes), et un score de satisfaction (/5). Stocke tout dans un dossier Google Drive ou Notion.</li>
+        <li><strong>Les catégories essentielles :</strong> Commence avec 4-5 catégories correspondant à tes usages principaux (Rédaction, Analyse, Email, Code, Autre). N'over-catégorise pas — mieux vaut une bibliothèque petite et utilisée qu'une bibliothèque exhaustive jamais consultée.</li>
+        <li><strong>La règle de sauvegarde :</strong> Dès qu'un prompt obtient un score ≥4/5 avec ta grille d'évaluation du chapitre 4, sauvegarde-le immédiatement. L'effort d'organisation pris à ce moment (30 secondes) t'évite de reconstruire ce prompt plus tard (15-20 minutes).</li>
+        <li><strong>La bibliothèque comme capital :</strong> Après 3 mois d'utilisation régulière, une bibliothèque de 20-30 prompts couvre 80% de tes besoins courants. Chaque tâche récurrente devient une simple question de "quel prompt utiliser ?" plutôt que "comment formuler ça ?"</li>
+      </ul>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 230" role="img" aria-label="Comparaison workflow sans et avec instructions persistantes et bibliothèque de prompts">
+          <rect width="640" height="230" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">AVANT / APRÈS — WORKFLOW SANS ET AVEC OPTIMISATION</text>
+
+          <!-- AVANT -->
+          <rect x="24" y="36" width="284" height="160" rx="8" fill="rgba(242,108,58,0.06)" stroke="rgba(242,108,58,0.3)" stroke-width="1.2"/>
+          <text x="166" y="58" text-anchor="middle" fill="#F26C3A" font-size="11" font-weight="700" font-family="Inter">AVANT — Sans optimisation</text>
+
+          <text x="44" y="80" fill="#94A3B8" font-size="8.5" font-family="Inter">1. Ouvrir une nouvelle conversation</text>
+          <text x="44" y="96" fill="#94A3B8" font-size="8.5" font-family="Inter">2. Réexpliquer son contexte (2-3 min)</text>
+          <text x="44" y="112" fill="#94A3B8" font-size="8.5" font-family="Inter">3. Écrire un prompt de mémoire</text>
+          <text x="44" y="128" fill="#94A3B8" font-size="8.5" font-family="Inter">4. Obtenir un résultat moyen</text>
+          <text x="44" y="144" fill="#94A3B8" font-size="8.5" font-family="Inter">5. Corriger 2-3 fois</text>
+          <text x="44" y="160" fill="#94A3B8" font-size="8.5" font-family="Inter">6. Résultat acceptable</text>
+
+          <text x="166" y="186" text-anchor="middle" fill="#F26C3A" font-size="9" font-weight="600" font-family="Inter">Temps moyen : 12-18 min par tâche récurrente</text>
+
+          <!-- APRÈS -->
+          <rect x="332" y="36" width="284" height="160" rx="8" fill="rgba(26,158,143,0.06)" stroke="rgba(26,158,143,0.3)" stroke-width="1.2"/>
+          <text x="474" y="58" text-anchor="middle" fill="#1A9E8F" font-size="11" font-weight="700" font-family="Inter">APRÈS — Avec optimisation</text>
+
+          <text x="352" y="80" fill="#94A3B8" font-size="8.5" font-family="Inter">1. Ouvrir le bon Project/Custom GPT</text>
+          <text x="352" y="96" fill="#94A3B8" font-size="8.5" font-family="Inter">2. Retrouver le prompt sauvegardé</text>
+          <text x="352" y="112" fill="#94A3B8" font-size="8.5" font-family="Inter">3. Coller + adapter les variables</text>
+          <text x="352" y="128" fill="#94A3B8" font-size="8.5" font-family="Inter">4. Obtenir un résultat de qualité</text>
+          <text x="352" y="144" fill="#94A3B8" font-size="8.5" font-family="Inter">5. Ajustement mineur si besoin</text>
+          <text x="352" y="160" fill="#94A3B8" font-size="8.5" font-family="Inter">6. Résultat utilisable</text>
+
+          <text x="474" y="186" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="600" font-family="Inter">Temps moyen : 2-4 min par tâche récurrente</text>
+
+          <text x="320" y="216" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Gains indicatifs — varient selon le type de tâche et le niveau d'optimisation de ta bibliothèque</text>
+        </svg>
+        <div class="r-svg-caption">Figure 6.2 — Avant/Après : workflow IA sans optimisation vs avec instructions persistantes et bibliothèque</div>
+      </div>
+
+      <h3 class="r-section-title">6.3 — Mémoire compensatoire : les fichiers de contexte</h3>
+      <p class="r-text">L'IA n'a pas de mémoire long terme native — chaque session repart de zéro. La solution : créer des fichiers de contexte que tu fournis à l'IA au début des sessions importantes. C'est une technique utilisée par les professionnels les plus avancés, accessible à tout le monde.</p>
+      <ul class="r-list">
+        <li><strong>Qu'est-ce qu'un fichier de contexte :</strong> Un document texte de 200-500 mots qui résume tout ce que l'IA doit savoir pour t'aider efficacement : ton profil, ton projet en cours, les décisions déjà prises, le ton souhaité, les contraintes non négociables. Tu le colles au début d'une nouvelle conversation sur un sujet complexe.</li>
+        <li><strong>Différent d'un system prompt :</strong> Le system prompt est permanent et général. Le fichier de contexte est spécifique à un projet ou une phase. Pour un client en particulier, ton fichier de contexte contiendra : l'historique de la relation, les habitudes de communication du client, les sujets sensibles à éviter.</li>
+        <li><strong>La mise à jour régulière :</strong> Un fichier de contexte se périme. Mets-le à jour après chaque décision importante ou changement de situation. Date tes versions pour savoir lequel est actif. 5 minutes de maintenance par semaine te font économiser des dizaines de minutes de réexplication.</li>
+        <li><strong>Le format recommandé :</strong> Sections courtes avec titres clairs. L'IA lit en parallèle — des sections bien délimitées sont plus efficacement traitées qu'un long paragraphe continu. Maximum 600 mots pour que ça reste dans la zone de contexte optimale.</li>
+      </ul>
+
+      <div class="r-tip"><strong>Action cette semaine :</strong> Crée ton premier fichier de contexte personnel — 200 mots sur qui tu es, ce que tu fais, tes 3 usages IA principaux. Colle-le au début de ta prochaine session sur un projet important. Note la différence de pertinence des réponses.</div>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 6</div>
+        <ul>
+          <li>Les instructions persistantes (Custom GPTs, Projects Claude) éliminent la réexplication de contexte — configure-les une fois pour en bénéficier indéfiniment.</li>
+          <li>Une bibliothèque de prompts organisée transforme chaque tâche récurrente de 15 min en 3 min — c'est l'investissement IA le plus rentable à court terme.</li>
+          <li>Les fichiers de contexte compensent l'absence de mémoire long terme native — spécifiques à un projet ou un client, ils complètent le system prompt général.</li>
+          <li>Maintenance : 5 minutes par semaine sur ta bibliothèque et tes fichiers de contexte pour rester à jour et ne pas subir le context rot inter-sessions.</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="ch5-choisir-modele.html" class="prev">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Choisir son modèle</span>
+          </div>
+        </a>
+        <a href="ch7-systeme-ia-personnel.html" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">Ton système IA</span>
+          </div>
+        </a>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

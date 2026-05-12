@@ -1,0 +1,194 @@
+/* ============================================================
+   FormaElan — Design System Formations
+   Modifier ici pour appliquer à toutes les formations.
+   ============================================================ */
+
+:root {
+  /* ── Palette FormaElan ── */
+  --navy:   #0D1B3E;
+  --teal:   #1A9E8F;
+  --orange: #F26C3A;
+  --indigo: #6366F1;
+  --gold:   #F59E0B;
+
+  /* ── Backgrounds ── */
+  --bg:     #0F172A;
+  --bg2:    #1E293B;
+  --bg3:    #273549;
+
+  /* ── Texte ── */
+  --text:   #E2E8F0;
+  --muted:  #94A3B8;
+
+  /* ── États sémantiques ── */
+  --green:  #22C55E;
+  --red:    #EF4444;
+
+  /* ── UI ── */
+  --border: rgba(255,255,255,0.08);
+  --radius: 12px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:16px;line-height:1.7}
+
+/* ── NAVBAR ── */
+.r-nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(15,23,42,0.95);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:.75rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.r-nav-logo{font-weight:900;font-size:1.1rem;color:var(--text);text-decoration:none}
+.r-nav-logo span{color:var(--teal)}
+.r-breadcrumb{font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:.4rem}
+.r-breadcrumb a{color:var(--muted);text-decoration:none}
+.r-breadcrumb a:hover{color:var(--teal)}
+
+/* ── HERO ── */
+.r-hero{
+  background:linear-gradient(160deg,#0D1B3E 0%,#0F172A 100%);
+  border-bottom:1px solid var(--border);
+  padding:3rem 2rem 2rem;
+  text-align:center;
+}
+.r-hero-tag{display:inline-block;background:rgba(26,158,143,.15);color:var(--teal);border:1px solid rgba(26,158,143,.3);border-radius:20px;padding:.25rem .9rem;font-size:.75rem;font-weight:700;margin-bottom:1rem;letter-spacing:.05em}
+.r-hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;margin-bottom:.6rem;line-height:1.2}
+.r-hero h1 span{background:linear-gradient(90deg,var(--teal),var(--indigo));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.r-hero-sub{color:var(--muted);font-size:.95rem;max-width:600px;margin:0 auto 1.5rem}
+.r-hero-stats{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
+.r-hero-stat{text-align:center}
+.r-hero-stat .val{font-size:1.1rem;font-weight:800;color:var(--teal)}
+.r-hero-stat .lbl{font-size:.75rem;color:var(--muted)}
+
+/* ── LAYOUT ── */
+.r-layout{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:260px 1fr;
+  gap:0;align-items:start;
+}
+
+/* ── SIDEBAR ── */
+.r-sidebar{
+  position:sticky;top:57px;
+  height:calc(100vh - 57px);overflow-y:auto;
+  border-right:1px solid var(--border);
+  padding:1.5rem 0;
+  scrollbar-width:thin;scrollbar-color:var(--bg3) transparent;
+}
+.r-sidebar-title{padding:0 1.2rem .6rem;font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.r-ch-link{
+  display:flex;align-items:center;gap:.7rem;
+  padding:.55rem 1.2rem;
+  text-decoration:none;color:var(--muted);
+  font-size:.85rem;font-weight:500;
+  border-left:3px solid transparent;
+  transition:all .15s;
+}
+.r-ch-link:hover{color:var(--text);background:rgba(255,255,255,.04)}
+.r-ch-link.active{color:var(--teal);border-left-color:var(--teal);background:rgba(26,158,143,.07)}
+.r-ch-link.done .r-ch-num{background:var(--green);color:#fff}
+.r-ch-num{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--bg3);color:var(--muted);
+  font-size:.7rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.r-ch-link.active .r-ch-num{background:var(--teal);color:#fff}
+.r-sidebar-sep{height:1px;background:var(--border);margin:1rem 1.2rem}
+
+/* ── MAIN ── */
+.r-main{padding:2.5rem 3rem;min-height:100vh}
+@media(max-width:900px){
+  .r-layout{grid-template-columns:1fr}
+  .r-sidebar{display:none}
+  .r-main{padding:1.5rem 1rem}
+}
+
+/* ── CHAPTER ── */
+.r-chapter{margin-bottom:5rem;padding-bottom:4rem;border-bottom:1px solid var(--border);scroll-margin-top:70px}
+.r-chapter:last-child{border-bottom:none}
+.r-ch-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+.r-ch-badge{
+  min-width:48px;height:48px;border-radius:12px;
+  background:linear-gradient(135deg,var(--teal),var(--indigo));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;font-weight:900;color:#fff;flex-shrink:0;
+}
+.r-ch-meta .num{font-size:.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.08em}
+.r-ch-meta h2{font-size:1.5rem;font-weight:800;line-height:1.25;margin:.15rem 0}
+.r-ch-meta .dur{font-size:.8rem;color:var(--muted)}
+
+/* ── INTRO ── */
+.r-intro{
+  background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.2rem 1.5rem;margin-bottom:2rem;
+  color:var(--muted);font-size:.92rem;line-height:1.75;
+  border-left:3px solid var(--teal);
+}
+
+/* ── SVG WRAPPER ── */
+.r-svg-wrap{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+  margin:1.8rem 0;
+}
+.r-svg-caption{
+  padding:.6rem 1rem;background:var(--bg3);
+  border-top:1px solid var(--border);
+  font-size:.75rem;color:var(--muted);text-align:center;
+}
+.r-svg-wrap svg{display:block;width:100%;height:auto}
+
+/* ── CONTENU ── */
+.r-section-title{font-size:1.05rem;font-weight:700;color:var(--text);margin:2rem 0 .8rem}
+.r-text{color:var(--muted);font-size:.9rem;line-height:1.8;margin-bottom:1rem}
+.r-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+.r-list li{
+  display:flex;gap:.7rem;align-items:flex-start;
+  font-size:.88rem;color:var(--muted);line-height:1.6;
+}
+.r-list li::before{content:"▸";color:var(--teal);flex-shrink:0;margin-top:.1rem}
+
+/* ── KEYBOX ── */
+.r-keybox{
+  background:rgba(26,158,143,.07);border:1px solid rgba(26,158,143,.2);
+  border-radius:var(--radius);padding:1.2rem 1.5rem;margin:2rem 0;
+}
+.r-keybox-title{font-size:.75rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.7rem}
+.r-keybox ul{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.r-keybox li{font-size:.87rem;color:var(--text);display:flex;gap:.6rem}
+.r-keybox li::before{content:"✓";color:var(--green);flex-shrink:0}
+
+/* ── TIP ── */
+.r-tip{
+  background:rgba(242,108,58,.07);border:1px solid rgba(242,108,58,.2);
+  border-radius:var(--radius);padding:1rem 1.2rem;margin:1.2rem 0;
+  font-size:.87rem;color:var(--text);line-height:1.7;
+}
+.r-tip strong{color:var(--orange)}
+
+/* ── NAVIGATION CHAPITRES ── */
+.r-ch-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem}
+.r-ch-nav a{
+  flex:1;display:flex;align-items:center;gap:.7rem;
+  padding:.9rem 1.2rem;background:var(--bg2);
+  border:1px solid var(--border);border-radius:var(--radius);
+  text-decoration:none;color:var(--muted);font-size:.85rem;
+  transition:all .2s;
+}
+.r-ch-nav a:hover{border-color:var(--teal);color:var(--text)}
+.r-ch-nav a.next{justify-content:flex-end;text-align:right}
+.r-ch-nav .ch-label{font-size:.7rem;font-weight:700;color:var(--teal);display:block;text-transform:uppercase;letter-spacing:.06em}
+.r-ch-nav .ch-name{font-weight:600;color:var(--text);font-size:.88rem}
+
+/* ── TABLE ── */
+.r-table{width:100%;border-collapse:collapse;font-size:.84rem;margin:1.5rem 0}
+.r-table th{background:var(--bg3);padding:.6rem .9rem;text-align:left;font-weight:700;color:var(--text);border:1px solid var(--border)}
+.r-table td{padding:.55rem .9rem;border:1px solid var(--border);color:var(--muted);vertical-align:top}
+.r-table tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+.tag-tofu{background:rgba(26,158,143,.2);color:var(--teal);border-radius:4px;padding:.1rem .4rem;font-size:.75rem;font-weight:700}
+.tag-mofu{background:rgba(99,102,241,.2);color:#818cf8;border-radius:4px;padding:.1rem .4rem;font-size:.75rem;font-weight:700}
+.tag-bofu{background:rgba(242,108,58,.2);color:var(--orange);border-radius:4px;padding:.1rem .4rem;font-size:.75rem;font-weight:700}

@@ -1,0 +1,29 @@
+# ── Secrets — ne jamais committer ──────────────────────
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# ── Dépendances ─────────────────────────────────────────
+backend/node_modules/
+node_modules/
+
+# ── Logs ────────────────────────────────────────────────
+*.log
+npm-debug.log*
+
+# ── OS ──────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+
+# ── Éditeurs ────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.user
+
+# ── Build / Cache ────────────────────────────────────────
+dist/
+.cache/
+.parcel-cache/

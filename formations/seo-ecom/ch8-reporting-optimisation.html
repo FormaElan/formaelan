@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Reporting &amp; Optimisation continue — SEO pour E-commerce · FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/formations.css"/>
+</head>
+<body>
+
+<nav class="r-nav">
+  <a href="../../index.html" class="r-nav-logo"><span>Forma</span>Elan</a>
+  <div class="r-breadcrumb">
+    <a href="../../index.html">Accueil</a> /
+    <a href="../../pages/seo-ecom.html">SEO pour E-commerce</a> /
+    <span>Chapitre 8</span>
+  </div>
+</nav>
+
+<div class="r-layout">
+
+  <aside class="r-sidebar">
+    <div class="r-sidebar-title">Sommaire</div>
+    <a href="ch1-specificites-seo-ecom.html" class="r-ch-link"><div class="r-ch-num">1</div>Spécificités SEO e-commerce</a>
+    <a href="ch2-mots-cles-ecom.html" class="r-ch-link"><div class="r-ch-num">2</div>Mots-clés e-commerce</a>
+    <a href="ch3-optimisation-pages-produits.html" class="r-ch-link"><div class="r-ch-num">3</div>Optimisation pages produits</a>
+    <a href="ch4-seo-pages-categories.html" class="r-ch-link"><div class="r-ch-num">4</div>SEO des pages catégories</a>
+    <a href="ch5-seo-technique-shopify-woo.html" class="r-ch-link"><div class="r-ch-num">5</div>SEO Technique Shopify &amp; Woo</a>
+    <a href="ch6-contenu-editorial.html" class="r-ch-link"><div class="r-ch-num">6</div>Contenu éditorial</a>
+    <a href="ch7-link-building-ecom.html" class="r-ch-link"><div class="r-ch-num">7</div>Link Building e-commerce</a>
+    <a href="ch8-reporting-optimisation.html" class="r-ch-link active"><div class="r-ch-num">8</div>Reporting &amp; Optimisation</a>
+    <div class="r-sidebar-sep"></div>
+    <a href="../../pages/seo-ecom.html" class="r-ch-link" style="font-size:.78rem;color:var(--muted)">← Page de la formation</a>
+  </aside>
+
+  <main class="r-main">
+    <section class="r-chapter" id="ch8">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">8</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 8</div>
+          <h2>Reporting &amp; Optimisation continue</h2>
+          <div class="dur">⏱ 45 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Le SEO est un travail continu, pas une action ponctuelle. Sans mesure régulière, tu ne sais pas ce qui fonctionne, ce qui régresse, ni où concentrer ton énergie le mois suivant. Ce dernier chapitre te donne les bases d'un reporting SEO e-commerce efficace avec Search Console, les métriques à suivre dans GA4, et un processus simple pour identifier et corriger les pages qui perdent des positions.
+      </div>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 280" role="img" aria-label="Dashboard Search Console e-commerce : les rapports clés et ce qu'on y lit">
+          <rect width="640" height="280" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Google Search Console — les 4 rapports clés pour l'e-commerce</text>
+
+          <rect x="30" y="38" width="278" height="108" rx="6" fill="rgba(26,158,143,0.06)" stroke="#1A9E8F" stroke-width="1"/>
+          <text x="169" y="58" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="700" font-family="Inter">Performances → Pages</text>
+          <text x="46" y="76" fill="#94A3B8" font-size="8" font-weight="600" font-family="Inter">Ce qu'on regarde :</text>
+          <text x="46" y="90" fill="#E2E8F0" font-size="8" font-family="Inter">• Clics, impressions, CTR par URL</text>
+          <text x="46" y="103" fill="#E2E8F0" font-size="8" font-family="Inter">• Pages catégories : CTR &lt; 3% = à améliorer</text>
+          <text x="46" y="116" fill="#E2E8F0" font-size="8" font-family="Inter">• Pages produits : position 8-20 = opportunité</text>
+          <text x="46" y="129" fill="#1A9E8F" font-size="8" font-family="Inter">→ Filtrer par "Requêtes" sur une page pour</text>
+          <text x="46" y="140" fill="#1A9E8F" font-size="8" font-family="Inter">→ voir tous les mots-clés qui la déclenchent</text>
+
+          <rect x="332" y="38" width="278" height="108" rx="6" fill="rgba(26,158,143,0.06)" stroke="#1A9E8F" stroke-width="1"/>
+          <text x="471" y="58" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="700" font-family="Inter">Performances → Requêtes</text>
+          <text x="348" y="76" fill="#94A3B8" font-size="8" font-weight="600" font-family="Inter">Ce qu'on regarde :</text>
+          <text x="348" y="90" fill="#E2E8F0" font-size="8" font-family="Inter">• Requêtes position 4-10 (presque top 3)</text>
+          <text x="348" y="103" fill="#E2E8F0" font-size="8" font-family="Inter">• Requêtes avec &gt;500 impressions &amp; CTR &lt; 2%</text>
+          <text x="348" y="116" fill="#E2E8F0" font-size="8" font-family="Inter">• Nouvelles requêtes vs mois précédent</text>
+          <text x="348" y="129" fill="#1A9E8F" font-size="8" font-family="Inter">→ Trier par "Impressions" décroissant</text>
+          <text x="348" y="140" fill="#1A9E8F" font-size="8" font-family="Inter">→ pour voir le potentiel non exploité</text>
+
+          <rect x="30" y="158" width="278" height="108" rx="6" fill="rgba(26,158,143,0.06)" stroke="#1A9E8F" stroke-width="1"/>
+          <text x="169" y="178" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="700" font-family="Inter">Couverture (Index)</text>
+          <text x="46" y="196" fill="#94A3B8" font-size="8" font-weight="600" font-family="Inter">Ce qu'on regarde :</text>
+          <text x="46" y="210" fill="#E2E8F0" font-size="8" font-family="Inter">• Pages "Exclues" : catégories non indexées ?</text>
+          <text x="46" y="223" fill="#E2E8F0" font-size="8" font-family="Inter">• Erreurs 404 sur produits supprimés</text>
+          <text x="46" y="236" fill="#E2E8F0" font-size="8" font-family="Inter">• Pages "Explorées - actuellement non indexées"</text>
+          <text x="46" y="249" fill="#1A9E8F" font-size="8" font-family="Inter">→ Toute erreur sur une page catégorie</text>
+          <text x="46" y="260" fill="#1A9E8F" font-size="8" font-family="Inter">→ est une urgence à traiter</text>
+
+          <rect x="332" y="158" width="278" height="108" rx="6" fill="rgba(26,158,143,0.06)" stroke="#1A9E8F" stroke-width="1"/>
+          <text x="471" y="178" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="700" font-family="Inter">Expérience → Core Web Vitals</text>
+          <text x="348" y="196" fill="#94A3B8" font-size="8" font-weight="600" font-family="Inter">Ce qu'on regarde :</text>
+          <text x="348" y="210" fill="#E2E8F0" font-size="8" font-family="Inter">• URL en statut "Mauvais" ou "À améliorer"</text>
+          <text x="348" y="223" fill="#E2E8F0" font-size="8" font-family="Inter">• LCP sur les pages catégories (images lourdes)</text>
+          <text x="348" y="236" fill="#E2E8F0" font-size="8" font-family="Inter">• CLS sur les pages produits (widgets tiers)</text>
+          <text x="348" y="249" fill="#1A9E8F" font-size="8" font-family="Inter">→ Priorise les pages avec fort trafic</text>
+          <text x="348" y="260" fill="#1A9E8F" font-size="8" font-family="Inter">→ en statut "Mauvais"</text>
+        </svg>
+        <div class="r-svg-caption">Figure 8.1 — Search Console est suffisante pour 80% du reporting SEO e-commerce. Ouvre ces 4 rapports chaque semaine, dans cet ordre.</div>
+      </div>
+
+      <h3 class="r-section-title">8.1 — Search Console pour l'e-commerce</h3>
+      <p class="r-text">Search Console est l'outil de référence pour comprendre comment Google voit ta boutique. Contrairement aux outils tiers (Ahrefs, Semrush), ses données proviennent directement de Google — elles sont les plus fiables pour mesurer l'impact de tes optimisations.</p>
+      <ul class="r-list">
+        <li><strong>La routine hebdomadaire (15 min) :</strong> rapport Performances → comparer les 28 derniers jours avec la période précédente → identifier les pages qui ont perdu des clics ou des impressions → noter les pages avec de belles impressions et un CTR faible (titre ou meta à améliorer).</li>
+        <li><strong>La routine mensuelle (30 min) :</strong> rapport Couverture → vérifier qu'il n'y a pas de nouvelles erreurs 404 sur les pages produits ou catégories → rapport Core Web Vitals → lister les pages en "Mauvais" statut à corriger.</li>
+        <li><strong>L'alerte à configurer :</strong> dans les paramètres de Search Console, active les alertes par email pour les problèmes de sécurité et les actions manuelles. Ces problèmes peuvent faire chuter ton trafic du jour au lendemain s'ils ne sont pas traités rapidement.</li>
+      </ul>
+
+      <h3 class="r-section-title">8.2 — Google Analytics 4 : tracking e-commerce</h3>
+      <p class="r-text">GA4 mesure ce que Search Console ne peut pas : les revenus générés par le trafic organique. C'est le lien entre ton SEO et ton chiffre d'affaires.</p>
+
+      <table class="r-table">
+        <tr><th>Rapport GA4</th><th>Ce que tu y trouves</th><th>Fréquence</th></tr>
+        <tr><td><strong>Acquisition → Trafic organique</strong></td><td>Sessions, taux d'engagement, conversions depuis Google</td><td>Hebdomadaire</td></tr>
+        <tr><td><strong>Monétisation → E-commerce</strong></td><td>Revenus, taux d'achat, articles les plus vendus</td><td>Hebdomadaire</td></tr>
+        <tr><td><strong>Engagement → Pages et écrans</strong></td><td>Pages les plus vues, temps d'engagement, taux de rebond</td><td>Mensuel</td></tr>
+        <tr><td><strong>Exploration → Entonnoir</strong></td><td>Où les utilisateurs abandonnent dans le tunnel d'achat</td><td>Mensuel</td></tr>
+      </table>
+
+      <p class="r-text">La configuration du tracking e-commerce dans GA4 nécessite d'activer les "événements d'e-commerce amélioré" sur Shopify (via l'intégration native) ou WooCommerce (via le plugin GA4 ou Google Site Kit). Sans ce tracking, tu ne peux pas attribuer de revenus au trafic organique.</p>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 220" role="img" aria-label="Cycle d'optimisation SEO continue en 5 étapes : mesurer, identifier, corriger, publier, attendre">
+          <rect width="640" height="220" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Le cycle d'optimisation SEO continue</text>
+
+          <circle cx="320" cy="118" r="55" fill="none" stroke="#334155" stroke-width="1" stroke-dasharray="4,3"/>
+
+          <circle cx="320" cy="60" r="28" fill="rgba(26,158,143,0.15)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="320" y="56" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">1. Mesurer</text>
+          <text x="320" y="68" text-anchor="middle" fill="#94A3B8" font-size="7" font-family="Inter">GSC + GA4</text>
+
+          <circle cx="397" cy="90" r="28" fill="rgba(26,158,143,0.15)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="397" y="86" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">2. Identifier</text>
+          <text x="397" y="98" text-anchor="middle" fill="#94A3B8" font-size="7" font-family="Inter">Pages en baisse</text>
+
+          <circle cx="380" cy="170" r="28" fill="rgba(26,158,143,0.15)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="380" y="166" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">3. Corriger</text>
+          <text x="380" y="178" text-anchor="middle" fill="#94A3B8" font-size="7" font-family="Inter">Titre / contenu</text>
+
+          <circle cx="260" cy="170" r="28" fill="rgba(26,158,143,0.15)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="260" y="166" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">4. Publier</text>
+          <text x="260" y="178" text-anchor="middle" fill="#94A3B8" font-size="7" font-family="Inter">Indexer via GSC</text>
+
+          <circle cx="243" cy="90" r="28" fill="rgba(26,158,143,0.15)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="243" y="86" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">5. Attendre</text>
+          <text x="243" y="98" text-anchor="middle" fill="#94A3B8" font-size="7" font-family="Inter">2 à 6 semaines</text>
+
+          <path d="M341,70 Q375,65 382,76" stroke="#334155" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+          <path d="M410,112 Q420,140 400,156" stroke="#334155" stroke-width="1.2" fill="none"/>
+          <path d="M365,190 Q320,205 295,190" stroke="#334155" stroke-width="1.2" fill="none"/>
+          <path d="M240,156 Q220,140 230,112" stroke="#334155" stroke-width="1.2" fill="none"/>
+          <path d="M258,70 Q285,55 300,60" stroke="#334155" stroke-width="1.2" fill="none"/>
+
+          <rect x="30" y="40" width="150" height="155" rx="6" fill="rgba(26,158,143,0.04)" stroke="#334155" stroke-width="1"/>
+          <text x="105" y="58" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="600" font-family="Inter">Cadence recommandée</text>
+          <text x="44" y="76" fill="#1A9E8F" font-size="8" font-weight="600" font-family="Inter">Hebdo (15 min)</text>
+          <text x="44" y="89" fill="#64748B" font-size="8" font-family="Inter">GSC Performances</text>
+          <text x="44" y="102" fill="#64748B" font-size="8" font-family="Inter">GA4 trafic orga</text>
+          <text x="44" y="120" fill="#1A9E8F" font-size="8" font-weight="600" font-family="Inter">Mensuel (45 min)</text>
+          <text x="44" y="133" fill="#64748B" font-size="8" font-family="Inter">Couverture index</text>
+          <text x="44" y="146" fill="#64748B" font-size="8" font-family="Inter">Core Web Vitals</text>
+          <text x="44" y="159" fill="#64748B" font-size="8" font-family="Inter">Top 10 pages en baisse</text>
+          <text x="44" y="177" fill="#1A9E8F" font-size="8" font-weight="600" font-family="Inter">Trimestriel</text>
+          <text x="44" y="190" fill="#64748B" font-size="8" font-family="Inter">Audit complet</text>
+
+          <rect x="460" y="40" width="150" height="155" rx="6" fill="rgba(26,158,143,0.04)" stroke="#334155" stroke-width="1"/>
+          <text x="535" y="58" text-anchor="middle" fill="#94A3B8" font-size="8" font-weight="600" font-family="Inter">Signaux d'urgence</text>
+          <text x="474" y="76" fill="#F87171" font-size="8" font-family="Inter">⚠ Chute &gt;30% clics</text>
+          <text x="474" y="89" fill="#64748B" font-size="8" font-family="Inter">en 7 jours</text>
+          <text x="474" y="107" fill="#F87171" font-size="8" font-family="Inter">⚠ Erreur 404 sur</text>
+          <text x="474" y="120" fill="#64748B" font-size="8" font-family="Inter">catégorie principale</text>
+          <text x="474" y="138" fill="#F87171" font-size="8" font-family="Inter">⚠ Action manuelle</text>
+          <text x="474" y="151" fill="#64748B" font-size="8" font-family="Inter">Google détectée</text>
+          <text x="474" y="169" fill="#F87171" font-size="8" font-family="Inter">⚠ Trafic mobile -50%</text>
+          <text x="474" y="182" fill="#64748B" font-size="8" font-family="Inter">en 30 jours</text>
+        </svg>
+        <div class="r-svg-caption">Figure 8.2 — Le cycle d'optimisation n'a pas de fin. L'étape 5 (attendre) est souvent la plus difficile : Google prend 2 à 6 semaines pour recrawler et réévaluer une page modifiée.</div>
+      </div>
+
+      <h3 class="r-section-title">8.3 — Identifier et corriger les pages qui chutent</h3>
+      <p class="r-text">Toute boutique e-commerce connaît des baisses de positions sur certaines pages — c'est inévitable. Ce qui différencie les boutiques qui progressent, c'est leur capacité à détecter ces baisses tôt et à agir vite.</p>
+      <ul class="r-list">
+        <li><strong>Méthode de détection :</strong> dans Search Console, rapport Performances, compare les 28 derniers jours avec les 28 jours précédents. Trie par "Différence de clics" décroissante. Les pages en tête de ce classement négatif sont celles qui perdent le plus.</li>
+        <li><strong>Diagnostic des causes de baisse :</strong> clique sur la page concernée → onglet "Requêtes" → regarde si c'est un seul mot-clé qui a chuté (problème de cannibalisation ou de contenu) ou tous les mots-clés (problème technique ou de vitesse). Le diagnostic oriente l'action corrective.</li>
+        <li><strong>Les actions correctives les plus efficaces :</strong> réécrire l'introduction et le H1 en ciblant mieux le mot-clé principal · ajouter 200 à 300 mots de contenu frais · améliorer le maillage interne vers cette page depuis d'autres pages à fort trafic · vérifier que le Schema Markup est présent et valide.</li>
+        <li><strong>Après correction :</strong> soumets l'URL dans l'outil "Inspection d'URL" de Search Console et demande l'indexation. Attends 2 à 6 semaines avant de juger de l'impact — le SEO n'est pas instantané.</li>
+      </ul>
+
+      <div class="r-tip"><strong>Règle des 3 mois :</strong> en SEO e-commerce, mesure l'impact de tes actions sur une fenêtre de 3 mois minimum. Les fluctuations hebdomadaires sont normales et ne reflètent pas la tendance de fond. Juge tes optimisations sur la durée, pas sur les premières semaines.</div>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 8</div>
+        <ul>
+          <li>15 minutes par semaine sur Search Console suffisent à détecter la majorité des problèmes en amont</li>
+          <li>Configure le tracking e-commerce amélioré dans GA4 pour relier ton SEO à tes revenus réels</li>
+          <li>Pages en baisse : comparer 28j vs 28j précédents dans GSC, trier par "Différence de clics"</li>
+          <li>Après correction, soumets l'URL pour indexation dans GSC et patiente 2 à 6 semaines</li>
+          <li>Juge l'impact de tes actions sur 3 mois minimum — les fluctuations courtes sont du bruit, pas du signal</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="ch7-link-building-ecom.html" class="prev">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Link Building e-commerce</span>
+          </div>
+        </a>
+        <a href="../../pages/seo-ecom.html" class="next">
+          <div>
+            <span class="ch-label">Formation terminée</span>
+            <span class="ch-name">Retour à la page de la formation</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Automatisation & IA — SEO pour SaaS · FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/formations.css"/>
+</head>
+<body>
+
+<nav class="r-nav">
+  <a href="../../index.html" class="r-nav-logo"><span>Forma</span>Elan</a>
+  <div class="r-breadcrumb">
+    <a href="../../index.html">Accueil</a> /
+    <a href="../../pages/seo-saas.html">SEO pour SaaS</a> /
+    <span>Chapitre 8</span>
+  </div>
+</nav>
+
+<div class="r-layout">
+
+  <aside class="r-sidebar">
+    <div class="r-sidebar-title">Sommaire</div>
+    <a href="ch1-fondamentaux.html" class="r-ch-link"><div class="r-ch-num">1</div>Fondamentaux SEO SaaS</a>
+    <a href="ch2-mots-cles.html" class="r-ch-link"><div class="r-ch-num">2</div>Mots-clés intent-driven</a>
+    <a href="ch3-content-clusters.html" class="r-ch-link"><div class="r-ch-num">3</div>Content Clusters</a>
+    <a href="ch4-seo-technique.html" class="r-ch-link"><div class="r-ch-num">4</div>SEO Technique</a>
+    <a href="ch5-link-building.html" class="r-ch-link"><div class="r-ch-num">5</div>Link Building B2B</a>
+    <a href="ch6-contenu-convertit.html" class="r-ch-link"><div class="r-ch-num">6</div>Contenu qui convertit</a>
+    <a href="ch7-mesure-reporting.html" class="r-ch-link"><div class="r-ch-num">7</div>Mesure &amp; Reporting</a>
+    <a href="ch8-automatisation-ia.html" class="r-ch-link active"><div class="r-ch-num">8</div>Automatisation &amp; IA</a>
+    <div class="r-sidebar-sep"></div>
+    <a href="../../pages/seo-saas.html" class="r-ch-link" style="font-size:.78rem;color:var(--muted)">← Page de la formation</a>
+  </aside>
+
+  <main class="r-main">
+    <section class="r-chapter" id="ch8">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">8</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 8</div>
+          <h2>Automatisation &amp; IA au service du SEO</h2>
+          <div class="dur">⏱ 45 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        L'IA ne remplace pas la stratégie SEO — elle accélère son exécution. Ce chapitre te donne des workflows concrets pour générer des briefs de contenu avec GPT-4, détecter des opportunités SEO en automatique depuis GSC, et construire des pipelines Make/n8n qui font tourner ta machine de contenu.
+      </div>
+
+      <!-- Figure 8.1 : Workflow IA de création de contenu -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 260" role="img" aria-label="Workflow automatisé de création de contenu SEO avec IA">
+          <rect width="640" height="260" fill="#1E293B"/>
+          <text x="320" y="24" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Workflow de création de contenu SEO — Assisté par IA</text>
+          <text x="320" y="42" text-anchor="middle" fill="#64748B" font-size="9" font-family="Inter">De la détection d'opportunité à la publication trackée</text>
+          <rect x="30"  y="110" width="98" height="80" rx="10" fill="rgba(30,41,59,0.95)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="79"  y="140" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="800" font-family="Inter">GSC Export</text>
+          <text x="79"  y="158" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Hebdomadaire</text>
+          <text x="79"  y="172" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">(API ou manuel)</text>
+          <polygon points="131,147 137,142 137,152" fill="#475569"/>
+          <line x1="128" y1="147" x2="136" y2="147" stroke="#475569" stroke-width="1.5"/>
+          <rect x="155" y="110" width="98" height="80" rx="10" fill="rgba(30,41,59,0.95)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="204" y="140" text-anchor="middle" fill="#6366F1" font-size="10" font-weight="800" font-family="Inter">Filtre auto</text>
+          <text x="204" y="158" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Pos 4–15</text>
+          <text x="204" y="172" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Impr &gt; 100</text>
+          <polygon points="256,147 262,142 262,152" fill="#475569"/>
+          <line x1="253" y1="147" x2="261" y2="147" stroke="#475569" stroke-width="1.5"/>
+          <rect x="280" y="110" width="98" height="80" rx="10" fill="rgba(30,41,59,0.95)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="329" y="140" text-anchor="middle" fill="#6366F1" font-size="10" font-weight="800" font-family="Inter">GPT-4 Brief</text>
+          <text x="329" y="158" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Titre + H2/H3</text>
+          <text x="329" y="172" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Angle différenciant</text>
+          <polygon points="381,147 387,142 387,152" fill="#475569"/>
+          <line x1="378" y1="147" x2="386" y2="147" stroke="#475569" stroke-width="1.5"/>
+          <rect x="405" y="110" width="98" height="80" rx="10" fill="rgba(30,41,59,0.95)" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="454" y="140" text-anchor="middle" fill="#F59E0B" font-size="10" font-weight="800" font-family="Inter">Rédaction</text>
+          <text x="454" y="158" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Humain ou IA</text>
+          <text x="454" y="172" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">+ révision éditoriale</text>
+          <polygon points="506,147 512,142 512,152" fill="#475569"/>
+          <line x1="503" y1="147" x2="511" y2="147" stroke="#475569" stroke-width="1.5"/>
+          <rect x="530" y="110" width="98" height="80" rx="10" fill="rgba(30,41,59,0.95)" stroke="#22C55E" stroke-width="1.5"/>
+          <text x="579" y="140" text-anchor="middle" fill="#22C55E" font-size="10" font-weight="800" font-family="Inter">Publish + Track</text>
+          <text x="579" y="158" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">GSC + Looker</text>
+          <text x="579" y="172" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Résultats J+30</text>
+          <rect x="30" y="205" width="580" height="40" rx="8" fill="rgba(26,158,143,0.08)" stroke="rgba(26,158,143,0.2)" stroke-width="1"/>
+          <text x="320" y="222" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">Automatisable avec Make ou n8n : GSC → Sheets → Slack (alerte opportunité) → Notion (brief)</text>
+          <text x="320" y="238" text-anchor="middle" fill="#64748B" font-size="8.5" font-family="Inter">Temps humain moyen par article avec ce workflow : 2–3h vs 5–8h sans automatisation</text>
+        </svg>
+        <div class="r-svg-caption">Figure 8.1 — Ce workflow réduit le temps par article de 60%. L'IA gère la structure, l'humain apporte l'expertise.</div>
+      </div>
+
+      <h3 class="r-section-title">8.1 — GPT-4 pour les briefs de contenu</h3>
+      <p class="r-text">Le brief de contenu est la tâche SEO la plus chronophage — et la plus standardisable. GPT-4 peut faire en 5 minutes ce qui prendrait 2h : analyse des top 3 SERP, extraction des angles manquants, génération d'une structure H2/H3 complète.</p>
+      <ul class="r-list">
+        <li><strong>Le prompt de brief :</strong> donne à GPT le mot-clé cible, le niveau de l'ICP, les 3 concurrents top 3, et demande-lui : structure H2/H3, angle différenciant, questions auxquelles répondre.</li>
+        <li><strong>Ce que l'IA fait bien :</strong> structurer, identifier les angles, générer des variations de titres, créer des outlines détaillées.</li>
+        <li><strong>Ce que l'IA fait mal :</strong> les données propriétaires, le ton de marque authentique, la nuance sur des sujets complexes. Toujours réviser.</li>
+      </ul>
+
+      <div class="r-tip"><strong>Prompt template :</strong> "Tu es un expert SEO B2B SaaS. Crée un brief complet pour un article ciblant [MOT-CLÉ]. Audience : [ICP]. Les 3 articles en top SERP sont : [URLs]. Génère : (1) H1 + 3 alternatives de titre, (2) Structure H2/H3 complète, (3) 5 questions auxquelles l'article doit répondre et qui manquent dans les top 3, (4) L'angle différenciant recommandé."</div>
+
+      <h3 class="r-section-title">8.2 — Détection automatisée d'opportunités SEO</h3>
+      <ul class="r-list">
+        <li>Export hebdomadaire GSC (API) → Google Sheets → filtre auto sur : position 4–15 + impressions &gt; 100 + CTR &lt; 3%.</li>
+        <li>Ces pages sont tes "quick wins" : une optimisation du H1, de la meta, ou un ajout de contenu suffit souvent.</li>
+        <li>Connecte ce workflow à un Slack ou un email hebdomadaire pour recevoir ta liste d'actions sans ouvrir GSC.</li>
+      </ul>
+
+      <!-- Figure 8.2 : Workflow Make/n8n -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 230" role="img" aria-label="Workflow Make n8n automatisation SEO hebdomadaire">
+          <rect width="640" height="230" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Workflow Automatisation SEO — Make / n8n</text>
+          <text x="320" y="38" text-anchor="middle" fill="#64748B" font-size="9" font-family="Inter">Déclenché chaque lundi à 8h — résultats dans Slack avant 8h05</text>
+          <rect x="15"  y="58" width="92" height="74" rx="10" fill="rgba(26,158,143,0.15)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="61"  y="83" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="800" font-family="Inter">GSC API</text>
+          <text x="61"  y="99" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Export données</text>
+          <text x="61"  y="113" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">90 derniers jours</text>
+          <text x="61"  y="124" text-anchor="middle" fill="#475569" font-size="7.5" font-family="Inter">Trigger: Lundi 8h</text>
+          <line x1="107" y1="95" x2="124" y2="95" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="120,90 128,95 120,100" fill="#475569"/>
+          <rect x="132" y="58" width="92" height="74" rx="10" fill="rgba(99,102,241,0.15)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="178" y="83" text-anchor="middle" fill="#818CF8" font-size="10" font-weight="800" font-family="Inter">FILTRE</text>
+          <text x="178" y="99" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Pos 4–15</text>
+          <text x="178" y="113" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Impr &gt; 100</text>
+          <text x="178" y="124" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">CTR &lt; 3%</text>
+          <line x1="224" y1="95" x2="241" y2="95" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="237,90 245,95 237,100" fill="#475569"/>
+          <rect x="249" y="58" width="92" height="74" rx="10" fill="rgba(34,197,94,0.15)" stroke="#22C55E" stroke-width="1.5"/>
+          <text x="295" y="83" text-anchor="middle" fill="#22C55E" font-size="10" font-weight="800" font-family="Inter">SHEETS</text>
+          <text x="295" y="99" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Enregistre</text>
+          <text x="295" y="113" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">quick wins</text>
+          <text x="295" y="124" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">+ historique</text>
+          <line x1="341" y1="95" x2="358" y2="95" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="354,90 362,95 354,100" fill="#475569"/>
+          <rect x="366" y="58" width="92" height="74" rx="10" fill="rgba(245,158,11,0.15)" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="412" y="83" text-anchor="middle" fill="#F59E0B" font-size="10" font-weight="800" font-family="Inter">GPT-4</text>
+          <text x="412" y="99" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Génère brief</text>
+          <text x="412" y="113" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">H2/H3 + angle</text>
+          <text x="412" y="124" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">→ Notion page</text>
+          <line x1="458" y1="95" x2="475" y2="95" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="471,90 479,95 471,100" fill="#475569"/>
+          <rect x="483" y="58" width="92" height="74" rx="10" fill="rgba(242,108,58,0.15)" stroke="#F26C3A" stroke-width="1.5"/>
+          <text x="529" y="83" text-anchor="middle" fill="#F26C3A" font-size="10" font-weight="800" font-family="Inter">SLACK</text>
+          <text x="529" y="99" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Message résumé</text>
+          <text x="529" y="113" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">+ lien Notion</text>
+          <text x="529" y="124" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">brief prêt</text>
+          <rect x="15" y="148" width="610" height="40" rx="8" fill="rgba(26,158,143,0.08)" stroke="rgba(26,158,143,0.2)" stroke-width="1"/>
+          <text x="320" y="165" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">Résultat : chaque lundi, une liste de 5–15 quick wins + leur brief IA dans Notion</text>
+          <text x="320" y="181" text-anchor="middle" fill="#64748B" font-size="8.5" font-family="Inter">Setup : ~4h | Temps hebdo économisé : 45–60 min | Zéro action manuelle requise</text>
+          <text x="320" y="216" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Compatible Make (Integromat) et n8n (self-hosted) — nodes GSC et Slack disponibles nativement</text>
+        </svg>
+        <div class="r-svg-caption">Figure 8.2 — Ce pipeline Make/n8n tourne chaque semaine sans intervention humaine : les opportunités arrivent dans Slack le lundi matin.</div>
+      </div>
+
+      <h3 class="r-section-title">8.3 — Tâches SEO automatisables avec Make/n8n</h3>
+      <table class="r-table">
+        <tr><th>Tâche SEO</th><th>Outil</th><th>Fréquence</th><th>Temps économisé</th></tr>
+        <tr><td>Détection near-wins GSC → Slack</td><td>Make + GSC API</td><td>Hebdomadaire</td><td>45 min/semaine</td></tr>
+        <tr><td>Génération de brief GPT-4 → Notion</td><td>Make + OpenAI</td><td>Sur déclenchement</td><td>1–2h/article</td></tr>
+        <tr><td>Monitoring ranking nouveaux articles</td><td>n8n + GSC</td><td>Quotidien</td><td>20 min/jour</td></tr>
+        <tr><td>Alerte nouvelles erreurs GSC</td><td>Make + Gmail</td><td>Quotidien</td><td>15 min/jour</td></tr>
+        <tr><td>Rapport SEO mensuel automatisé</td><td>Looker Studio + Slack</td><td>Mensuel</td><td>1h/mois</td></tr>
+        <tr><td>Monitoring backlinks (nouveaux/perdus)</td><td>n8n + Ahrefs API</td><td>Hebdomadaire</td><td>30 min/semaine</td></tr>
+      </table>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 8</div>
+        <ul>
+          <li>L'IA accélère l'exécution — elle ne remplace pas la stratégie ni la valeur éditoriale</li>
+          <li>Le brief GPT-4 fait économiser 1–2h par article de recherche et de structuration</li>
+          <li>L'automatisation GSC → Sheets → Slack crée un système de veille passif</li>
+          <li>Commence par automatiser 1 tâche répétitive, pas tout en même temps</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="ch7-mesure-reporting.html">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Mesure &amp; Reporting SEO</span>
+          </div>
+        </a>
+        <a href="../../pages/seo-saas.html" class="next">
+          <div>
+            <span class="ch-label">Fin de la formation</span>
+            <span class="ch-name">Retour à la page SEO pour SaaS</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

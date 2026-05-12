@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paiement confirmé — FormaElan</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .access-box {
+      margin: 1.5rem 0;
+      padding: 1.2rem 1.4rem;
+      background: rgba(26,158,143,0.08);
+      border: 1px solid rgba(26,158,143,0.35);
+      border-radius: var(--radius-sm);
+    }
+    .access-box h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #1A9E8F;
+      margin-bottom: 0.8rem;
+    }
+    .access-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.9rem 1.4rem;
+      background: var(--gradient-accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .access-link:hover { opacity: 0.9; }
+    .token-display {
+      margin-top: 0.8rem;
+      padding: 0.6rem 0.8rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-glass);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      font-family: monospace;
+      word-break: break-all;
+    }
+    .loading-state {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      padding: 1rem;
+      text-align: center;
+    }
+    .error-state {
+      padding: 1rem 1.2rem;
+      background: rgba(239,68,68,0.07);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: var(--radius-sm);
+      color: #ef4444;
+      font-size: 0.88rem;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text"><span>Forma</span>Elan</div>
+    </a>
+    <div class="navbar-actions">
+      <label class="theme-toggle" title="Changer le thème">
+        <input type="checkbox" id="themeToggleInput" />
+        <div class="track"><div class="thumb">🌙</div></div>
+      </label>
+    </div>
+  </nav>
+
+  <div class="hero-grid" style="position:fixed;inset:0;pointer-events:none;z-index:0;"></div>
+  <div class="hero-orb hero-orb-1" style="position:fixed;"></div>
+  <div class="hero-orb hero-orb-2" style="position:fixed;"></div>
+
+  <div class="result-page">
+    <div class="result-card">
+      <div class="result-icon success">🎉</div>
+      <h1>Paiement confirmé !</h1>
+      <p>
+        Bravo ! Ton accès a bien été activé.<br />
+        Clique sur le bouton ci-dessous pour accéder à ta formation immédiatement.
+      </p>
+
+      <!-- Zone d'accès — remplie dynamiquement -->
+      <div id="accessZone">
+        <div class="loading-state">⏳ Chargement de ton accès…</div>
+      </div>
+
+      <div style="padding:0.9rem 1rem;background:var(--accent-glow);border:1px solid var(--border-glow);
+                  border-radius:var(--radius-sm);margin-top:1rem;font-size:0.85rem;color:var(--text-secondary);">
+        💡 <strong>Conserve ce lien</strong> ou note ton token d'accès — il te permet de retrouver ta formation à tout moment.
+      </div>
+
+      <a href="index.html" class="btn btn-secondary" style="width:100%;justify-content:center;margin-top:1.2rem;">
+        ← Voir toutes les formations
+      </a>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    (async function() {
+      const params    = new URLSearchParams(window.location.search);
+      const sessionId = params.get('session_id');
+      const zone      = document.getElementById('accessZone');
+      const API       = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+                        ? 'http://localhost:4242'
+                        : '';
+
+      if (!sessionId) {
+        zone.innerHTML = `<div class="error-state">
+          Aucun identifiant de session détecté.
+          Si tu viens d'acheter une formation, vérifie l'email de confirmation Stripe.
+        </div>`;
+        return;
+      }
+
+      try {
+        const res  = await fetch(`${API}/get-access?session_id=${encodeURIComponent(sessionId)}`);
+        const data = await res.json();
+
+        if (!res.ok || data.error) {
+          zone.innerHTML = `<div class="error-state">
+            Impossible de récupérer ton accès : ${data.error || 'erreur inconnue'}.<br/>
+            <strong>Contacte-nous</strong> à <a href="mailto:multimind.team@gmail.com">multimind.team@gmail.com</a>
+            en précisant ton email Stripe.
+          </div>`;
+          return;
+        }
+
+        const chapterUrl = data.chapter
+          ? `${window.location.origin}/${data.chapter}`
+          : `${window.location.origin}/index.html`;
+
+        zone.innerHTML = `
+          <div class="access-box">
+            <h3>🔓 Ton accès est prêt</h3>
+            <a href="${chapterUrl}" class="access-link">
+              ▶ Accéder à la formation maintenant
+            </a>
+            <div class="token-display">
+              <strong>Token d'accès :</strong> ${data.token}<br/>
+              <strong>Formation :</strong> ${data.slug}<br/>
+              ${data.email ? `<strong>Email :</strong> ${data.email}` : ''}
+            </div>
+          </div>`;
+
+      } catch (err) {
+        zone.innerHTML = `<div class="error-state">
+          Erreur de connexion au serveur (${err.message}).<br/>
+          Si le problème persiste, contacte <a href="mailto:multimind.team@gmail.com">multimind.team@gmail.com</a>.
+        </div>`;
+      }
+    })();
+  </script>
+</body>
+</html>

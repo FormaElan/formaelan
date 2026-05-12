@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>SEO Technique Shopify &amp; WooCommerce — SEO pour E-commerce · FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/formations.css"/>
+</head>
+<body>
+
+<nav class="r-nav">
+  <a href="../../index.html" class="r-nav-logo"><span>Forma</span>Elan</a>
+  <div class="r-breadcrumb">
+    <a href="../../index.html">Accueil</a> /
+    <a href="../../pages/seo-ecom.html">SEO pour E-commerce</a> /
+    <span>Chapitre 5</span>
+  </div>
+</nav>
+
+<div class="r-layout">
+
+  <aside class="r-sidebar">
+    <div class="r-sidebar-title">Sommaire</div>
+    <a href="ch1-specificites-seo-ecom.html" class="r-ch-link"><div class="r-ch-num">1</div>Spécificités SEO e-commerce</a>
+    <a href="ch2-mots-cles-ecom.html" class="r-ch-link"><div class="r-ch-num">2</div>Mots-clés e-commerce</a>
+    <a href="ch3-optimisation-pages-produits.html" class="r-ch-link"><div class="r-ch-num">3</div>Optimisation pages produits</a>
+    <a href="ch4-seo-pages-categories.html" class="r-ch-link"><div class="r-ch-num">4</div>SEO des pages catégories</a>
+    <a href="ch5-seo-technique-shopify-woo.html" class="r-ch-link active"><div class="r-ch-num">5</div>SEO Technique Shopify &amp; Woo</a>
+    <a href="ch6-contenu-editorial.html" class="r-ch-link"><div class="r-ch-num">6</div>Contenu éditorial</a>
+    <a href="ch7-link-building-ecom.html" class="r-ch-link"><div class="r-ch-num">7</div>Link Building e-commerce</a>
+    <a href="ch8-reporting-optimisation.html" class="r-ch-link"><div class="r-ch-num">8</div>Reporting &amp; Optimisation</a>
+    <div class="r-sidebar-sep"></div>
+    <a href="../../pages/seo-ecom.html" class="r-ch-link" style="font-size:.78rem;color:var(--muted)">← Page de la formation</a>
+  </aside>
+
+  <main class="r-main">
+    <section class="r-chapter" id="ch5">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">5</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 5</div>
+          <h2>SEO Technique Shopify &amp; WooCommerce</h2>
+          <div class="dur">⏱ 65 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Shopify et WooCommerce gèrent une grande partie du SEO technique automatiquement — mais pas tout. Les deux plateformes ont des comportements par défaut qui créent des problèmes SEO spécifiques : URLs dupliquées, scripts bloquants, crawl budget gaspillé. Ce chapitre couvre les trois leviers techniques les plus importants : la vitesse de chargement, le Schema Markup, et la gestion des canonicals, redirections et crawl budget.
+      </div>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 270" role="img" aria-label="Core Web Vitals pour e-commerce : LCP, CLS, INP et leurs seuils">
+          <rect width="640" height="270" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Core Web Vitals e-commerce — seuils et optimisations clés</text>
+
+          <rect x="30" y="38" width="180" height="215" rx="8" fill="rgba(26,158,143,0.06)" stroke="#334155" stroke-width="1"/>
+          <text x="120" y="60" text-anchor="middle" fill="#1A9E8F" font-size="11" font-weight="800" font-family="Inter">LCP</text>
+          <text x="120" y="74" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Largest Contentful Paint</text>
+          <text x="120" y="88" text-anchor="middle" fill="#E2E8F0" font-size="9" font-family="Inter">Vitesse d'affichage</text>
+          <text x="120" y="100" text-anchor="middle" fill="#E2E8F0" font-size="9" font-family="Inter">du contenu principal</text>
+
+          <rect x="48" y="108" width="144" height="16" rx="3" fill="rgba(34,197,94,0.2)"/>
+          <text x="120" y="120" text-anchor="middle" fill="#22C55E" font-size="8" font-weight="600" font-family="Inter">Bon : &lt; 2.5s</text>
+          <rect x="48" y="128" width="144" height="16" rx="3" fill="rgba(251,191,36,0.2)"/>
+          <text x="120" y="140" text-anchor="middle" fill="#FBB724" font-size="8" font-weight="600" font-family="Inter">À améliorer : 2.5–4s</text>
+          <rect x="48" y="148" width="144" height="16" rx="3" fill="rgba(248,113,113,0.2)"/>
+          <text x="120" y="160" text-anchor="middle" fill="#F87171" font-size="8" font-weight="600" font-family="Inter">Mauvais : &gt; 4s</text>
+
+          <text x="48" y="182" fill="#64748B" font-size="8" font-weight="600" font-family="Inter">Causes fréquentes :</text>
+          <text x="48" y="196" fill="#94A3B8" font-size="8" font-family="Inter">• Images non compressées</text>
+          <text x="48" y="208" fill="#94A3B8" font-size="8" font-family="Inter">• Thème lourd (Shopify)</text>
+          <text x="48" y="220" fill="#94A3B8" font-size="8" font-family="Inter">• Hébergement lent (Woo)</text>
+          <text x="48" y="232" fill="#94A3B8" font-size="8" font-family="Inter">• Pas de CDN actif</text>
+
+          <rect x="230" y="38" width="180" height="215" rx="8" fill="rgba(26,158,143,0.06)" stroke="#334155" stroke-width="1"/>
+          <text x="320" y="60" text-anchor="middle" fill="#1A9E8F" font-size="11" font-weight="800" font-family="Inter">CLS</text>
+          <text x="320" y="74" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Cumulative Layout Shift</text>
+          <text x="320" y="88" text-anchor="middle" fill="#E2E8F0" font-size="9" font-family="Inter">Stabilité visuelle</text>
+          <text x="320" y="100" text-anchor="middle" fill="#E2E8F0" font-size="9" font-family="Inter">pendant le chargement</text>
+
+          <rect x="248" y="108" width="144" height="16" rx="3" fill="rgba(34,197,94,0.2)"/>
+          <text x="320" y="120" text-anchor="middle" fill="#22C55E" font-size="8" font-weight="600" font-family="Inter">Bon : &lt; 0.1</text>
+          <rect x="248" y="128" width="144" height="16" rx="3" fill="rgba(251,191,36,0.2)"/>
+          <text x="320" y="140" text-anchor="middle" fill="#FBB724" font-size="8" font-weight="600" font-family="Inter">À améliorer : 0.1–0.25</text>
+          <rect x="248" y="148" width="144" height="16" rx="3" fill="rgba(248,113,113,0.2)"/>
+          <text x="320" y="160" text-anchor="middle" fill="#F87171" font-size="8" font-weight="600" font-family="Inter">Mauvais : &gt; 0.25</text>
+
+          <text x="248" y="182" fill="#64748B" font-size="8" font-weight="600" font-family="Inter">Causes fréquentes :</text>
+          <text x="248" y="196" fill="#94A3B8" font-size="8" font-family="Inter">• Taille images non définie</text>
+          <text x="248" y="208" fill="#94A3B8" font-size="8" font-family="Inter">• Polices sans font-display</text>
+          <text x="248" y="220" fill="#94A3B8" font-size="8" font-family="Inter">• Pubs / bannières dynamiques</text>
+          <text x="248" y="232" fill="#94A3B8" font-size="8" font-family="Inter">• Widgets chargés en retard</text>
+
+          <rect x="430" y="38" width="180" height="215" rx="8" fill="rgba(26,158,143,0.06)" stroke="#334155" stroke-width="1"/>
+          <text x="520" y="60" text-anchor="middle" fill="#1A9E8F" font-size="11" font-weight="800" font-family="Inter">INP</text>
+          <text x="520" y="74" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Interaction to Next Paint</text>
+          <text x="520" y="88" text-anchor="middle" fill="#E2E8F0" font-size="9" font-family="Inter">Réactivité aux clics</text>
+          <text x="520" y="100" text-anchor="middle" fill="#E2E8F0" font-size="9" font-family="Inter">et interactions</text>
+
+          <rect x="448" y="108" width="144" height="16" rx="3" fill="rgba(34,197,94,0.2)"/>
+          <text x="520" y="120" text-anchor="middle" fill="#22C55E" font-size="8" font-weight="600" font-family="Inter">Bon : &lt; 200ms</text>
+          <rect x="448" y="128" width="144" height="16" rx="3" fill="rgba(251,191,36,0.2)"/>
+          <text x="520" y="140" text-anchor="middle" fill="#FBB724" font-size="8" font-weight="600" font-family="Inter">À améliorer : 200–500ms</text>
+          <rect x="448" y="148" width="144" height="16" rx="3" fill="rgba(248,113,113,0.2)"/>
+          <text x="520" y="160" text-anchor="middle" fill="#F87171" font-size="8" font-weight="600" font-family="Inter">Mauvais : &gt; 500ms</text>
+
+          <text x="448" y="182" fill="#64748B" font-size="8" font-weight="600" font-family="Inter">Causes fréquentes :</text>
+          <text x="448" y="196" fill="#94A3B8" font-size="8" font-family="Inter">• JS lourd bloquant le thread</text>
+          <text x="448" y="208" fill="#94A3B8" font-size="8" font-family="Inter">• Apps Shopify multiples</text>
+          <text x="448" y="220" fill="#94A3B8" font-size="8" font-family="Inter">• Scripts tiers non différés</text>
+          <text x="448" y="232" fill="#94A3B8" font-size="8" font-family="Inter">• Panier dynamique complexe</text>
+        </svg>
+        <div class="r-svg-caption">Figure 5.1 — Les Core Web Vitals sont un facteur de classement depuis 2021. Le LCP est le plus critique pour les boutiques e-commerce : c'est presque toujours l'image produit principale.</div>
+      </div>
+
+      <h3 class="r-section-title">5.1 — Vitesse de chargement : étapes clés</h3>
+      <p class="r-text">La vitesse est un facteur de classement direct — et un facteur de conversion encore plus important. Chaque seconde de chargement supplémentaire réduit le taux de conversion de façon mesurable, particulièrement sur mobile.</p>
+      <ul class="r-list">
+        <li><strong>Shopify :</strong> le principal frein à la vitesse est l'accumulation d'apps tierces, chacune injectant ses propres scripts. Audite tes apps avec PageSpeed Insights et supprime celles que tu n'utilises plus vraiment. Un thème léger (Dawn, Sense) préférable à un thème premium chargé.</li>
+        <li><strong>WooCommerce :</strong> l'hébergement est la variable la plus impactante. Un hébergement mutualisé bas de gamme plafonne à 1-2s de TTFB. Passe à un hébergement géré WordPress (Kinsta, WP Engine, Rocket.net) si la vitesse est un problème chronique.</li>
+        <li><strong>Sur les deux plateformes :</strong> active un CDN (Cloudflare gratuit), mets en cache les pages catégories et produits, et compresse toutes les images en WebP. Ces trois actions règlent la majorité des problèmes de LCP.</li>
+      </ul>
+
+      <h3 class="r-section-title">5.2 — Schema Markup pour les produits</h3>
+      <p class="r-text">Le Schema Markup Product permet d'afficher des rich snippets dans les résultats Google : étoiles d'avis, prix, disponibilité en stock. Ces éléments visuels augmentent le taux de clic sans améliorer le ranking directement.</p>
+      <ul class="r-list">
+        <li><strong>Propriétés essentielles du Schema Product :</strong> <code>name</code>, <code>image</code>, <code>description</code>, <code>sku</code>, <code>brand</code>, <code>offers</code> (avec <code>price</code>, <code>priceCurrency</code>, <code>availability</code>), et <code>aggregateRating</code> si tu as des avis.</li>
+        <li><strong>Shopify</strong> intègre le Schema Product automatiquement dans la plupart des thèmes officiels. Vérifie avec le test des résultats enrichis de Google (search.google.com/test/rich-results) que les propriétés essentielles sont bien présentes.</li>
+        <li><strong>WooCommerce</strong> nécessite en général un plugin (Rank Math ou Yoast SEO Premium) pour un Schema Product complet avec les avis. La version gratuite de Yoast génère un schema basique suffisant pour démarrer.</li>
+      </ul>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 230" role="img" aria-label="Gestion du crawl budget : URLs à indexer vs URLs à bloquer">
+          <rect width="640" height="230" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Crawl budget e-commerce — ce que Google doit (et ne doit pas) crawler</text>
+
+          <rect x="30" y="36" width="280" height="180" rx="6" fill="rgba(34,197,94,0.05)" stroke="#22C55E" stroke-width="1"/>
+          <text x="170" y="56" text-anchor="middle" fill="#22C55E" font-size="10" font-weight="700" font-family="Inter">À indexer ✓</text>
+
+          <text x="46" y="74" fill="#94A3B8" font-size="8" font-weight="600" font-family="Inter">Pages principales :</text>
+          <text x="46" y="88" fill="#E2E8F0" font-size="8" font-family="Inter">• Pages produits (/products/nom-produit/)</text>
+          <text x="46" y="101" fill="#E2E8F0" font-size="8" font-family="Inter">• Pages catégories (/collections/categorie/)</text>
+          <text x="46" y="114" fill="#E2E8F0" font-size="8" font-family="Inter">• Pages de vente et landing pages</text>
+          <text x="46" y="127" fill="#E2E8F0" font-size="8" font-family="Inter">• Articles de blog ciblés</text>
+          <text x="46" y="140" fill="#E2E8F0" font-size="8" font-family="Inter">• Page d'accueil</text>
+          <text x="46" y="157" fill="#94A3B8" font-size="8" font-weight="600" font-family="Inter">Shopify spécifique :</text>
+          <text x="46" y="171" fill="#E2E8F0" font-size="8" font-family="Inter">• /collections/ (racine)</text>
+          <text x="46" y="184" fill="#E2E8F0" font-size="8" font-family="Inter">• /blogs/news/ (si contenu SEO)</text>
+
+          <rect x="330" y="36" width="280" height="180" rx="6" fill="rgba(248,113,113,0.05)" stroke="#F87171" stroke-width="1"/>
+          <text x="470" y="56" text-anchor="middle" fill="#F87171" font-size="10" font-weight="700" font-family="Inter">À bloquer / noindex ✗</text>
+
+          <text x="346" y="74" fill="#94A3B8" font-size="8" font-weight="600" font-family="Inter">URLs parasites :</text>
+          <text x="346" y="88" fill="#64748B" font-size="8" font-family="Inter">• URLs avec paramètres (?sort=, ?page=)</text>
+          <text x="346" y="101" fill="#64748B" font-size="8" font-family="Inter">• Pages de recherche interne (/search?q=)</text>
+          <text x="346" y="114" fill="#64748B" font-size="8" font-family="Inter">• Pages de compte client (/account/)</text>
+          <text x="346" y="127" fill="#64748B" font-size="8" font-family="Inter">• Pages panier et checkout</text>
+          <text x="346" y="140" fill="#64748B" font-size="8" font-family="Inter">• Pages de tags (/tag/, /product-tag/)</text>
+          <text x="346" y="157" fill="#94A3B8" font-size="8" font-weight="600" font-family="Inter">Shopify spécifique :</text>
+          <text x="346" y="171" fill="#64748B" font-size="8" font-family="Inter">• /collections/all (page fourre-tout)</text>
+          <text x="346" y="184" fill="#64748B" font-size="8" font-family="Inter">• Doublons /products/ via collections</text>
+        </svg>
+        <div class="r-svg-caption">Figure 5.2 — Shopify crée par défaut des URLs dupliquées pour les produits accessibles via différentes collections. Le canonical géré automatiquement par Shopify règle ce problème dans la plupart des cas.</div>
+      </div>
+
+      <h3 class="r-section-title">5.3 — Canonicals, redirections et crawl budget</h3>
+      <p class="r-text">Ces trois éléments forment l'infrastructure de la santé technique SEO d'une boutique. Mal gérés, ils peuvent annuler tous tes efforts de contenu et de backlinks.</p>
+      <ul class="r-list">
+        <li><strong>Canonicals Shopify :</strong> Shopify génère automatiquement des URLs dupliquées quand un produit appartient à plusieurs collections (/collections/femme/products/robe et /collections/soldes/products/robe). Shopify gère les canonicals automatiquement, mais vérifie que ton thème ne les écrase pas avec des balises custom.</li>
+        <li><strong>Redirections 301 :</strong> indispensables lors d'une suppression de produit ou d'un changement d'URL. Une page produit supprimée sans redirection génère une erreur 404 — et perd tout le jus SEO accumulé. Redirige vers la catégorie parente ou le produit de remplacement le plus proche.</li>
+        <li><strong>Crawl budget :</strong> c'est le nombre de pages que Googlebot accepte de crawler sur ton site par période. Une boutique avec des milliers d'URLs parasites (filtres, paramètres, paginations) force Google à crawler des pages sans valeur plutôt que tes pages produits. Règle en priorité via robots.txt (Disallow sur les URLs à paramètres) et en soumettant un sitemap XML propre.</li>
+      </ul>
+
+      <div class="r-tip"><strong>Vérification rapide :</strong> Tape <code>site:tondomaine.com</code> dans Google. Le nombre de résultats retournés est une estimation grossière des pages indexées. S'il est très supérieur au nombre de pages utiles de ta boutique, tu as un problème de crawl budget à traiter.</div>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 5</div>
+        <ul>
+          <li>Le LCP est le Core Web Vital le plus critique pour l'e-commerce — l'image produit principale en est souvent la cause</li>
+          <li>Shopify : audite et supprime les apps inutiles · WooCommerce : l'hébergement est la variable principale</li>
+          <li>Le Schema Product enrichit tes résultats avec étoiles, prix et disponibilité — vérifie sa présence avec le testeur Google</li>
+          <li>Shopify gère les canonicals automatiquement — WooCommerce nécessite un plugin SEO</li>
+          <li>Toute suppression de produit doit être accompagnée d'une redirection 301 vers la catégorie ou le produit de remplacement</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="ch4-seo-pages-categories.html" class="prev">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">SEO des pages catégories</span>
+          </div>
+        </a>
+        <a href="ch6-contenu-editorial.html" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">Contenu éditorial e-commerce</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

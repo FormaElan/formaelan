@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Prompt Engineering — les bases — Optimiser son IA · FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/formations.css"/>
+</head>
+<body>
+
+<nav class="r-nav">
+  <a href="../../index.html" class="r-nav-logo"><span>Forma</span>Elan</a>
+  <div class="r-breadcrumb">
+    <a href="../../index.html">Accueil</a> /
+    <a href="../../pages/optimiser-ia.html">Optimiser son IA</a> /
+    <span>Chapitre 3</span>
+  </div>
+</nav>
+
+<div class="r-layout">
+
+  <aside class="r-sidebar">
+    <div class="r-sidebar-title">Sommaire</div>
+    <a href="ch1-sous-exploites-ia.html" class="r-ch-link"><div class="r-ch-num">1</div>Pourquoi tu sous-exploites ton IA</a>
+    <a href="ch2-tokens-contexte.html" class="r-ch-link"><div class="r-ch-num">2</div>Tokens &amp; contexte</a>
+    <a href="ch3-prompt-bases.html" class="r-ch-link active"><div class="r-ch-num">3</div>Prompt — les bases</a>
+    <a href="ch4-prompt-avance.html" class="r-ch-link"><div class="r-ch-num">4</div>Prompt — avancé</a>
+    <a href="ch5-choisir-modele.html" class="r-ch-link"><div class="r-ch-num">5</div>Choisir son modèle</a>
+    <a href="ch6-reduire-couts.html" class="r-ch-link"><div class="r-ch-num">6</div>Réduire ses coûts</a>
+    <a href="ch7-systeme-ia-personnel.html" class="r-ch-link"><div class="r-ch-num">7</div>Ton système IA</a>
+    <div class="r-sidebar-sep"></div>
+    <a href="../../pages/optimiser-ia.html" class="r-ch-link" style="font-size:.78rem;color:var(--muted)">← Page de la formation</a>
+  </aside>
+
+  <main class="r-main">
+    <section class="r-chapter" id="ch3">
+
+      <div class="r-ch-header">
+        <div class="r-ch-badge">3</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 3</div>
+          <h2>Prompt Engineering — les bases</h2>
+          <div class="dur">⏱ 55 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Le prompt engineering n'est pas une discipline réservée aux développeurs. C'est simplement l'art de parler correctement à une IA — lui donner les bonnes informations, dans le bon ordre, avec les bonnes contraintes. Ce chapitre te donne un cadre simple et mémorisable (RCTF) que tu pourras appliquer immédiatement sur n'importe quelle tâche.
+      </div>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 300" role="img" aria-label="Structure RCTF pour construire un prompt efficace">
+          <rect width="640" height="300" fill="#1E293B"/>
+          <text x="320" y="24" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">LE CADRE RCTF — STRUCTURE D'UN PROMPT EFFICACE</text>
+
+          <!-- R — Rôle -->
+          <rect x="40" y="42" width="270" height="100" rx="8" fill="rgba(26,158,143,0.15)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="60" y="68" fill="#1A9E8F" font-size="22" font-weight="900" font-family="Inter">R</text>
+          <text x="86" y="68" fill="#1A9E8F" font-size="14" font-weight="700" font-family="Inter">— Rôle</text>
+          <text x="60" y="90" fill="#94A3B8" font-size="9" font-family="Inter">Qui est l'IA dans cette conversation ?</text>
+          <text x="60" y="106" fill="#64748B" font-size="8.5" font-family="Inter" font-style="italic">"Tu es un expert en SEO e-commerce"</text>
+          <text x="60" y="122" fill="#64748B" font-size="8.5" font-family="Inter" font-style="italic">"Tu es un copywriter spécialisé B2B"</text>
+
+          <!-- C — Contexte -->
+          <rect x="330" y="42" width="270" height="100" rx="8" fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.5)" stroke-width="1.5"/>
+          <text x="350" y="68" fill="#818CF8" font-size="22" font-weight="900" font-family="Inter">C</text>
+          <text x="376" y="68" fill="#818CF8" font-size="14" font-weight="700" font-family="Inter">— Contexte</text>
+          <text x="350" y="90" fill="#94A3B8" font-size="9" font-family="Inter">Qu'est-ce que l'IA doit savoir de ta situation ?</text>
+          <text x="350" y="106" fill="#64748B" font-size="8.5" font-family="Inter" font-style="italic">"Je vends des accessoires yoga B2C"</text>
+          <text x="350" y="122" fill="#64748B" font-size="8.5" font-family="Inter" font-style="italic">"Mon audience : femmes 30-45 ans, CSP+"</text>
+
+          <!-- T — Tâche -->
+          <rect x="40" y="158" width="270" height="100" rx="8" fill="rgba(26,158,143,0.12)" stroke="rgba(26,158,143,0.4)" stroke-width="1.5"/>
+          <text x="60" y="184" fill="#1A9E8F" font-size="22" font-weight="900" font-family="Inter">T</text>
+          <text x="86" y="184" fill="#1A9E8F" font-size="14" font-weight="700" font-family="Inter">— Tâche</text>
+          <text x="60" y="206" fill="#94A3B8" font-size="9" font-family="Inter">Qu'est-ce que tu demandes exactement ?</text>
+          <text x="60" y="222" fill="#64748B" font-size="8.5" font-family="Inter" font-style="italic">"Rédige 3 titres pour ma page produit"</text>
+          <text x="60" y="238" fill="#64748B" font-size="8.5" font-family="Inter" font-style="italic">"Analyse les points faibles de ce texte"</text>
+
+          <!-- F — Format -->
+          <rect x="330" y="158" width="270" height="100" rx="8" fill="rgba(242,108,58,0.12)" stroke="rgba(242,108,58,0.4)" stroke-width="1.5"/>
+          <text x="350" y="184" fill="#F26C3A" font-size="22" font-weight="900" font-family="Inter">F</text>
+          <text x="376" y="184" fill="#F26C3A" font-size="14" font-weight="700" font-family="Inter">— Format</text>
+          <text x="350" y="206" fill="#94A3B8" font-size="9" font-family="Inter">Sous quelle forme veux-tu la réponse ?</text>
+          <text x="350" y="222" fill="#64748B" font-size="8.5" font-family="Inter" font-style="italic">"En liste de 5 bullets max"</text>
+          <text x="350" y="238" fill="#64748B" font-size="8.5" font-family="Inter" font-style="italic">"En tableau 3 colonnes, 200 mots max"</text>
+
+          <text x="320" y="282" text-anchor="middle" fill="#475569" font-size="9" font-family="Inter">Ces 4 éléments dans cet ordre = un prompt qui donne des résultats utilisables du premier coup</text>
+        </svg>
+        <div class="r-svg-caption">Figure 3.1 — Le cadre RCTF : Rôle, Contexte, Tâche, Format</div>
+      </div>
+
+      <h3 class="r-section-title">3.1 — La structure RCTF : Rôle, Contexte, Tâche, Format</h3>
+      <p class="r-text">Le cadre RCTF est un outil mnémotechnique simple pour ne jamais oublier les 4 ingrédients d'un bon prompt. Chaque élément a un rôle précis — et leur absence se paie en résultats décevants.</p>
+      <ul class="r-list">
+        <li><strong>Rôle :</strong> Définir qui est l'IA dans la conversation calibre son niveau d'expertise et son registre. "Tu es un expert comptable" ne donnera pas la même réponse que "Tu es un rédacteur web". Ce n'est pas de la magie — c'est de l'orientation statistique : l'IA puise dans les patterns du corpus qui correspond au rôle donné.</li>
+        <li><strong>Contexte :</strong> L'IA ne connaît pas ta situation. Elle n'a aucune idée de ton secteur, de tes clients, de tes contraintes. Chaque information contextuelle que tu donnes réduit le nombre d'hypothèses que le modèle doit faire — et donc les erreurs.</li>
+        <li><strong>Tâche :</strong> Sois précis sur ce que tu veux. "Aide-moi avec mon email" est trop vague. "Rédige un email de relance de 150 mots pour un prospect qui n'a pas répondu depuis 10 jours" est une tâche claire.</li>
+        <li><strong>Format :</strong> Si tu ne précises pas le format, l'IA choisit. Et souvent, elle choisit une forme longue et détaillée quand tu voulais 3 bullets courts. Précise toujours : longueur, structure (liste/tableau/paragraphe), niveau de langage.</li>
+      </ul>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 280" role="img" aria-label="Comparaison prompt pauvre vs prompt RCTF">
+          <rect width="640" height="280" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">PROMPT PAUVRE VS PROMPT RCTF — EXEMPLE CONCRET</text>
+
+          <!-- Prompt pauvre -->
+          <rect x="24" y="38" width="284" height="204" rx="8" fill="rgba(242,108,58,0.08)" stroke="rgba(242,108,58,0.35)" stroke-width="1.2"/>
+          <text x="166" y="60" text-anchor="middle" fill="#F26C3A" font-size="11" font-weight="700" font-family="Inter">✗ PROMPT PAUVRE</text>
+          <line x1="40" y1="68" x2="292" y2="68" stroke="rgba(242,108,58,0.2)" stroke-width="1"/>
+          <rect x="40" y="78" width="252" height="40" rx="4" fill="rgba(30,41,59,0.8)" stroke="#334155" stroke-width="1"/>
+          <text x="56" y="96" fill="#94A3B8" font-size="9" font-family="Inter" font-style="italic">"Écris un email pour mon client"</text>
+          <text x="56" y="110" fill="#64748B" font-size="8.5" font-family="Inter" font-style="italic">12 tokens</text>
+          <line x1="40" y1="128" x2="292" y2="128" stroke="#1E293B" stroke-width="1" stroke-dasharray="3,3"/>
+          <text x="40" y="148" fill="#64748B" font-size="8.5" font-family="Inter">Résultat probable :</text>
+          <text x="40" y="164" fill="#475569" font-size="8.5" font-family="Inter">• Email générique, sans ton</text>
+          <text x="40" y="180" fill="#475569" font-size="8.5" font-family="Inter">• Impossible à envoyer tel quel</text>
+          <text x="40" y="196" fill="#475569" font-size="8.5" font-family="Inter">• Retravail complet nécessaire</text>
+          <text x="40" y="218" fill="#F26C3A" font-size="8" font-weight="600" font-family="Inter">→ 10 min de retravail en plus</text>
+
+          <!-- Prompt RCTF -->
+          <rect x="332" y="38" width="284" height="204" rx="8" fill="rgba(26,158,143,0.08)" stroke="rgba(26,158,143,0.35)" stroke-width="1.2"/>
+          <text x="474" y="60" text-anchor="middle" fill="#1A9E8F" font-size="11" font-weight="700" font-family="Inter">✓ PROMPT RCTF</text>
+          <line x1="348" y1="68" x2="600" y2="68" stroke="rgba(26,158,143,0.2)" stroke-width="1"/>
+          <rect x="348" y="76" width="252" height="84" rx="4" fill="rgba(30,41,59,0.8)" stroke="#334155" stroke-width="1"/>
+          <text x="360" y="93"  fill="#818CF8" font-size="8" font-weight="600" font-family="Inter">[R]</text>
+          <text x="376" y="93"  fill="#94A3B8" font-size="8" font-family="Inter" font-style="italic">Tu es un commercial B2B senior.</text>
+          <text x="360" y="108" fill="#818CF8" font-size="8" font-weight="600" font-family="Inter">[C]</text>
+          <text x="376" y="108" fill="#94A3B8" font-size="8" font-family="Inter" font-style="italic">Prospect froid, secteur RH, pas de réponse depuis 2 sem.</text>
+          <text x="360" y="123" fill="#1A9E8F" font-size="8" font-weight="600" font-family="Inter">[T]</text>
+          <text x="376" y="123" fill="#94A3B8" font-size="8" font-family="Inter" font-style="italic">Écris un email de relance bienveillant.</text>
+          <text x="360" y="138" fill="#F26C3A" font-size="8" font-weight="600" font-family="Inter">[F]</text>
+          <text x="376" y="138" fill="#94A3B8" font-size="8" font-family="Inter" font-style="italic">100 mots max, objet + corps, 1 CTA clair.</text>
+          <text x="360" y="152" fill="#64748B" font-size="8" font-family="Inter" font-style="italic">~58 tokens</text>
+          <line x1="348" y1="170" x2="600" y2="170" stroke="#1E293B" stroke-width="1" stroke-dasharray="3,3"/>
+          <text x="348" y="188" fill="#64748B" font-size="8.5" font-family="Inter">Résultat probable :</text>
+          <text x="348" y="204" fill="#94A3B8" font-size="8.5" font-family="Inter">• Email ciblé, prêt à envoyer</text>
+          <text x="348" y="220" fill="#1A9E8F" font-size="8" font-weight="600" font-family="Inter">→ Utilisable directement</text>
+
+          <text x="320" y="264" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">58 tokens bien construits > 12 tokens vagues — toujours</text>
+        </svg>
+        <div class="r-svg-caption">Figure 3.2 — Comparaison concrète : prompt pauvre vs prompt structuré RCTF</div>
+      </div>
+
+      <div class="r-tip"><strong>Pratique immédiate :</strong> Reprends la frustration que tu as notée au chapitre 1. Réécris ton prompt en appliquant RCTF. Compare les deux résultats — la différence sera souvent significative.</div>
+
+      <h3 class="r-section-title">3.2 — Few-shot prompting : apprendre par l'exemple</h3>
+      <p class="r-text">Le few-shot prompting consiste à donner à l'IA 2 ou 3 exemples du résultat attendu avant de lui poser ta vraie question. C'est la technique la plus efficace pour calibrer le ton, le style et le format d'une réponse — bien au-delà de ce que les instructions textuelles seules peuvent obtenir.</p>
+      <ul class="r-list">
+        <li><strong>Le principe :</strong> Au lieu de décrire ce que tu veux, tu le montres. "Voici 2 exemples de titres que j'aime : [exemple 1] / [exemple 2]. Génère 5 titres du même style pour ce produit : [description]."</li>
+        <li><strong>Quand l'utiliser :</strong> Idéal pour les tâches de style et de ton (copywriting, emails, posts réseaux sociaux), les classifications (catégoriser des feedbacks, tagger des données), et les transformations de format (convertir des notes en bullet points).</li>
+        <li><strong>Combien d'exemples :</strong> 2-3 exemples suffisent dans 90% des cas. Au-delà, le gain marginal est faible et tu consommes des tokens inutilement. Choisis tes meilleurs exemples — la qualité prime sur la quantité.</li>
+        <li><strong>Exemple de structure :</strong> "Voici le style que je veux. Exemple 1 : [X]. Exemple 2 : [Y]. Maintenant génère [Z] dans ce même style."</li>
+      </ul>
+
+      <h3 class="r-section-title">3.3 — Chain-of-thought : guider le raisonnement</h3>
+      <p class="r-text">La chain-of-thought (chaîne de pensée) est une technique qui demande à l'IA de raisonner étape par étape avant de répondre. Elle améliore considérablement la qualité des réponses sur les tâches complexes, analytiques ou à plusieurs sous-problèmes.</p>
+      <ul class="r-list">
+        <li><strong>La formule simple :</strong> Ajoute à la fin de ton prompt "Raisonne étape par étape avant de donner ta réponse finale." ou "Explique ton processus de réflexion, puis donne ta conclusion."</li>
+        <li><strong>Pourquoi ça fonctionne :</strong> Forcer le modèle à exprimer son raisonnement intermédiaire réduit les erreurs de logique et les raccourcis. C'est particulièrement puissant pour les analyses, les évaluations et les décisions multi-critères.</li>
+        <li><strong>Quand l'utiliser :</strong> Problèmes de logique, calculs, décisions stratégiques, évaluation de pros/cons, debugging de code. En revanche, pour une simple reformulation ou génération créative, c'est inutile — ça allonge juste la réponse.</li>
+        <li><strong>Variante "scratchpad" :</strong> "Pense à voix haute, puis réponds. Format : [Réflexion interne] puis [Réponse finale]." — utile quand tu veux voir le raisonnement séparé de la réponse.</li>
+      </ul>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 3</div>
+        <ul>
+          <li>Le cadre RCTF (Rôle, Contexte, Tâche, Format) est la base de tout prompt efficace — mémorise-le et applique-le systématiquement.</li>
+          <li>Le few-shot prompting (2-3 exemples) est la technique la plus efficace pour calibrer le ton et le style d'une réponse.</li>
+          <li>La chain-of-thought ("raisonne étape par étape") améliore la qualité des réponses sur les tâches complexes et analytiques.</li>
+          <li>Un prompt de 60 tokens bien structuré donne de meilleurs résultats qu'un prompt de 12 tokens vagues — et souvent meilleurs qu'un prompt de 500 tokens mal organisé.</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="ch2-tokens-contexte.html" class="prev">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Tokens &amp; contexte</span>
+          </div>
+        </a>
+        <a href="ch4-prompt-avance.html" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">Prompt — avancé</span>
+          </div>
+        </a>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

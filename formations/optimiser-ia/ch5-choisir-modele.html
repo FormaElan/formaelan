@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Choisir son modèle — Optimiser son IA · FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/formations.css"/>
+</head>
+<body>
+
+<nav class="r-nav">
+  <a href="../../index.html" class="r-nav-logo"><span>Forma</span>Elan</a>
+  <div class="r-breadcrumb">
+    <a href="../../index.html">Accueil</a> /
+    <a href="../../pages/optimiser-ia.html">Optimiser son IA</a> /
+    <span>Chapitre 5</span>
+  </div>
+</nav>
+
+<div class="r-layout">
+
+  <aside class="r-sidebar">
+    <div class="r-sidebar-title">Sommaire</div>
+    <a href="ch1-sous-exploites-ia.html" class="r-ch-link"><div class="r-ch-num">1</div>Pourquoi tu sous-exploites ton IA</a>
+    <a href="ch2-tokens-contexte.html" class="r-ch-link"><div class="r-ch-num">2</div>Tokens &amp; contexte</a>
+    <a href="ch3-prompt-bases.html" class="r-ch-link"><div class="r-ch-num">3</div>Prompt — les bases</a>
+    <a href="ch4-prompt-avance.html" class="r-ch-link"><div class="r-ch-num">4</div>Prompt — avancé</a>
+    <a href="ch5-choisir-modele.html" class="r-ch-link active"><div class="r-ch-num">5</div>Choisir son modèle</a>
+    <a href="ch6-reduire-couts.html" class="r-ch-link"><div class="r-ch-num">6</div>Réduire ses coûts</a>
+    <a href="ch7-systeme-ia-personnel.html" class="r-ch-link"><div class="r-ch-num">7</div>Ton système IA</a>
+    <div class="r-sidebar-sep"></div>
+    <a href="../../pages/optimiser-ia.html" class="r-ch-link" style="font-size:.78rem;color:var(--muted)">← Page de la formation</a>
+  </aside>
+
+  <main class="r-main">
+    <section class="r-chapter" id="ch5">
+
+      <div class="r-ch-header">
+        <div class="r-ch-badge">5</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 5</div>
+          <h2>Choisir son modèle</h2>
+          <div class="dur">⏱ 40 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        GPT-4o, Claude, Gemini, Mistral — le marché IA propose des dizaines de modèles, et de nouveaux arrivent chaque mois. La bonne nouvelle : tu n'as pas besoin de tous les tester. Ce chapitre te donne un cadre de décision clair pour choisir le bon modèle selon la tâche — et arrêter d'utiliser systématiquement le plus puissant (et le plus cher) pour tout.
+      </div>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 320" role="img" aria-label="Arbre de décision pour choisir son modèle IA selon la tâche">
+          <rect width="640" height="320" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">ARBRE DE DÉCISION — QUEL MODÈLE POUR QUELLE TÂCHE ?</text>
+
+          <!-- Question racine -->
+          <rect x="210" y="36" width="220" height="40" rx="8" fill="rgba(26,158,143,0.15)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="320" y="55" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="700" font-family="Inter">Ta tâche nécessite-t-elle</text>
+          <text x="320" y="70" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="700" font-family="Inter">un raisonnement complexe ?</text>
+
+          <!-- Branche OUI -->
+          <line x1="260" y1="76" x2="160" y2="120" stroke="#94A3B8" stroke-width="1.2"/>
+          <text x="185" y="108" fill="#94A3B8" font-size="9" font-family="Inter">OUI</text>
+
+          <!-- Branche NON -->
+          <line x1="380" y1="76" x2="480" y2="120" stroke="#94A3B8" stroke-width="1.2"/>
+          <text x="440" y="108" fill="#94A3B8" font-size="9" font-family="Inter">NON</text>
+
+          <!-- Nœud OUI : stratégie/analyse -->
+          <rect x="60" y="120" width="200" height="44" rx="7" fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.4)" stroke-width="1.2"/>
+          <text x="160" y="139" text-anchor="middle" fill="#818CF8" font-size="10" font-weight="700" font-family="Inter">Stratégie, analyse, code</text>
+          <text x="160" y="154" text-anchor="middle" fill="#64748B" font-size="8.5" font-family="Inter">complexe, décision multi-critères</text>
+
+          <!-- Nœud NON : volume/routine -->
+          <rect x="380" y="120" width="200" height="44" rx="7" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.35)" stroke-width="1.2"/>
+          <text x="480" y="139" text-anchor="middle" fill="#F59E0B" font-size="10" font-weight="700" font-family="Inter">Résumé, traduction,</text>
+          <text x="480" y="154" text-anchor="middle" fill="#64748B" font-size="8.5" font-family="Inter">reformulation, tri de données</text>
+
+          <!-- Résultats modèles — côté OUI -->
+          <line x1="110" y1="164" x2="110" y2="200" stroke="#334155" stroke-width="1"/>
+          <line x1="210" y1="164" x2="210" y2="200" stroke="#334155" stroke-width="1"/>
+
+          <rect x="44" y="200" width="130" height="62" rx="7" fill="rgba(26,158,143,0.2)" stroke="#1A9E8F" stroke-width="1.2"/>
+          <text x="109" y="220" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="800" font-family="Inter">Claude Sonnet</text>
+          <text x="109" y="235" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Analyse · Rédaction longue</text>
+          <text x="109" y="250" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Code · Stratégie</text>
+
+          <rect x="188" y="200" width="130" height="62" rx="7" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.4)" stroke-width="1.2"/>
+          <text x="253" y="220" text-anchor="middle" fill="#818CF8" font-size="10" font-weight="800" font-family="Inter">GPT-4o</text>
+          <text x="253" y="235" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Vision · Multimodal</text>
+          <text x="253" y="250" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Raisonnement complexe</text>
+
+          <!-- Résultats modèles — côté NON -->
+          <line x1="430" y1="164" x2="430" y2="200" stroke="#334155" stroke-width="1"/>
+          <line x1="530" y1="164" x2="530" y2="200" stroke="#334155" stroke-width="1"/>
+
+          <rect x="364" y="200" width="130" height="62" rx="7" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.4)" stroke-width="1.2"/>
+          <text x="429" y="220" text-anchor="middle" fill="#F59E0B" font-size="10" font-weight="800" font-family="Inter">Claude Haiku</text>
+          <text x="429" y="235" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Tâches simples rapides</text>
+          <text x="429" y="250" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Coût minimal</text>
+
+          <rect x="508" y="200" width="130" height="62" rx="7" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.35)" stroke-width="1.2"/>
+          <text x="573" y="220" text-anchor="middle" fill="#10B981" font-size="10" font-weight="800" font-family="Inter">Gemini Flash</text>
+          <text x="573" y="235" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Volume · Vitesse</text>
+          <text x="573" y="250" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Intégration Google</text>
+
+          <!-- Cas spécial : recherche web -->
+          <rect x="210" y="282" width="220" height="28" rx="6" fill="rgba(242,108,58,0.1)" stroke="rgba(242,108,58,0.3)" stroke-width="1"/>
+          <text x="320" y="300" text-anchor="middle" fill="#F26C3A" font-size="9" font-weight="700" font-family="Inter">Recherche web temps réel → Perplexity ou ChatGPT Search</text>
+        </svg>
+        <div class="r-svg-caption">Figure 5.1 — Arbre de décision : choisir son modèle selon la nature de la tâche</div>
+      </div>
+
+      <h3 class="r-section-title">5.1 — GPT-4o vs Claude vs Gemini : forces et limites réelles</h3>
+      <p class="r-text">En 2026, les grands modèles (GPT-4o, Claude Sonnet/Opus, Gemini Pro) sont proches en performance générale. Les différences sont réelles mais subtiles — et elles dépendent de ta tâche spécifique. Voici un panorama honnête sans marketing.</p>
+      <ul class="r-list">
+        <li><strong>ChatGPT (GPT-4o) :</strong> Excellent généraliste. Meilleur pour les tâches multimodales (image + texte), la programmation, les plugins et connexions tiers. Interface très mature. Légèrement en retrait sur la nuance linguistique en français.</li>
+        <li><strong>Claude (Anthropic) :</strong> Se distingue sur la rédaction longue, la cohérence sur de grands documents, et le respect des instructions complexes. Excellent pour l'analyse de textes longs (jusqu'à 200 000 tokens de contexte). Plus nuancé sur les sujets sensibles.</li>
+        <li><strong>Gemini (Google) :</strong> Fort sur l'intégration avec l'écosystème Google (Docs, Drive, Gmail). Gemini Flash est particulièrement rapide et économique pour les tâches de volume. En progression constante depuis 2024.</li>
+        <li><strong>Mistral et open source :</strong> Pour les utilisateurs techniques qui veulent héberger leur propre modèle ou travailler hors cloud. Mistral Large est compétitif sur l'analyse en français. Pertinent si la confidentialité des données est critique.</li>
+      </ul>
+
+      <div class="r-tip"><strong>Principe de base :</strong> Ces comparaisons changent à chaque mise à jour majeure (plusieurs fois par an). Ce qui compte, c'est de tester sur tes propres tâches — pas de lire des benchmarks abstraits. Lance le même prompt sur 2 modèles et compare sur 3-4 cas réels.</div>
+
+      <h3 class="r-section-title">5.2 — Modèles légers vs puissants : quand utiliser lequel</h3>
+      <p class="r-text">La différence entre un modèle "léger" et un modèle "puissant" n'est pas juste une question de qualité — c'est une question d'adéquation à la tâche. Un modèle léger bien utilisé bat un modèle puissant mal sollicité.</p>
+      <ul class="r-list">
+        <li><strong>Modèles légers (Haiku, GPT-4o-mini, Gemini Flash) :</strong> Idéaux pour les tâches simples et répétitives : reformulation, traduction, résumé court, extraction d'information structurée, classification. Beaucoup plus rapides et moins coûteux (important si tu utilises l'API).</li>
+        <li><strong>Modèles puissants (Claude Sonnet/Opus, GPT-4o, Gemini Pro) :</strong> Nécessaires pour l'analyse approfondie, la rédaction complexe, le code élaboré, les décisions stratégiques, et tout ce qui demande un raisonnement en plusieurs étapes.</li>
+        <li><strong>La règle de décision :</strong> Si un modèle léger donne 80% de satisfaction sur ta tâche, c'est le bon choix — le gain marginal du modèle puissant ne justifie pas le surcoût. Teste d'abord léger, monte si nécessaire.</li>
+      </ul>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 240" role="img" aria-label="Comparaison des modèles IA sur 4 critères clés">
+          <rect width="640" height="240" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">COMPARATIF MODÈLES — 4 CRITÈRES PRATIQUES (abonnements grand public)</text>
+
+          <!-- Headers -->
+          <text x="200" y="46" text-anchor="middle" fill="#64748B" font-size="9" font-weight="600" font-family="Inter">GPT-4o</text>
+          <text x="310" y="46" text-anchor="middle" fill="#64748B" font-size="9" font-weight="600" font-family="Inter">Claude Sonnet</text>
+          <text x="420" y="46" text-anchor="middle" fill="#64748B" font-size="9" font-weight="600" font-family="Inter">Gemini Pro</text>
+          <text x="540" y="46" text-anchor="middle" fill="#64748B" font-size="9" font-weight="600" font-family="Inter">Mistral Large</text>
+
+          <!-- Ligne 1 — Rédaction longue -->
+          <rect x="24" y="56" width="600" height="32" rx="4" fill="rgba(26,158,143,0.05)"/>
+          <text x="104" y="76" text-anchor="end" fill="#94A3B8" font-size="8.5" font-family="Inter">Rédaction longue</text>
+          <text x="200" y="76" text-anchor="middle" fill="#F59E0B" font-size="11" font-family="Inter">★★★★☆</text>
+          <text x="310" y="76" text-anchor="middle" fill="#1A9E8F" font-size="11" font-family="Inter">★★★★★</text>
+          <text x="420" y="76" text-anchor="middle" fill="#F59E0B" font-size="11" font-family="Inter">★★★★☆</text>
+          <text x="540" y="76" text-anchor="middle" fill="#475569" font-size="11" font-family="Inter">★★★☆☆</text>
+
+          <!-- Ligne 2 — Code -->
+          <rect x="24" y="90" width="600" height="32" rx="4" fill="rgba(30,41,59,0.4)"/>
+          <text x="104" y="110" text-anchor="end" fill="#94A3B8" font-size="8.5" font-family="Inter">Programmation</text>
+          <text x="200" y="110" text-anchor="middle" fill="#1A9E8F" font-size="11" font-family="Inter">★★★★★</text>
+          <text x="310" y="110" text-anchor="middle" fill="#1A9E8F" font-size="11" font-family="Inter">★★★★★</text>
+          <text x="420" y="110" text-anchor="middle" fill="#F59E0B" font-size="11" font-family="Inter">★★★★☆</text>
+          <text x="540" y="110" text-anchor="middle" fill="#F59E0B" font-size="11" font-family="Inter">★★★★☆</text>
+
+          <!-- Ligne 3 — Multimodal -->
+          <rect x="24" y="124" width="600" height="32" rx="4" fill="rgba(26,158,143,0.05)"/>
+          <text x="104" y="144" text-anchor="end" fill="#94A3B8" font-size="8.5" font-family="Inter">Vision / Multimodal</text>
+          <text x="200" y="144" text-anchor="middle" fill="#1A9E8F" font-size="11" font-family="Inter">★★★★★</text>
+          <text x="310" y="144" text-anchor="middle" fill="#F59E0B" font-size="11" font-family="Inter">★★★★☆</text>
+          <text x="420" y="144" text-anchor="middle" fill="#1A9E8F" font-size="11" font-family="Inter">★★★★★</text>
+          <text x="540" y="144" text-anchor="middle" fill="#475569" font-size="11" font-family="Inter">★★☆☆☆</text>
+
+          <!-- Ligne 4 — Français nuancé -->
+          <rect x="24" y="158" width="600" height="32" rx="4" fill="rgba(30,41,59,0.4)"/>
+          <text x="104" y="178" text-anchor="end" fill="#94A3B8" font-size="8.5" font-family="Inter">Français nuancé</text>
+          <text x="200" y="178" text-anchor="middle" fill="#F59E0B" font-size="11" font-family="Inter">★★★★☆</text>
+          <text x="310" y="178" text-anchor="middle" fill="#1A9E8F" font-size="11" font-family="Inter">★★★★★</text>
+          <text x="420" y="178" text-anchor="middle" fill="#F59E0B" font-size="11" font-family="Inter">★★★★☆</text>
+          <text x="540" y="178" text-anchor="middle" fill="#1A9E8F" font-size="11" font-family="Inter">★★★★★</text>
+
+          <text x="320" y="222" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Évaluation indicative 2026 — performances en évolution constante selon les mises à jour des modèles</text>
+        </svg>
+        <div class="r-svg-caption">Figure 5.2 — Comparatif des grands modèles IA sur 4 critères pratiques (usage abonnement)</div>
+      </div>
+
+      <h3 class="r-section-title">5.3 — Outils spécialisés : quand sortir des LLMs généralistes</h3>
+      <p class="r-text">ChatGPT et Claude sont excellents pour beaucoup de choses — mais ils ne sont pas les meilleurs outils pour tous les usages. Savoir quand recourir à un outil spécialisé est une compétence de l'utilisateur expert.</p>
+      <ul class="r-list">
+        <li><strong>Perplexity :</strong> Le meilleur choix pour la recherche web en temps réel avec sources citées. Si ta question nécessite des données actuelles (actualité, prix, statistiques récentes), Perplexity est plus fiable qu'un LLM généraliste qui peut halluciner des faits récents.</li>
+        <li><strong>NotebookLM (Google) :</strong> Idéal pour analyser un corpus de documents longs (rapports, livres, articles). Tu charges tes PDFs, et NotebookLM répond à tes questions en restant strictement dans les sources fournies — pas d'hallucination possible sur ton corpus.</li>
+        <li><strong>GitHub Copilot / Cursor :</strong> Pour le code, ces environnements intégrés à l'éditeur surpassent l'utilisation de ChatGPT en copier-coller. Contexte complet du projet, autocomplétion, refactoring en contexte.</li>
+        <li><strong>Midjourney / DALL-E / Ideogram :</strong> Pour la génération d'images. Claude et GPT peuvent décrire une image, mais ne peuvent pas générer au niveau de qualité de ces outils spécialisés.</li>
+      </ul>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 5</div>
+        <ul>
+          <li>Aucun modèle n'est universellement supérieur — Claude Sonnet excelle en rédaction longue et nuance française, GPT-4o en multimodal et code, Gemini en intégration Google.</li>
+          <li>Commence toujours par un modèle léger (Haiku, GPT-4o-mini) pour les tâches simples : plus rapide, moins coûteux, souvent suffisant.</li>
+          <li>Pour la recherche web temps réel : Perplexity. Pour analyser un corpus de documents : NotebookLM. Pour le code en contexte projet : GitHub Copilot ou Cursor.</li>
+          <li>Les benchmarks changent à chaque mise à jour — le test sur tes propres cas d'usage reste la seule évaluation fiable.</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="ch4-prompt-avance.html" class="prev">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Prompt — avancé</span>
+          </div>
+        </a>
+        <a href="ch6-reduire-couts.html" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">Réduire ses coûts</span>
+          </div>
+        </a>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

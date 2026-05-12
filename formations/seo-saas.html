@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>SEO pour SaaS — Formation complète · FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy:   #0D1B3E;
+      --teal:   #1A9E8F;
+      --orange: #F26C3A;
+      --indigo: #6366F1;
+      --bg:     #0F172A;
+      --bg2:    #1E293B;
+      --bg3:    #273549;
+      --text:   #E2E8F0;
+      --muted:  #94A3B8;
+      --border: rgba(255,255,255,0.08);
+      --radius: 12px;
+      --green:  #22C55E;
+      --red:    #EF4444;
+      --gold:   #F59E0B;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:16px;line-height:1.7}
+
+    /* ── NAVBAR ── */
+    .r-nav{
+      position:sticky;top:0;z-index:100;
+      background:rgba(15,23,42,0.95);backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+      padding:.75rem 2rem;
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    }
+    .r-nav-logo{font-weight:900;font-size:1.1rem;color:var(--text);text-decoration:none}
+    .r-nav-logo span{color:var(--teal)}
+    .r-breadcrumb{font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:.4rem}
+    .r-breadcrumb a{color:var(--muted);text-decoration:none}
+    .r-breadcrumb a:hover{color:var(--teal)}
+
+    /* ── HERO ── */
+    .r-hero{
+      background:linear-gradient(160deg,#0D1B3E 0%,#0F172A 100%);
+      border-bottom:1px solid var(--border);
+      padding:3rem 2rem 2rem;
+      text-align:center;
+    }
+    .r-hero-tag{display:inline-block;background:rgba(26,158,143,.15);color:var(--teal);border:1px solid rgba(26,158,143,.3);border-radius:20px;padding:.25rem .9rem;font-size:.75rem;font-weight:700;margin-bottom:1rem;letter-spacing:.05em}
+    .r-hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;margin-bottom:.6rem;line-height:1.2}
+    .r-hero h1 span{background:linear-gradient(90deg,var(--teal),var(--indigo));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .r-hero-sub{color:var(--muted);font-size:.95rem;max-width:600px;margin:0 auto 1.5rem}
+    .r-hero-stats{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
+    .r-hero-stat{text-align:center}
+    .r-hero-stat .val{font-size:1.1rem;font-weight:800;color:var(--teal)}
+    .r-hero-stat .lbl{font-size:.75rem;color:var(--muted)}
+
+    /* ── LAYOUT ── */
+    .r-layout{
+      max-width:1200px;margin:0 auto;
+      display:grid;grid-template-columns:260px 1fr;
+      gap:0;align-items:start;
+    }
+
+    /* ── SIDEBAR ── */
+    .r-sidebar{
+      position:sticky;top:57px;
+      height:calc(100vh - 57px);overflow-y:auto;
+      border-right:1px solid var(--border);
+      padding:1.5rem 0;
+      scrollbar-width:thin;scrollbar-color:var(--bg3) transparent;
+    }
+    .r-sidebar-title{padding:0 1.2rem .6rem;font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+    .r-ch-link{
+      display:flex;align-items:center;gap:.7rem;
+      padding:.55rem 1.2rem;
+      text-decoration:none;color:var(--muted);
+      font-size:.85rem;font-weight:500;
+      border-left:3px solid transparent;
+      transition:all .15s;
+    }
+    .r-ch-link:hover{color:var(--text);background:rgba(255,255,255,.04)}
+    .r-ch-link.active{color:var(--teal);border-left-color:var(--teal);background:rgba(26,158,143,.07)}
+    .r-ch-num{
+      width:22px;height:22px;border-radius:50%;
+      background:var(--bg3);color:var(--muted);
+      font-size:.7rem;font-weight:700;
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    }
+    .r-ch-link.active .r-ch-num{background:var(--teal);color:#fff}
+    .r-ch-link.done .r-ch-num{background:var(--green);color:#fff}
+
+    /* ── SCROLL OFFSET (navbar sticky) ── */
+    .r-chapter{scroll-margin-top:70px}
+    .r-sidebar-sep{height:1px;background:var(--border);margin:1rem 1.2rem}
+
+    /* ── MAIN ── */
+    .r-main{padding:2.5rem 3rem;min-height:100vh}
+    @media(max-width:900px){
+      .r-layout{grid-template-columns:1fr}
+      .r-sidebar{display:none}
+      .r-main{padding:1.5rem 1rem}
+    }
+
+    /* ── CHAPTER ── */
+    .r-chapter{margin-bottom:5rem;padding-bottom:4rem;border-bottom:1px solid var(--border)}
+    .r-chapter:last-child{border-bottom:none}
+    .r-ch-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+    .r-ch-badge{
+      min-width:48px;height:48px;border-radius:12px;
+      background:linear-gradient(135deg,var(--teal),var(--indigo));
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.3rem;font-weight:900;color:#fff;flex-shrink:0;
+    }
+    .r-ch-meta .num{font-size:.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.08em}
+    .r-ch-meta h2{font-size:1.5rem;font-weight:800;line-height:1.25;margin:.15rem 0}
+    .r-ch-meta .dur{font-size:.8rem;color:var(--muted)}
+
+    .r-intro{
+      background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);
+      padding:1.2rem 1.5rem;margin-bottom:2rem;
+      color:var(--muted);font-size:.92rem;line-height:1.75;
+      border-left:3px solid var(--teal);
+    }
+
+    /* ── SVG WRAPPER ── */
+    .r-svg-wrap{
+      background:var(--bg2);border:1px solid var(--border);
+      border-radius:var(--radius);overflow:hidden;
+      margin:1.8rem 0;
+    }
+    .r-svg-caption{
+      padding:.6rem 1rem;background:var(--bg3);
+      border-top:1px solid var(--border);
+      font-size:.75rem;color:var(--muted);text-align:center;
+    }
+    .r-svg-wrap svg{display:block;width:100%;height:auto}
+
+    /* ── CONTENT ── */
+    .r-section-title{font-size:1.05rem;font-weight:700;color:var(--text);margin:2rem 0 .8rem}
+    .r-text{color:var(--muted);font-size:.9rem;line-height:1.8;margin-bottom:1rem}
+    .r-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+    .r-list li{
+      display:flex;gap:.7rem;align-items:flex-start;
+      font-size:.88rem;color:var(--muted);line-height:1.6;
+    }
+    .r-list li::before{content:"▸";color:var(--teal);flex-shrink:0;margin-top:.1rem}
+
+    .r-keybox{
+      background:rgba(26,158,143,.07);border:1px solid rgba(26,158,143,.2);
+      border-radius:var(--radius);padding:1.2rem 1.5rem;margin:2rem 0;
+    }
+    .r-keybox-title{font-size:.75rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.7rem}
+    .r-keybox ul{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+    .r-keybox li{font-size:.87rem;color:var(--text);display:flex;gap:.6rem}
+    .r-keybox li::before{content:"✓";color:var(--green);flex-shrink:0}
+
+    .r-tip{
+      background:rgba(242,108,58,.07);border:1px solid rgba(242,108,58,.2);
+      border-radius:var(--radius);padding:1rem 1.2rem;margin:1.2rem 0;
+      font-size:.87rem;color:var(--text);line-height:1.7;
+    }
+    .r-tip strong{color:var(--orange)}
+
+
+    /* ── NAV ARROWS ── */
+    .r-ch-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem}
+    .r-ch-nav a{
+      flex:1;display:flex;align-items:center;gap:.7rem;
+      padding:.9rem 1.2rem;background:var(--bg2);
+      border:1px solid var(--border);border-radius:var(--radius);
+      text-decoration:none;color:var(--muted);font-size:.85rem;
+      transition:all .2s;
+    }
+    .r-ch-nav a:hover{border-color:var(--teal);color:var(--text)}
+    .r-ch-nav a.next{justify-content:flex-end;text-align:right}
+    .r-ch-nav .ch-label{font-size:.7rem;font-weight:700;color:var(--teal);display:block;text-transform:uppercase;letter-spacing:.06em}
+    .r-ch-nav .ch-name{font-weight:600;color:var(--text);font-size:.88rem}
+
+    /* ── TABLE ── */
+    .r-table{width:100%;border-collapse:collapse;font-size:.84rem;margin:1.5rem 0}
+    .r-table th{background:var(--bg3);padding:.6rem .9rem;text-align:left;font-weight:700;color:var(--text);border:1px solid var(--border)}
+    .r-table td{padding:.55rem .9rem;border:1px solid var(--border);color:var(--muted);vertical-align:top}
+    .r-table tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+    .tag-tofu{background:rgba(26,158,143,.2);color:var(--teal);border-radius:4px;padding:.1rem .4rem;font-size:.75rem;font-weight:700}
+    .tag-mofu{background:rgba(99,102,241,.2);color:#818cf8;border-radius:4px;padding:.1rem .4rem;font-size:.75rem;font-weight:700}
+    .tag-bofu{background:rgba(242,108,58,.2);color:var(--orange);border-radius:4px;padding:.1rem .4rem;font-size:.75rem;font-weight:700}
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="r-nav">
+  <a href="../index.html" class="r-nav-logo"><span>Forma</span>Elan</a>
+  <div class="r-breadcrumb">
+    <a href="../index.html">Accueil</a> /
+    <a href="../pages/seo-saas.html">SEO pour SaaS</a> /
+    <span>Contenu</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="r-hero">
+  <div class="r-hero-tag">Formation · SEO</div>
+  <h1>SEO pour <span>SaaS</span></h1>
+  <p class="r-hero-sub">Domine Google et attire des clients B2B en automatique — 8 chapitres, 15 schémas, méthodes applicables dès cette semaine.</p>
+  <div class="r-hero-stats">
+    <div class="r-hero-stat"><div class="val">8</div><div class="lbl">Chapitres</div></div>
+    <div class="r-hero-stat"><div class="val">6h30</div><div class="lbl">de contenu</div></div>
+    <div class="r-hero-stat"><div class="val">15</div><div class="lbl">Schémas SVG</div></div>
+    <div class="r-hero-stat"><div class="val">5</div><div class="lbl">Ressources</div></div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="r-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="r-sidebar">
+    <div class="r-sidebar-title">Sommaire</div>
+    <a href="#ch1" class="r-ch-link active" data-ch="1"><div class="r-ch-num">1</div>Fondamentaux SEO SaaS</a>
+    <a href="#ch2" class="r-ch-link" data-ch="2"><div class="r-ch-num">2</div>Mots-clés intent-driven</a>
+    <a href="#ch3" class="r-ch-link" data-ch="3"><div class="r-ch-num">3</div>Content Clusters</a>
+    <a href="#ch4" class="r-ch-link" data-ch="4"><div class="r-ch-num">4</div>SEO Technique</a>
+    <a href="#ch5" class="r-ch-link" data-ch="5"><div class="r-ch-num">5</div>Link Building B2B</a>
+    <a href="#ch6" class="r-ch-link" data-ch="6"><div class="r-ch-num">6</div>Contenu qui convertit</a>
+    <a href="#ch7" class="r-ch-link" data-ch="7"><div class="r-ch-num">7</div>Mesure & Reporting</a>
+    <a href="#ch8" class="r-ch-link" data-ch="8"><div class="r-ch-num">8</div>Automatisation & IA</a>
+    <div class="r-sidebar-sep"></div>
+    <a href="../pages/seo-saas.html" class="r-ch-link" style="font-size:.78rem;color:var(--muted)">← Page de la formation</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="r-main">
+
+    <!-- ═══════════════════════════════════
+         CH.1 — FONDAMENTAUX SEO SAAS
+    ════════════════════════════════════ -->
+    <section class="r-chapter" id="ch1">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">1</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 1</div>
+          <h2>Fondamentaux SEO pour SaaS</h2>
+          <div class="dur">⏱ 45 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Le SEO d'un SaaS n'obéit pas aux mêmes règles qu'un blog ou un site e-commerce. L'objectif n'est pas le trafic brut, mais le trafic qualifié qui entre dans ton funnel produit. Ce chapitre pose les fondations : pourquoi le SEO SaaS crée un avantage compétitif durable, comment mesurer ce qui compte vraiment, et comment structurer ton funnel d'acquisition organique.
+      </div>
+
+      <!-- SVG 1 : Courbe SEO classique vs SEO SaaS -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 280" role="img" aria-label="Courbe de croissance SEO Classique vs SEO SaaS">
+          <rect width="640" height="280" fill="#1E293B"/>
+          <!-- Grille -->
+          <line x1="70" y1="30" x2="70" y2="230" stroke="#2D3748" stroke-width="1"/>
+          <line x1="70" y1="230" x2="610" y2="230" stroke="#2D3748" stroke-width="1"/>
+          <line x1="70" y1="180" x2="610" y2="180" stroke="#2D3748" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="70" y1="130" x2="610" y2="130" stroke="#2D3748" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="70" y1="80" x2="610" y2="80" stroke="#2D3748" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="205" y1="30" x2="205" y2="230" stroke="#2D3748" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="340" y1="30" x2="340" y2="230" stroke="#2D3748" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="475" y1="30" x2="475" y2="230" stroke="#2D3748" stroke-width="0.5" stroke-dasharray="4,4"/>
+
+          <!-- Zone SEO SaaS -->
+          <path d="M70,225 C160,222 260,215 340,190 C420,165 490,110 610,45 L610,230 Z" fill="rgba(26,158,143,0.08)"/>
+          <!-- Courbe SEO SaaS -->
+          <path d="M70,225 C160,222 260,215 340,190 C420,165 490,110 610,45" stroke="#1A9E8F" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+          <!-- Zone SEO Classique -->
+          <path d="M70,225 L610,100 L610,230 Z" fill="rgba(148,163,184,0.04)"/>
+          <!-- Courbe SEO Classique -->
+          <path d="M70,225 L610,100" stroke="#64748B" stroke-width="2" fill="none" stroke-dasharray="8,5"/>
+
+          <!-- Point inflexion -->
+          <circle cx="340" cy="190" r="5" fill="#F26C3A"/>
+          <line x1="340" y1="190" x2="340" y2="230" stroke="#F26C3A" stroke-width="1" stroke-dasharray="3,3"/>
+          <text x="344" y="188" fill="#F26C3A" font-size="9" font-family="Inter">Effet composé</text>
+
+          <!-- Labels courbes -->
+          <rect x="490" y="50" width="90" height="18" rx="4" fill="rgba(26,158,143,0.2)"/>
+          <text x="535" y="63" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="700" font-family="Inter">SEO SaaS</text>
+          <rect x="490" y="90" width="100" height="18" rx="4" fill="rgba(100,116,139,0.2)"/>
+          <text x="540" y="103" text-anchor="middle" fill="#94A3B8" font-size="10" font-family="Inter">SEO Classique</text>
+
+          <!-- Axe X labels -->
+          <text x="70"  y="248" text-anchor="middle" fill="#475569" font-size="9" font-family="Inter">M0</text>
+          <text x="205" y="248" text-anchor="middle" fill="#475569" font-size="9" font-family="Inter">M3</text>
+          <text x="340" y="248" text-anchor="middle" fill="#475569" font-size="9" font-family="Inter">M6</text>
+          <text x="475" y="248" text-anchor="middle" fill="#475569" font-size="9" font-family="Inter">M12</text>
+          <text x="610" y="248" text-anchor="middle" fill="#475569" font-size="9" font-family="Inter">M18</text>
+
+          <!-- Axe Y labels -->
+          <text x="62" y="233" text-anchor="end" fill="#475569" font-size="9" font-family="Inter">0</text>
+          <text x="62" y="133" text-anchor="end" fill="#475569" font-size="9" font-family="Inter">50k</text>
+          <text x="62" y="83" text-anchor="end" fill="#475569" font-size="9" font-family="Inter">100k</text>
+
+          <!-- Titre -->
+          <text x="320" y="18" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Trafic organique mensuel estimé — SEO Classique vs SEO SaaS</text>
+        </svg>
+        <div class="r-svg-caption">Figure 1.1 — Le SEO SaaS démarre lentement puis croît de façon exponentielle grâce à l'effet composé des content clusters.</div>
+      </div>
+
+      <h3 class="r-section-title">1.1 — Pourquoi le SEO SaaS est différent</h3>
+      <p class="r-text">Un SaaS ne vend pas un produit physique. Il vend une transformation continue. Cela change radicalement la stratégie SEO : les visiteurs que tu veux attirer ne cherchent pas "acheter logiciel X" — ils cherchent à résoudre des problèmes que ton produit résout mieux que les alternatives.</p>
+      <ul class="r-list">
+        <li>Le cycle d'achat B2B est long (30 à 90 jours) : le SEO doit couvrir toutes les étapes du funnel, pas seulement le fond.</li>
+        <li>L'ICP (Ideal Customer Profile) est précis : chaque contenu doit parler à une persona spécifique, pas à "tout le monde".</li>
+        <li>Le churn est un ennemi : attirer les mauvais leads coûte plus cher qu'en attirer aucun. La qualité prime sur le volume.</li>
+        <li>Le contenu SEO est aussi un outil de retention : les apprenants qui reviennent sur ton blog restent clients plus longtemps.</li>
+      </ul>
+
+      <div class="r-tip"><strong>Insight clé :</strong> Pour un SaaS, le SEO n'est pas un canal "trafic". C'est un canal d'éducation de marché. Ton contenu crée la demande autant qu'il la capte.</div>
+
+      <!-- SVG 2 : Funnel TOFU/MOFU/BOFU -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 320" role="img" aria-label="Funnel d'acquisition organique TOFU MOFU BOFU">
+          <rect width="640" height="320" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Funnel d'acquisition organique SaaS</text>
+
+          <!-- TOFU -->
+          <polygon points="80,45 560,45 480,120 160,120" fill="rgba(26,158,143,0.2)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="320" y="78" text-anchor="middle" fill="#1A9E8F" font-size="13" font-weight="800" font-family="Inter">TOFU — Sensibilisation</text>
+          <text x="320" y="96" text-anchor="middle" fill="#94A3B8" font-size="10" font-family="Inter">Articles "comment faire", guides, comparatifs généraux</text>
+          <text x="600" y="80" fill="#1A9E8F" font-size="10" font-weight="700" font-family="Inter">~40%</text>
+
+          <!-- MOFU -->
+          <polygon points="160,128 480,128 400,203 240,203" fill="rgba(99,102,241,0.2)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="320" y="162" text-anchor="middle" fill="#818CF8" font-size="13" font-weight="800" font-family="Inter">MOFU — Considération</text>
+          <text x="320" y="180" text-anchor="middle" fill="#94A3B8" font-size="10" font-family="Inter">Case studies, comparatifs de solutions, landing pages SEO</text>
+          <text x="600" y="168" fill="#818CF8" font-size="10" font-weight="700" font-family="Inter">~40%</text>
+
+          <!-- BOFU -->
+          <polygon points="240,211 400,211 350,278 290,278" fill="rgba(242,108,58,0.25)" stroke="#F26C3A" stroke-width="1.5"/>
+          <text x="320" y="245" text-anchor="middle" fill="#F26C3A" font-size="13" font-weight="800" font-family="Inter">BOFU — Décision</text>
+          <text x="320" y="263" text-anchor="middle" fill="#94A3B8" font-size="10" font-family="Inter">Alternatives à X, pricing, demos, intégrations</text>
+          <text x="600" y="248" fill="#F26C3A" font-size="10" font-weight="700" font-family="Inter">~20%</text>
+
+          <!-- Flèche droite -->
+          <text x="24" y="80" fill="#475569" font-size="9" font-family="Inter" text-anchor="middle">Large</text>
+          <text x="24" y="168" fill="#475569" font-size="9" font-family="Inter" text-anchor="middle">Moyen</text>
+          <text x="24" y="248" fill="#475569" font-size="9" font-family="Inter" text-anchor="middle">Ciblé</text>
+          <line x1="40" y1="55" x2="40" y2="285" stroke="#2D3748" stroke-width="1"/>
+          <polygon points="36,285 44,285 40,295" fill="#2D3748"/>
+
+          <!-- Légende volume -->
+          <text x="320" y="308" text-anchor="middle" fill="#475569" font-size="9" font-family="Inter">Répartition cible de ta production de contenu (en nb d'articles)</text>
+        </svg>
+        <div class="r-svg-caption">Figure 1.2 — Répartir son contenu en 40/40/20 (TOFU/MOFU/BOFU) est une règle empirique solide pour un SaaS en phase de croissance.</div>
+      </div>
+
+      <h3 class="r-section-title">1.2 — Les métriques SEO qui comptent pour un SaaS</h3>
+      <p class="r-text">Arrête de mesurer les positions. Mesure ce qui impacte ton business :</p>
+      <table class="r-table">
+        <tr><th>Métrique vanité ❌</th><th>Métrique business ✓</th><th>Pourquoi c'est mieux</th></tr>
+        <tr><td>Positions moyennes</td><td>Impressions sur mots BOFU</td><td>Mesure la visibilité là où les prospects achètent</td></tr>
+        <tr><td>Trafic total</td><td>Trafic sur pages de conversion</td><td>100 visiteurs qualifiés &gt; 10 000 non qualifiés</td></tr>
+        <tr><td>Nombre de backlinks</td><td>Referring domains uniques (DR 40+)</td><td>La diversité des domaines compte plus que la quantité</td></tr>
+        <tr><td>Temps sur site moyen</td><td>Scroll depth + CTA clicks</td><td>Indique si le contenu engage vraiment l'ICP</td></tr>
+        <tr><td>Taux de rebond</td><td>% visiteurs SEO → trial/signup</td><td>Relie directement le SEO au revenu</td></tr>
+      </table>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 1</div>
+        <ul>
+          <li>Le SEO SaaS vise l'éducation de marché, pas le trafic brut</li>
+          <li>Le funnel 40/40/20 (TOFU/MOFU/BOFU) est le point de départ de toute stratégie</li>
+          <li>Connecte tes métriques SEO aux métriques produit (trials, signups, MRR)</li>
+          <li>L'effet composé du contenu démarre vers le mois 6-9 — patience stratégique requise</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <span></span>
+        <a href="#ch2" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">Recherche de mots-clés intent-driven</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════
+         CH.2 — MOTS-CLÉS INTENT-DRIVEN
+    ════════════════════════════════════ -->
+    <section class="r-chapter" id="ch2">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">2</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 2</div>
+          <h2>Recherche de mots-clés intent-driven</h2>
+          <div class="dur">⏱ 55 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        La recherche de mots-clés pour un SaaS ne commence pas par un volume — elle commence par une intention. Comprendre ce que veut accomplir quelqu'un quand il tape une requête, c'est la différence entre attirer des curieux et attirer des futurs clients. Ce chapitre te donne un système pour identifier, trier et prioriser les mots-clés qui font grossir ton ARR.
+      </div>
+
+      <!-- SVG 3 : Matrice 2x2 Intention -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 380" role="img" aria-label="Matrice 2x2 des 4 types d'intention de recherche">
+          <rect width="640" height="380" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Matrice des intentions de recherche — Priorisation SEO SaaS</text>
+
+          <!-- Axes -->
+          <line x1="320" y1="38" x2="320" y2="340" stroke="#2D3748" stroke-width="1.5"/>
+          <line x1="60" y1="190" x2="580" y2="190" stroke="#2D3748" stroke-width="1.5"/>
+
+          <!-- Labels axes -->
+          <text x="320" y="36" text-anchor="middle" fill="#475569" font-size="9" font-family="Inter">VOLUME ÉLEVÉ ↑</text>
+          <text x="320" y="356" text-anchor="middle" fill="#475569" font-size="9" font-family="Inter">↓ VOLUME FAIBLE</text>
+          <text x="62" y="192" fill="#475569" font-size="9" font-family="Inter">INFORMATIONNELLE →</text>
+          <text x="490" y="192" fill="#475569" font-size="9" font-family="Inter">← TRANSACTIONNELLE</text>
+
+          <!-- Q1 : TOFU Haut volume + Info -->
+          <rect x="65" y="42" width="248" height="142" rx="8" fill="rgba(26,158,143,0.12)" stroke="rgba(26,158,143,0.35)" stroke-width="1"/>
+          <text x="189" y="70" text-anchor="middle" fill="#1A9E8F" font-size="12" font-weight="800" font-family="Inter">TOFU Priority</text>
+          <text x="189" y="88" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">"Comment faire du SEO SaaS"</text>
+          <text x="189" y="104" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">"Qu'est-ce que le growth hacking"</text>
+          <text x="189" y="120" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">"Meilleures pratiques onboarding SaaS"</text>
+          <rect x="150" y="150" width="78" height="22" rx="4" fill="rgba(26,158,143,0.25)"/>
+          <text x="189" y="165" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="700" font-family="Inter">Éduquer → Attirer</text>
+
+          <!-- Q2 : MOFU Haut volume + Transaction -->
+          <rect x="325" y="42" width="248" height="142" rx="8" fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.35)" stroke-width="1"/>
+          <text x="449" y="70" text-anchor="middle" fill="#818CF8" font-size="12" font-weight="800" font-family="Inter">MOFU Priority ★</text>
+          <text x="449" y="88" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">"Meilleur outil SEO pour SaaS"</text>
+          <text x="449" y="104" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">"Logiciel analytics B2B comparatif"</text>
+          <text x="449" y="120" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">"Ahrefs vs Semrush SaaS"</text>
+          <rect x="408" y="150" width="82" height="22" rx="4" fill="rgba(99,102,241,0.25)"/>
+          <text x="449" y="165" text-anchor="middle" fill="#818CF8" font-size="10" font-weight="700" font-family="Inter">Comparer → Convaincre</text>
+
+          <!-- Q3 : Éviter (Bas vol + Info) -->
+          <rect x="65" y="198" width="248" height="136" rx="8" fill="rgba(71,85,105,0.2)" stroke="rgba(71,85,105,0.3)" stroke-width="1"/>
+          <text x="189" y="226" text-anchor="middle" fill="#475569" font-size="12" font-weight="800" font-family="Inter">Priorité faible</text>
+          <text x="189" y="244" text-anchor="middle" fill="#475569" font-size="9" font-family="Inter">"C'est quoi le SEO"</text>
+          <text x="189" y="260" text-anchor="middle" fill="#475569" font-size="9" font-family="Inter">"Définition content marketing"</text>
+          <text x="189" y="276" text-anchor="middle" fill="#475569" font-size="9" font-family="Inter">Trop générique, peu qualifié</text>
+          <rect x="148" y="300" width="82" height="22" rx="4" fill="rgba(71,85,105,0.25)"/>
+          <text x="189" y="315" text-anchor="middle" fill="#64748B" font-size="10" font-weight="700" font-family="Inter">Éviter ou ignorer</text>
+
+          <!-- Q4 : BOFU (Bas vol + Transaction) -->
+          <rect x="325" y="198" width="248" height="136" rx="8" fill="rgba(242,108,58,0.12)" stroke="rgba(242,108,58,0.35)" stroke-width="1"/>
+          <text x="449" y="226" text-anchor="middle" fill="#F26C3A" font-size="12" font-weight="800" font-family="Inter">BOFU Priority ★★</text>
+          <text x="449" y="244" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">"Alternative à [concurrent]"</text>
+          <text x="449" y="260" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">"[Ton produit] pricing"</text>
+          <text x="449" y="276" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">"Intégration [outil] + [ton produit]"</text>
+          <rect x="400" y="300" width="98" height="22" rx="4" fill="rgba(242,108,58,0.25)"/>
+          <text x="449" y="315" text-anchor="middle" fill="#F26C3A" font-size="10" font-weight="700" font-family="Inter">Volume faible = ROI max</text>
+        </svg>
+        <div class="r-svg-caption">Figure 2.1 — Les mots-clés BOFU (bas volume, haute intention) sont souvent ignorés et pourtant les plus rentables pour un SaaS.</div>
+      </div>
+
+      <h3 class="r-section-title">2.1 — La règle d'or : intent before volume</h3>
+      <p class="r-text">Un mot-clé avec 200 recherches/mois et une forte intention d'achat vaut souvent 10× plus qu'un mot-clé à 5 000 recherches/mois avec zéro intention. Pour un SaaS B2B, les termes BOFU déclenchent des essais et des démos — c'est ce qui construit ton ARR.</p>
+
+      <!-- SVG 4 : Keyword Gap simulé -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 260" role="img" aria-label="Analyse Keyword Gap — mots-clés de la concurrence non couverts">
+          <rect width="640" height="260" fill="#1E293B"/>
+          <!-- Header barre -->
+          <rect x="0" y="0" width="640" height="36" fill="#273549" rx="0"/>
+          <text x="24" y="23" fill="#94A3B8" font-size="11" font-weight="700" font-family="Inter">Keyword Gap — Mots-clés couverts par les concurrents, pas par toi</text>
+          <rect x="558" y="8" width="64" height="20" rx="4" fill="rgba(26,158,143,0.25)"/>
+          <text x="590" y="22" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="700" font-family="Inter">Exporter</text>
+
+          <!-- Colonnes header -->
+          <rect x="0" y="36" width="640" height="24" fill="#1A2335"/>
+          <text x="16" y="53" fill="#64748B" font-size="10" font-weight="700" font-family="Inter">MOT-CLÉ</text>
+          <text x="300" y="53" fill="#64748B" font-size="10" font-weight="700" font-family="Inter">VOLUME</text>
+          <text x="390" y="53" fill="#64748B" font-size="10" font-weight="700" font-family="Inter">KD</text>
+          <text x="440" y="53" fill="#64748B" font-size="10" font-weight="700" font-family="Inter">FUNNEL</text>
+          <text x="530" y="53" fill="#64748B" font-size="10" font-weight="700" font-family="Inter">PRIORITÉ</text>
+
+          <!-- Rows -->
+          <rect x="0" y="60" width="640" height="28" fill="#1E293B"/>
+          <text x="16" y="79" fill="#E2E8F0" font-size="10" font-family="Inter">alternative à [concurrent] saas</text>
+          <text x="300" y="79" fill="#94A3B8" font-size="10" font-family="Inter">480</text>
+          <text x="390" y="79" fill="#22C55E" font-size="10" font-family="Inter">18</text>
+          <rect x="440" y="67" width="46" height="14" rx="3" fill="rgba(242,108,58,0.2)"/>
+          <text x="463" y="78" text-anchor="middle" fill="#F26C3A" font-size="9" font-weight="700" font-family="Inter">BOFU</text>
+          <rect x="530" y="67" width="60" height="14" rx="3" fill="rgba(242,108,58,0.3)"/>
+          <text x="560" y="78" text-anchor="middle" fill="#F26C3A" font-size="9" font-weight="700" font-family="Inter">★★★</text>
+
+          <rect x="0" y="88" width="640" height="28" fill="#17202E"/>
+          <text x="16" y="107" fill="#E2E8F0" font-size="10" font-family="Inter">meilleur outil seo saas b2b</text>
+          <text x="300" y="107" fill="#94A3B8" font-size="10" font-family="Inter">720</text>
+          <text x="390" y="107" fill="#F59E0B" font-size="10" font-family="Inter">32</text>
+          <rect x="440" y="95" width="46" height="14" rx="3" fill="rgba(99,102,241,0.2)"/>
+          <text x="463" y="106" text-anchor="middle" fill="#818CF8" font-size="9" font-weight="700" font-family="Inter">MOFU</text>
+          <rect x="530" y="95" width="60" height="14" rx="3" fill="rgba(99,102,241,0.25)"/>
+          <text x="560" y="106" text-anchor="middle" fill="#818CF8" font-size="9" font-weight="700" font-family="Inter">★★★</text>
+
+          <rect x="0" y="116" width="640" height="28" fill="#1E293B"/>
+          <text x="16" y="135" fill="#E2E8F0" font-size="10" font-family="Inter">comment améliorer seo application web</text>
+          <text x="300" y="135" fill="#94A3B8" font-size="10" font-family="Inter">1 300</text>
+          <text x="390" y="135" fill="#EF4444" font-size="10" font-family="Inter">54</text>
+          <rect x="440" y="123" width="46" height="14" rx="3" fill="rgba(26,158,143,0.2)"/>
+          <text x="463" y="134" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">TOFU</text>
+          <rect x="530" y="123" width="60" height="14" rx="3" fill="rgba(26,158,143,0.15)"/>
+          <text x="560" y="134" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">★★</text>
+
+          <rect x="0" y="144" width="640" height="28" fill="#17202E"/>
+          <text x="16" y="163" fill="#E2E8F0" font-size="10" font-family="Inter">intégration hubspot [produit]</text>
+          <text x="300" y="163" fill="#94A3B8" font-size="10" font-family="Inter">210</text>
+          <text x="390" y="163" fill="#22C55E" font-size="10" font-family="Inter">8</text>
+          <rect x="440" y="151" width="46" height="14" rx="3" fill="rgba(242,108,58,0.2)"/>
+          <text x="463" y="162" text-anchor="middle" fill="#F26C3A" font-size="9" font-weight="700" font-family="Inter">BOFU</text>
+          <rect x="530" y="151" width="60" height="14" rx="3" fill="rgba(242,108,58,0.3)"/>
+          <text x="560" y="162" text-anchor="middle" fill="#F26C3A" font-size="9" font-weight="700" font-family="Inter">★★★</text>
+
+          <rect x="0" y="172" width="640" height="28" fill="#1E293B"/>
+          <text x="16" y="191" fill="#E2E8F0" font-size="10" font-family="Inter">guide content marketing saas 2025</text>
+          <text x="300" y="191" fill="#94A3B8" font-size="10" font-family="Inter">890</text>
+          <text x="390" y="191" fill="#F59E0B" font-size="10" font-family="Inter">41</text>
+          <rect x="440" y="179" width="46" height="14" rx="3" fill="rgba(26,158,143,0.2)"/>
+          <text x="463" y="190" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">TOFU</text>
+          <rect x="530" y="179" width="60" height="14" rx="3" fill="rgba(26,158,143,0.15)"/>
+          <text x="560" y="190" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">★★</text>
+
+          <!-- Footer info -->
+          <rect x="0" y="200" width="640" height="60" fill="#1A2335"/>
+          <text x="24" y="220" fill="#64748B" font-size="9" font-family="Inter">KD = Keyword Difficulty (0-100) · Volume = recherches/mois (estimation) · Priorité = scoring ROI/effort</text>
+          <text x="24" y="238" fill="#64748B" font-size="9" font-family="Inter">Source : Semrush / Ahrefs · Méthode : trier par KD &lt; 30 + intent BOFU/MOFU en premier</text>
+          <rect x="460" y="210" width="160" height="32" rx="6" fill="rgba(26,158,143,0.15)" stroke="rgba(26,158,143,0.3)" stroke-width="1"/>
+          <text x="540" y="224" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">5 opportunités détectées</text>
+          <text x="540" y="238" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">KD moyen : 30.6</text>
+        </svg>
+        <div class="r-svg-caption">Figure 2.2 — Exemple d'analyse Keyword Gap : trier d'abord par intention (BOFU &gt; MOFU &gt; TOFU), puis par KD faible.</div>
+      </div>
+
+      <!-- SVG 5 : Camembert TOFU/MOFU/BOFU -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 260" role="img" aria-label="Répartition cible de la production de contenu TOFU MOFU BOFU">
+          <rect width="640" height="260" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Répartition cible de production de contenu (par nombre d'articles)</text>
+
+          <!-- Pie chart (cx=200, cy=140, r=90) -->
+          <!-- TOFU 40% = 144° (de -90° à 54°) -->
+          <path d="M200,140 L200,50 A90,90 0 0,1 277,95 Z" fill="#1A9E8F" opacity="0.9"/>
+          <!-- MOFU 40% = 144° (de 54° à 198°) -->
+          <path d="M200,140 L277,95 A90,90 0 0,1 123,185 Z" fill="#6366F1" opacity="0.9"/>
+          <!-- BOFU 20% = 72° (de 198° à 270°) -->
+          <path d="M200,140 L123,185 A90,90 0 0,1 200,50 Z" fill="#F26C3A" opacity="0.9"/>
+
+          <!-- Centre -->
+          <circle cx="200" cy="140" r="38" fill="#1E293B"/>
+          <text x="200" y="136" text-anchor="middle" fill="#E2E8F0" font-size="10" font-weight="700" font-family="Inter">Ratio</text>
+          <text x="200" y="152" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">optimal</text>
+
+          <!-- Légende -->
+          <rect x="360" y="70" width="14" height="14" rx="3" fill="#1A9E8F"/>
+          <text x="382" y="82" fill="#E2E8F0" font-size="12" font-weight="700" font-family="Inter">TOFU — 40%</text>
+          <text x="382" y="100" fill="#94A3B8" font-size="10" font-family="Inter">Articles "comment", guides, tutoriels</text>
+          <text x="382" y="116" fill="#94A3B8" font-size="10" font-family="Inter">Volume élevé · Éducation du marché</text>
+
+          <rect x="360" y="136" width="14" height="14" rx="3" fill="#6366F1"/>
+          <text x="382" y="148" fill="#E2E8F0" font-size="12" font-weight="700" font-family="Inter">MOFU — 40%</text>
+          <text x="382" y="166" fill="#94A3B8" font-size="10" font-family="Inter">Comparatifs, cas clients, landing pages</text>
+          <text x="382" y="182" fill="#94A3B8" font-size="10" font-family="Inter">Volume moyen · Qualification de leads</text>
+
+          <rect x="360" y="202" width="14" height="14" rx="3" fill="#F26C3A"/>
+          <text x="382" y="214" fill="#E2E8F0" font-size="12" font-weight="700" font-family="Inter">BOFU — 20%</text>
+          <text x="382" y="232" fill="#94A3B8" font-size="10" font-family="Inter">Alternatives, intégrations, pricing</text>
+          <text x="382" y="248" fill="#94A3B8" font-size="10" font-family="Inter">Volume faible · ROI le plus élevé</text>
+        </svg>
+        <div class="r-svg-caption">Figure 2.3 — La règle 40/40/20 : produce autant de TOFU que de MOFU, et concentre 20% sur le BOFU qui génère les conversions directes.</div>
+      </div>
+
+      <h3 class="r-section-title">2.2 — Le process en 4 étapes</h3>
+      <ul class="r-list">
+        <li><strong style="color:var(--text)">Étape 1 — Seed list :</strong> liste les 20-30 problèmes que ton ICP cherche à résoudre. Pas les fonctionnalités de ton produit — les problèmes.</li>
+        <li><strong style="color:var(--text)">Étape 2 — Expansion :</strong> entre ces seeds dans Semrush/Ahrefs et extrais les variantes + mots-clés connexes (filtre KD &lt; 40).</li>
+        <li><strong style="color:var(--text)">Étape 3 — Intent scoring :</strong> classe chaque mot-clé en TOFU/MOFU/BOFU selon ce que cherche vraiment l'utilisateur derrière la requête.</li>
+        <li><strong style="color:var(--text)">Étape 4 — Priorisation :</strong> score = (Impact business × 3) + (Volume) - (KD × 2). Les BOFU avec KD &lt; 20 montent toujours en haut.</li>
+      </ul>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 2</div>
+        <ul>
+          <li>Commence par l'intention, jamais par le volume</li>
+          <li>Les BOFU "alternatives à X" sont quasi-systématiquement sous-exploités</li>
+          <li>Keyword Gap analysis = 2h de travail pour 6 mois de roadmap SEO</li>
+          <li>KD &lt; 30 + intent BOFU = le sweet spot pour un SaaS en phase early-growth</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="#ch1">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Fondamentaux SEO SaaS</span>
+          </div>
+        </a>
+        <a href="#ch3" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">Architecture & Content Clusters</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════
+         CH.3 — CONTENT CLUSTERS
+    ════════════════════════════════════ -->
+    <section class="r-chapter" id="ch3">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">3</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 3</div>
+          <h2>Architecture de contenu & Content Clusters</h2>
+          <div class="dur">⏱ 50 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Le contenu isolé ne ranke plus. Google récompense l'autorité thématique : un site qui couvre un sujet en profondeur depuis plusieurs angles ranke mieux qu'un site avec un seul "bon article". Les content clusters sont la structure architecturale qui crée cette autorité — et ce chapitre te donne le modèle complet.
+      </div>
+
+      <!-- SVG 6 : Hub & Spoke -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 380" role="img" aria-label="Schéma Hub and Spoke Content Cluster SEO SaaS">
+          <rect width="640" height="380" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Architecture Hub &amp; Spoke — Content Cluster SEO SaaS</text>
+
+          <!-- Hub central -->
+          <circle cx="320" cy="195" r="52" fill="rgba(26,158,143,0.2)" stroke="#1A9E8F" stroke-width="2"/>
+          <text x="320" y="188" text-anchor="middle" fill="#1A9E8F" font-size="11" font-weight="800" font-family="Inter">PAGE PILIER</text>
+          <text x="320" y="204" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">"Guide complet</text>
+          <text x="320" y="218" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">SEO SaaS"</text>
+
+          <!-- Satellites + liens bidirectionnels -->
+          <!-- Haut -->
+          <line x1="320" y1="143" x2="320" y2="80" stroke="rgba(26,158,143,0.4)" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <polygon points="316,80 324,80 320,70" fill="#1A9E8F"/>
+          <polygon points="316,143 324,143 320,153" fill="#1A9E8F" opacity="0.4"/>
+          <rect x="248" y="42" width="144" height="32" rx="8" fill="rgba(99,102,241,0.2)" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
+          <text x="320" y="62" text-anchor="middle" fill="#818CF8" font-size="9.5" font-weight="700" font-family="Inter">Keyword research SaaS B2B</text>
+
+          <!-- Bas -->
+          <line x1="320" y1="247" x2="320" y2="310" stroke="rgba(26,158,143,0.4)" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <polygon points="316,310 324,310 320,320" fill="#1A9E8F"/>
+          <polygon points="316,247 324,247 320,237" fill="#1A9E8F" opacity="0.4"/>
+          <rect x="248" y="320" width="144" height="32" rx="8" fill="rgba(99,102,241,0.2)" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
+          <text x="320" y="340" text-anchor="middle" fill="#818CF8" font-size="9.5" font-weight="700" font-family="Inter">Link building SaaS guide</text>
+
+          <!-- Gauche haut -->
+          <line x1="270" y1="163" x2="172" y2="108" stroke="rgba(26,158,143,0.4)" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <polygon points="168,110 176,104 172,115" fill="#1A9E8F"/>
+          <rect x="64" y="80" width="144" height="32" rx="8" fill="rgba(99,102,241,0.2)" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
+          <text x="136" y="100" text-anchor="middle" fill="#818CF8" font-size="9.5" font-weight="700" font-family="Inter">SEO technique SaaS</text>
+
+          <!-- Gauche bas -->
+          <line x1="270" y1="220" x2="172" y2="272" stroke="rgba(26,158,143,0.4)" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <polygon points="168,268 176,276 172,263" fill="#1A9E8F"/>
+          <rect x="64" y="258" width="144" height="32" rx="8" fill="rgba(99,102,241,0.2)" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
+          <text x="136" y="278" text-anchor="middle" fill="#818CF8" font-size="9.5" font-weight="700" font-family="Inter">Content marketing SaaS</text>
+
+          <!-- Droite haut -->
+          <line x1="370" y1="163" x2="468" y2="108" stroke="rgba(26,158,143,0.4)" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <polygon points="464,104 472,110 465,115" fill="#1A9E8F"/>
+          <rect x="432" y="80" width="144" height="32" rx="8" fill="rgba(99,102,241,0.2)" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
+          <text x="504" y="100" text-anchor="middle" fill="#818CF8" font-size="9.5" font-weight="700" font-family="Inter">Analytics SEO SaaS</text>
+
+          <!-- Droite bas -->
+          <line x1="370" y1="220" x2="468" y2="272" stroke="rgba(26,158,143,0.4)" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <polygon points="464,276 472,268 465,280" fill="#1A9E8F"/>
+          <rect x="432" y="258" width="144" height="32" rx="8" fill="rgba(99,102,241,0.2)" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
+          <text x="504" y="278" text-anchor="middle" fill="#818CF8" font-size="9.5" font-weight="700" font-family="Inter">Alt. outils SEO gratuits</text>
+
+          <!-- Légende -->
+          <line x1="24" y1="352" x2="58" y2="352" stroke="rgba(26,158,143,0.4)" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <text x="66" y="357" fill="#64748B" font-size="9" font-family="Inter">Lien interne bidirectionnel (hub ↔ satellite)</text>
+          <rect x="330" y="344" width="12" height="12" rx="3" fill="rgba(99,102,241,0.2)" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
+          <text x="350" y="354" fill="#64748B" font-size="9" font-family="Inter">Pages satellites (1 mot-clé ciblé chacune)</text>
+        </svg>
+        <div class="r-svg-caption">Figure 3.1 — Un cluster = 1 page pilier exhaustive + 5-8 pages satellites ciblées. Les liens internes bidirectionnels transmettent l'autorité.</div>
+      </div>
+
+      <h3 class="r-section-title">3.1 — Construire son premier cluster</h3>
+      <ul class="r-list">
+        <li><strong style="color:var(--text)">Choisir le thème du cluster :</strong> un thème = un problème que ton ICP résout. Ex : "acquisition organique SaaS", "onboarding utilisateur", "pricing SaaS".</li>
+        <li><strong style="color:var(--text)">La page pilier :</strong> 3 000-5 000 mots, couvre le sujet en entier à un niveau "guide complet". Elle cible un mot-clé TOFU à volume élevé.</li>
+        <li><strong style="color:var(--text)">Les pages satellites :</strong> 800-1 500 mots chacune, ciblant un angle spécifique du cluster (souvent des variantes longue traîne ou des MOFU/BOFU).</li>
+        <li><strong style="color:var(--text)">Le maillage interne :</strong> chaque satellite pointe vers le pilier. Le pilier pointe vers chaque satellite. Google comprend l'autorité topique.</li>
+      </ul>
+
+      <div class="r-tip"><strong>Règle pratique :</strong> Un cluster n'est pas efficace avant d'avoir au moins 5 pages satellites publiées. Publie le pilier en premier, puis crée les satellites sur 4-8 semaines. Ne pas tout publier le même jour.</div>
+
+      <!-- Figure 3.2 : Calendrier de publication d'un cluster -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 280" role="img" aria-label="Calendrier de publication d'un content cluster sur 8 semaines">
+          <rect width="640" height="280" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Plan de publication d'un cluster — 8 semaines</text>
+
+          <!-- Semaines labels -->
+          <text x="64" y="52" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">S1</text>
+          <text x="140" y="52" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">S2</text>
+          <text x="216" y="52" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">S3</text>
+          <text x="292" y="52" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">S4</text>
+          <text x="368" y="52" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">S5</text>
+          <text x="444" y="52" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">S6</text>
+          <text x="520" y="52" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">S7</text>
+          <text x="596" y="52" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">S8</text>
+
+          <!-- Ligne page pilier -->
+          <text x="10" y="86" fill="#F59E0B" font-size="9" font-weight="700" font-family="Inter" text-anchor="start">Pilier</text>
+          <rect x="28" y="70" width="72" height="26" rx="5" fill="rgba(245,158,11,0.25)" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="64" y="87" text-anchor="middle" fill="#F59E0B" font-size="9" font-weight="700" font-family="Inter">Publication</text>
+          <!-- Maillage -->
+          <rect x="28" y="70" width="568" height="26" rx="5" fill="none" stroke="rgba(245,158,11,0.15)" stroke-width="1" stroke-dasharray="4,4"/>
+
+          <!-- Satellites S2-S7 -->
+          <text x="10" y="134" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter" text-anchor="start">Sat. 1-2</text>
+          <rect x="104" y="118" width="72" height="26" rx="5" fill="rgba(26,158,143,0.25)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="140" y="135" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">Pub. x2</text>
+
+          <text x="10" y="182" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter" text-anchor="start">Sat. 3-4</text>
+          <rect x="256" y="166" width="72" height="26" rx="5" fill="rgba(26,158,143,0.25)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="292" y="183" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">Pub. x2</text>
+
+          <text x="10" y="230" fill="#6366F1" font-size="9" font-weight="700" font-family="Inter" text-anchor="start">Sat. 5-6</text>
+          <rect x="408" y="214" width="148" height="26" rx="5" fill="rgba(99,102,241,0.25)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="482" y="231" text-anchor="middle" fill="#6366F1" font-size="9" font-weight="700" font-family="Inter">Pub. x2 + maillage final</text>
+
+          <!-- Légende -->
+          <rect x="28" y="255" width="10" height="10" rx="2" fill="rgba(245,158,11,0.3)" stroke="#F59E0B" stroke-width="1"/>
+          <text x="44" y="264" fill="#64748B" font-size="9" font-family="Inter">Page pilier</text>
+          <rect x="140" y="255" width="10" height="10" rx="2" fill="rgba(26,158,143,0.3)" stroke="#1A9E8F" stroke-width="1"/>
+          <text x="156" y="264" fill="#64748B" font-size="9" font-family="Inter">Satellites 1-4</text>
+          <rect x="270" y="255" width="10" height="10" rx="2" fill="rgba(99,102,241,0.3)" stroke="#6366F1" stroke-width="1"/>
+          <text x="286" y="264" fill="#64748B" font-size="9" font-family="Inter">Satellites 5-6 + maillage final</text>
+        </svg>
+        <div class="r-svg-caption">Figure 3.2 — Étaler la publication sur 8 semaines simule une croissance organique et évite la duplication perçue par Google.</div>
+      </div>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 3</div>
+        <ul>
+          <li>1 cluster = 1 thème = 1 problème ICP = 1 pilier + 5-8 satellites</li>
+          <li>Les liens internes bidirectionnels pilier ↔ satellite sont non négociables</li>
+          <li>Publie le pilier en premier, puis les satellites sur plusieurs semaines</li>
+          <li>Un seul cluster bien exécuté bat 20 articles isolés sans stratégie</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="#ch2">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Recherche de mots-clés intent-driven</span>
+          </div>
+        </a>
+        <a href="#ch4" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">SEO technique pour SaaS</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════
+         CH.4 — SEO TECHNIQUE
+    ════════════════════════════════════ -->
+    <section class="r-chapter" id="ch4">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">4</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 4</div>
+          <h2>SEO technique pour SaaS</h2>
+          <div class="dur">⏱ 45 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Le SEO technique d'un SaaS a ses propres pièges : des milliers de pages /app générées dynamiquement, des routes authentifiées que Google ne peut pas crawler, des Core Web Vitals sacrifiés pour des features produit. Ce chapitre couvre les points techniques qui font une vraie différence.
+      </div>
+
+      <!-- SVG 7 : Dashboard Core Web Vitals -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 280" role="img" aria-label="Dashboard Core Web Vitals LCP FID CLS">
+          <rect width="640" height="280" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Core Web Vitals — Tableau de bord de performance</text>
+
+          <!-- LCP gauge -->
+          <text x="110" y="55" text-anchor="middle" fill="#E2E8F0" font-size="11" font-weight="700" font-family="Inter">LCP</text>
+          <text x="110" y="70" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Largest Contentful Paint</text>
+          <!-- arc background -->
+          <path d="M 40,155 A 70,70 0 0,1 180,155" stroke="#2D3748" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <!-- arc good = 0-2.5s = 100% green -->
+          <path d="M 40,155 A 70,70 0 0,1 180,155" stroke="#22C55E" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="220" stroke-dashoffset="66"/>
+          <text x="110" y="148" text-anchor="middle" fill="#22C55E" font-size="22" font-weight="900" font-family="Inter">2.1s</text>
+          <text x="110" y="166" text-anchor="middle" fill="#22C55E" font-size="9" font-weight="700" font-family="Inter">● GOOD</text>
+          <text x="40" y="172" fill="#475569" font-size="8" font-family="Inter">0s</text>
+          <text x="175" y="172" fill="#475569" font-size="8" font-family="Inter">4s+</text>
+          <rect x="30" y="185" width="160" height="40" rx="8" fill="#17202E"/>
+          <text x="110" y="201" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Cible : &lt; 2.5s · Actuel : 2.1s</text>
+          <text x="110" y="218" text-anchor="middle" fill="#22C55E" font-size="8" font-weight="700" font-family="Inter">✓ Dans les clous</text>
+
+          <!-- INP gauge -->
+          <text x="320" y="55" text-anchor="middle" fill="#E2E8F0" font-size="11" font-weight="700" font-family="Inter">INP</text>
+          <text x="320" y="70" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Interaction to Next Paint</text>
+          <path d="M 250,155 A 70,70 0 0,1 390,155" stroke="#2D3748" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <path d="M 250,155 A 70,70 0 0,1 390,155" stroke="#F59E0B" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="220" stroke-dashoffset="110"/>
+          <text x="320" y="148" text-anchor="middle" fill="#F59E0B" font-size="22" font-weight="900" font-family="Inter">240ms</text>
+          <text x="320" y="166" text-anchor="middle" fill="#F59E0B" font-size="9" font-weight="700" font-family="Inter">◐ NEEDS WORK</text>
+          <text x="250" y="172" fill="#475569" font-size="8" font-family="Inter">0ms</text>
+          <text x="378" y="172" fill="#475569" font-size="8" font-family="Inter">500ms</text>
+          <rect x="240" y="185" width="160" height="40" rx="8" fill="#17202E"/>
+          <text x="320" y="201" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Cible : &lt; 200ms · Actuel : 240ms</text>
+          <text x="320" y="218" text-anchor="middle" fill="#F59E0B" font-size="8" font-weight="700" font-family="Inter">⚠ Optimisation requise</text>
+
+          <!-- CLS gauge -->
+          <text x="530" y="55" text-anchor="middle" fill="#E2E8F0" font-size="11" font-weight="700" font-family="Inter">CLS</text>
+          <text x="530" y="70" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Cumulative Layout Shift</text>
+          <path d="M 460,155 A 70,70 0 0,1 600,155" stroke="#2D3748" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <path d="M 460,155 A 70,70 0 0,1 600,155" stroke="#22C55E" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="220" stroke-dashoffset="176"/>
+          <text x="530" y="148" text-anchor="middle" fill="#22C55E" font-size="22" font-weight="900" font-family="Inter">0.04</text>
+          <text x="530" y="166" text-anchor="middle" fill="#22C55E" font-size="9" font-weight="700" font-family="Inter">● GOOD</text>
+          <text x="460" y="172" fill="#475569" font-size="8" font-family="Inter">0</text>
+          <text x="590" y="172" fill="#475569" font-size="8" font-family="Inter">0.25+</text>
+          <rect x="450" y="185" width="160" height="40" rx="8" fill="#17202E"/>
+          <text x="530" y="201" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Cible : &lt; 0.1 · Actuel : 0.04</text>
+          <text x="530" y="218" text-anchor="middle" fill="#22C55E" font-size="8" font-weight="700" font-family="Inter">✓ Excellent</text>
+
+          <!-- Score global -->
+          <rect x="200" y="238" width="240" height="30" rx="8" fill="rgba(26,158,143,0.15)" stroke="rgba(26,158,143,0.3)" stroke-width="1"/>
+          <text x="320" y="258" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="700" font-family="Inter">Score global CWV : 2 / 3 métriques dans le vert · Action : optimiser INP</text>
+        </svg>
+        <div class="r-svg-caption">Figure 4.1 — Dashboard Core Web Vitals : LCP (vitesse chargement), INP (réactivité), CLS (stabilité visuelle). Objectif : les 3 dans le vert.</div>
+      </div>
+
+      <h3 class="r-section-title">4.1 — Le piège des pages /app</h3>
+      <p class="r-text">La majorité des SaaS génèrent des milliers de pages derrière /app, /dashboard, /user, etc. Ces pages ne doivent jamais être indexées — mais elles consomment du crawl budget si elles ne sont pas bloquées correctement.</p>
+      <ul class="r-list">
+        <li><strong style="color:var(--text)">Robots.txt :</strong> <code style="background:var(--bg3);padding:.1rem .3rem;border-radius:3px;font-size:.82rem">Disallow: /app/</code> bloque le crawl mais pas l'indexation si des liens externes pointent dessus.</li>
+        <li><strong style="color:var(--text)">Meta noindex :</strong> plus sûr pour les pages authentifiées. Combine avec robots.txt pour maximiser la protection.</li>
+        <li><strong style="color:var(--text)">Canonical :</strong> pour les pages dynamiques avec paramètres (?sort=, ?filter=), utilise le canonical pour éviter le duplicate content.</li>
+      </ul>
+
+      <h3 class="r-section-title">4.2 — Structured Data pour les SaaS</h3>
+      <ul class="r-list">
+        <li><strong style="color:var(--text)">SoftwareApplication :</strong> schema.org pour ton produit — permet d'apparaître dans les rich results avec note, prix, OS compatibles.</li>
+        <li><strong style="color:var(--text)">FAQ schema :</strong> sur tes pages de vente et landing pages SEO pour occuper plus de place dans les SERP.</li>
+        <li><strong style="color:var(--text)">HowTo schema :</strong> pour tes tutoriels et guides techniques — booste le CTR sur les requêtes TOFU.</li>
+        <li><strong style="color:var(--text)">Article schema :</strong> sur tous tes articles de blog avec datePublished et dateModified — indique la fraîcheur à Google.</li>
+      </ul>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 4</div>
+        <ul>
+          <li>Bloque /app et toutes les pages authentifiées avec robots.txt + noindex</li>
+          <li>Cible LCP &lt; 2.5s, INP &lt; 200ms, CLS &lt; 0.1 — mesure dans Search Console</li>
+          <li>Implémente SoftwareApplication schema sur ta homepage produit</li>
+          <li>Les images non compressées sont souvent la cause #1 du mauvais LCP</li>
+        </ul>
+      </div>
+
+      <!-- Figure 4.2 : Architecture SEO d'un site SaaS -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 300" role="img" aria-label="Architecture SEO d'un site SaaS — pages indexables vs bloquées">
+          <rect width="640" height="300" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Architecture SEO SaaS — Indexable vs Bloqué</text>
+
+          <!-- Colonne gauche : indexable -->
+          <text x="160" y="50" text-anchor="middle" fill="#22C55E" font-size="10" font-weight="700" font-family="Inter">INDEXABLE ✓</text>
+          <rect x="40" y="60" width="240" height="34" rx="8" fill="rgba(34,197,94,0.15)" stroke="#22C55E" stroke-width="1.5"/>
+          <text x="160" y="82" text-anchor="middle" fill="#22C55E" font-size="10" font-weight="700" font-family="Inter">/ Homepage + /pricing</text>
+
+          <rect x="40" y="106" width="112" height="28" rx="6" fill="rgba(26,158,143,0.2)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="96" y="124" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">/blog/*</text>
+
+          <rect x="168" y="106" width="112" height="28" rx="6" fill="rgba(99,102,241,0.2)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="224" y="124" text-anchor="middle" fill="#6366F1" font-size="9" font-weight="700" font-family="Inter">/features/* /use-cases/*</text>
+
+          <rect x="40" y="148" width="112" height="28" rx="6" fill="rgba(26,158,143,0.2)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="96" y="166" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">/alternatives/* /vs-*</text>
+
+          <rect x="168" y="148" width="112" height="28" rx="6" fill="rgba(99,102,241,0.2)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="224" y="166" text-anchor="middle" fill="#6366F1" font-size="9" font-weight="700" font-family="Inter">/integrations/*</text>
+
+          <!-- Ligne séparatrice -->
+          <line x1="320" y1="45" x2="320" y2="265" stroke="#2D3748" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <text x="320" y="40" text-anchor="middle" fill="#2D3748" font-size="9" font-family="Inter">────</text>
+
+          <!-- Colonne droite : bloqué -->
+          <text x="480" y="50" text-anchor="middle" fill="#EF4444" font-size="10" font-weight="700" font-family="Inter">BLOQUÉ ✗</text>
+          <rect x="360" y="60" width="240" height="34" rx="8" fill="rgba(239,68,68,0.12)" stroke="#EF4444" stroke-width="1.5"/>
+          <text x="480" y="82" text-anchor="middle" fill="#EF4444" font-size="10" font-weight="700" font-family="Inter">/app/* /dashboard/* /settings/*</text>
+
+          <rect x="360" y="106" width="112" height="28" rx="6" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.4)" stroke-width="1"/>
+          <text x="416" y="124" text-anchor="middle" fill="#EF4444" font-size="9" font-family="Inter">/user/* /account/*</text>
+
+          <rect x="488" y="106" width="112" height="28" rx="6" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.4)" stroke-width="1"/>
+          <text x="544" y="124" text-anchor="middle" fill="#EF4444" font-size="9" font-family="Inter">/api/* /admin/*</text>
+
+          <!-- Méthode de blocage -->
+          <rect x="360" y="148" width="240" height="28" rx="6" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
+          <text x="480" y="162" text-anchor="middle" fill="#F59E0B" font-size="9" font-weight="700" font-family="Inter">robots.txt Disallow + meta noindex</text>
+          <text x="480" y="174" text-anchor="middle" fill="#F59E0B" font-size="8" font-family="Inter">(double protection requise)</text>
+
+          <!-- Note crawl budget -->
+          <rect x="40" y="210" width="560" height="42" rx="8" fill="rgba(26,158,143,0.07)" stroke="rgba(26,158,143,0.2)" stroke-width="1"/>
+          <text x="320" y="228" text-anchor="middle" fill="#94A3B8" font-size="9" font-weight="700" font-family="Inter">Crawl Budget : Googlebot alloue un nombre fixe de pages à crawler par site.</text>
+          <text x="320" y="244" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Pages /app non bloquées = budget gaspillé = pages SEO moins fréquemment recrawlées.</text>
+        </svg>
+        <div class="r-svg-caption">Figure 4.2 — Séparer clairement les zones indexables (blog, features, pricing) des zones applicatives bloquées préserve le crawl budget.</div>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="#ch3">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Architecture & Content Clusters</span>
+          </div>
+        </a>
+        <a href="#ch5" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">Link Building B2B</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         CH.5 — LINK BUILDING B2B
+    ════════════════════════════════════ -->
+    <section class="r-chapter" id="ch5">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">5</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 5</div>
+          <h2>Link Building B2B</h2>
+          <div class="dur">⏱ 60 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Le link building B2B pour un SaaS n'a rien à voir avec les tactiques "volume" du SEO e-commerce. Les backlinks qui comptent viennent d'éditeurs et de partenaires qui touchent ton ICP — et ils s'obtiennent par la valeur, pas par le spam.
+      </div>
+
+      <!-- Figure 5.1 : Pyramide qualité backlinks -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 300" role="img" aria-label="Pyramide qualité des backlinks B2B">
+          <rect width="640" height="300" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Pyramide de qualité des backlinks — SEO SaaS B2B</text>
+          <polygon points="320,42 180,142 460,142" fill="rgba(245,158,11,0.25)" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="320" y="82" text-anchor="middle" fill="#F59E0B" font-size="11" font-weight="800" font-family="Inter">TIER 1 — Autorité maximale</text>
+          <text x="320" y="100" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Presse tech, .edu, .gov, Think tanks</text>
+          <text x="320" y="116" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">DR 70+ · Très difficile · Impact fort</text>
+          <polygon points="180,148 460,148 520,215 120,215" fill="rgba(148,163,184,0.15)" stroke="#64748B" stroke-width="1.5"/>
+          <text x="320" y="178" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="800" font-family="Inter">TIER 2 — Autorité sectorielle</text>
+          <text x="320" y="196" text-anchor="middle" fill="#64748B" font-size="9" font-family="Inter">Blogs SaaS, médias Growth, Review sites (G2, Capterra)</text>
+          <polygon points="120,221 520,221 590,278 50,278" fill="rgba(26,158,143,0.2)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="320" y="250" text-anchor="middle" fill="#1A9E8F" font-size="11" font-weight="800" font-family="Inter">TIER 3 — Partenariats &amp; Intégrations</text>
+          <text x="320" y="268" text-anchor="middle" fill="#64748B" font-size="9" font-family="Inter">Marketplaces (Zapier, HubSpot), partenaires, guest posts — Le plus accessible</text>
+          <text x="56" y="100" fill="#F59E0B" font-size="9" font-family="Inter">Rareté ↑</text>
+          <text x="56" y="185" fill="#94A3B8" font-size="9" font-family="Inter">Qualité ↔</text>
+          <text x="56" y="258" fill="#1A9E8F" font-size="9" font-family="Inter">Volume ↓</text>
+        </svg>
+        <div class="r-svg-caption">Figure 5.1 — Tier 3 (intégrations) est le plus accessible et le plus sous-exploité par les SaaS. Commence là.</div>
+      </div>
+
+      <h3 class="r-section-title">5.1 — Les 3 sources de backlinks B2B qui fonctionnent</h3>
+      <p class="r-text">Pour un SaaS B2B, la question n'est pas "combien de backlinks ai-je ?" mais "de qui viennent-ils ?". Un backlink d'un média lu par tes ICPs vaut 10× un backlink d'un annuaire générique — même si son DR est inférieur.</p>
+      <ul class="r-list">
+        <li><strong>Guest posting ciblé :</strong> 2-3 articles/mois sur des médias lus par tes ICPs (SaaS, Growth, RevOps). Objectif : DR 40+, audience qualifiée, pas du DR 80 hors-sujet.</li>
+        <li><strong>Digital PR tech :</strong> données originales, études, rapports sectoriels. Un rapport "State of SaaS SEO 2026" peut générer 20-50 backlinks naturels si bien distribué.</li>
+        <li><strong>Backlinks intégrations/partenaires :</strong> chaque intégration dans un marketplace (HubSpot, Zapier, Notion) = backlink DA élevé. Souvent ignoré, pourtant gratuit.</li>
+      </ul>
+
+      <table class="r-table">
+        <tr><th>Source</th><th>DR typique</th><th>Délai résultat</th><th>ROI estimé</th><th>Scalable ?</th></tr>
+        <tr><td>Guest posting ciblé</td><td>40–70</td><td>1–3 mois</td><td>⭐⭐⭐⭐</td><td>Oui (chronophage)</td></tr>
+        <tr><td>Digital PR / Études</td><td>50–90+</td><td>3–6 mois</td><td>⭐⭐⭐⭐⭐</td><td>Non (effort ponctuel)</td></tr>
+        <tr><td>Intégrations marketplace</td><td>60–90</td><td>Immédiat</td><td>⭐⭐⭐⭐⭐</td><td>Oui (chaque intégration)</td></tr>
+        <tr><td>Review sites (G2, Capterra)</td><td>80–90</td><td>1 semaine</td><td>⭐⭐⭐</td><td>Limité</td></tr>
+        <tr><td>Partenariats co-marketing</td><td>40–70</td><td>2–4 mois</td><td>⭐⭐⭐⭐</td><td>Oui</td></tr>
+      </table>
+
+      <h3 class="r-section-title">5.2 — Ce qui ne marche pas (et pourquoi)</h3>
+      <ul class="r-list">
+        <li>Les link farms et PBN : risque de pénalité manuelle, surtout sur les niches B2B surveillées par Google.</li>
+        <li>Le link exchange massif : Google détecte les patterns de réciprocité anormaux entre domaines.</li>
+        <li>Les annuaires génériques : DR élevé mais zéro pertinence thématique = peu de valeur transmise.</li>
+      </ul>
+
+      <!-- Figure 5.2 : Process outreach B2B -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 200" role="img" aria-label="Process outreach B2B link building 5 étapes">
+          <rect width="640" height="200" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Process d'outreach B2B — De la cible au backlink</text>
+          <rect x="20" y="45" width="104" height="76" rx="10" fill="rgba(30,41,59,0.95)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="72" y="72" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="800" font-family="Inter">1. IDENTIFIER</text>
+          <text x="72" y="88" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Ahrefs / BuzzSumo</text>
+          <text x="72" y="102" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Backlinks concurrents</text>
+          <line x1="124" y1="83" x2="137" y2="83" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="133,78 141,83 133,88" fill="#475569"/>
+          <rect x="143" y="45" width="104" height="76" rx="10" fill="rgba(30,41,59,0.95)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="195" y="72" text-anchor="middle" fill="#818CF8" font-size="10" font-weight="800" font-family="Inter">2. QUALIFIER</text>
+          <text x="195" y="88" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">DR 40+, thématique</text>
+          <text x="195" y="102" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Audience = ICP</text>
+          <line x1="247" y1="83" x2="260" y2="83" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="256,78 264,83 256,88" fill="#475569"/>
+          <rect x="266" y="45" width="104" height="76" rx="10" fill="rgba(30,41,59,0.95)" stroke="#F59E0B" stroke-width="2"/>
+          <text x="318" y="68" text-anchor="middle" fill="#F59E0B" font-size="10" font-weight="800" font-family="Inter">3. PERSONNALISER</text>
+          <text x="318" y="84" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Lire leur contenu récent</text>
+          <text x="318" y="98" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Proposer angle unique</text>
+          <text x="318" y="112" text-anchor="middle" fill="#F59E0B" font-size="7.5" font-weight="700" font-family="Inter">Étape clé ★</text>
+          <line x1="370" y1="83" x2="383" y2="83" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="379,78 387,83 379,88" fill="#475569"/>
+          <rect x="389" y="45" width="104" height="76" rx="10" fill="rgba(30,41,59,0.95)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="441" y="72" text-anchor="middle" fill="#818CF8" font-size="10" font-weight="800" font-family="Inter">4. CONTACTER</text>
+          <text x="441" y="88" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Email court (150 mots)</text>
+          <text x="441" y="102" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">1 seul CTA</text>
+          <line x1="493" y1="83" x2="506" y2="83" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="502,78 510,83 502,88" fill="#475569"/>
+          <rect x="512" y="45" width="104" height="76" rx="10" fill="rgba(30,41,59,0.95)" stroke="#22C55E" stroke-width="1.5"/>
+          <text x="564" y="72" text-anchor="middle" fill="#22C55E" font-size="10" font-weight="800" font-family="Inter">5. SUIVRE</text>
+          <text x="564" y="88" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Relance J+7</text>
+          <text x="564" y="102" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">1 seule relance max</text>
+          <rect x="20" y="137" width="600" height="40" rx="8" fill="rgba(26,158,143,0.08)" stroke="rgba(26,158,143,0.2)" stroke-width="1"/>
+          <text x="320" y="154" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">Taux de réponse avec ce process : 15–25% vs 3–5% avec un email générique</text>
+          <text x="320" y="170" text-anchor="middle" fill="#64748B" font-size="8.5" font-family="Inter">La personnalisation (étape 3) multiplie par 3–5 le taux de réponse</text>
+        </svg>
+        <div class="r-svg-caption">Figure 5.2 — 5 étapes pour un outreach qui génère des réponses : la personnalisation (étape 3) est la clé différenciante.</div>
+      </div>
+
+      <h3 class="r-section-title">5.3 — Template d'outreach pour le guest posting</h3>
+      <p class="r-text">L'outreach qui fonctionne n'est pas long — il est pertinent. Voici la structure d'un email qui obtient des réponses :</p>
+      <ul class="r-list">
+        <li><strong>Objet :</strong> court, factuel, personnalisé. Ex : "Article pour [Blog] — Keyword research B2B SaaS".</li>
+        <li><strong>Corps (3 paragraphes) :</strong> (1) Tu connais leur contenu + tu cibles leur audience précise. (2) L'angle que tu proposes + pourquoi il manque dans leur blog. (3) 2 exemples de tes articles publiés ailleurs.</li>
+        <li><strong>CTA unique :</strong> une seule question, pas de liste de créneaux. Ex : "Est-ce que ce sujet correspond à votre planning éditorial ?"</li>
+        <li><strong>Relance J+7 :</strong> un seul email de relance, neutre, sans pression.</li>
+      </ul>
+
+      <div class="r-tip"><strong>Règle d'or :</strong> Ne commence jamais par "Je suis [X], fondateur de [Y]". Commence par ce que tu as lu sur leur blog et ce que tu peux apporter à leur audience. Le ratio "eux / toi" dans l'email doit être 70/30.</div>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 5</div>
+        <ul>
+          <li>Qualité &gt; quantité : 5 backlinks DR50+ pertinents &gt; 50 backlinks DR20 hors-sujet</li>
+          <li>Les intégrations marketplace sont les backlinks les plus sous-exploités d'un SaaS</li>
+          <li>Un bon rapport sectoriel peut générer des backlinks pendant 12–18 mois</li>
+          <li>L'outreach qui fonctionne est court, personnalisé, et centré sur l'audience du destinataire</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="#ch4">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">SEO technique pour SaaS</span>
+          </div>
+        </a>
+        <a href="#ch6" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">Contenu SEO qui convertit</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════
+         CH.6 — CONTENU QUI CONVERTIT
+    ════════════════════════════════════ -->
+    <section class="r-chapter" id="ch6">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">6</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 6</div>
+          <h2>Contenu SEO qui convertit</h2>
+          <div class="dur">⏱ 50 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Ranker est inutile si le trafic ne convertit pas. Ce chapitre couvre la méthode pour écrire du contenu qui sert à la fois Google et ton ICP — des articles qui éduquent, des landing pages qui convertissent, et des pages comparatifs qui closent.
+      </div>
+
+      <!-- Figure 6.1 : Structure article SEO -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 320" role="img" aria-label="Structure idéale d'un article SEO SaaS">
+          <rect width="640" height="320" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Structure idéale d'un article SEO SaaS</text>
+          <rect x="16"  y="38" width="608" height="36" rx="6" fill="rgba(30,41,59,0.9)" stroke="#1A9E8F" stroke-width="1.2"/>
+          <text x="28"  y="52" fill="#1A9E8F" font-size="10" font-weight="700" font-family="Inter">H1 — Titre intent-match</text>
+          <text x="28"  y="66" fill="#64748B" font-size="8.5" font-family="Inter">Contient le mot-clé principal · Répond exactement à la recherche</text>
+          <rect x="32"  y="82" width="576" height="36" rx="6" fill="rgba(30,41,59,0.9)" stroke="#6366F1" stroke-width="1.2"/>
+          <text x="44"  y="96" fill="#818CF8" font-size="10" font-weight="700" font-family="Inter">Hook (100–150 mots)</text>
+          <text x="44"  y="110" fill="#64748B" font-size="8.5" font-family="Inter">Confirme que l'article répond · Réduit le taux de rebond immédiat</text>
+          <rect x="48"  y="126" width="544" height="36" rx="6" fill="rgba(30,41,59,0.9)" stroke="#6366F1" stroke-width="1.2"/>
+          <text x="60"  y="140" fill="#818CF8" font-size="10" font-weight="700" font-family="Inter">H2 — Définition / Contexte</text>
+          <text x="60"  y="154" fill="#64748B" font-size="8.5" font-family="Inter">Pour les TOFU : pose les bases · Montre l'expertise dès le début</text>
+          <rect x="64"  y="170" width="512" height="36" rx="6" fill="rgba(30,41,59,0.9)" stroke="#6366F1" stroke-width="1.2"/>
+          <text x="76"  y="184" fill="#818CF8" font-size="10" font-weight="700" font-family="Inter">H2 — Corps principal (×3–5 sections)</text>
+          <text x="76"  y="198" fill="#64748B" font-size="8.5" font-family="Inter">Chaque H2 = une intention secondaire · H3 pour la granularité</text>
+          <rect x="80"  y="214" width="480" height="36" rx="6" fill="rgba(30,41,59,0.9)" stroke="#6366F1" stroke-width="1.2"/>
+          <text x="92"  y="228" fill="#818CF8" font-size="10" font-weight="700" font-family="Inter">H2 — Cas pratique / Exemple concret</text>
+          <text x="92"  y="242" fill="#64748B" font-size="8.5" font-family="Inter">Ancre dans le réel · Très valorisé par Google (E-E-A-T)</text>
+          <rect x="96"  y="258" width="448" height="36" rx="6" fill="rgba(30,41,59,0.9)" stroke="#F26C3A" stroke-width="1.2"/>
+          <text x="108" y="272" fill="#F26C3A" font-size="10" font-weight="700" font-family="Inter">CTA contextuel</text>
+          <text x="108" y="286" fill="#64748B" font-size="8.5" font-family="Inter">Ancré dans le contenu · Jamais générique · Lié à un bénéfice concret</text>
+        </svg>
+        <div class="r-svg-caption">Figure 6.1 — Chaque couche est plus étroite : la structure resserre le focus jusqu'au CTA.</div>
+      </div>
+
+      <h3 class="r-section-title">6.1 — La structure idéale d'un article SEO SaaS</h3>
+      <p class="r-text">La structure d'un article SEO n'est pas qu'une question de technique — c'est une question d'expérience utilisateur. Google récompense les pages où l'utilisateur trouve ce qu'il cherche rapidement. Voici les 5 éléments non négociables :</p>
+      <ul class="r-list">
+        <li><strong>H1 intent-match :</strong> le titre doit refléter exactement ce que cherche l'utilisateur. Pas de titre "créatif" qui manque le mot-clé.</li>
+        <li><strong>Hook (100 mots) :</strong> confirme immédiatement que l'article répond à la question. Réduit le taux de rebond.</li>
+        <li><strong>Définition rapide :</strong> pour les TOFU, 1-2 paragraphes qui définissent le concept de base avant d'aller en profondeur.</li>
+        <li><strong>Corps en sections H2/H3 :</strong> chaque H2 cible une intention secondaire. Les H3 apportent la granularité.</li>
+        <li><strong>CTA contextuel :</strong> un CTA ancré dans le contenu ("Si tu utilises [produit], voici comment…"), jamais générique.</li>
+      </ul>
+
+      <!-- Figure 6.2 : Taux de conversion par type de contenu -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 270" role="img" aria-label="Taux de conversion par type de contenu SEO SaaS">
+          <rect width="640" height="270" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Taux de conversion moyen par type de contenu — SEO SaaS</text>
+          <line x1="155" y1="38" x2="155" y2="215" stroke="#2D3748" stroke-width="1"/>
+          <line x1="155" y1="38" x2="620" y2="38" stroke="#2D3748" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="155" y1="82" x2="620" y2="82" stroke="#2D3748" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="155" y1="126" x2="620" y2="126" stroke="#2D3748" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="155" y1="170" x2="620" y2="170" stroke="#2D3748" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="155" y1="215" x2="620" y2="215" stroke="#2D3748" stroke-width="0.5"/>
+          <text x="147" y="42"  text-anchor="end" fill="#475569" font-size="9" font-family="Inter">8%</text>
+          <text x="147" y="86"  text-anchor="end" fill="#475569" font-size="9" font-family="Inter">6%</text>
+          <text x="147" y="130" text-anchor="end" fill="#475569" font-size="9" font-family="Inter">4%</text>
+          <text x="147" y="174" text-anchor="end" fill="#475569" font-size="9" font-family="Inter">2%</text>
+          <text x="147" y="219" text-anchor="end" fill="#475569" font-size="9" font-family="Inter">0%</text>
+          <!-- Article TOFU 0.5% → h=11 -->
+          <rect x="170" y="204" width="50" height="11" rx="3" fill="rgba(26,158,143,0.6)" stroke="#1A9E8F" stroke-width="1"/>
+          <text x="195" y="200" text-anchor="middle" fill="#1A9E8F" font-size="8.5" font-weight="700" font-family="Inter">0.5%</text>
+          <text x="195" y="230" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Article</text>
+          <text x="195" y="241" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">TOFU</text>
+          <!-- Comparatif 2.2% → h=50 -->
+          <rect x="245" y="165" width="50" height="50" rx="3" fill="rgba(99,102,241,0.6)" stroke="#6366F1" stroke-width="1"/>
+          <text x="270" y="161" text-anchor="middle" fill="#818CF8" font-size="8.5" font-weight="700" font-family="Inter">2.2%</text>
+          <text x="270" y="230" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Comparatif</text>
+          <text x="270" y="241" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">X vs Y</text>
+          <!-- Landing SEO 3.3% → h=74 -->
+          <rect x="320" y="141" width="50" height="74" rx="3" fill="rgba(99,102,241,0.7)" stroke="#6366F1" stroke-width="1"/>
+          <text x="345" y="137" text-anchor="middle" fill="#818CF8" font-size="8.5" font-weight="700" font-family="Inter">3.3%</text>
+          <text x="345" y="230" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Landing</text>
+          <text x="345" y="241" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">SEO ciblée</text>
+          <!-- Alternative à X 4.7% → h=106 -->
+          <rect x="395" y="109" width="50" height="106" rx="3" fill="rgba(242,108,58,0.7)" stroke="#F26C3A" stroke-width="1.5"/>
+          <text x="420" y="105" text-anchor="middle" fill="#F26C3A" font-size="8.5" font-weight="800" font-family="Inter">4.7%</text>
+          <text x="420" y="230" text-anchor="middle" fill="#F26C3A" font-size="8" font-weight="700" font-family="Inter">Alternative</text>
+          <text x="420" y="241" text-anchor="middle" fill="#F26C3A" font-size="8" font-weight="700" font-family="Inter">à X ★</text>
+          <!-- Page pricing 6.0% → h=135 -->
+          <rect x="470" y="80" width="50" height="135" rx="3" fill="rgba(242,108,58,0.85)" stroke="#F26C3A" stroke-width="2"/>
+          <text x="495" y="76" text-anchor="middle" fill="#F26C3A" font-size="8.5" font-weight="800" font-family="Inter">6.0%</text>
+          <text x="495" y="230" text-anchor="middle" fill="#F26C3A" font-size="8" font-weight="700" font-family="Inter">Page</text>
+          <text x="495" y="241" text-anchor="middle" fill="#F26C3A" font-size="8" font-weight="700" font-family="Inter">Pricing ★</text>
+          <!-- Tutoriel feature 1.7% → h=38 -->
+          <rect x="545" y="177" width="50" height="38" rx="3" fill="rgba(245,158,11,0.6)" stroke="#F59E0B" stroke-width="1"/>
+          <text x="570" y="173" text-anchor="middle" fill="#F59E0B" font-size="8.5" font-weight="700" font-family="Inter">1.7%</text>
+          <text x="570" y="230" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Tutoriel</text>
+          <text x="570" y="241" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Feature</text>
+          <text x="320" y="260" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">★ Les pages BOFU convertissent 8–12× mieux que les articles TOFU</text>
+        </svg>
+        <div class="r-svg-caption">Figure 6.2 — Les pages BOFU (alternatives, pricing, comparatifs) convertissent 4–8× mieux que les articles TOFU.</div>
+      </div>
+
+      <h3 class="r-section-title">6.2 — Pages "alternatives à X" : le template qui convertit</h3>
+      <p class="r-text">Les pages "alternative à [concurrent]" sont les pages BOFU les plus efficaces d'un SaaS. L'utilisateur est en mode décision — il compare activement. Voici le template en 5 sections :</p>
+      <ul class="r-list">
+        <li>Section 1 : Résumé honnête du concurrent (ne pas dénigrer — ça se voit)</li>
+        <li>Section 2 : Pour qui le concurrent est fait (et qui il ne sert pas bien)</li>
+        <li>Section 3 : Tableau comparatif objectif des fonctionnalités clés</li>
+        <li>Section 4 : Ce que ton produit fait mieux (avec preuves concrètes)</li>
+        <li>Section 5 : Témoignage d'un switcher + CTA essai gratuit</li>
+      </ul>
+
+      <div class="r-tip"><strong>Éthique éditoriale :</strong> Ne fabrique pas de données dans tes comparatifs. Les utilisateurs vérifient. Un seul chiffre faux détruit la confiance. Utilise des sources vérifiables (G2, Capterra, documentation officielle du concurrent).</div>
+
+      <h3 class="r-section-title">6.3 — Types de contenu et stratégie CTA</h3>
+      <table class="r-table">
+        <tr><th>Type de contenu</th><th>Intention</th><th>CTA recommandé</th><th>Taux conv. moyen</th></tr>
+        <tr><td>Article "Comment faire X"</td><td><span class="tag-tofu">TOFU</span></td><td>Lead magnet / Newsletter</td><td>0.3–0.8%</td></tr>
+        <tr><td>Comparatif "X vs Y"</td><td><span class="tag-mofu">MOFU</span></td><td>Essai gratuit / Demo</td><td>1.5–3.0%</td></tr>
+        <tr><td>"Alternative à [concurrent]"</td><td><span class="tag-bofu">BOFU</span></td><td>Essai / Démo immédiate</td><td>3.5–6.0%</td></tr>
+        <tr><td>Landing page SEO ciblée</td><td><span class="tag-bofu">BOFU</span></td><td>Inscription / Essai</td><td>2.5–4.5%</td></tr>
+        <tr><td>Page pricing / Plans</td><td><span class="tag-bofu">BOFU</span></td><td>Achat direct / Essai</td><td>4.0–8.0%</td></tr>
+        <tr><td>Tutoriel fonctionnalité</td><td><span class="tag-mofu">MOFU</span></td><td>Upgrade / Feature unlock</td><td>1.0–2.5%</td></tr>
+      </table>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 6</div>
+        <ul>
+          <li>L'intent-match du H1 impacte directement le CTR dans les SERP</li>
+          <li>Les pages "alternatives à X" ont les taux de conversion les plus élevés en BOFU</li>
+          <li>Un CTA contextuel convertit 2–4× mieux qu'un bandeau générique</li>
+          <li>Mets à jour tes articles tous les 6–12 mois — Google récompense la fraîcheur</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="#ch5">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Link Building B2B</span>
+          </div>
+        </a>
+        <a href="#ch7" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">Mesure & Reporting SEO</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════
+         CH.7 — MESURE & REPORTING
+    ════════════════════════════════════ -->
+    <section class="r-chapter" id="ch7">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">7</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 7</div>
+          <h2>Mesure &amp; Reporting SEO</h2>
+          <div class="dur">⏱ 40 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Tu ne peux pas améliorer ce que tu ne mesures pas. Ce chapitre te donne le setup Google Search Console avancé, le dashboard Looker Studio à construire en 2h, et la matrice Impact/Effort pour prioriser tes prochaines actions sans te noyer dans les données.
+      </div>
+
+      <!-- Figure 7.1 : Dashboard GSC -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 290" role="img" aria-label="Dashboard Google Search Console simulé">
+          <rect width="640" height="290" fill="#1E293B"/>
+          <rect x="0" y="0" width="640" height="38" fill="#273549"/>
+          <text x="24" y="24" fill="#94A3B8" font-size="11" font-weight="700" font-family="Inter">Search Console — Performance · Derniers 90 jours</text>
+          <rect x="500" y="8" width="120" height="22" rx="5" fill="rgba(26,158,143,0.2)" stroke="rgba(26,158,143,0.35)" stroke-width="1"/>
+          <text x="560" y="23" text-anchor="middle" fill="#1A9E8F" font-size="9.5" font-weight="700" font-family="Inter">Filtrer : BOFU only</text>
+          <rect x="24"  y="46" width="148" height="56" rx="8" fill="#17202E" stroke="#2D3748" stroke-width="1"/>
+          <text x="36"  y="64" fill="#64748B" font-size="9" font-family="Inter">Clics totaux</text>
+          <text x="36"  y="84" fill="#E2E8F0" font-size="18" font-weight="800" font-family="Inter">12 450</text>
+          <text x="36"  y="98" fill="#22C55E" font-size="9" font-weight="700" font-family="Inter">+18%</text>
+          <rect x="188" y="46" width="148" height="56" rx="8" fill="#17202E" stroke="#2D3748" stroke-width="1"/>
+          <text x="200" y="64" fill="#64748B" font-size="9" font-family="Inter">Impressions</text>
+          <text x="200" y="84" fill="#E2E8F0" font-size="18" font-weight="800" font-family="Inter">284 000</text>
+          <text x="200" y="98" fill="#22C55E" font-size="9" font-weight="700" font-family="Inter">+31%</text>
+          <rect x="352" y="46" width="148" height="56" rx="8" fill="#17202E" stroke="#2D3748" stroke-width="1"/>
+          <text x="364" y="64" fill="#64748B" font-size="9" font-family="Inter">CTR moyen</text>
+          <text x="364" y="84" fill="#E2E8F0" font-size="18" font-weight="800" font-family="Inter">4.38%</text>
+          <text x="364" y="98" fill="#22C55E" font-size="9" font-weight="700" font-family="Inter">+0.6pt</text>
+          <rect x="516" y="46" width="100" height="56" rx="8" fill="#17202E" stroke="#2D3748" stroke-width="1"/>
+          <text x="528" y="64" fill="#64748B" font-size="9" font-family="Inter">Position moy.</text>
+          <text x="528" y="84" fill="#E2E8F0" font-size="18" font-weight="800" font-family="Inter">14.2</text>
+          <text x="528" y="98" fill="#22C55E" font-size="9" font-weight="700" font-family="Inter">-2.1</text>
+          <rect x="0" y="110" width="640" height="22" fill="#1A2335"/>
+          <text x="16"  y="125" fill="#475569" font-size="9.5" font-weight="700" font-family="Inter">REQUÊTE</text>
+          <text x="320" y="125" fill="#475569" font-size="9.5" font-weight="700" font-family="Inter">CLICS</text>
+          <text x="400" y="125" fill="#475569" font-size="9.5" font-weight="700" font-family="Inter">IMPR.</text>
+          <text x="480" y="125" fill="#475569" font-size="9.5" font-weight="700" font-family="Inter">CTR</text>
+          <text x="558" y="125" fill="#475569" font-size="9.5" font-weight="700" font-family="Inter">POS.</text>
+          <rect x="0" y="132" width="640" height="28" fill="rgba(242,108,58,0.05)"/>
+          <text x="16"  y="150" fill="#F26C3A" font-size="9.5" font-family="Inter">alternative à [concurrent] saas</text>
+          <text x="320" y="150" fill="#94A3B8" font-size="9.5" font-family="Inter">284</text>
+          <text x="400" y="150" fill="#94A3B8" font-size="9.5" font-family="Inter">3 200</text>
+          <text x="480" y="150" fill="#22C55E" font-size="9.5" font-family="Inter">8.9%</text>
+          <text x="558" y="150" fill="#22C55E" font-size="9.5" font-weight="700" font-family="Inter">3.2</text>
+          <rect x="0" y="160" width="640" height="28" fill="#1E293B"/>
+          <text x="16"  y="178" fill="#E2E8F0" font-size="9.5" font-family="Inter">meilleur outil seo pour saas b2b</text>
+          <text x="320" y="178" fill="#94A3B8" font-size="9.5" font-family="Inter">156</text>
+          <text x="400" y="178" fill="#94A3B8" font-size="9.5" font-family="Inter">4 800</text>
+          <text x="480" y="178" fill="#22C55E" font-size="9.5" font-family="Inter">3.3%</text>
+          <text x="558" y="178" fill="#F59E0B" font-size="9.5" font-weight="700" font-family="Inter">8.1</text>
+          <rect x="0" y="188" width="640" height="28" fill="#17202E"/>
+          <text x="16"  y="206" fill="#E2E8F0" font-size="9.5" font-family="Inter">comment faire keyword research saas</text>
+          <text x="320" y="206" fill="#94A3B8" font-size="9.5" font-family="Inter">421</text>
+          <text x="400" y="206" fill="#94A3B8" font-size="9.5" font-family="Inter">8 100</text>
+          <text x="480" y="206" fill="#22C55E" font-size="9.5" font-family="Inter">5.2%</text>
+          <text x="558" y="206" fill="#F59E0B" font-size="9.5" font-weight="700" font-family="Inter">5.4</text>
+          <rect x="0" y="216" width="640" height="28" fill="rgba(242,108,58,0.05)"/>
+          <text x="16"  y="234" fill="#F26C3A" font-size="9.5" font-family="Inter">guide link building b2b saas</text>
+          <text x="320" y="234" fill="#94A3B8" font-size="9.5" font-family="Inter">73</text>
+          <text x="400" y="234" fill="#94A3B8" font-size="9.5" font-family="Inter">1 800</text>
+          <text x="480" y="234" fill="#22C55E" font-size="9.5" font-family="Inter">4.1%</text>
+          <text x="558" y="234" fill="#F59E0B" font-size="9.5" font-weight="700" font-family="Inter">11.3</text>
+          <text x="320" y="278" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Les lignes orange = opportunités near-win (pos 4–15) à optimiser en priorité</text>
+        </svg>
+        <div class="r-svg-caption">Figure 7.1 — Les lignes orange (pos 4–15) sont les quick wins : une meta description retravaillée peut suffire.</div>
+      </div>
+
+      <h3 class="r-section-title">7.1 — Google Search Console : les 5 vues qui comptent</h3>
+      <p class="r-text">GSC contient plus de données utiles que la plupart des SaaS ne l'exploitent. Le problème n'est pas le manque de données — c'est savoir où regarder. Voici les 5 filtres à configurer :</p>
+      <ul class="r-list">
+        <li><strong>Requêtes BOFU :</strong> filtre sur les mots-clés "alternative", "vs", "prix", "intégration" — ce sont tes prospects les plus chauds.</li>
+        <li><strong>Pages à fort trafic, faible CTR :</strong> rich opportunity — une meilleure meta description peut booster le trafic sans toucher au contenu.</li>
+        <li><strong>Pages position 4–10 :</strong> les "near wins" — 10 articles bien ciblés peuvent passer en top 3 avec quelques optimisations.</li>
+        <li><strong>Couverture d'index :</strong> surveille les erreurs, les pages exclues, les pages "découvertes mais non indexées".</li>
+        <li><strong>Core Web Vitals :</strong> vue par template (homepage, articles, landing pages) — priorise par volume de pages affectées.</li>
+      </ul>
+
+      <h3 class="r-section-title">7.2 — Dashboard Looker Studio : le setup en 2h</h3>
+      <p class="r-text">Looker Studio (anciennement Google Data Studio) est gratuit et se connecte directement à GSC et GA4. Voici les 5 widgets essentiels à construire une fois et à regarder chaque semaine :</p>
+      <table class="r-table">
+        <tr><th>Widget</th><th>Source</th><th>KPI principal</th><th>Fréquence d'alerte</th></tr>
+        <tr><td>Évolution clics vs impressions</td><td>GSC</td><td>Tendance MoM</td><td>Hebdomadaire</td></tr>
+        <tr><td>Top 20 pages BOFU</td><td>GSC + GA4</td><td>Clics + Taux conv.</td><td>Hebdomadaire</td></tr>
+        <tr><td>Near wins (pos 4–15)</td><td>GSC</td><td>Volume impr. &gt; 500</td><td>Mensuelle</td></tr>
+        <tr><td>Referring domains growth</td><td>Ahrefs / SEMrush API</td><td>+X domaines/mois</td><td>Mensuelle</td></tr>
+        <tr><td>Core Web Vitals par template</td><td>GSC CWV</td><td>% pages "Good"</td><td>Mensuelle</td></tr>
+      </table>
+
+      <!-- Figure 7.2 : Matrice Impact/Effort -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 310" role="img" aria-label="Matrice Impact Effort priorisation SEO">
+          <rect width="640" height="310" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Matrice Impact / Effort — Priorisation des actions SEO</text>
+          <line x1="70" y1="40" x2="70" y2="270" stroke="#2D3748" stroke-width="1.5"/>
+          <line x1="70" y1="155" x2="610" y2="155" stroke="#2D3748" stroke-width="1.5"/>
+          <text x="38" y="44" fill="#475569" font-size="8" font-family="Inter" text-anchor="middle">IMPACT</text>
+          <text x="38" y="58" fill="#475569" font-size="8" font-family="Inter" text-anchor="middle">ÉLEVÉ ↑</text>
+          <text x="38" y="262" fill="#475569" font-size="8" font-family="Inter" text-anchor="middle">↓ FAIBLE</text>
+          <text x="95" y="158" fill="#475569" font-size="8" font-family="Inter">EFFORT FAIBLE →</text>
+          <text x="480" y="158" fill="#475569" font-size="8" font-family="Inter">← EFFORT ÉLEVÉ</text>
+          <rect x="75" y="44" width="260" height="106" rx="8" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+          <text x="205" y="68" text-anchor="middle" fill="#22C55E" font-size="12" font-weight="800" font-family="Inter">FAIRE EN PREMIER ✓</text>
+          <text x="205" y="86" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Optimiser meta (pos 4–10)</text>
+          <text x="205" y="102" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Ajouter CTA aux articles qui convertissent</text>
+          <text x="205" y="118" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Corriger les erreurs 404 avec backlinks</text>
+          <text x="205" y="134" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Mettre à jour les articles position 5–15</text>
+          <rect x="345" y="44" width="260" height="106" rx="8" fill="rgba(99,102,241,0.1)" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+          <text x="475" y="68" text-anchor="middle" fill="#818CF8" font-size="12" font-weight="800" font-family="Inter">PLANIFIER 📅</text>
+          <text x="475" y="86" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Créer un cluster thématique complet</text>
+          <text x="475" y="102" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Campagne link building Digital PR</text>
+          <text x="475" y="118" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Refonte technique Core Web Vitals</text>
+          <text x="475" y="134" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Produire 10 articles MOFU/BOFU</text>
+          <rect x="75" y="163" width="260" height="102" rx="8" fill="rgba(26,158,143,0.08)" stroke="rgba(26,158,143,0.2)" stroke-width="1"/>
+          <text x="205" y="186" text-anchor="middle" fill="#1A9E8F" font-size="12" font-weight="800" font-family="Inter">QUAND DISPONIBLE</text>
+          <text x="205" y="204" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Ajouter structured data sur vieux articles</text>
+          <text x="205" y="220" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Compresser les images des articles anciens</text>
+          <text x="205" y="236" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Mettre à jour les dates de publication</text>
+          <text x="205" y="252" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Vérifier les liens internes cassés</text>
+          <rect x="345" y="163" width="260" height="102" rx="8" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
+          <text x="475" y="186" text-anchor="middle" fill="#EF4444" font-size="12" font-weight="800" font-family="Inter">ÉVITER ✗</text>
+          <text x="475" y="204" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Réécrire des articles qui rankent déjà</text>
+          <text x="475" y="220" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Cibler des mots-clés KD &gt; 70</text>
+          <text x="475" y="236" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Créer des pages pour du duplicate content</text>
+          <text x="475" y="252" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Acheter des backlinks spammy</text>
+          <text x="320" y="295" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Remplis cette matrice chaque mois avec tes actions SEO — priorise strictement le Q1</text>
+        </svg>
+        <div class="r-svg-caption">Figure 7.2 — Matrice Impact/Effort : focus systématique sur le Q1 (haut impact, faible effort).</div>
+      </div>
+
+      <h3 class="r-section-title">7.3 — Cadence de reporting SEO</h3>
+      <ul class="r-list">
+        <li><strong>Hebdomadaire (15 min) :</strong> vérifier les clics BOFU, les nouvelles erreurs GSC, les nouvelles pages indexées.</li>
+        <li><strong>Mensuel (1h) :</strong> analyse approfondie des positions, mise à jour de la matrice Impact/Effort, décision sur les prochains articles à optimiser.</li>
+        <li><strong>Trimestriel (2h) :</strong> bilan de la stratégie de contenu, ROI SEO (leads attribués), ajustement des clusters prioritaires.</li>
+      </ul>
+
+      <div class="r-tip"><strong>Automatise le rapport :</strong> Utilise les alertes email de GSC + un Looker Studio partagé avec ton équipe. Objectif : que le rapport SEO soit lisible en 5 minutes par quelqu'un qui n'est pas expert SEO.</div>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 7</div>
+        <ul>
+          <li>Position 4–10 = priorité max : peu d'effort, fort impact</li>
+          <li>CTR &lt; 2% sur position 1–3 = meta description à retravailler immédiatement</li>
+          <li>Reporte chaque semaine, analyse en profondeur chaque mois</li>
+          <li>La matrice Impact/Effort évite de passer 80% du temps sur des tâches à faible ROI</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="#ch6">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Contenu SEO qui convertit</span>
+          </div>
+        </a>
+        <a href="#ch8" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">Automatisation & IA</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════
+         CH.8 — AUTOMATISATION & IA
+    ════════════════════════════════════ -->
+    <section class="r-chapter" id="ch8">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">8</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 8</div>
+          <h2>Automatisation &amp; IA au service du SEO</h2>
+          <div class="dur">⏱ 45 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        L'IA ne remplace pas la stratégie SEO — elle accélère son exécution. Ce chapitre te donne des workflows concrets pour générer des briefs de contenu avec GPT-4, détecter des opportunités SEO en automatique depuis GSC, et construire des pipelines Make/n8n qui font tourner ta machine de contenu.
+      </div>
+
+      <!-- Figure 8.1 : Workflow IA de création de contenu -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 260" role="img" aria-label="Workflow automatisé de création de contenu SEO avec IA">
+          <rect width="640" height="260" fill="#1E293B"/>
+          <text x="320" y="24" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Workflow de création de contenu SEO — Assisté par IA</text>
+          <text x="320" y="42" text-anchor="middle" fill="#64748B" font-size="9" font-family="Inter">De la détection d'opportunité à la publication trackée</text>
+          <rect x="30"  y="110" width="98" height="80" rx="10" fill="rgba(30,41,59,0.95)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="79"  y="140" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="800" font-family="Inter">GSC Export</text>
+          <text x="79"  y="158" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Hebdomadaire</text>
+          <text x="79"  y="172" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">(API ou manuel)</text>
+          <polygon points="131,147 137,142 137,152" fill="#475569"/>
+          <line x1="128" y1="147" x2="136" y2="147" stroke="#475569" stroke-width="1.5"/>
+          <rect x="155" y="110" width="98" height="80" rx="10" fill="rgba(30,41,59,0.95)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="204" y="140" text-anchor="middle" fill="#6366F1" font-size="10" font-weight="800" font-family="Inter">Filtre auto</text>
+          <text x="204" y="158" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Pos 4–15</text>
+          <text x="204" y="172" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Impr &gt; 100</text>
+          <polygon points="256,147 262,142 262,152" fill="#475569"/>
+          <line x1="253" y1="147" x2="261" y2="147" stroke="#475569" stroke-width="1.5"/>
+          <rect x="280" y="110" width="98" height="80" rx="10" fill="rgba(30,41,59,0.95)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="329" y="140" text-anchor="middle" fill="#6366F1" font-size="10" font-weight="800" font-family="Inter">GPT-4 Brief</text>
+          <text x="329" y="158" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Titre + H2/H3</text>
+          <text x="329" y="172" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Angle différenciant</text>
+          <polygon points="381,147 387,142 387,152" fill="#475569"/>
+          <line x1="378" y1="147" x2="386" y2="147" stroke="#475569" stroke-width="1.5"/>
+          <rect x="405" y="110" width="98" height="80" rx="10" fill="rgba(30,41,59,0.95)" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="454" y="140" text-anchor="middle" fill="#F59E0B" font-size="10" font-weight="800" font-family="Inter">Rédaction</text>
+          <text x="454" y="158" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Humain ou IA</text>
+          <text x="454" y="172" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">+ révision éditoriale</text>
+          <polygon points="506,147 512,142 512,152" fill="#475569"/>
+          <line x1="503" y1="147" x2="511" y2="147" stroke="#475569" stroke-width="1.5"/>
+          <rect x="530" y="110" width="98" height="80" rx="10" fill="rgba(30,41,59,0.95)" stroke="#22C55E" stroke-width="1.5"/>
+          <text x="579" y="140" text-anchor="middle" fill="#22C55E" font-size="10" font-weight="800" font-family="Inter">Publish + Track</text>
+          <text x="579" y="158" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">GSC + Looker</text>
+          <text x="579" y="172" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Résultats J+30</text>
+          <rect x="30" y="205" width="580" height="40" rx="8" fill="rgba(26,158,143,0.08)" stroke="rgba(26,158,143,0.2)" stroke-width="1"/>
+          <text x="320" y="222" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">Automatisable avec Make ou n8n : GSC → Sheets → Slack (alerte opportunité) → Notion (brief)</text>
+          <text x="320" y="238" text-anchor="middle" fill="#64748B" font-size="8.5" font-family="Inter">Temps humain moyen par article avec ce workflow : 2–3h vs 5–8h sans automatisation</text>
+        </svg>
+        <div class="r-svg-caption">Figure 8.1 — Ce workflow réduit le temps par article de 60%. L'IA gère la structure, l'humain apporte l'expertise.</div>
+      </div>
+
+      <h3 class="r-section-title">8.1 — GPT-4 pour les briefs de contenu</h3>
+      <p class="r-text">Le brief de contenu est la tâche SEO la plus chronophage — et la plus standardisable. GPT-4 peut faire en 5 minutes ce qui prendrait 2h : analyse des top 3 SERP, extraction des angles manquants, génération d'une structure H2/H3 complète.</p>
+      <ul class="r-list">
+        <li><strong>Le prompt de brief :</strong> donne à GPT le mot-clé cible, le niveau de l'ICP, les 3 concurrents top 3, et demande-lui : structure H2/H3, angle différenciant, questions auxquelles répondre.</li>
+        <li><strong>Ce que l'IA fait bien :</strong> structurer, identifier les angles, générer des variations de titres, créer des outlines détaillées.</li>
+        <li><strong>Ce que l'IA fait mal :</strong> les données propriétaires, le ton de marque authentique, la nuance sur des sujets complexes. Toujours réviser.</li>
+      </ul>
+
+      <div class="r-tip"><strong>Prompt template :</strong> "Tu es un expert SEO B2B SaaS. Crée un brief complet pour un article ciblant [MOT-CLÉ]. Audience : [ICP]. Les 3 articles en top SERP sont : [URLs]. Génère : (1) H1 + 3 alternatives de titre, (2) Structure H2/H3 complète, (3) 5 questions auxquelles l'article doit répondre et qui manquent dans les top 3, (4) L'angle différenciant recommandé."</div>
+
+      <h3 class="r-section-title">8.2 — Détection automatisée d'opportunités SEO</h3>
+      <ul class="r-list">
+        <li>Export hebdomadaire GSC (API) → Google Sheets → filtre auto sur : position 4–15 + impressions &gt; 100 + CTR &lt; 3%.</li>
+        <li>Ces pages sont tes "quick wins" : une optimisation du H1, de la meta, ou un ajout de contenu suffit souvent.</li>
+        <li>Connecte ce workflow à un Slack ou un email hebdomadaire pour recevoir ta liste d'actions sans ouvrir GSC.</li>
+      </ul>
+
+      <!-- Figure 8.2 : Workflow Make/n8n -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 230" role="img" aria-label="Workflow Make n8n automatisation SEO hebdomadaire">
+          <rect width="640" height="230" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Workflow Automatisation SEO — Make / n8n</text>
+          <text x="320" y="38" text-anchor="middle" fill="#64748B" font-size="9" font-family="Inter">Déclenché chaque lundi à 8h — résultats dans Slack avant 8h05</text>
+          <rect x="15"  y="58" width="92" height="74" rx="10" fill="rgba(26,158,143,0.15)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="61"  y="83" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="800" font-family="Inter">GSC API</text>
+          <text x="61"  y="99" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Export données</text>
+          <text x="61"  y="113" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">90 derniers jours</text>
+          <text x="61"  y="124" text-anchor="middle" fill="#475569" font-size="7.5" font-family="Inter">Trigger: Lundi 8h</text>
+          <line x1="107" y1="95" x2="124" y2="95" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="120,90 128,95 120,100" fill="#475569"/>
+          <rect x="132" y="58" width="92" height="74" rx="10" fill="rgba(99,102,241,0.15)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="178" y="83" text-anchor="middle" fill="#818CF8" font-size="10" font-weight="800" font-family="Inter">FILTRE</text>
+          <text x="178" y="99" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Pos 4–15</text>
+          <text x="178" y="113" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Impr &gt; 100</text>
+          <text x="178" y="124" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">CTR &lt; 3%</text>
+          <line x1="224" y1="95" x2="241" y2="95" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="237,90 245,95 237,100" fill="#475569"/>
+          <rect x="249" y="58" width="92" height="74" rx="10" fill="rgba(34,197,94,0.15)" stroke="#22C55E" stroke-width="1.5"/>
+          <text x="295" y="83" text-anchor="middle" fill="#22C55E" font-size="10" font-weight="800" font-family="Inter">SHEETS</text>
+          <text x="295" y="99" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Enregistre</text>
+          <text x="295" y="113" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">quick wins</text>
+          <text x="295" y="124" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">+ historique</text>
+          <line x1="341" y1="95" x2="358" y2="95" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="354,90 362,95 354,100" fill="#475569"/>
+          <rect x="366" y="58" width="92" height="74" rx="10" fill="rgba(245,158,11,0.15)" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="412" y="83" text-anchor="middle" fill="#F59E0B" font-size="10" font-weight="800" font-family="Inter">GPT-4</text>
+          <text x="412" y="99" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Génère brief</text>
+          <text x="412" y="113" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">H2/H3 + angle</text>
+          <text x="412" y="124" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">→ Notion page</text>
+          <line x1="458" y1="95" x2="475" y2="95" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="471,90 479,95 471,100" fill="#475569"/>
+          <rect x="483" y="58" width="92" height="74" rx="10" fill="rgba(242,108,58,0.15)" stroke="#F26C3A" stroke-width="1.5"/>
+          <text x="529" y="83" text-anchor="middle" fill="#F26C3A" font-size="10" font-weight="800" font-family="Inter">SLACK</text>
+          <text x="529" y="99" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Message résumé</text>
+          <text x="529" y="113" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">+ lien Notion</text>
+          <text x="529" y="124" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">brief prêt</text>
+          <rect x="15" y="148" width="610" height="40" rx="8" fill="rgba(26,158,143,0.08)" stroke="rgba(26,158,143,0.2)" stroke-width="1"/>
+          <text x="320" y="165" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">Résultat : chaque lundi, une liste de 5–15 quick wins + leur brief IA dans Notion</text>
+          <text x="320" y="181" text-anchor="middle" fill="#64748B" font-size="8.5" font-family="Inter">Setup : ~4h | Temps hebdo économisé : 45–60 min | Zéro action manuelle requise</text>
+          <text x="320" y="216" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Compatible Make (Integromat) et n8n (self-hosted) — nodes GSC et Slack disponibles nativement</text>
+        </svg>
+        <div class="r-svg-caption">Figure 8.2 — Ce pipeline Make/n8n tourne chaque semaine sans intervention humaine : les opportunités arrivent dans Slack le lundi matin.</div>
+      </div>
+
+      <h3 class="r-section-title">8.3 — Tâches SEO automatisables avec Make/n8n</h3>
+      <table class="r-table">
+        <tr><th>Tâche SEO</th><th>Outil</th><th>Fréquence</th><th>Temps économisé</th></tr>
+        <tr><td>Détection near-wins GSC → Slack</td><td>Make + GSC API</td><td>Hebdomadaire</td><td>45 min/semaine</td></tr>
+        <tr><td>Génération de brief GPT-4 → Notion</td><td>Make + OpenAI</td><td>Sur déclenchement</td><td>1–2h/article</td></tr>
+        <tr><td>Monitoring ranking nouveaux articles</td><td>n8n + GSC</td><td>Quotidien</td><td>20 min/jour</td></tr>
+        <tr><td>Alerte nouvelles erreurs GSC</td><td>Make + Gmail</td><td>Quotidien</td><td>15 min/jour</td></tr>
+        <tr><td>Rapport SEO mensuel automatisé</td><td>Looker Studio + Slack</td><td>Mensuel</td><td>1h/mois</td></tr>
+        <tr><td>Monitoring backlinks (nouveaux/perdus)</td><td>n8n + Ahrefs API</td><td>Hebdomadaire</td><td>30 min/semaine</td></tr>
+      </table>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 8</div>
+        <ul>
+          <li>L'IA accélère l'exécution — elle ne remplace pas la stratégie ni la valeur éditoriale</li>
+          <li>Le brief GPT-4 fait économiser 1–2h par article de recherche et de structuration</li>
+          <li>L'automatisation GSC → Sheets → Slack crée un système de veille passif</li>
+          <li>Commence par automatiser 1 tâche répétitive, pas tout en même temps</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div><!-- fin layout -->
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      const ch = id.replace('ch','');
+      document.querySelectorAll('.r-ch-link').forEach(a => a.classList.remove('active'));
+      const link = document.querySelector(`.r-ch-link[data-ch="${ch}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin:'-20% 0px -70% 0px' });
+
+document.querySelectorAll('.r-chapter').forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

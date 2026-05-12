@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Mesure & Reporting SEO — SEO pour SaaS · FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/formations.css"/>
+</head>
+<body>
+
+<nav class="r-nav">
+  <a href="../../index.html" class="r-nav-logo"><span>Forma</span>Elan</a>
+  <div class="r-breadcrumb">
+    <a href="../../index.html">Accueil</a> /
+    <a href="../../pages/seo-saas.html">SEO pour SaaS</a> /
+    <span>Chapitre 7</span>
+  </div>
+</nav>
+
+<div class="r-layout">
+
+  <aside class="r-sidebar">
+    <div class="r-sidebar-title">Sommaire</div>
+    <a href="ch1-fondamentaux.html" class="r-ch-link"><div class="r-ch-num">1</div>Fondamentaux SEO SaaS</a>
+    <a href="ch2-mots-cles.html" class="r-ch-link"><div class="r-ch-num">2</div>Mots-clés intent-driven</a>
+    <a href="ch3-content-clusters.html" class="r-ch-link"><div class="r-ch-num">3</div>Content Clusters</a>
+    <a href="ch4-seo-technique.html" class="r-ch-link"><div class="r-ch-num">4</div>SEO Technique</a>
+    <a href="ch5-link-building.html" class="r-ch-link"><div class="r-ch-num">5</div>Link Building B2B</a>
+    <a href="ch6-contenu-convertit.html" class="r-ch-link"><div class="r-ch-num">6</div>Contenu qui convertit</a>
+    <a href="ch7-mesure-reporting.html" class="r-ch-link active"><div class="r-ch-num">7</div>Mesure &amp; Reporting</a>
+    <a href="ch8-automatisation-ia.html" class="r-ch-link"><div class="r-ch-num">8</div>Automatisation &amp; IA</a>
+    <div class="r-sidebar-sep"></div>
+    <a href="../../pages/seo-saas.html" class="r-ch-link" style="font-size:.78rem;color:var(--muted)">← Page de la formation</a>
+  </aside>
+
+  <main class="r-main">
+    <section class="r-chapter" id="ch7">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">7</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 7</div>
+          <h2>Mesure &amp; Reporting SEO</h2>
+          <div class="dur">⏱ 40 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Tu ne peux pas améliorer ce que tu ne mesures pas. Ce chapitre te donne le setup Google Search Console avancé, le dashboard Looker Studio à construire en 2h, et la matrice Impact/Effort pour prioriser tes prochaines actions sans te noyer dans les données.
+      </div>
+
+      <!-- Figure 7.1 : Dashboard GSC -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 290" role="img" aria-label="Dashboard Google Search Console simulé">
+          <rect width="640" height="290" fill="#1E293B"/>
+          <rect x="0" y="0" width="640" height="38" fill="#273549"/>
+          <text x="24" y="24" fill="#94A3B8" font-size="11" font-weight="700" font-family="Inter">Search Console — Performance · Derniers 90 jours</text>
+          <rect x="500" y="8" width="120" height="22" rx="5" fill="rgba(26,158,143,0.2)" stroke="rgba(26,158,143,0.35)" stroke-width="1"/>
+          <text x="560" y="23" text-anchor="middle" fill="#1A9E8F" font-size="9.5" font-weight="700" font-family="Inter">Filtrer : BOFU only</text>
+          <rect x="24"  y="46" width="148" height="56" rx="8" fill="#17202E" stroke="#2D3748" stroke-width="1"/>
+          <text x="36"  y="64" fill="#64748B" font-size="9" font-family="Inter">Clics totaux</text>
+          <text x="36"  y="84" fill="#E2E8F0" font-size="18" font-weight="800" font-family="Inter">12 450</text>
+          <text x="36"  y="98" fill="#22C55E" font-size="9" font-weight="700" font-family="Inter">+18%</text>
+          <rect x="188" y="46" width="148" height="56" rx="8" fill="#17202E" stroke="#2D3748" stroke-width="1"/>
+          <text x="200" y="64" fill="#64748B" font-size="9" font-family="Inter">Impressions</text>
+          <text x="200" y="84" fill="#E2E8F0" font-size="18" font-weight="800" font-family="Inter">284 000</text>
+          <text x="200" y="98" fill="#22C55E" font-size="9" font-weight="700" font-family="Inter">+31%</text>
+          <rect x="352" y="46" width="148" height="56" rx="8" fill="#17202E" stroke="#2D3748" stroke-width="1"/>
+          <text x="364" y="64" fill="#64748B" font-size="9" font-family="Inter">CTR moyen</text>
+          <text x="364" y="84" fill="#E2E8F0" font-size="18" font-weight="800" font-family="Inter">4.38%</text>
+          <text x="364" y="98" fill="#22C55E" font-size="9" font-weight="700" font-family="Inter">+0.6pt</text>
+          <rect x="516" y="46" width="100" height="56" rx="8" fill="#17202E" stroke="#2D3748" stroke-width="1"/>
+          <text x="528" y="64" fill="#64748B" font-size="9" font-family="Inter">Position moy.</text>
+          <text x="528" y="84" fill="#E2E8F0" font-size="18" font-weight="800" font-family="Inter">14.2</text>
+          <text x="528" y="98" fill="#22C55E" font-size="9" font-weight="700" font-family="Inter">-2.1</text>
+          <rect x="0" y="110" width="640" height="22" fill="#1A2335"/>
+          <text x="16"  y="125" fill="#475569" font-size="9.5" font-weight="700" font-family="Inter">REQUÊTE</text>
+          <text x="320" y="125" fill="#475569" font-size="9.5" font-weight="700" font-family="Inter">CLICS</text>
+          <text x="400" y="125" fill="#475569" font-size="9.5" font-weight="700" font-family="Inter">IMPR.</text>
+          <text x="480" y="125" fill="#475569" font-size="9.5" font-weight="700" font-family="Inter">CTR</text>
+          <text x="558" y="125" fill="#475569" font-size="9.5" font-weight="700" font-family="Inter">POS.</text>
+          <rect x="0" y="132" width="640" height="28" fill="rgba(242,108,58,0.05)"/>
+          <text x="16"  y="150" fill="#F26C3A" font-size="9.5" font-family="Inter">alternative à [concurrent] saas</text>
+          <text x="320" y="150" fill="#94A3B8" font-size="9.5" font-family="Inter">284</text>
+          <text x="400" y="150" fill="#94A3B8" font-size="9.5" font-family="Inter">3 200</text>
+          <text x="480" y="150" fill="#22C55E" font-size="9.5" font-family="Inter">8.9%</text>
+          <text x="558" y="150" fill="#22C55E" font-size="9.5" font-weight="700" font-family="Inter">3.2</text>
+          <rect x="0" y="160" width="640" height="28" fill="#1E293B"/>
+          <text x="16"  y="178" fill="#E2E8F0" font-size="9.5" font-family="Inter">meilleur outil seo pour saas b2b</text>
+          <text x="320" y="178" fill="#94A3B8" font-size="9.5" font-family="Inter">156</text>
+          <text x="400" y="178" fill="#94A3B8" font-size="9.5" font-family="Inter">4 800</text>
+          <text x="480" y="178" fill="#22C55E" font-size="9.5" font-family="Inter">3.3%</text>
+          <text x="558" y="178" fill="#F59E0B" font-size="9.5" font-weight="700" font-family="Inter">8.1</text>
+          <rect x="0" y="188" width="640" height="28" fill="#17202E"/>
+          <text x="16"  y="206" fill="#E2E8F0" font-size="9.5" font-family="Inter">comment faire keyword research saas</text>
+          <text x="320" y="206" fill="#94A3B8" font-size="9.5" font-family="Inter">421</text>
+          <text x="400" y="206" fill="#94A3B8" font-size="9.5" font-family="Inter">8 100</text>
+          <text x="480" y="206" fill="#22C55E" font-size="9.5" font-family="Inter">5.2%</text>
+          <text x="558" y="206" fill="#F59E0B" font-size="9.5" font-weight="700" font-family="Inter">5.4</text>
+          <rect x="0" y="216" width="640" height="28" fill="rgba(242,108,58,0.05)"/>
+          <text x="16"  y="234" fill="#F26C3A" font-size="9.5" font-family="Inter">guide link building b2b saas</text>
+          <text x="320" y="234" fill="#94A3B8" font-size="9.5" font-family="Inter">73</text>
+          <text x="400" y="234" fill="#94A3B8" font-size="9.5" font-family="Inter">1 800</text>
+          <text x="480" y="234" fill="#22C55E" font-size="9.5" font-family="Inter">4.1%</text>
+          <text x="558" y="234" fill="#F59E0B" font-size="9.5" font-weight="700" font-family="Inter">11.3</text>
+          <text x="320" y="278" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Les lignes orange = opportunités near-win (pos 4–15) à optimiser en priorité</text>
+        </svg>
+        <div class="r-svg-caption">Figure 7.1 — Les lignes orange (pos 4–15) sont les quick wins : une meta description retravaillée peut suffire.</div>
+      </div>
+
+      <h3 class="r-section-title">7.1 — Google Search Console : les 5 vues qui comptent</h3>
+      <p class="r-text">GSC contient plus de données utiles que la plupart des SaaS ne l'exploitent. Le problème n'est pas le manque de données — c'est savoir où regarder. Voici les 5 filtres à configurer :</p>
+      <ul class="r-list">
+        <li><strong>Requêtes BOFU :</strong> filtre sur les mots-clés "alternative", "vs", "prix", "intégration" — ce sont tes prospects les plus chauds.</li>
+        <li><strong>Pages à fort trafic, faible CTR :</strong> rich opportunity — une meilleure meta description peut booster le trafic sans toucher au contenu.</li>
+        <li><strong>Pages position 4–10 :</strong> les "near wins" — 10 articles bien ciblés peuvent passer en top 3 avec quelques optimisations.</li>
+        <li><strong>Couverture d'index :</strong> surveille les erreurs, les pages exclues, les pages "découvertes mais non indexées".</li>
+        <li><strong>Core Web Vitals :</strong> vue par template (homepage, articles, landing pages) — priorise par volume de pages affectées.</li>
+      </ul>
+
+      <h3 class="r-section-title">7.2 — Dashboard Looker Studio : le setup en 2h</h3>
+      <p class="r-text">Looker Studio (anciennement Google Data Studio) est gratuit et se connecte directement à GSC et GA4. Voici les 5 widgets essentiels à construire une fois et à regarder chaque semaine :</p>
+      <table class="r-table">
+        <tr><th>Widget</th><th>Source</th><th>KPI principal</th><th>Fréquence d'alerte</th></tr>
+        <tr><td>Évolution clics vs impressions</td><td>GSC</td><td>Tendance MoM</td><td>Hebdomadaire</td></tr>
+        <tr><td>Top 20 pages BOFU</td><td>GSC + GA4</td><td>Clics + Taux conv.</td><td>Hebdomadaire</td></tr>
+        <tr><td>Near wins (pos 4–15)</td><td>GSC</td><td>Volume impr. &gt; 500</td><td>Mensuelle</td></tr>
+        <tr><td>Referring domains growth</td><td>Ahrefs / SEMrush API</td><td>+X domaines/mois</td><td>Mensuelle</td></tr>
+        <tr><td>Core Web Vitals par template</td><td>GSC CWV</td><td>% pages "Good"</td><td>Mensuelle</td></tr>
+      </table>
+
+      <!-- Figure 7.2 : Matrice Impact/Effort -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 310" role="img" aria-label="Matrice Impact Effort priorisation SEO">
+          <rect width="640" height="310" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Matrice Impact / Effort — Priorisation des actions SEO</text>
+          <line x1="70" y1="40" x2="70" y2="270" stroke="#2D3748" stroke-width="1.5"/>
+          <line x1="70" y1="155" x2="610" y2="155" stroke="#2D3748" stroke-width="1.5"/>
+          <text x="38" y="44" fill="#475569" font-size="8" font-family="Inter" text-anchor="middle">IMPACT</text>
+          <text x="38" y="58" fill="#475569" font-size="8" font-family="Inter" text-anchor="middle">ÉLEVÉ ↑</text>
+          <text x="38" y="262" fill="#475569" font-size="8" font-family="Inter" text-anchor="middle">↓ FAIBLE</text>
+          <text x="95" y="158" fill="#475569" font-size="8" font-family="Inter">EFFORT FAIBLE →</text>
+          <text x="480" y="158" fill="#475569" font-size="8" font-family="Inter">← EFFORT ÉLEVÉ</text>
+          <rect x="75" y="44" width="260" height="106" rx="8" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+          <text x="205" y="68" text-anchor="middle" fill="#22C55E" font-size="12" font-weight="800" font-family="Inter">FAIRE EN PREMIER ✓</text>
+          <text x="205" y="86" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Optimiser meta (pos 4–10)</text>
+          <text x="205" y="102" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Ajouter CTA aux articles qui convertissent</text>
+          <text x="205" y="118" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Corriger les erreurs 404 avec backlinks</text>
+          <text x="205" y="134" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Mettre à jour les articles position 5–15</text>
+          <rect x="345" y="44" width="260" height="106" rx="8" fill="rgba(99,102,241,0.1)" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+          <text x="475" y="68" text-anchor="middle" fill="#818CF8" font-size="12" font-weight="800" font-family="Inter">PLANIFIER 📅</text>
+          <text x="475" y="86" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Créer un cluster thématique complet</text>
+          <text x="475" y="102" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Campagne link building Digital PR</text>
+          <text x="475" y="118" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Refonte technique Core Web Vitals</text>
+          <text x="475" y="134" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Produire 10 articles MOFU/BOFU</text>
+          <rect x="75" y="163" width="260" height="102" rx="8" fill="rgba(26,158,143,0.08)" stroke="rgba(26,158,143,0.2)" stroke-width="1"/>
+          <text x="205" y="186" text-anchor="middle" fill="#1A9E8F" font-size="12" font-weight="800" font-family="Inter">QUAND DISPONIBLE</text>
+          <text x="205" y="204" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Ajouter structured data sur vieux articles</text>
+          <text x="205" y="220" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Compresser les images des articles anciens</text>
+          <text x="205" y="236" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Mettre à jour les dates de publication</text>
+          <text x="205" y="252" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Vérifier les liens internes cassés</text>
+          <rect x="345" y="163" width="260" height="102" rx="8" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
+          <text x="475" y="186" text-anchor="middle" fill="#EF4444" font-size="12" font-weight="800" font-family="Inter">ÉVITER ✗</text>
+          <text x="475" y="204" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Réécrire des articles qui rankent déjà</text>
+          <text x="475" y="220" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Cibler des mots-clés KD &gt; 70</text>
+          <text x="475" y="236" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Créer des pages pour du duplicate content</text>
+          <text x="475" y="252" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="Inter">Acheter des backlinks spammy</text>
+          <text x="320" y="295" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Remplis cette matrice chaque mois avec tes actions SEO — priorise strictement le Q1</text>
+        </svg>
+        <div class="r-svg-caption">Figure 7.2 — Matrice Impact/Effort : focus systématique sur le Q1 (haut impact, faible effort).</div>
+      </div>
+
+      <h3 class="r-section-title">7.3 — Cadence de reporting SEO</h3>
+      <ul class="r-list">
+        <li><strong>Hebdomadaire (15 min) :</strong> vérifier les clics BOFU, les nouvelles erreurs GSC, les nouvelles pages indexées.</li>
+        <li><strong>Mensuel (1h) :</strong> analyse approfondie des positions, mise à jour de la matrice Impact/Effort, décision sur les prochains articles à optimiser.</li>
+        <li><strong>Trimestriel (2h) :</strong> bilan de la stratégie de contenu, ROI SEO (leads attribués), ajustement des clusters prioritaires.</li>
+      </ul>
+
+      <div class="r-tip"><strong>Automatise le rapport :</strong> Utilise les alertes email de GSC + un Looker Studio partagé avec ton équipe. Objectif : que le rapport SEO soit lisible en 5 minutes par quelqu'un qui n'est pas expert SEO.</div>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 7</div>
+        <ul>
+          <li>Position 4–10 = priorité max : peu d'effort, fort impact</li>
+          <li>CTR &lt; 2% sur position 1–3 = meta description à retravailler immédiatement</li>
+          <li>Reporte chaque semaine, analyse en profondeur chaque mois</li>
+          <li>La matrice Impact/Effort évite de passer 80% du temps sur des tâches à faible ROI</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="ch6-contenu-convertit.html">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Contenu SEO qui convertit</span>
+          </div>
+        </a>
+        <a href="ch8-automatisation-ia.html" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">Automatisation &amp; IA</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

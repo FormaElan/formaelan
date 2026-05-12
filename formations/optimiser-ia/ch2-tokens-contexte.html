@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Tokens &amp; contexte — Optimiser son IA · FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/formations.css"/>
+</head>
+<body>
+
+<nav class="r-nav">
+  <a href="../../index.html" class="r-nav-logo"><span>Forma</span>Elan</a>
+  <div class="r-breadcrumb">
+    <a href="../../index.html">Accueil</a> /
+    <a href="../../pages/optimiser-ia.html">Optimiser son IA</a> /
+    <span>Chapitre 2</span>
+  </div>
+</nav>
+
+<div class="r-layout">
+
+  <aside class="r-sidebar">
+    <div class="r-sidebar-title">Sommaire</div>
+    <a href="ch1-sous-exploites-ia.html" class="r-ch-link"><div class="r-ch-num">1</div>Pourquoi tu sous-exploites ton IA</a>
+    <a href="ch2-tokens-contexte.html" class="r-ch-link active"><div class="r-ch-num">2</div>Tokens &amp; contexte</a>
+    <a href="ch3-prompt-bases.html" class="r-ch-link"><div class="r-ch-num">3</div>Prompt — les bases</a>
+    <a href="ch4-prompt-avance.html" class="r-ch-link"><div class="r-ch-num">4</div>Prompt — avancé</a>
+    <a href="ch5-choisir-modele.html" class="r-ch-link"><div class="r-ch-num">5</div>Choisir son modèle</a>
+    <a href="ch6-reduire-couts.html" class="r-ch-link"><div class="r-ch-num">6</div>Réduire ses coûts</a>
+    <a href="ch7-systeme-ia-personnel.html" class="r-ch-link"><div class="r-ch-num">7</div>Ton système IA</a>
+    <div class="r-sidebar-sep"></div>
+    <a href="../../pages/optimiser-ia.html" class="r-ch-link" style="font-size:.78rem;color:var(--muted)">← Page de la formation</a>
+  </aside>
+
+  <main class="r-main">
+    <section class="r-chapter" id="ch2">
+
+      <div class="r-ch-header">
+        <div class="r-ch-badge">2</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 2</div>
+          <h2>Tokens &amp; contexte</h2>
+          <div class="dur">⏱ 45 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Pour optimiser son usage de l'IA, il faut comprendre comment elle "lit" et "pense". Tout repose sur une unité de base : le token. Comprendre ce qu'est un token, comment fonctionne la fenêtre de contexte, et pourquoi les longues conversations se dégradent — c'est la base technique qui rend tous les chapitres suivants 10 fois plus utiles.
+      </div>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 300" role="img" aria-label="Visualisation de la fenêtre de contexte et des tokens">
+          <rect width="640" height="300" fill="#1E293B"/>
+          <text x="320" y="24" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">LA FENÊTRE DE CONTEXTE — CE QUE L'IA "VOIT" À CHAQUE RÉPONSE</text>
+
+          <!-- Fenêtre de contexte -->
+          <rect x="40" y="40" width="560" height="180" rx="10" fill="rgba(26,158,143,0.06)" stroke="rgba(26,158,143,0.4)" stroke-width="1.5" stroke-dasharray="6,3"/>
+          <text x="320" y="60" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="700" font-family="Inter">FENÊTRE DE CONTEXTE (tout ce que le modèle peut "voir")</text>
+
+          <!-- System prompt -->
+          <rect x="60" y="70" width="140" height="130" rx="6" fill="rgba(99,102,241,0.2)" stroke="rgba(99,102,241,0.5)" stroke-width="1"/>
+          <text x="130" y="92" text-anchor="middle" fill="#818CF8" font-size="9" font-weight="700" font-family="Inter">SYSTEM PROMPT</text>
+          <text x="130" y="110" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Instructions fixes</text>
+          <text x="130" y="125" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Ton rôle</text>
+          <text x="130" y="140" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Tes préférences</text>
+          <text x="130" y="158" text-anchor="middle" fill="#475569" font-size="7.5" font-family="Inter">~500–2 000 tokens</text>
+          <text x="130" y="173" text-anchor="middle" fill="#475569" font-size="7.5" font-family="Inter">stables</text>
+
+          <!-- Historique conversation -->
+          <rect x="215" y="70" width="190" height="130" rx="6" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.4)" stroke-width="1"/>
+          <text x="310" y="92" text-anchor="middle" fill="#F59E0B" font-size="9" font-weight="700" font-family="Inter">HISTORIQUE CONV.</text>
+          <text x="310" y="110" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Messages précédents</text>
+          <text x="310" y="125" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">(toi + l'IA)</text>
+          <text x="310" y="145" text-anchor="middle" fill="#F59E0B" font-size="8" font-weight="600" font-family="Inter">⚠ Grossit à chaque échange</text>
+          <text x="310" y="162" text-anchor="middle" fill="#475569" font-size="7.5" font-family="Inter">Peut remplir 60-80%</text>
+          <text x="310" y="177" text-anchor="middle" fill="#475569" font-size="7.5" font-family="Inter">de la fenêtre</text>
+
+          <!-- Prompt actuel -->
+          <rect x="420" y="70" width="160" height="130" rx="6" fill="rgba(26,158,143,0.2)" stroke="#1A9E8F" stroke-width="1.2"/>
+          <text x="500" y="92" text-anchor="middle" fill="#1A9E8F" font-size="9" font-weight="700" font-family="Inter">TON PROMPT</text>
+          <text x="500" y="110" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Ta question actuelle</text>
+          <text x="500" y="128" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">Le contexte que</text>
+          <text x="500" y="143" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">tu fournis</text>
+          <text x="500" y="162" text-anchor="middle" fill="#1A9E8F" font-size="8" font-weight="600" font-family="Inter">← Ton levier principal</text>
+
+          <!-- Légende limite -->
+          <text x="320" y="238" text-anchor="middle" fill="#94A3B8" font-size="10" font-weight="600" font-family="Inter">Limite : 128 000 à 2 000 000 tokens selon le modèle</text>
+          <text x="320" y="256" text-anchor="middle" fill="#475569" font-size="9" font-family="Inter">Au-delà de la limite : les anciens messages sont coupés — l'IA "oublie" le début de la conversation</text>
+
+          <text x="320" y="285" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Limite indicative — varie selon le modèle et la version utilisée</text>
+        </svg>
+        <div class="r-svg-caption">Figure 2.1 — La fenêtre de contexte : ce que le modèle peut lire à chaque génération</div>
+      </div>
+
+      <h3 class="r-section-title">2.1 — Qu'est-ce qu'un token ? Impact sur les coûts et la qualité</h3>
+      <p class="r-text">Un token est l'unité de base que les modèles de langage utilisent pour lire et générer du texte. Ce n'est pas exactement un mot — c'est plus proche d'une syllabe ou d'un groupe de caractères. En français, compte environ 1,3 à 1,5 token par mot.</p>
+      <ul class="r-list">
+        <li><strong>Concrètement :</strong> "Bonjour, comment allez-vous ?" représente environ 8-10 tokens. Un article de 1 000 mots fait environ 1 300-1 500 tokens.</li>
+        <li><strong>Pourquoi c'est important pour les abonnés :</strong> Même avec un abonnement fixe (ChatGPT Plus, Claude Pro), les limites de tokens par heure ou par jour s'appliquent. Des prompts mal construits qui génèrent de longs historiques inutiles consomment ta limite plus vite.</li>
+        <li><strong>Pourquoi c'est important pour la qualité :</strong> Plus la fenêtre de contexte est remplie d'informations peu pertinentes, moins le modèle peut "se concentrer" sur ta demande réelle. C'est comme parler à quelqu'un qui essaie de suivre 20 conversations en même temps.</li>
+        <li><strong>Règle pratique :</strong> Donne à l'IA ce dont elle a besoin — pas plus. Un prompt de 200 tokens bien construit surpasse presque toujours un prompt de 2 000 tokens mal structuré.</li>
+      </ul>
+
+      <div class="r-tip"><strong>Outil utile :</strong> Colle un texte dans tokenizer.openai.com pour voir exactement combien de tokens il représente. Faire cet exercice une fois avec un de tes prompts typiques est très révélateur.</div>
+
+      <h3 class="r-section-title">2.2 — La fenêtre de contexte : ce que l'IA voit et ce qu'elle oublie</h3>
+      <p class="r-text">La fenêtre de contexte est l'espace total que le modèle peut "lire" en une seule génération. Elle contient ton system prompt, tout l'historique de la conversation, et ta question actuelle. Quand cet espace est plein, les anciens messages disparaissent — l'IA "oublie" le début de la conversation.</p>
+      <ul class="r-list">
+        <li><strong>Les tailles varient beaucoup :</strong> Claude 3.5 Sonnet gère jusqu'à 200 000 tokens, GPT-4o jusqu'à 128 000. En pratique, la qualité des réponses commence à se dégrader bien avant d'atteindre la limite technique.</li>
+        <li><strong>L'historique grossit automatiquement :</strong> À chaque échange, ta réponse ET la réponse de l'IA s'ajoutent à la fenêtre. Une conversation de 30 échanges peut facilement peser 15 000-30 000 tokens, réduisant l'espace disponible pour ta vraie question.</li>
+        <li><strong>Ce que l'IA priorise :</strong> Quand la fenêtre se remplit, les modèles tendent à donner plus de poids aux messages récents et au system prompt. Les informations importantes données tôt dans la conversation peuvent être "diluées".</li>
+        <li><strong>La solution :</strong> Traite chaque conversation comme une session de travail avec un objectif précis. Quand l'objectif est atteint, commence une nouvelle conversation plutôt que d'ajouter un nouveau sujet.</li>
+      </ul>
+
+      <h3 class="r-section-title">2.3 — Context rot : pourquoi tes longues conversations se dégradent</h3>
+      <p class="r-text">Le context rot (pourriture de contexte) est le phénomène par lequel la qualité des réponses se dégrade progressivement dans une longue conversation — souvent sans que l'utilisateur s'en aperçoive. C'est l'une des causes les plus sous-estimées de résultats décevants.</p>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 260" role="img" aria-label="Courbe de dégradation de la qualité selon la longueur de conversation">
+          <rect width="640" height="260" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">CONTEXT ROT — DÉGRADATION DE LA QUALITÉ SELON LA LONGUEUR</text>
+
+          <!-- Axes -->
+          <line x1="70" y1="200" x2="610" y2="200" stroke="#2D3748" stroke-width="1.5"/>
+          <line x1="70" y1="40"  x2="70"  y2="200" stroke="#2D3748" stroke-width="1.5"/>
+
+          <!-- Labels X -->
+          <text x="70"  y="218" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">0</text>
+          <text x="178" y="218" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">5</text>
+          <text x="286" y="218" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">10</text>
+          <text x="394" y="218" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">20</text>
+          <text x="502" y="218" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">30</text>
+          <text x="610" y="218" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">40+</text>
+          <text x="340" y="235" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Nombre d'échanges dans la conversation</text>
+
+          <!-- Labels Y -->
+          <text x="60" y="44"  text-anchor="end" fill="#475569" font-size="8" font-family="Inter">100%</text>
+          <text x="60" y="92"  text-anchor="end" fill="#475569" font-size="8" font-family="Inter">80%</text>
+          <text x="60" y="132" text-anchor="end" fill="#475569" font-size="8" font-family="Inter">60%</text>
+          <text x="60" y="164" text-anchor="end" fill="#475569" font-size="8" font-family="Inter">40%</text>
+          <text x="60" y="200" text-anchor="end" fill="#475569" font-size="8" font-family="Inter">20%</text>
+
+          <!-- Grille -->
+          <line x1="70" y1="44"  x2="610" y2="44"  stroke="#1E3A3A" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="70" y1="92"  x2="610" y2="92"  stroke="#1E3A3A" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="70" y1="132" x2="610" y2="132" stroke="#1E3A3A" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="70" y1="164" x2="610" y2="164" stroke="#1E3A3A" stroke-width="0.5" stroke-dasharray="4,4"/>
+
+          <!-- Zone optimale -->
+          <rect x="70" y="44" width="216" height="156" fill="rgba(26,158,143,0.05)"/>
+
+          <!-- Courbe qualité -->
+          <polyline points="70,44 130,46 178,52 230,72 286,108 340,140 394,162 448,178 502,188 560,194 610,197"
+                    fill="none" stroke="#1A9E8F" stroke-width="2.5" stroke-linejoin="round"/>
+
+          <!-- Zone verte : 0-10 échanges -->
+          <rect x="70" y="196" width="216" height="8" rx="2" fill="rgba(26,158,143,0.4)"/>
+          <text x="178" y="208" text-anchor="middle" fill="#1A9E8F" font-size="7.5" font-weight="700" font-family="Inter">Zone optimale</text>
+
+          <!-- Zone orange : 10-20 échanges -->
+          <rect x="286" y="196" width="108" height="8" rx="2" fill="rgba(245,158,11,0.5)"/>
+          <text x="340" y="208" text-anchor="middle" fill="#F59E0B" font-size="7.5" font-weight="700" font-family="Inter">Attention</text>
+
+          <!-- Zone rouge : 20+ échanges -->
+          <rect x="394" y="196" width="216" height="8" rx="2" fill="rgba(242,108,58,0.5)"/>
+          <text x="502" y="208" text-anchor="middle" fill="#F26C3A" font-size="7.5" font-weight="700" font-family="Inter">Context rot actif</text>
+
+          <!-- Annotation point inflexion -->
+          <circle cx="286" cy="108" r="5" fill="#F59E0B"/>
+          <line x1="286" y1="103" x2="286" y2="60" stroke="#F59E0B" stroke-width="1" stroke-dasharray="3,2"/>
+          <text x="292" y="55" fill="#F59E0B" font-size="8" font-family="Inter">Point d'inflexion</text>
+          <text x="292" y="67" fill="#64748B" font-size="7.5" font-family="Inter">~10 échanges</text>
+
+          <text x="320" y="248" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Courbe indicative — varie selon la complexité des échanges et le modèle utilisé</text>
+        </svg>
+        <div class="r-svg-caption">Figure 2.2 — Dégradation de la qualité des réponses selon la longueur de conversation (context rot)</div>
+      </div>
+
+      <ul class="r-list">
+        <li><strong>Signes que le context rot est actif :</strong> L'IA répète des informations déjà données, ignore des instructions données au début, répond de façon plus générique, ou contredit une décision prise plus tôt dans la conversation.</li>
+        <li><strong>Remède n°1 — Résumé intermédiaire :</strong> À mi-conversation, demande à l'IA de résumer les décisions et informations clés de la session. Colle ce résumé dans une nouvelle conversation pour repartir proprement.</li>
+        <li><strong>Remède n°2 — Rolling context :</strong> Maintiens un document texte "état actuel du projet" que tu colles en début de chaque nouvelle conversation. L'IA repart toujours avec le contexte à jour, sans traîner l'historique.</li>
+        <li><strong>Remède n°3 — Conversations dédiées :</strong> Une conversation = un objectif. Ne mélange pas la rédaction d'un article et la révision d'un code dans la même session. Chaque nouvelle tâche mérite une nouvelle conversation.</li>
+      </ul>
+
+      <div class="r-tip"><strong>Règle pratique :</strong> Si tu te retrouves au-delà de 15 échanges dans une conversation, c'est le moment de te demander si tu ne devrais pas recommencer une session propre avec un résumé du contexte.</div>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 2</div>
+        <ul>
+          <li>Un token ≈ 0,75 mot en français. La fenêtre de contexte est l'espace total que le modèle peut lire — historique + system prompt + ton prompt actuel.</li>
+          <li>L'historique grossit à chaque échange : trop long, il dilue tes instructions et dégrade la qualité des réponses (context rot).</li>
+          <li>Le context rot se manifeste par des réponses génériques, des instructions ignorées, et des incohérences avec le début de la conversation.</li>
+          <li>Remèdes : résumé intermédiaire, rolling context dans un fichier, une conversation = un objectif.</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="ch1-sous-exploites-ia.html" class="prev">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Pourquoi tu sous-exploites ton IA</span>
+          </div>
+        </a>
+        <a href="ch3-prompt-bases.html" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">Prompt — les bases</span>
+          </div>
+        </a>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Prompt Engineering — avancé — Optimiser son IA · FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/formations.css"/>
+</head>
+<body>
+
+<nav class="r-nav">
+  <a href="../../index.html" class="r-nav-logo"><span>Forma</span>Elan</a>
+  <div class="r-breadcrumb">
+    <a href="../../index.html">Accueil</a> /
+    <a href="../../pages/optimiser-ia.html">Optimiser son IA</a> /
+    <span>Chapitre 4</span>
+  </div>
+</nav>
+
+<div class="r-layout">
+
+  <aside class="r-sidebar">
+    <div class="r-sidebar-title">Sommaire</div>
+    <a href="ch1-sous-exploites-ia.html" class="r-ch-link"><div class="r-ch-num">1</div>Pourquoi tu sous-exploites ton IA</a>
+    <a href="ch2-tokens-contexte.html" class="r-ch-link"><div class="r-ch-num">2</div>Tokens &amp; contexte</a>
+    <a href="ch3-prompt-bases.html" class="r-ch-link"><div class="r-ch-num">3</div>Prompt — les bases</a>
+    <a href="ch4-prompt-avance.html" class="r-ch-link active"><div class="r-ch-num">4</div>Prompt — avancé</a>
+    <a href="ch5-choisir-modele.html" class="r-ch-link"><div class="r-ch-num">5</div>Choisir son modèle</a>
+    <a href="ch6-reduire-couts.html" class="r-ch-link"><div class="r-ch-num">6</div>Réduire ses coûts</a>
+    <a href="ch7-systeme-ia-personnel.html" class="r-ch-link"><div class="r-ch-num">7</div>Ton système IA</a>
+    <div class="r-sidebar-sep"></div>
+    <a href="../../pages/optimiser-ia.html" class="r-ch-link" style="font-size:.78rem;color:var(--muted)">← Page de la formation</a>
+  </aside>
+
+  <main class="r-main">
+    <section class="r-chapter" id="ch4">
+
+      <div class="r-ch-header">
+        <div class="r-ch-badge">4</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 4</div>
+          <h2>Prompt Engineering — avancé</h2>
+          <div class="dur">⏱ 50 min · 3 leçons</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Tu maîtrises le cadre RCTF. Il est temps de passer à l'étape suivante : créer des instructions qui persistent d'une session à l'autre, affiner tes prompts par itération, et évaluer objectivement la qualité de tes résultats. Ce chapitre transforme un bon utilisateur en utilisateur expert.
+      </div>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 280" role="img" aria-label="Cycle d'itération d'un prompt — de la première version à la version optimisée">
+          <rect width="640" height="280" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">CYCLE D'ITÉRATION — DU PROMPT BRUT AU PROMPT OPTIMISÉ</text>
+
+          <!-- Étape 1 -->
+          <circle cx="120" cy="130" r="48" fill="rgba(26,158,143,0.12)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="120" y="118" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="800" font-family="Inter">① PROMPT</text>
+          <text x="120" y="133" text-anchor="middle" fill="#94A3B8" font-size="8.5" font-family="Inter">v1 — basé</text>
+          <text x="120" y="147" text-anchor="middle" fill="#94A3B8" font-size="8.5" font-family="Inter">sur RCTF</text>
+
+          <!-- Flèche 1→2 -->
+          <line x1="172" y1="130" x2="228" y2="130" stroke="#334155" stroke-width="1.5"/>
+          <polygon points="224,126 232,130 224,134" fill="#334155"/>
+
+          <!-- Étape 2 -->
+          <circle cx="280" cy="130" r="48" fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.5)" stroke-width="1.5"/>
+          <text x="280" y="118" text-anchor="middle" fill="#818CF8" font-size="10" font-weight="800" font-family="Inter">② RÉSULTAT</text>
+          <text x="280" y="133" text-anchor="middle" fill="#94A3B8" font-size="8.5" font-family="Inter">Évalue :</text>
+          <text x="280" y="147" text-anchor="middle" fill="#94A3B8" font-size="8.5" font-family="Inter">utile ? juste ?</text>
+
+          <!-- Flèche 2→3 -->
+          <line x1="332" y1="130" x2="388" y2="130" stroke="#334155" stroke-width="1.5"/>
+          <polygon points="384,126 392,130 384,134" fill="#334155"/>
+
+          <!-- Étape 3 -->
+          <circle cx="440" cy="130" r="48" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.4)" stroke-width="1.5"/>
+          <text x="440" y="118" text-anchor="middle" fill="#F59E0B" font-size="10" font-weight="800" font-family="Inter">③ AJUSTEMENT</text>
+          <text x="440" y="133" text-anchor="middle" fill="#94A3B8" font-size="8.5" font-family="Inter">Précise, coupe,</text>
+          <text x="440" y="147" text-anchor="middle" fill="#94A3B8" font-size="8.5" font-family="Inter">ajoute un exemple</text>
+
+          <!-- Flèche 3→4 -->
+          <line x1="492" y1="130" x2="548" y2="130" stroke="#334155" stroke-width="1.5"/>
+          <polygon points="544,126 552,130 544,134" fill="#334155"/>
+
+          <!-- Étape 4 -->
+          <circle cx="590" cy="130" r="44" fill="rgba(26,158,143,0.2)" stroke="#1A9E8F" stroke-width="2"/>
+          <text x="590" y="122" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="800" font-family="Inter">④ PROMPT</text>
+          <text x="590" y="137" text-anchor="middle" fill="#1A9E8F" font-size="10" font-weight="800" font-family="Inter">OPTIMISÉ</text>
+          <text x="590" y="152" text-anchor="middle" fill="#94A3B8" font-size="8" font-family="Inter">à sauvegarder</text>
+
+          <!-- Flèche retour si échec -->
+          <path d="M440,178 Q440,220 280,220 Q200,220 168,178" fill="none" stroke="rgba(242,108,58,0.4)" stroke-width="1.2" stroke-dasharray="5,3"/>
+          <polygon points="164,182 172,176 164,170" fill="rgba(242,108,58,0.4)"/>
+          <text x="300" y="216" text-anchor="middle" fill="#F26C3A" font-size="8" font-family="Inter">Si résultat insuffisant : nouvel ajustement</text>
+
+          <text x="320" y="262" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">En général, 2-3 itérations suffisent pour atteindre un prompt réutilisable de qualité</text>
+        </svg>
+        <div class="r-svg-caption">Figure 4.1 — Cycle d'itération d'un prompt : de la v1 au prompt optimisé sauvegardable</div>
+      </div>
+
+      <h3 class="r-section-title">4.1 — System prompts et instructions persistantes</h3>
+      <p class="r-text">Un system prompt est un ensemble d'instructions données à l'IA avant le début de la conversation — il définit qui elle est, comment elle se comporte, et ce qu'elle sait de ton contexte. C'est l'équivalent d'un briefing permanent que l'IA lit à chaque message que tu envoies.</p>
+      <ul class="r-list">
+        <li><strong>Où les configurer :</strong> Sur ChatGPT, via les "Instructions personnalisées" (réglages → Instructions personnalisées). Sur Claude, via les "Projects" (un project = un contexte persistant). Ces outils sont inclus dans les abonnements standard.</li>
+        <li><strong>Que mettre dans un system prompt :</strong> Ton profil (qui tu es, ton secteur, ton rôle), tes préférences de communication (tutoiement, niveau technique, longueur des réponses), tes règles non négociables (ne jamais inventer de chiffres, toujours lister les sources), et le contexte récurrent de tes tâches.</li>
+        <li><strong>Ce que ça change concrètement :</strong> Tu n'as plus à te réexpliquer à chaque nouvelle conversation. L'IA sait qui tu es, ce que tu fais, et comment tu veux qu'elle se comporte — dès le premier message.</li>
+        <li><strong>Longueur optimale :</strong> 200 à 500 mots. Au-delà, tu remplis ta fenêtre de contexte inutilement. Chaque ligne doit répondre à : "L'IA ne peut pas faire sa mission sans cette information."</li>
+      </ul>
+
+      <div class="r-tip"><strong>Exemple minimal efficace :</strong> "Je suis [profession] spécialisé en [domaine]. Mon audience est [description]. Je veux des réponses en français, tutoiement, maximum 3 paragraphes sauf demande contraire. Ne jamais inventer de chiffres — signale toujours l'incertitude."</div>
+
+      <h3 class="r-section-title">4.2 — Prompts itératifs : affiner en plusieurs passes</h3>
+      <p class="r-text">Le meilleur prompt n'est pas le plus long — c'est celui qui a été testé et affiné. L'itération est une compétence à part entière : savoir lire un résultat, identifier ce qui manque, et corriger avec précision plutôt que de tout réécrire.</p>
+      <ul class="r-list">
+        <li><strong>L'itération ciblée :</strong> Plutôt que de réécrire ton prompt entier, identifie le problème précis. Le ton est trop formel ? Ajoute "ton conversationnel, comme un ami expert". La longueur est excessive ? Ajoute "maximum 150 mots, va à l'essentiel". Traite un paramètre à la fois.</li>
+        <li><strong>Les instructions d'ajustement :</strong> Dans la même conversation, tu peux corriger en disant "C'est bien, mais rends ça plus concis" ou "Refais-le en adoptant un angle plus émotionnel". L'IA prend en compte tout l'historique — pas besoin de tout reformuler.</li>
+        <li><strong>Quand commencer une nouvelle conversation :</strong> Si tu fais plus de 3 ajustements sur le même résultat sans convergence, recommence avec un prompt entièrement reécrit. C'est plus efficace que de corriger indéfiniment sur un mauvais point de départ.</li>
+        <li><strong>Sauvegarder le prompt optimisé :</strong> Dès qu'un prompt donne un bon résultat, sauvegarde-le dans ta bibliothèque (chapitre 6). Un prompt qui a marché une fois marchera encore.</li>
+      </ul>
+
+      <h3 class="r-section-title">4.3 — Évaluer et scorer ses prompts</h3>
+      <p class="r-text">Comment savoir si un prompt est bon ? La plupart des utilisateurs évaluent instinctivement — "c'était bien" ou "c'était décevant". Une grille d'évaluation simple te permet d'être plus précis et d'identifier exactement ce qu'il faut améliorer.</p>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 270" role="img" aria-label="Grille d'évaluation d'un prompt sur 4 critères">
+          <rect width="640" height="270" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">GRILLE D'ÉVALUATION D'UN PROMPT — 4 CRITÈRES</text>
+
+          <!-- Critère 1 — Pertinence -->
+          <rect x="24" y="40" width="280" height="88" rx="8" fill="rgba(26,158,143,0.08)" stroke="rgba(26,158,143,0.3)" stroke-width="1.2"/>
+          <text x="44" y="64" fill="#1A9E8F" font-size="11" font-weight="800" font-family="Inter">① Pertinence</text>
+          <text x="44" y="82" fill="#94A3B8" font-size="8.5" font-family="Inter">Le résultat répond-il exactement à ma demande ?</text>
+          <text x="44" y="98" fill="#64748B" font-size="8" font-family="Inter">Score 1-5 : 5 = utilisable sans retouche</text>
+          <text x="44" y="114" fill="#475569" font-size="8" font-family="Inter">Si &lt;4 → vérifier la clarté de la Tâche (T)</text>
+
+          <!-- Critère 2 — Format -->
+          <rect x="336" y="40" width="280" height="88" rx="8" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.3)" stroke-width="1.2"/>
+          <text x="356" y="64" fill="#818CF8" font-size="11" font-weight="800" font-family="Inter">② Format</text>
+          <text x="356" y="82" fill="#94A3B8" font-size="8.5" font-family="Inter">La structure de réponse est-elle utilisable ?</text>
+          <text x="356" y="98" fill="#64748B" font-size="8" font-family="Inter">Score 1-5 : 5 = copier-coller direct possible</text>
+          <text x="356" y="114" fill="#475569" font-size="8" font-family="Inter">Si &lt;4 → préciser le Format (F) dans RCTF</text>
+
+          <!-- Critère 3 — Ton / Style -->
+          <rect x="24" y="142" width="280" height="88" rx="8" fill="rgba(245,158,11,0.08)" stroke="rgba(245,158,11,0.3)" stroke-width="1.2"/>
+          <text x="44" y="166" fill="#F59E0B" font-size="11" font-weight="800" font-family="Inter">③ Ton / Style</text>
+          <text x="44" y="184" fill="#94A3B8" font-size="8.5" font-family="Inter">Le registre correspond-il à mon usage final ?</text>
+          <text x="44" y="200" fill="#64748B" font-size="8" font-family="Inter">Score 1-5 : 5 = ton parfaitement adapté</text>
+          <text x="44" y="216" fill="#475569" font-size="8" font-family="Inter">Si &lt;4 → ajouter des exemples (few-shot)</text>
+
+          <!-- Critère 4 — Fiabilité -->
+          <rect x="336" y="142" width="280" height="88" rx="8" fill="rgba(242,108,58,0.08)" stroke="rgba(242,108,58,0.3)" stroke-width="1.2"/>
+          <text x="356" y="166" fill="#F26C3A" font-size="11" font-weight="800" font-family="Inter">④ Fiabilité</text>
+          <text x="356" y="184" fill="#94A3B8" font-size="8.5" font-family="Inter">L'IA a-t-elle inventé des informations ?</text>
+          <text x="356" y="200" fill="#64748B" font-size="8" font-family="Inter">Score 1-5 : 5 = tout est vérifiable</text>
+          <text x="356" y="216" fill="#475569" font-size="8" font-family="Inter">Si &lt;4 → ajouter "ne jamais inventer" dans system prompt</text>
+
+          <text x="320" y="252" text-anchor="middle" fill="#475569" font-size="8.5" font-family="Inter">Score total ≥ 16/20 = prompt à sauvegarder · &lt;12 = à réécrire intégralement</text>
+        </svg>
+        <div class="r-svg-caption">Figure 4.2 — Grille d'évaluation d'un prompt : 4 critères pour scorer objectivement</div>
+      </div>
+
+      <ul class="r-list">
+        <li><strong>Pertinence (/5) :</strong> Le résultat répond-il exactement à ce que tu demandais ? Pas à côté, pas trop large, pas trop restreint. Si non : revoir la Tâche dans ton RCTF.</li>
+        <li><strong>Format (/5) :</strong> Peux-tu utiliser la réponse telle quelle, ou dois-tu la reformater ? Un bon prompt spécifie toujours le format — c'est le paramètre le plus simple à corriger.</li>
+        <li><strong>Ton et style (/5) :</strong> Est-ce que ça "sonne" comme tu veux ? Le registre est-il adapté à ton usage ? Si non : ajoute des exemples (few-shot) plutôt que des instructions textuelles.</li>
+        <li><strong>Fiabilité (/5) :</strong> L'IA a-t-elle inventé des faits, des chiffres, des citations ? Un score bas ici signale qu'il faut ajouter des contraintes de vérification dans ton system prompt.</li>
+      </ul>
+
+      <div class="r-keybox">
+        <div class="r-keybox-title">Points clés — Chapitre 4</div>
+        <ul>
+          <li>Les system prompts (instructions persistantes) éliminent la répétition de contexte à chaque session — configure-les une fois, profite-en indéfiniment.</li>
+          <li>L'itération ciblée est plus efficace que réécrire intégralement : identifie le paramètre défaillant, corrige-le seul.</li>
+          <li>La grille d'évaluation en 4 critères (Pertinence, Format, Ton, Fiabilité) te permet de diagnostiquer précisément ce qui ne va pas dans un prompt.</li>
+          <li>Tout prompt qui obtient ≥16/20 mérite d'être sauvegardé dans ta bibliothèque personnelle (chapitre 6).</li>
+        </ul>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="ch3-prompt-bases.html" class="prev">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Prompt — les bases</span>
+          </div>
+        </a>
+        <a href="ch5-choisir-modele.html" class="next">
+          <div>
+            <span class="ch-label">Chapitre suivant</span>
+            <span class="ch-name">Choisir son modèle</span>
+          </div>
+        </a>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+</body>
+</html>
