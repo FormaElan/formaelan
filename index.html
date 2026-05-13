@@ -324,16 +324,12 @@
           <div class="card-meta">
             <div class="card-meta-item">⏱ ${f.duree}</div>
             <div class="card-meta-item">📚 ${f.modules} modules</div>
-            <div class="card-meta-item">👥 ${f.etudiants.toLocaleString('fr-FR')} étudiants</div>
+            <div class="card-meta-item">📶 ${f.niveau}</div>
           </div>
           <div class="card-footer">
             <div class="card-price">
               <span class="price">${f.prix} €</span>
               <span class="price-old">${f.prixAncien} €</span>
-            </div>
-            <div class="card-stars" data-note="${f.note}">
-              ${renderStars(f.note)}
-              <span>(${f.avis})</span>
             </div>
           </div>
         </div>

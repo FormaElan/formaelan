@@ -29,15 +29,14 @@ const FORMATIONS = [
     couleurGlow: "rgba(99,102,241,0.5)",
 
     formateur: {
-      nom: "Alexandre Moulin",
-      role: "Head of Growth · Ex-Lemlist, Notion FR",
-      bio: "Alexandre a généré plus de 2 M de visites organiques pour des SaaS B2B en 4 ans. Il a travaillé pour Lemlist, coaché 30+ startups et partage ses méthodes non filtrées dans cette formation.",
-      avatar: "AM",
-      linkedin: "#",
+      nom: "L'équipe FormaElan",
+      role: "Praticiens actifs · Formateurs",
+      bio: "Cette formation est créée par des praticiens qui appliquent ces méthodes au quotidien. Chaque module est construit à partir d'expériences terrain concrètes, pas de théorie creuse.",
+      avatar: "FE",
       stats: [
-        { val: "2M+",  label: "visites SEO générées" },
-        { val: "30+",  label: "SaaS accompagnés" },
-        { val: "4 ans", label: "d'expérience SaaS SEO" }
+        { val: "5",    label: "formations disponibles" },
+        { val: "100%", label: "méthodes testées en conditions réelles" },
+        { val: "2026", label: "contenu à jour" }
       ]
     },
 
@@ -200,15 +199,14 @@ const FORMATIONS = [
     couleurGlow: "rgba(34,211,238,0.5)",
 
     formateur: {
-      nom: "Sarah Benali",
-      role: "Freelance Designer & Consultant IA · 6 ans d'expérience",
-      bio: "Sarah est passée de 3 000 € à 9 000 € de TJM moyen en 18 mois grâce à l'IA. Formatrice certifiée, elle accompagne des freelances de tous métiers à intégrer l'IA dans leur quotidien sans perdre leur touche humaine.",
-      avatar: "SB",
-      linkedin: "#",
+      nom: "L'équipe FormaElan",
+      role: "Praticiens actifs · Formateurs",
+      bio: "Cette formation est créée par des praticiens qui appliquent ces méthodes au quotidien. Chaque module est construit à partir d'expériences terrain concrètes, pas de théorie creuse.",
+      avatar: "FE",
       stats: [
-        { val: "×3",   label: "TJM multiplié" },
-        { val: "2 100+", label: "freelances formés" },
-        { val: "18 mois", label: "pour transformer sa pratique" }
+        { val: "5",    label: "formations disponibles" },
+        { val: "100%", label: "méthodes testées en conditions réelles" },
+        { val: "2026", label: "contenu à jour" }
       ]
     },
 
@@ -380,15 +378,14 @@ const FORMATIONS = [
     couleurGlow: "rgba(245,158,11,0.5)",
 
     formateur: {
-      nom: "Camille Durand",
-      role: "Copywriter E-commerce · 8 ans · +15 M€ de revenus générés",
-      bio: "Camille a rédigé les pages produits, emails et landing pages de plus de 80 boutiques e-commerce. Ses textes ont généré plus de 15 millions d'euros de chiffre d'affaires cumulé. Elle partage ici toutes ses formules.",
-      avatar: "CD",
-      linkedin: "#",
+      nom: "L'équipe FormaElan",
+      role: "Praticiens actifs · Formateurs",
+      bio: "Cette formation est créée par des praticiens qui appliquent ces méthodes au quotidien. Chaque module est construit à partir d'expériences terrain concrètes, pas de théorie creuse.",
+      avatar: "FE",
       stats: [
-        { val: "15M€+", label: "de CA généré par ses copies" },
-        { val: "80+",   label: "boutiques accompagnées" },
-        { val: "8 ans", label: "de copywriting e-com" }
+        { val: "5",    label: "formations disponibles" },
+        { val: "100%", label: "méthodes testées en conditions réelles" },
+        { val: "2026", label: "contenu à jour" }
       ]
     },
 
@@ -542,15 +539,14 @@ const FORMATIONS = [
     couleurGlow: "rgba(34,197,94,0.5)",
 
     formateur: {
-      nom: "Hugo Lefèvre",
-      role: "Consultant SEO E-commerce · Shopify & WooCommerce Expert",
-      bio: "Hugo gère le SEO de boutiques e-commerce générant 500 K€ à 5 M€ de CA annuel. Spécialiste Shopify et WooCommerce, il a multiplié par 8 le trafic organique d'une enseigne mode en 14 mois.",
-      avatar: "HL",
-      linkedin: "#",
+      nom: "L'équipe FormaElan",
+      role: "Praticiens actifs · Formateurs",
+      bio: "Cette formation est créée par des praticiens qui appliquent ces méthodes au quotidien. Chaque module est construit à partir d'expériences terrain concrètes, pas de théorie creuse.",
+      avatar: "FE",
       stats: [
-        { val: "×8",    label: "trafic multiplié en 14 mois" },
-        { val: "5M€+",  label: "CA géré en SEO" },
-        { val: "50+",   label: "boutiques optimisées" }
+        { val: "5",    label: "formations disponibles" },
+        { val: "100%", label: "méthodes testées en conditions réelles" },
+        { val: "2026", label: "contenu à jour" }
       ]
     },
 
@@ -713,15 +709,14 @@ const FORMATIONS = [
     couleurGlow: "rgba(26,158,143,0.5)",
 
     formateur: {
-      nom: "Marc Duval",
-      role: "Prompt Engineer & Formateur IA · 3 ans d'expérience",
-      bio: "Marc utilise l'IA au quotidien depuis 2022 pour des missions de conseil en stratégie. Il a formé plus de 800 professionnels à l'utilisation avancée de ChatGPT et Claude, et partage chaque semaine des ressources sur l'optimisation IA.",
-      avatar: "MD",
-      linkedin: "#",
+      nom: "L'équipe FormaElan",
+      role: "Praticiens actifs · Formateurs",
+      bio: "Cette formation est créée par des praticiens qui appliquent ces méthodes au quotidien. Chaque module est construit à partir d'expériences terrain concrètes, pas de théorie creuse.",
+      avatar: "FE",
       stats: [
-        { val: "800+",   label: "professionnels formés" },
-        { val: "×3",     label: "qualité des outputs observée" },
-        { val: "3 ans",  label: "d'usage quotidien intensif IA" }
+        { val: "5",    label: "formations disponibles" },
+        { val: "100%", label: "méthodes testées en conditions réelles" },
+        { val: "2026", label: "contenu à jour" }
       ]
     },
 

@@ -240,8 +240,7 @@
         <div class="formation-meta-row">
           <div class="meta-item">⏱ <strong id="metaDuree"></strong></div>
           <div class="meta-item">📚 <strong id="metaModules"></strong> modules</div>
-          <div class="meta-item">👥 <strong id="metaEtudiants"></strong> étudiants</div>
-          <div class="meta-item" id="metaNoteRow"></div>
+          <div class="meta-item">📶 <strong id="metaNiveau"></strong></div>
         </div>
 
         <div style="display:flex;gap:1rem;flex-wrap:wrap;">
@@ -504,9 +503,7 @@
       document.getElementById('formationIntro').textContent  = f.sousTitre;
       document.getElementById('metaDuree').textContent       = f.duree;
       document.getElementById('metaModules').textContent     = f.modules;
-      document.getElementById('metaEtudiants').textContent   = f.etudiants.toLocaleString('fr-FR');
-      document.getElementById('metaNoteRow').innerHTML       =
-        `⭐ <strong>${f.note}/5</strong> <span style="color:var(--text-secondary);font-size:.82rem;">(${f.avis} avis)</span>`;
+      document.getElementById('metaNiveau').textContent      = f.niveau;
 
       // Hero couleur
       document.getElementById('formationHero').style.background =
@@ -655,7 +652,7 @@
       document.getElementById('ctaTitle').innerHTML =
         `Prêt à maîtriser <span class="gradient-text">${f.titre}</span> ?`;
       document.getElementById('ctaSubtitle').textContent =
-        `Rejoins ${f.etudiants.toLocaleString('fr-FR')} étudiants et commence dès aujourd'hui.`;
+        `Accède immédiatement au contenu complet et commence dès aujourd'hui.`;
 
       // ── 11. Onglets ───────────────────────────────────────
       document.querySelectorAll('.tab-btn').forEach(btn => {
