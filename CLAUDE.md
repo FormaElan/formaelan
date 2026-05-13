@@ -1,95 +1,96 @@
 # FormaElan — Instructions Claude Code
 
-## Rôle
-Tu travailles sur **FormaElan**, une plateforme de vente de formations en ligne (SEO · IA · Copywriting).
-L'interlocuteur unique est **Agent_CEO**. Ne propose jamais d'action non demandée.
+## Vision
+Plateforme de vente de formations en ligne (SEO · IA · Copywriting).
+**Phase actuelle : Phase 1 — Lancement MVP** (Phase 0 complète, 5 formations en ligne)
+
+---
+
+## Structure du projet
+
+```
+FormaElan/
+├── backend/            (server.js, .env)
+├── css/                (style.css, formations.css)
+├── formations/         (1 répertoire par formation, 1 HTML par chapitre)
+├── js/                 (main.js, stripe.js)
+├── pages/              (pages de vente)
+├── .claude/commands/   (skills Claude Code)
+└── index.html, success.html, cancel.html
+```
+
+---
+
+## Formations — état
+
+| # | Slug | Prix | Statut | Dernière MAJ |
+|---|---|---|---|---|
+| 1 | `seo-saas` | 49€ | ✅ 8 ch. + 17 SVGs | 13/05/2026 |
+| 2 | `ia-freelance` | 49€ | ✅ 9 ch. | 13/05/2026 |
+| 3 | `copywriting-ecom` | 39€ | ✅ 7 ch. | 13/05/2026 |
+| 4 | `seo-ecom` | 39€ | ✅ 8 ch. + 16 SVGs | 13/05/2026 |
+| 5 | `optimiser-ia` | 29€ | ✅ 7 ch. | 13/05/2026 |
+
+---
+
+## Conventions formations (non-négociables)
+
+- 1 répertoire par formation : `formations/<slug>/`
+- 1 fichier HTML par chapitre : `chN-<titre-kebab>.html`
+- CSS externe uniquement : `../../css/formations.css` — jamais de `<style>` inline
+- Zéro `<script>` dans les fichiers chapitre
+- Sidebar : classe `active` hardcodée sur le chapitre courant
+- Navigation : liens par filename (`ch2-xxx.html`), jamais d'ancres (`#ch2`)
+- Éléments obligatoires par chapitre : en-tête · intro · 1+ SVG inline · 2+ sections · keybox · nav bas de page
+
+---
+
+## Voix & Ton
+
+- Ton : expert, humain, direct — pas enthousiaste par défaut, pas robotique
+- Registre : professionnel sans être froid — adulte intelligent
+- Rythme : phrases courtes et moyennes alternées
+- Éviter : jargon creux, superlatifs non justifiés, promesses floues
+
+### Structure page de vente
+1. Accroche — le problème réel (1-2 phrases)
+2. Promesse — ce que l'apprenant saura faire (concret, vérifiable)
+3. Programme — modules et logique de progression
+4. Preuves — méthode, outils, exemples réels (jamais inventés)
+5. Pour qui — profil idéal + pour qui ce n'est pas fait
+6. Certificat — valeur du certificat de réussite
+7. CTA — appel à l'action clair, sans pression artificielle
+
+---
+
+## Éthique (non négociable)
+
+- ❌ Faux témoignages ou témoignages inventés
+- ❌ Faux chiffres (clients, taux de réussite non vérifiés)
+- ❌ Promesses de résultats rapides ou magiques
+- ❌ Garanties non vérifiables
+- ✅ Valeur réelle, preuves concrètes, claims vérifiables
+- ✅ Certificat de réussite = seul élément de prestige (70% + tous modules complétés)
 
 ---
 
 ## Stack technique
 
-- **Frontend** : HTML, CSS, JS pur (data-driven) — jamais de framework
-- **Backend** : Node/Express + Stripe (server.js, webhook, PRICE_MAP)
-- **Accès formations** : token post-paiement Stripe (à implémenter)
+- HTML5 sémantique (`<main>`, `<section>`) — jamais de div soup
+- CSS pur : variables CSS uniquement, jamais de valeurs hardcodées
+- JS vanilla — pas de jQuery, pas de dépendances inutiles
+- Backend : Node/Express pour Stripe uniquement — jamais de clé secrète côté client
+- Images : WebP, `width`/`height` obligatoires, `loading="lazy"` sauf hero
+- Accessibilité : contraste WCAG AA, `alt` sur images, focus visible
 
 ---
 
-## Design system
+## Design
 
-| Élément | Valeur |
-|---|---|
-| Bleu marine | `#0D1B3E` |
-| Teal | `#1A9E8F` |
-| Orange | `#F26C3A` |
-| Typographie display | Syne |
-| Typographie body | DM Sans |
-| CSS site principal | `css/style.css` |
-| CSS formations | `css/formations.css` |
-
----
-
-## Architecture formations — conventions STRICTES
-
-```
-formations/<slug>/
-├── ch1-<titre-kebab>.html
-├── ch2-<titre-kebab>.html
-└── ...
-```
-
-**Règles absolues (ne jamais déroger) :**
-- 1 répertoire par formation : `formations/<slug>/`
-- 1 fichier HTML par chapitre : `chN-<titre-kebab>.html`
-- CSS uniquement via `<link>` externe : `../../css/formations.css` — zéro `<style>` inline
-- **Zéro `<script>`** dans les fichiers chapitre
-- Sidebar : classe `active` hardcodée sur le chapitre courant — pas d'IntersectionObserver
-- Navigation : liens vers filenames (`ch2-xxx.html`) — jamais d'ancres (`#ch2`)
-- Chemin accueil : `../../index.html` · Page vente : `../../pages/<slug>.html`
-
-**Éléments obligatoires par chapitre :**
-en-tête · intro · au moins 1 SVG inline · 2+ sections · keybox · navigation bas de page
-
----
-
-## Formations — état actuel
-
-| # | Slug | Statut | Chapitres |
-|---|---|---|---|
-| 1 | `seo-saas` | ✅ Complet | 8 ch. + 17 SVGs |
-| 2 | `ia-freelance` | ✅ Complet | 9 ch. |
-| 3 | `copywriting-ecom` | ✅ Complet | 7 ch. |
-| 4 | `seo-ecom` | 🔲 À créer | 8 ch. planifiés |
-
-**Formation bonus** : "Optimiser son IA" — 29€ — structure + production HTML à faire (Phase 0)
-
----
-
-## Éthique éditoriale — règles non négociables
-
-- Aucune promesse de revenus garantis ("gagnez X€ en 30 jours" interdit)
-- Les chiffres doivent être sourcés ou accompagnés de "indicatif" / "variable selon"
-- Ton honnête et nuancé sur les résultats attendus
-- Tutoiement cohérent dans l'intégralité de chaque formation
-- Certificat de réussite = seul élément de prestige validé
-
----
-
-## Équipe agents FormaElan
-
-| Agent | Rôle |
-|---|---|
-| Agent_CEO | Orchestration — seul interlocuteur utilisateur |
-| Agent_Visuel | Design system, charte graphique |
-| Agent_Editorial | Contenu, copywriting éthique |
-| Agent_Tech | HTML/CSS/JS, performance, stack |
-| Agent_Formation | Structure pédagogique, modules |
-
----
-
-## Skill de référence
-
-Skill `creer-formation` v2.0 : `C:\Users\user\.claude\plugins\formaelan\skills\creer-formation\`
-Toujours utiliser ce skill pour créer ou modifier une formation.
+- Orange rare : 1 seul point d'ancrage par écran, jamais saupoudré
+- Palette : `#0D1B3E` navy · `#1A9E8F` teal · `#F26C3A` orange · `#F7F8FA` fond clair
+- Typo : Syne (titres) · DM Sans (corps) · JetBrains Mono (code)
+- Espace négatif généreux — cohérence inter-pages stricte
 
 ---
 
@@ -97,18 +98,15 @@ Toujours utiliser ce skill pour créer ou modifier une formation.
 
 | Commande | Usage |
 |---|---|
-| `/menu` | Menu de démarrage complet |
-| `/creer-formation` | Produire un chapitre HTML (conventions strictes) |
-| `/agent-formation` | Structure pédagogique uniquement |
-| `/agent-tech` | HTML/CSS/JS, backend |
-| `/agent-editorial` | Copywriting, pages de vente |
-| `/agent-visuel` | Design, composants UI |
+| `/creer_chapitre` | Générer un chapitre HTML complet |
+| `/auditer_formation` | Contrôler la conformité d'une formation (navigation, SVGs, liens...) |
+| `/tester_stripe` | Vérifier le tunnel de paiement Stripe |
+| `/optimiser` | Auditer et optimiser tokens / contextes IA |
+| `/roadmap` | Liste des travaux Phase 1 |
+| `/sauvegarde` | Commit + push GitHub en fin de session |
 
 ---
 
-## Priorités Phase 0 (en cours)
+## Dépôt GitHub
 
-1. 🔲 Formation SEO E-commerce — 8 chapitres HTML
-2. 🔲 Formation "Optimiser son IA" — 29€
-3. 🔲 Système d'accès par token post-Stripe
-4. 🔲 Page de couverture HTML — formation SEO SaaS
+`https://github.com/FormaElan/formaelan` (public)
