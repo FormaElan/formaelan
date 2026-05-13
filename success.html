@@ -115,9 +115,18 @@
       const params    = new URLSearchParams(window.location.search);
       const sessionId = params.get('session_id');
       const zone      = document.getElementById('accessZone');
-      const API       = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-                        ? 'http://localhost:4242'
-                        : '';
+      const BACKEND   = 'REMPLACER_URL_BACKEND'; // ex: https://formaelan-backend.up.railway.app
+      const IS_LOCAL  = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const API       = IS_LOCAL ? 'http://localhost:4242' : BACKEND;
+
+      if (!IS_LOCAL && API === 'REMPLACER_URL_BACKEND') {
+        zone.innerHTML = `<div class="error-state">
+          Le système d'accès est en cours de déploiement.<br/>
+          Contacte-nous à <a href="mailto:multimind.team@gmail.com">multimind.team@gmail.com</a> avec ton email Stripe
+          et tu recevras ton accès sous 24h.
+        </div>`;
+        return;
+      }
 
       if (!sessionId) {
         zone.innerHTML = `<div class="error-state">

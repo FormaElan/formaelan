@@ -42,7 +42,7 @@ const FormaElanStripe = (() => {
 
     } catch (err) {
       console.error('[FormaElan Stripe]', err.message);
-      _showError('Une erreur est survenue. Réessaie ou écris-nous à contact@formaElan.fr');
+      _showError('Une erreur est survenue. Réessaie ou écris-nous à multimind.team@gmail.com');
     } finally {
       _showLoader(false);
     }
