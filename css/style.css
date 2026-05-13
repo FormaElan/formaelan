@@ -1298,6 +1298,72 @@ footer {
 }
 
 /* ============================================================
+   CURSEUR CUSTOM
+   ============================================================ */
+@media (hover: hover) {
+  body { cursor: none; }
+
+  .cursor-outer {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1.5px solid rgba(99, 102, 241, 0.55);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s ease, height 0.25s ease,
+                border-color 0.25s ease, background 0.25s ease;
+    will-change: left, top;
+  }
+
+  .cursor-dot {
+    position: fixed;
+    width: 5px; height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+    will-change: left, top;
+  }
+
+  .cursor-outer.hover {
+    width: 56px; height: 56px;
+    border-color: rgba(99, 102, 241, 0.85);
+    background: rgba(99, 102, 241, 0.06);
+  }
+
+  .cursor-outer.click {
+    width: 24px; height: 24px;
+    border-color: rgba(139, 92, 246, 0.9);
+  }
+}
+
+/* ============================================================
+   TRANSITIONS DE PAGE
+   ============================================================ */
+body {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+body.page-ready {
+  opacity: 1;
+}
+
+/* Amélioration reveal — scale subtil */
+.reveal {
+  transform: translateY(40px) scale(0.98);
+}
+
+.reveal.visible {
+  transform: translateY(0) scale(1);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================================
    UTILITAIRES
    ============================================================ */
 .text-center { text-align: center; }

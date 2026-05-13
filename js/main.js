@@ -189,51 +189,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ----------------------------------------------------------
-  // 7. PARTICULES légères (canvas — fond hero)
+  // 7. PARTICULES + CONNEXIONS + INTERACTION SOURIS (canvas hero)
   // ----------------------------------------------------------
   const canvas = document.getElementById('heroCanvas');
   if (canvas) {
     const ctx = canvas.getContext('2d');
     let particles = [];
-    let animId;
+    let mouse = { x: -9999, y: -9999 };
+
+    canvas.parentElement.addEventListener('mousemove', e => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    canvas.parentElement.addEventListener('mouseleave', () => {
+      mouse.x = -9999; mouse.y = -9999;
+    });
 
     function resizeCanvas() {
       canvas.width  = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     }
 
-    function createParticles(n = 60) {
+    function createParticles(n = 90) {
       particles = [];
       for (let i = 0; i < n; i++) {
         particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 1.5 + 0.5,
-          dx: (Math.random() - 0.5) * 0.3,
-          dy: (Math.random() - 0.5) * 0.3,
-          opacity: Math.random() * 0.5 + 0.1
+          x:  Math.random() * canvas.width,
+          y:  Math.random() * canvas.height,
+          r:  Math.random() * 1.5 + 0.5,
+          dx: (Math.random() - 0.5) * 0.25,
+          dy: (Math.random() - 0.5) * 0.25,
+          opacity: Math.random() * 0.45 + 0.1
         });
       }
     }
 
     function drawParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const accent = body.classList.contains('light-mode') ? '79,70,229' : '99,102,241';
+      const isLight = body.classList.contains('light-mode');
+      const accent  = isLight ? '79,70,229' : '99,102,241';
+      const MAX_DIST = 130;
 
-      particles.forEach(p => {
+      particles.forEach((p, i) => {
+        // Légère attraction vers la souris
+        const mdx = mouse.x - p.x;
+        const mdy = mouse.y - p.y;
+        const md  = Math.sqrt(mdx * mdx + mdy * mdy);
+        if (md < 200 && md > 0) {
+          p.x += (mdx / md) * 0.18;
+          p.y += (mdy / md) * 0.18;
+        }
+
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width)  p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+        // Point
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${accent}, ${p.opacity})`;
         ctx.fill();
 
-        p.x += p.dx;
-        p.y += p.dy;
-
-        if (p.x < 0 || p.x > canvas.width)  p.dx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        // Lignes entre particules proches
+        for (let j = i + 1; j < particles.length; j++) {
+          const q   = particles[j];
+          const ddx = p.x - q.x;
+          const ddy = p.y - q.y;
+          const d   = Math.sqrt(ddx * ddx + ddy * ddy);
+          if (d < MAX_DIST) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = `rgba(${accent}, ${(1 - d / MAX_DIST) * 0.18})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
       });
 
-      animId = requestAnimationFrame(drawParticles);
+      requestAnimationFrame(drawParticles);
     }
 
     resizeCanvas();
@@ -248,22 +284,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ----------------------------------------------------------
-  // 8. TOOLTIP sur les étoiles
-  // ----------------------------------------------------------
-  document.querySelectorAll('.card-stars').forEach(el => {
-    el.setAttribute('title', `Note moyenne de ${el.dataset.note || '4.9'}/5`);
-  });
-
-
-  // ----------------------------------------------------------
-  // 9. HIGHLIGHT lien actif dans la navbar
+  // 8. HIGHLIGHT lien actif dans la navbar
   // ----------------------------------------------------------
   const navAnchors = document.querySelectorAll('.navbar-links a');
   navAnchors.forEach(a => {
     if (a.href === window.location.href) {
       a.style.color = 'var(--text-primary)';
-      a.style.setProperty('--after-scale', '1');
     }
+  });
+
+
+  // ----------------------------------------------------------
+  // 9. CURSEUR CUSTOM (desktop uniquement)
+  // ----------------------------------------------------------
+  if (window.matchMedia('(hover: hover)').matches) {
+    const cursorOuter = document.createElement('div');
+    const cursorDot   = document.createElement('div');
+    cursorOuter.className = 'cursor-outer';
+    cursorDot.className   = 'cursor-dot';
+    document.body.appendChild(cursorOuter);
+    document.body.appendChild(cursorDot);
+
+    let mx = 0, my = 0, ox = 0, oy = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursorDot.style.left = mx + 'px';
+      cursorDot.style.top  = my + 'px';
+    });
+
+    (function animCursor() {
+      ox += (mx - ox) * 0.11;
+      oy += (my - oy) * 0.11;
+      cursorOuter.style.left = ox + 'px';
+      cursorOuter.style.top  = oy + 'px';
+      requestAnimationFrame(animCursor);
+    })();
+
+    document.querySelectorAll('a, button, .card, [role="button"]').forEach(el => {
+      el.addEventListener('mouseenter', () => cursorOuter.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursorOuter.classList.remove('hover'));
+    });
+    document.addEventListener('mousedown', () => cursorOuter.classList.add('click'));
+    document.addEventListener('mouseup',   () => cursorOuter.classList.remove('click'));
+  }
+
+
+  // ----------------------------------------------------------
+  // 10. TRANSITIONS DE PAGE (fade in/out)
+  // ----------------------------------------------------------
+  // Fade in à l'arrivée
+  requestAnimationFrame(() => document.body.classList.add('page-ready'));
+
+  // Fade out avant navigation (liens internes non-ancres)
+  document.querySelectorAll('a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto') ||
+        href.startsWith('tel') || href.startsWith('http')) return;
+
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.body.classList.remove('page-ready');
+      setTimeout(() => { window.location.href = href; }, 380);
+    });
   });
 
 });
