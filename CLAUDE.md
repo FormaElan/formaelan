@@ -27,9 +27,9 @@ FormaElan/
 |---|---|---|---|---|
 | 1 | `seo-saas` | 49€ | ✅ 8 ch. + 17 SVGs | 13/05/2026 |
 | 2 | `ia-freelance` | 49€ | ✅ 9 ch. | 13/05/2026 |
-| 3 | `copywriting-ecom` | 39€ | ✅ 7 ch. | 13/05/2026 |
+| 3 | `copywriting-ecom` | 29€ | ✅ 7 ch. | 13/05/2026 |
 | 4 | `seo-ecom` | 39€ | ✅ 8 ch. + 16 SVGs | 13/05/2026 |
-| 5 | `optimiser-ia` | 29€ | ✅ 7 ch. | 13/05/2026 |
+| 5 | `optimiser-ia` | 39€ | ✅ 7 ch. | 13/05/2026 |
 
 ---
 

@@ -24,9 +24,10 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 |---|---|---|
 | 1 | Audit complet du site — cohérence liens, tarifs, tunnel Stripe (`/tester_stripe`) | 🔲 |
 | 2 | Contrôle des formations — navigation, contenu, SVGs, liens internes (`/auditer_formation`) | 🔲 |
-| 3 | SEO on-page — vérifier balises meta sur toutes les pages | 🔲 |
-| 4 | Définir la stratégie d'acquisition 1ers clients | 🔲 |
-| 5 | Tester un premier canal (Reddit, LinkedIn, forum SEO...) | 🔲 |
-| 6 | Première vente réelle | 🔲 Objectif |
+| 3 | Vérifier l'implémentation du certificat de réussite sur toutes les formations | 🔲 |
+| 4 | SEO on-page — vérifier balises meta sur toutes les pages | 🔲 |
+| 5 | Définir la stratégie d'acquisition 1ers clients | 🔲 |
+| 6 | Tester un premier canal (Reddit, LinkedIn, forum SEO...) | 🔲 |
+| 7 | Première vente réelle | 🔲 Objectif |
 
 ---
