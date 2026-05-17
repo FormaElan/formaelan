@@ -5,14 +5,17 @@
 
 const FormaElanStripe = (() => {
 
+  const _IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+
   const CONFIG = {
     publicKey:  'pk_test_51TUtLOGnMFelvstENY6I6Q7OzLpDnk4ErPsHb3hsdLUSuOLtvsHHI6U8lqk8bvNvoBv9A7PEYAE4zjThmRU98yRA00steWWzZZ',
-    backendUrl: 'http://localhost:4242',
+    backendUrl: _IS_LOCAL ? 'http://localhost:4242' : 'https://formaelan.onrender.com',
     siteUrl:    window.location.origin,
-    // 'stub'  = modal de simulation
-    // 'live'  = vrai flux Stripe Checkout
     mode: 'live'
   };
+
+  // Warm-up ping — réveille le serveur Render dès le chargement de la page
+  fetch(`${CONFIG.backendUrl}/health`).catch(() => {});
 
   // ── Lancer le paiement ─────────────────────────────────
   async function checkout(slug, prix, titre) {
