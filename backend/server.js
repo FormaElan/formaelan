@@ -63,7 +63,9 @@ loadTokens();
 
 // ── Middlewares ─────────────────────────────────────────────
 app.use(cors({
-  origin: process.env.SITE_URL || '*',
+  origin: process.env.SITE_URL
+    ? new URL(process.env.SITE_URL).origin
+    : '*',
   methods: ['GET', 'POST'],
 }));
 app.use(express.json());
