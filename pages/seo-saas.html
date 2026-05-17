@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -244,7 +244,7 @@
         </div>
 
         <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-          <a href="#acheter" class="btn btn-primary btn-lg">🔒 Accéder maintenant</a>
+          <button id="btnAcheterHero" class="btn btn-primary btn-lg">🔒 Accéder maintenant</button>
           <a href="#programme" class="btn btn-secondary">Voir le programme ↓</a>
         </div>
       </div>
@@ -541,7 +541,7 @@
       });
 
       // ── 3. Boutons acheter → stripe.js ────────────────────
-      ['btnAcheter', 'btnAcheter2', 'btnAcheterCta'].forEach(id => {
+      ['btnAcheter', 'btnAcheter2', 'btnAcheterCta', 'btnAcheterHero'].forEach(id => {
         const btn = document.getElementById(id);
         if (btn) btn.addEventListener('click', () => {
           if (typeof FormaElanStripe !== 'undefined') {
@@ -676,3 +676,4 @@
   </script>
 </body>
 </html>
+
