@@ -46,6 +46,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 | 6 | Image OG manquante | Créer le dossier `img/` et une image `og-cover.jpg` (1200×630px). Sans elle, aucun aperçu visuel sur LinkedIn/Facebook/Twitter quand une page est partagée. Impact direct sur l'acquisition. | ~1h |
 | 7 | Supprimer formations/seo-saas.html | Ancienne version monolithique de la formation, obsolète. Risque d'être indexée par Google comme doublon du contenu payant. | 5 min |
 | 8 | formation-template.html public | `pages/formation-template.html` est accessible publiquement sur GitHub Pages. Page vide/technique qui ne devrait pas être visible. Soit la supprimer, soit la mettre en noindex. | 10 min |
+| 24 | Refonte graphique globale | Moderniser l'ensemble du site au-delà des cartes formations : animations scroll sur le hero, micro-interactions sur les features, transitions de sections fluides, visuels plus attractifs. Objectif : site visuellement compétitif face aux plateformes type Udemy. Flip cards formations (3D néon) : ✅ fait (18/05). | ~4h |
 
 ---
 

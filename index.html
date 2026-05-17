@@ -302,42 +302,63 @@
       return '★'.repeat(full) + (half ? '½' : '') + '☆'.repeat(empty);
     }
 
+    const COLOR_CLASS = {
+      'seo-saas':         'c-indigo',
+      'ia-freelance':     'c-cyan',
+      'copywriting-ecom': 'c-orange',
+      'seo-ecom':         'c-blue',
+      'optimiser-ia':     'c-purple',
+    };
+
     function badgeLabel(badge) {
       const map = { bestseller: '🔥 Best-seller', popular: '⚡ Populaire', new: '✨ Nouveau' };
       return map[badge] || '';
     }
 
     FORMATIONS.forEach((f, i) => {
-      const card = document.createElement('article');
-      card.className = 'card reveal';
-      card.dataset.delay = i * 100;
-      card.innerHTML = `
-        <div class="card-badge badge-${f.badge}">${badgeLabel(f.badge)}</div>
-        <div class="card-visual" style="background:${f.couleur};">
-          <div class="card-glow" style="background:radial-gradient(circle at center, ${f.couleurGlow}, transparent 70%);"></div>
-          <div class="card-icon">${f.icon}</div>
-        </div>
-        <div class="card-body">
-          <div class="card-category">${f.categorie}</div>
-          <h3 class="card-title">${f.titre}</h3>
-          <p class="card-desc">${f.description.substring(0, 120)}…</p>
-          <div class="card-meta">
-            <div class="card-meta-item">⏱ ${f.duree}</div>
-            <div class="card-meta-item">📚 ${f.modules} modules</div>
-            <div class="card-meta-item">📶 ${f.niveau}</div>
+      const wrap = document.createElement('article');
+      wrap.className = `flip-wrap reveal ${COLOR_CLASS[f.slug] || ''}`;
+      wrap.dataset.delay = i * 100;
+      const obj3 = (f.objectifs || []).slice(0, 3).map(o => `<li>${o}</li>`).join('');
+      wrap.innerHTML = `
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="card-badge badge-${f.badge}">${badgeLabel(f.badge)}</div>
+            <div class="flip-img">
+              <img src="img/formations/${f.slug}.jpg" alt="${f.titre}" width="400" height="200" loading="lazy">
+            </div>
+            <div class="flip-front-body">
+              <div class="card-category">${f.categorie}</div>
+              <h3 class="card-title">${f.titre}</h3>
+              <div class="flip-meta">
+                <span>⏱ ${f.duree}</span>
+                <span>📚 ${f.modules} modules</span>
+                <span>📶 ${f.niveau}</span>
+              </div>
+              <div class="flip-price">
+                <span class="price">${f.prix} €</span>
+                <span class="price-old">${f.prixAncien} €</span>
+              </div>
+            </div>
+            <div class="flip-hint">Survoler pour en savoir plus →</div>
           </div>
-          <div class="card-footer">
-            <div class="card-price">
+          <div class="flip-face flip-back">
+            <div>
+              <h3>${f.titre}</h3>
+              <p>${f.description.substring(0, 130)}…</p>
+            </div>
+            <ul class="flip-obj">${obj3}</ul>
+            <div class="flip-back-footer">
               <span class="price">${f.prix} €</span>
-              <span class="price-old">${f.prixAncien} €</span>
+              <a href="pages/${f.slug}.html" class="btn btn-primary">Voir la formation</a>
             </div>
           </div>
         </div>
       `;
-      card.addEventListener('click', () => {
-        window.location.href = `pages/${f.slug}.html`;
+      wrap.addEventListener('click', e => {
+        if (!e.target.closest('a')) window.location.href = `pages/${f.slug}.html`;
       });
-      grid.appendChild(card);
+      grid.appendChild(wrap);
     });
   </script>
 

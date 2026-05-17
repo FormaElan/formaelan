@@ -295,42 +295,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ----------------------------------------------------------
-  // 9. CURSEUR CUSTOM (desktop uniquement)
-  // ----------------------------------------------------------
-  if (window.matchMedia('(hover: hover)').matches) {
-    const cursorOuter = document.createElement('div');
-    const cursorDot   = document.createElement('div');
-    cursorOuter.className = 'cursor-outer';
-    cursorDot.className   = 'cursor-dot';
-    document.body.appendChild(cursorOuter);
-    document.body.appendChild(cursorDot);
-
-    let mx = 0, my = 0, ox = 0, oy = 0;
-
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursorDot.style.left = mx + 'px';
-      cursorDot.style.top  = my + 'px';
-    });
-
-    (function animCursor() {
-      ox += (mx - ox) * 0.11;
-      oy += (my - oy) * 0.11;
-      cursorOuter.style.left = ox + 'px';
-      cursorOuter.style.top  = oy + 'px';
-      requestAnimationFrame(animCursor);
-    })();
-
-    document.querySelectorAll('a, button, .card, [role="button"]').forEach(el => {
-      el.addEventListener('mouseenter', () => cursorOuter.classList.add('hover'));
-      el.addEventListener('mouseleave', () => cursorOuter.classList.remove('hover'));
-    });
-    document.addEventListener('mousedown', () => cursorOuter.classList.add('click'));
-    document.addEventListener('mouseup',   () => cursorOuter.classList.remove('click'));
-  }
-
-
-  // ----------------------------------------------------------
   // 10. TRANSITIONS DE PAGE (fade in/out)
   // ----------------------------------------------------------
   // Fade in à l'arrivée
