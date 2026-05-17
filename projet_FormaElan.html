@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projet FormaElan — Vue d'ensemble & Roadmap</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:       #0D1B3E;
+      --teal:       #1A9E8F;
+      --orange:     #F26C3A;
+      --bg:         #0A0F1E;
+      --bg2:        #111827;
+      --bg3:        #1F2937;
+      --card:       #161D2E;
+      --border:     rgba(255,255,255,0.08);
+      --border-glow:rgba(26,158,143,0.3);
+      --text:       #E2E8F0;
+      --muted:      #94A3B8;
+      --accent:     #1A9E8F;
+      --radius:     12px;
+      --radius-sm:  8px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ── Header ── */
+    .doc-header {
+      background: linear-gradient(160deg, #0D1B3E 0%, #0A0F1E 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+    .doc-header .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    .doc-header .logo span { color: var(--teal); }
+    .doc-header h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+    .doc-header .subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .phase-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding: 0.4rem 1rem;
+      background: rgba(26,158,143,0.15);
+      border: 1px solid var(--border-glow);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--teal);
+    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    /* ── Layout ── */
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 3rem 0; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    h2 .label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.4rem;
+    }
+    h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      color: var(--text);
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    /* ── Formations ── */
+    .formations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.8rem;
+    }
+    .formation-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+    }
+    .formation-card .f-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+    .formation-card .f-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .formation-card .f-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--teal);
+    }
+    .f-status {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(34,197,94,0.12);
+      color: #22c55e;
+      border: 1px solid rgba(34,197,94,0.25);
+    }
+
+    /* ── Stack technique ── */
+    .stack-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.9rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      margin-bottom: 0.6rem;
+    }
+    .stack-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .stack-label { font-weight: 700; font-size: 0.88rem; margin-bottom: 0.15rem; }
+    .stack-detail { font-size: 0.8rem; color: var(--muted); }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      background: rgba(255,255,255,0.06);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      color: var(--teal);
+    }
+
+    /* ── Flux ── */
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+    }
+    .flow-step {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.7rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .flow-arrow {
+      color: var(--teal);
+      font-size: 1rem;
+      padding: 0 0.4rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Roadmap ── */
+    .rm-section {
+      margin-bottom: 2.5rem;
+    }
+    .rm-section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .rm-done { background: var(--bg2); border-radius: var(--radius-sm); padding: 1rem 1.2rem; }
+    .rm-done li {
+      list-style: none;
+      padding: 0.3rem 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+    .rm-done li::before { content: "✅"; flex-shrink: 0; }
+
+    .rm-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .rm-table th {
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .rm-table td {
+      padding: 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: top;
+    }
+    .rm-table tr:last-child td { border-bottom: none; }
+    .rm-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .rm-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .rm-title { font-weight: 600; color: var(--text); }
+    .rm-detail { color: var(--muted); font-size: 0.8rem; margin-top: 0.25rem; }
+    .rm-effort {
+      font-size: 0.75rem;
+      color: var(--teal);
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .tag-red    { background: rgba(239,68,68,0.12);   color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+    .tag-orange { background: rgba(251,146,60,0.12);  color: #fb923c; border: 1px solid rgba(251,146,60,0.25); }
+    .tag-yellow { background: rgba(234,179,8,0.12);   color: #eab308; border: 1px solid rgba(234,179,8,0.25); }
+    .tag-blue   { background: rgba(96,165,250,0.12);  color: #60a5fa; border: 1px solid rgba(96,165,250,0.25); }
+    .tag-green  { background: rgba(34,197,94,0.12);   color: #22c55e; border: 1px solid rgba(34,197,94,0.25); }
+    .tag-purple { background: rgba(167,139,250,0.12); color: #a78bfa; border: 1px solid rgba(167,139,250,0.25); }
+
+    .hors-scope li {
+      list-style: none;
+      padding: 0.3rem 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      gap: 0.6rem;
+    }
+    .hors-scope li::before { content: "✗"; color: #f87171; flex-shrink: 0; }
+
+    .prereq {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--orange);
+      background: rgba(242,108,58,0.08);
+      border: 1px solid rgba(242,108,58,0.2);
+      border-radius: var(--radius-sm);
+      padding: 0.4rem 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-doc {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 640px) {
+      .flow { gap: 0.4rem; }
+      .flow-step { font-size: 0.75rem; padding: 0.5rem 0.7rem; }
+      .doc-header h1 { font-size: 1.6rem; }
+      .rm-table th:nth-child(3), .rm-table td:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="doc-header">
+  <div class="logo">⚡ <span>Forma</span>Elan</div>
+  <h1>Projet FormaElan</h1>
+  <p class="subtitle">Document interne — Vue d'ensemble & Roadmap détaillée · Mis à jour le 18/05/2026</p>
+  <div class="phase-badge"><div class="dot"></div> Phase 1 — Lancement MVP en cours</div>
+</header>
+
+
+<!-- ══════════════════════════════════════════
+     VISION
+══════════════════════════════════════════ -->
+<div class="container">
+
+  <section class="section">
+    <h2><span class="label">Vision</span><br>C'est quoi FormaElan ?</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Le projet</h3>
+        <p style="color:var(--muted);font-size:0.9rem;">Plateforme de vente de formations en ligne courtes (3-8h) sur des sujets numériques à fort ROI : SEO, IA, Copywriting. Cible : freelances, entrepreneurs et e-commerçants francophones.</p>
+      </div>
+      <div class="card">
+        <h3>Modèle économique</h3>
+        <p style="color:var(--muted);font-size:0.9rem;">Vente directe one-shot (29€ – 49€). Accès à vie. Pas d'abonnement, pas de plateforme tierce. Marge brute ~100% après frais Stripe (~3%). FormaElan est le premier projet du groupe MultiMind.</p>
+      </div>
+      <div class="card">
+        <h3>Phases du projet</h3>
+        <p style="color:var(--muted);font-size:0.9rem;">Phase 0 ✅ Fondations — Phase 1 🔶 1ère vente — Phase 2 🔲 SEO & scale — Phase 3 🔲 Autorité — Phase 4 🔲 MultiMind activé.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       CATALOGUE
+  ══════════════════════════════════════════ -->
+  <section class="section">
+    <h2><span class="label">Catalogue</span><br>5 formations en ligne</h2>
+    <div class="formations-grid">
+
+      <div class="formation-card">
+        <div class="f-title">SEO pour SaaS</div>
+        <div class="f-meta">8 modules · 6h30 · Intermédiaire</div>
+        <div class="f-price">49 €</div>
+        <div class="f-status">✓ En ligne — 8 ch. + 17 SVGs</div>
+      </div>
+
+      <div class="formation-card">
+        <div class="f-title">IA pour Freelance</div>
+        <div class="f-meta">9 modules · 8h · Débutant–Inter.</div>
+        <div class="f-price">49 €</div>
+        <div class="f-status">✓ En ligne — 9 ch.</div>
+      </div>
+
+      <div class="formation-card">
+        <div class="f-title">Copywriting E-commerce</div>
+        <div class="f-meta">7 modules · 7h · Débutant–Avancé</div>
+        <div class="f-price">29 €</div>
+        <div class="f-status">✓ En ligne — 7 ch.</div>
+      </div>
+
+      <div class="formation-card">
+        <div class="f-title">SEO pour E-commerce</div>
+        <div class="f-meta">8 modules · 7h30 · Intermédiaire</div>
+        <div class="f-price">39 €</div>
+        <div class="f-status">✓ En ligne — 8 ch. + 16 SVGs</div>
+      </div>
+
+      <div class="formation-card">
+        <div class="f-title">Optimiser son IA</div>
+        <div class="f-meta">7 modules · 6h · Tous niveaux</div>
+        <div class="f-price">39 €</div>
+        <div class="f-status">✓ En ligne — 7 ch.</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       ARCHITECTURE TECHNIQUE
+  ══════════════════════════════════════════ -->
+  <section class="section">
+    <h2><span class="label">Architecture</span><br>Stack technique</h2>
+
+    <div class="stack-row">
+      <div class="stack-icon">🌐</div>
+      <div>
+        <div class="stack-label">Frontend — GitHub Pages (gratuit)</div>
+        <div class="stack-detail">HTML5 sémantique · CSS pur (variables) · JS vanilla. URL actuelle : <code>formaelan.github.io/formaelan</code> → migrer vers <code>formaelan.fr</code> en Phase 1.</div>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <div class="stack-icon">⚙️</div>
+      <div>
+        <div class="stack-label">Backend — Render (free tier, sleep après 15 min)</div>
+        <div class="stack-detail">Node.js + Express · Stripe Checkout · Token d'accès (Map + JSON). URL : <code>formaelan.onrender.com</code>. Warm-up ping depuis chaque page de vente pour éviter le cold start.</div>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <div class="stack-icon">💳</div>
+      <div>
+        <div class="stack-label">Paiement — Stripe Checkout (mode TEST actuellement)</div>
+        <div class="stack-detail">5 Price IDs configurés. Webhook <code>checkout.session.completed</code> → génère le token d'accès. Fallback : interrogation Stripe directe si webhook manqué. À basculer en mode LIVE le jour J.</div>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <div class="stack-icon">📧</div>
+      <div>
+        <div class="stack-label">Email post-achat — À mettre en place (Resend)</div>
+        <div class="stack-detail">Actuellement : aucun email d'accès envoyé. Le client doit garder <code>success.html?session_id=xxx</code> ouvert. Resend gratuit jusqu'à 300 emails/jour — à intégrer dans le webhook.</div>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <div class="stack-icon">📁</div>
+      <div>
+        <div class="stack-label">Repo GitHub — FormaElan/formaelan (public)</div>
+        <div class="stack-detail"><code>.env</code> exclu du repo · <code>node_modules/</code> exclu · Déploiement GitHub Pages automatique sur push <code>master</code>.</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       FLUX UTILISATEUR
+  ══════════════════════════════════════════ -->
+  <section class="section">
+    <h2><span class="label">Tunnel</span><br>Flux utilisateur actuel</h2>
+
+    <h3 style="margin-bottom:0.5rem;color:var(--muted);font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;">Achat</h3>
+    <div class="flow">
+      <div class="flow-step">Page de vente</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Clic "Accéder maintenant"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Stripe Checkout</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">success.html + token</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Chapitre 1</div>
+    </div>
+
+    <h3 style="margin-top:1.5rem;margin-bottom:0.5rem;color:var(--muted);font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;">Warm-up serveur</h3>
+    <div class="flow">
+      <div class="flow-step">Page de vente chargée</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">fetch /health silencieux</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Render réveillé en arrière-plan</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Zéro lag au clic</div>
+    </div>
+
+    <h3 style="margin-top:1.5rem;margin-bottom:0.5rem;color:var(--muted);font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;">Récupération d'accès (problème actuel)</h3>
+    <div class="flow">
+      <div class="flow-step" style="border-color:rgba(239,68,68,0.3);">Client perd le lien</div>
+      <div class="flow-arrow" style="color:#f87171;">→</div>
+      <div class="flow-step" style="border-color:rgba(239,68,68,0.3);">Aucune solution autonome</div>
+      <div class="flow-arrow" style="color:#f87171;">→</div>
+      <div class="flow-step" style="border-color:rgba(239,68,68,0.3);">Contact support manuel</div>
+    </div>
+    <p style="font-size:0.8rem;color:var(--muted);margin-top:0.8rem;">→ Résolu par la tâche 4 (email automatique post-achat via Resend).</p>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       ROADMAP
+  ══════════════════════════════════════════ -->
+  <section class="section">
+    <h2><span class="label">Roadmap</span><br>Phase 1 — 23 tâches avant la première vente</h2>
+
+
+    <!-- Réalisé -->
+    <div class="rm-section">
+      <div class="rm-section-title">✅ Réalisé</div>
+      <div class="rm-done">
+        <ul>
+          <li>5 formations complètes en ligne (SEO SaaS, IA Freelance, Copywriting Ecom, SEO Ecom, Optimiser IA)</li>
+          <li>Backend Stripe — token d'accès, webhook, PRICE_MAP 5 slugs</li>
+          <li>Site complet — index, pages de vente, success/cancel</li>
+          <li>GitHub configuré — FormaElan/formaelan (public)</li>
+          <li>Backend déployé sur Render (free tier) — formaelan.onrender.com (18/05)</li>
+          <li>Tunnel paiement validé — CORS, URL chapitre, boutons hero câblés Stripe (18/05)</li>
+          <li>Warm-up ping — réveille Render dès le chargement de chaque page de vente (18/05)</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- Bloquants légaux -->
+    <div class="rm-section">
+      <div class="rm-section-title"><span class="tag tag-red">Bloquant légal</span> Obligatoire avant toute vente réelle</div>
+      <table class="rm-table">
+        <thead><tr><th>#</th><th>Tâche</th><th>Effort</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rm-num">01</td>
+            <td>
+              <div class="rm-title">Pages légales</div>
+              <div class="rm-detail">4 pages à créer : Mentions légales (nom, adresse, SIRET), CGV (droit de rétractation 14j, modalités d'accès), Politique de confidentialité (RGPD, données Stripe), Contact. Mettre à jour tous les <code>href="#"</code> dans les footers de toutes les pages.</div>
+            </td>
+            <td class="rm-effort">~3h</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- Bloquants techniques -->
+    <div class="rm-section">
+      <div class="rm-section-title"><span class="tag tag-orange">Bloquant technique</span> Production</div>
+      <table class="rm-table">
+        <thead><tr><th>#</th><th>Tâche</th><th>Effort</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rm-num">02</td>
+            <td>
+              <div class="rm-title">Webhook Stripe — signing secret</div>
+              <div class="rm-detail">Stripe Dashboard → Webhooks → copier le signing secret → ajouter <code>STRIPE_WEBHOOK_SECRET</code> dans Render. Sans ça, n'importe qui peut forger un faux événement de paiement.</div>
+            </td>
+            <td class="rm-effort">15 min</td>
+          </tr>
+          <tr>
+            <td class="rm-num">03</td>
+            <td>
+              <div class="rm-title">Clés Stripe live</div>
+              <div class="rm-detail">Basculer vers <code>sk_live_</code> / <code>pk_live_</code> sur Render + <code>js/stripe.js</code>. À faire le jour J uniquement — les clés test restent en place jusqu'alors.</div>
+            </td>
+            <td class="rm-effort">30 min</td>
+          </tr>
+          <tr>
+            <td class="rm-num">04</td>
+            <td>
+              <div class="rm-title">Email post-achat automatique (Resend)</div>
+              <div class="rm-detail">Créer un compte Resend (gratuit 300 emails/jour) → intégrer dans le backend → dans le webhook <code>checkout.session.completed</code>, envoyer un email avec le lien d'accès direct (<code>success.html?session_id=xxx</code>). Sans ça, un acheteur qui ferme la page perd définitivement son accès.</div>
+            </td>
+            <td class="rm-effort">~2h</td>
+          </tr>
+          <tr>
+            <td class="rm-num">05</td>
+            <td>
+              <div class="rm-title">Email incorrect dans cancel.html</div>
+              <div class="rm-detail"><code>contact@formaElan.fr</code> est hardcodé dans cancel.html mais cette adresse n'existe pas encore. Remplacer par <code>multimind.team@gmail.com</code> en attendant le domaine.</div>
+            </td>
+            <td class="rm-effort">5 min</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- Visuels / contenu -->
+    <div class="rm-section">
+      <div class="rm-section-title"><span class="tag tag-yellow">Visuel</span> Marketing & contenu</div>
+      <table class="rm-table">
+        <thead><tr><th>#</th><th>Tâche</th><th>Effort</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rm-num">06</td>
+            <td>
+              <div class="rm-title">Image OG manquante</div>
+              <div class="rm-detail">Créer le dossier <code>img/</code> et une image <code>og-cover.jpg</code> (1200×630px). Toutes les pages référencent cette image — sans elle, aucun aperçu visuel sur LinkedIn, Facebook ou Twitter. Impact direct sur l'acquisition.</div>
+            </td>
+            <td class="rm-effort">~1h</td>
+          </tr>
+          <tr>
+            <td class="rm-num">07</td>
+            <td>
+              <div class="rm-title">Supprimer formations/seo-saas.html</div>
+              <div class="rm-detail">Ancienne version monolithique de la formation SEO SaaS, obsolète depuis la migration en chapitres. Risque d'indexation Google comme doublon du contenu payant.</div>
+            </td>
+            <td class="rm-effort">5 min</td>
+          </tr>
+          <tr>
+            <td class="rm-num">08</td>
+            <td>
+              <div class="rm-title">pages/formation-template.html public</div>
+              <div class="rm-detail">Fichier technique accessible publiquement sur GitHub Pages. Supprimer ou ajouter <code>&lt;meta name="robots" content="noindex"&gt;</code>.</div>
+            </td>
+            <td class="rm-effort">10 min</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- Accès et protection -->
+    <div class="rm-section">
+      <div class="rm-section-title"><span class="tag tag-blue">Contenu</span> Accès & protection</div>
+      <table class="rm-table">
+        <thead><tr><th>#</th><th>Tâche</th><th>Effort</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rm-num">09</td>
+            <td>
+              <div class="rm-title">Chapitres accessibles sans paiement</div>
+              <div class="rm-detail">Les fichiers HTML des chapitres sont publics — n'importe qui connaissant l'URL y accède sans payer. Acceptable en Phase 1 MVP (obscurité comme protection). Dette technique à planifier en Phase 2 (URL signées ou vérification token serveur).</div>
+            </td>
+            <td class="rm-effort">Phase 2</td>
+          </tr>
+          <tr>
+            <td class="rm-num">10</td>
+            <td>
+              <div class="rm-title">Suivi de progression / certificat de réussite</div>
+              <div class="rm-detail">"Certificat de réussite" promis dans les pages de vente (70% + tous modules complétés) mais aucun mécanisme de suivi n'existe. Décision à prendre : retirer la mention pour Phase 1 ou la conditionner à "bientôt disponible".</div>
+            </td>
+            <td class="rm-effort">Décision</td>
+          </tr>
+          <tr>
+            <td class="rm-num">11</td>
+            <td>
+              <div class="rm-title">robots.txt</div>
+              <div class="rm-detail">Ajouter un <code>robots.txt</code> à la racine qui noindex <code>formations/</code> pour éviter que Google indexe le contenu payant des chapitres.</div>
+            </td>
+            <td class="rm-effort">15 min</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- Qualité & tests -->
+    <div class="rm-section">
+      <div class="rm-section-title"><span class="tag tag-blue">Qualité</span> Tests & analytics</div>
+      <table class="rm-table">
+        <thead><tr><th>#</th><th>Tâche</th><th>Effort</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rm-num">12</td>
+            <td>
+              <div class="rm-title">Tests mobile</div>
+              <div class="rm-detail">Tester le tunnel complet (page de vente → Stripe → success.html → chapitre) sur téléphone. Vérifier lisibilité des pages de vente et des chapitres sur petits écrans.</div>
+            </td>
+            <td class="rm-effort">~1h</td>
+          </tr>
+          <tr>
+            <td class="rm-num">13</td>
+            <td>
+              <div class="rm-title">Contrôle qualité formations</div>
+              <div class="rm-detail">Lancer <code>/auditer_formation</code> sur les 5 formations — navigation entre chapitres, qualité SVGs, liens internes, conformité CSS (<code>formations.css</code> uniquement, zéro JS dans les chapitres).</div>
+            </td>
+            <td class="rm-effort">~2h</td>
+          </tr>
+          <tr>
+            <td class="rm-num">14</td>
+            <td>
+              <div class="rm-title">Analytics</div>
+              <div class="rm-detail">Intégrer Plausible (~9€/mois cloud) ou Umami (self-host gratuit). Sans analytics, impossible de savoir d'où viennent les visiteurs ni quelle page de vente convertit le mieux.</div>
+            </td>
+            <td class="rm-effort">~1h</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- Domaine -->
+    <div class="rm-section">
+      <div class="rm-section-title"><span class="tag tag-green">Domaine</span> Migration vers formaelan.fr</div>
+      <div class="prereq">⚠ Prérequis : tâches 1, 2, 4 et 5 terminées avant d'acheter le domaine.</div>
+      <table class="rm-table">
+        <thead><tr><th>#</th><th>Tâche</th><th>Effort</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rm-num">15</td>
+            <td>
+              <div class="rm-title">Acheter formaelan.fr</div>
+              <div class="rm-detail">OVH recommandé : ~0.99€ la 1ère année puis ~6.99€/an. Pas de .fr gratuit possible (réglementé AFNIC). Alternative : Porkbun ~7€/an.</div>
+            </td>
+            <td class="rm-effort">15 min</td>
+          </tr>
+          <tr>
+            <td class="rm-num">16</td>
+            <td>
+              <div class="rm-title">Configurer DNS + GitHub Pages</div>
+              <div class="rm-detail">Dans OVH : 4 enregistrements A GitHub Pages + CNAME <code>www</code>. Dans GitHub repo → Settings → Pages → Custom domain → <code>formaelan.fr</code>. HTTPS automatique via Let's Encrypt.</div>
+            </td>
+            <td class="rm-effort">~30 min</td>
+          </tr>
+          <tr>
+            <td class="rm-num">17</td>
+            <td>
+              <div class="rm-title">Mettre à jour SITE_URL sur Render</div>
+              <div class="rm-detail">Changer <code>SITE_URL=https://formaelan.fr</code> dans les variables d'environnement Render. Tester le tunnel complet sur le vrai domaine avec une carte test Stripe.</div>
+            </td>
+            <td class="rm-effort">15 min</td>
+          </tr>
+          <tr>
+            <td class="rm-num">18</td>
+            <td>
+              <div class="rm-title">Email contact@formaelan.fr</div>
+              <div class="rm-detail">Créer l'adresse email (incluse avec OVH). Remplacer <code>multimind.team@gmail.com</code> par <code>contact@formaelan.fr</code> partout dans le site.</div>
+            </td>
+            <td class="rm-effort">~30 min</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- Acquisition -->
+    <div class="rm-section">
+      <div class="rm-section-title"><span class="tag tag-purple">Acquisition</span> Première vente (après domaine)</div>
+      <table class="rm-table">
+        <thead><tr><th>#</th><th>Tâche</th><th>Effort</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rm-num">19</td>
+            <td>
+              <div class="rm-title">SEO on-page</div>
+              <div class="rm-detail">Balises meta optimisées, OG tags corrects, schema <code>Course</code> sur pages de vente. À faire uniquement après migration sur formaelan.fr — inutile sur GitHub Pages (mauvaise URL indexée).</div>
+            </td>
+            <td class="rm-effort">~2h</td>
+          </tr>
+          <tr>
+            <td class="rm-num">20</td>
+            <td>
+              <div class="rm-title">LinkedIn personnel</div>
+              <div class="rm-detail">Post de valeur concrète (astuce SEO ou IA, pas un post "j'ai lancé") avec mention naturelle de la formation. Le ticket bas (29-49€) réduit la friction à l'achat.</div>
+            </td>
+            <td class="rm-effort">~1h</td>
+          </tr>
+          <tr>
+            <td class="rm-num">21</td>
+            <td>
+              <div class="rm-title">Groupes Facebook / Discord</div>
+              <div class="rm-detail">Identifier 5 groupes actifs : freelance FR, SEO France, IA francophone, copywriting, entrepreneurs web. Règle : apporter de la valeur dans les discussions d'abord, mentionner la formation ensuite — jamais en spam direct.</div>
+            </td>
+            <td class="rm-effort">Continu</td>
+          </tr>
+          <tr>
+            <td class="rm-num">22</td>
+            <td>
+              <div class="rm-title">Product Hunt</div>
+              <div class="rm-detail">Préparer le lancement : description, visuels, tagline percutante. Génère 200-500 visites qualifiées en 24h et crédibilise le projet auprès des early adopters tech. Prévoir ~2h de préparation.</div>
+            </td>
+            <td class="rm-effort">~2h</td>
+          </tr>
+          <tr>
+            <td class="rm-num">23</td>
+            <td>
+              <div class="rm-title" style="color:var(--teal);">🎯 Première vente réelle</div>
+              <div class="rm-detail">L'objectif de Phase 1. Valide le tunnel, le prix, et la proposition de valeur.</div>
+            </td>
+            <td class="rm-effort" style="color:var(--orange);">Objectif</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- Hors scope -->
+    <div class="rm-section">
+      <div class="rm-section-title">❌ Hors scope Phase 1</div>
+      <ul class="hors-scope">
+        <li>SEO organique — résultats en 3-6 mois minimum, Phase 2 après formaelan.fr</li>
+        <li>Analyse SEO approfondie — inutile tant que le site est sur GitHub Pages (URL temporaire)</li>
+        <li>Publicité payante — trop tôt sans conversion prouvée sur trafic organique</li>
+        <li>Twitter / Instagram — trop long à construire pour un objectif "première vente"</li>
+        <li>Système de compte utilisateur / espace membre — Phase 2</li>
+        <li>Protection réelle du contenu (auth sur chapitres) — Phase 2</li>
+      </ul>
+    </div>
+
+  </section>
+
+</div>
+
+<footer class="footer-doc">
+  Document interne FormaElan · Mis à jour le 18/05/2026 · Non indexé (noindex)
+</footer>
+
+</body>
+</html>
