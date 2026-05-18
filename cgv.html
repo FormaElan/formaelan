@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conditions Générales de Vente — FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .legal-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+    .legal-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      transition: color 0.2s;
+    }
+    .legal-back:hover { color: var(--text-accent); }
+    .legal-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+    }
+    .legal-date {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .legal-wrap h2 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-accent);
+      margin: 2.5rem 0 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .legal-wrap p, .legal-wrap li {
+      font-size: 0.88rem;
+      line-height: 1.78;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    .legal-wrap strong { color: var(--text-primary); font-weight: 600; }
+    .legal-wrap a { color: var(--text-accent); }
+    .legal-wrap a:hover { text-decoration: underline; }
+    .legal-wrap ul { padding-left: 1.2rem; list-style: disc; margin-bottom: 0.8rem; }
+    .legal-key {
+      background: rgba(26,158,143,0.06);
+      border: 1px solid rgba(26,158,143,0.3);
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+      margin: 1.5rem 0;
+    }
+    .legal-key p {
+      color: var(--text-primary);
+      margin-bottom: 0;
+      font-size: 0.86rem;
+    }
+    .legal-footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-glass);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+    .todo {
+      background: rgba(251,146,60,0.12);
+      border: 1px dashed rgba(251,146,60,0.45);
+      border-radius: 4px;
+      padding: 0.1rem 0.5rem;
+      color: #fb923c;
+      font-style: italic;
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text"><span>Forma</span>Elan</div>
+    </a>
+    <div class="navbar-actions">
+      <label class="theme-toggle" title="Changer le thème">
+        <input type="checkbox" id="themeToggleInput" />
+        <div class="track"><div class="thumb">🌙</div></div>
+      </label>
+    </div>
+  </nav>
+
+  <main class="legal-wrap">
+
+    <a href="index.html" class="legal-back">← Retour à l'accueil</a>
+
+    <h1 class="legal-title">Conditions Générales de Vente</h1>
+    <p class="legal-date">Dernière mise à jour : mai 2026 — Applicables à toute commande passée sur FormaElan</p>
+
+    <h2>1. Objet</h2>
+    <p>
+      Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre FormaElan (ci-après « le Vendeur ») et toute personne effectuant un achat sur le site (ci-après « l'Acheteur »). Tout achat implique l'acceptation pleine et entière des présentes CGV.
+    </p>
+
+    <h2>2. Identification du vendeur</h2>
+    <p>
+      <strong><span class="todo">Prénom Nom</span></strong><br>
+      <span class="todo">Adresse postale complète</span><br>
+      Email : <a href="mailto:multimind.team@gmail.com">multimind.team@gmail.com</a><br>
+      SIRET : <span class="todo">Numéro SIRET</span><br>
+      TVA non applicable, article 293 B du CGI.
+    </p>
+
+    <h2>3. Formations proposées</h2>
+    <p>FormaElan commercialise des formations pédagogiques numériques dans les domaines suivants :</p>
+    <ul>
+      <li>SEO pour SaaS — 49 €</li>
+      <li>IA pour Freelance — 49 €</li>
+      <li>Copywriting E-commerce — 29 €</li>
+      <li>SEO pour E-commerce — 39 €</li>
+      <li>Optimiser son IA — 39 €</li>
+    </ul>
+    <p>
+      Ces formations sont des contenus numériques composés de chapitres pédagogiques en ligne. Elles ne sont pas fournies sur support matériel. Les prix sont indiqués en euros, toutes taxes comprises (TVA non applicable).
+    </p>
+
+    <h2>4. Processus de commande et paiement</h2>
+    <p>
+      La commande est passée directement sur le site via le bouton d'achat. L'Acheteur est redirigé vers la plateforme de paiement sécurisée Stripe pour finaliser la transaction.
+    </p>
+    <p>
+      Le paiement est dû intégralement au moment de la commande. Aucun paiement en plusieurs fois n'est proposé. Les moyens de paiement acceptés sont ceux proposés par Stripe (carte bancaire Visa, Mastercard, American Express).
+    </p>
+    <p>
+      La commande est confirmée à réception du paiement. Une confirmation est envoyée par Stripe à l'adresse email renseignée lors du paiement.
+    </p>
+
+    <h2>5. Accès à la formation</h2>
+    <p>
+      L'accès à la formation est fourni <strong>immédiatement</strong> après confirmation du paiement, via un lien personnel affiché sur la page de confirmation et transmis par email. L'accès est valable à vie et comprend les mises à jour du contenu.
+    </p>
+    <p>
+      L'accès est strictement personnel et lié à l'email de l'Acheteur. Il est interdit de partager, revendre ou redistribuer le lien d'accès ou tout contenu de la formation.
+    </p>
+
+    <h2>6. Droit de rétractation</h2>
+    <div class="legal-key">
+      <p>
+        <strong>Exclusion du droit de rétractation.</strong> Conformément à l'article L221-28 11° du Code de la consommation, le droit de rétractation ne s'applique pas aux contenus numériques non fournis sur support matériel dont l'exécution a commencé avec l'accord préalable exprès du consommateur et renoncement exprès à son droit de rétractation.
+      </p>
+    </div>
+    <p>
+      En procédant au paiement, l'Acheteur reconnaît expressément que l'exécution du contrat commence immédiatement après confirmation du paiement — c'est-à-dire que l'accès à la formation est fourni sans délai — et renonce en conséquence à son droit de rétractation.
+    </p>
+    <p>
+      Toute demande de remboursement fondée sur un exercice du droit de rétractation sera refusée dès lors que l'accès à la formation a été fourni.
+    </p>
+
+    <h2>7. Responsabilité</h2>
+    <p>
+      Les formations FormaElan constituent des ressources pédagogiques à visée informative et pratique. Elles ne constituent pas une garantie de résultats. Les performances obtenues par l'Acheteur dépendent de son investissement personnel, de son secteur d'activité et de facteurs extérieurs au Vendeur.
+    </p>
+    <p>
+      Le Vendeur ne saurait être tenu responsable de tout dommage indirect résultant de l'utilisation ou de l'impossibilité d'utiliser les contenus des formations.
+    </p>
+
+    <h2>8. Propriété intellectuelle</h2>
+    <p>
+      L'ensemble des contenus des formations (textes, méthodes, exemples, visuels) sont protégés par le droit d'auteur et demeurent la propriété exclusive du Vendeur. L'achat d'une formation confère uniquement un droit d'usage personnel, non exclusif et non transférable.
+    </p>
+    <p>
+      Toute reproduction, diffusion ou exploitation commerciale des contenus, même partielle, sans autorisation écrite préalable du Vendeur, constitue une contrefaçon passible de sanctions civiles et pénales.
+    </p>
+
+    <h2>9. Réclamations et service après-vente</h2>
+    <p>
+      Pour toute question relative à une commande ou à l'accès à une formation, contactez-nous à <a href="mailto:multimind.team@gmail.com">multimind.team@gmail.com</a>. Nous nous engageons à répondre dans un délai de 5 jours ouvrés.
+    </p>
+
+    <h2>10. Protection des données personnelles</h2>
+    <p>
+      Les données collectées lors de la commande sont traitées conformément à notre <a href="politique-confidentialite.html">Politique de confidentialité</a> et au Règlement (UE) 2016/679 (RGPD).
+    </p>
+
+    <h2>11. Loi applicable et juridiction</h2>
+    <p>
+      Les présentes CGV sont soumises au droit français. En cas de litige, et après tentative de résolution amiable, les tribunaux compétents seront ceux du ressort du domicile du Vendeur.
+    </p>
+    <p>
+      Conformément aux articles L612-1 et suivants du Code de la consommation, l'Acheteur peut recourir gratuitement à un médiateur de la consommation en cas de litige non résolu amiablement. Liste des médiateurs agréés disponible sur <a href="https://www.economie.gouv.fr/mediation-conso" target="_blank" rel="noopener noreferrer">economie.gouv.fr</a>.
+    </p>
+
+    <div class="legal-footer">
+      <a href="index.html">Accueil</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="politique-confidentialite.html">Confidentialité</a> · <a href="contact.html">Contact</a>
+    </div>
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -165,10 +165,6 @@ const FORMATIONS = [
         q: "Y a-t-il un accès à vie ?",
         r: "Oui. Tu accèdes à la formation à vie, mises à jour comprises. Le SEO SaaS évolue — on met à jour tous les trimestres."
       },
-      {
-        q: "La garantie 30 jours est-elle vraiment sans condition ?",
-        r: "Oui. Si tu n'es pas satisfait dans les 30 jours suivant l'achat, on te rembourse intégralement sur simple demande par email."
-      }
     ],
 
     certif: true,

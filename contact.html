@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .contact-page {
+      min-height: calc(100vh - 70px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem;
+    }
+    .contact-card {
+      max-width: 520px;
+      width: 100%;
+      background: linear-gradient(160deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 3rem 2.5rem;
+      text-align: center;
+    }
+    .contact-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .contact-card h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+    .contact-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
+    }
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+      padding: 0.9rem 1.6rem;
+      background: var(--gradient-accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .contact-email:hover { opacity: 0.88; }
+    .contact-note {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 1rem;
+    }
+    .contact-links {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-glass);
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      font-size: 0.82rem;
+    }
+    .contact-links a { color: var(--text-secondary); transition: color 0.2s; }
+    .contact-links a:hover { color: var(--text-accent); }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text"><span>Forma</span>Elan</div>
+    </a>
+    <div class="navbar-actions">
+      <label class="theme-toggle" title="Changer le thème">
+        <input type="checkbox" id="themeToggleInput" />
+        <div class="track"><div class="thumb">🌙</div></div>
+      </label>
+    </div>
+  </nav>
+
+  <div class="contact-page">
+    <div class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <h1>Nous contacter</h1>
+      <p>
+        Pour toute question sur une formation, un accès ou une commande,<br>
+        écris-nous directement par email.
+      </p>
+      <p>Nous répondons sous <strong>5 jours ouvrés</strong>.</p>
+      <a href="mailto:multimind.team@gmail.com" class="contact-email">
+        multimind.team@gmail.com
+      </a>
+      <p class="contact-note">
+        Pense à préciser ton email Stripe et le nom de la formation concernée<br>
+        pour un traitement plus rapide.
+      </p>
+      <div class="contact-links">
+        <a href="index.html">← Accueil</a>
+        <a href="cgv.html">CGV</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

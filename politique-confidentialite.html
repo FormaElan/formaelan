@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politique de confidentialité — FormaElan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .legal-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+    .legal-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      transition: color 0.2s;
+    }
+    .legal-back:hover { color: var(--text-accent); }
+    .legal-title { font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .legal-date {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .legal-wrap h2 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-accent);
+      margin: 2.5rem 0 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .legal-wrap p, .legal-wrap li {
+      font-size: 0.88rem;
+      line-height: 1.78;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    .legal-wrap strong { color: var(--text-primary); font-weight: 600; }
+    .legal-wrap a { color: var(--text-accent); }
+    .legal-wrap a:hover { text-decoration: underline; }
+    .legal-wrap ul { padding-left: 1.2rem; list-style: disc; margin-bottom: 0.8rem; }
+    .legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .legal-table th {
+      text-align: left;
+      padding: 0.6rem 1rem;
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+      font-weight: 600;
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .legal-table td {
+      padding: 0.6rem 1rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-glass);
+      vertical-align: top;
+    }
+    .legal-footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-glass);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+    .todo {
+      background: rgba(251,146,60,0.12);
+      border: 1px dashed rgba(251,146,60,0.45);
+      border-radius: 4px;
+      padding: 0.1rem 0.5rem;
+      color: #fb923c;
+      font-style: italic;
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text"><span>Forma</span>Elan</div>
+    </a>
+    <div class="navbar-actions">
+      <label class="theme-toggle" title="Changer le thème">
+        <input type="checkbox" id="themeToggleInput" />
+        <div class="track"><div class="thumb">🌙</div></div>
+      </label>
+    </div>
+  </nav>
+
+  <main class="legal-wrap">
+
+    <a href="index.html" class="legal-back">← Retour à l'accueil</a>
+
+    <h1 class="legal-title">Politique de confidentialité</h1>
+    <p class="legal-date">Dernière mise à jour : mai 2026 — Conforme au Règlement (UE) 2016/679 (RGPD)</p>
+
+    <h2>1. Responsable du traitement</h2>
+    <p>
+      <strong><span class="todo">Prénom Nom</span></strong> — <span class="todo">Adresse postale</span><br>
+      Contact : <a href="mailto:multimind.team@gmail.com">multimind.team@gmail.com</a>
+    </p>
+
+    <h2>2. Données collectées et finalités</h2>
+    <p>FormaElan collecte uniquement les données strictement nécessaires à la réalisation des achats :</p>
+    <table class="legal-table">
+      <thead>
+        <tr><th>Donnée</th><th>Finalité</th><th>Base légale</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Adresse email</td>
+          <td>Envoi de la confirmation de commande et du lien d'accès à la formation</td>
+          <td>Exécution du contrat (art. 6.1.b RGPD)</td>
+        </tr>
+        <tr>
+          <td>Informations de paiement (numéro de carte, etc.)</td>
+          <td>Traitement de la transaction</td>
+          <td>Exécution du contrat — traitées par Stripe, non stockées par FormaElan</td>
+        </tr>
+        <tr>
+          <td>Token d'accès (identifiant de session Stripe)</td>
+          <td>Permettre l'accès à la formation achetée</td>
+          <td>Exécution du contrat</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>FormaElan ne collecte pas de données de navigation, ne pose pas de cookies de traçage et n'utilise aucun outil d'analyse comportementale à ce stade.</p>
+
+    <h2>3. Sous-traitants</h2>
+    <p>Les données sont partagées uniquement avec les prestataires suivants, dans le strict cadre de leur mission :</p>
+    <ul>
+      <li><strong>Stripe Payments Europe, Ltd.</strong> (Dublin, Irlande) — traitement des paiements. <a href="https://stripe.com/fr/privacy" target="_blank" rel="noopener noreferrer">Politique de confidentialité Stripe</a></li>
+      <li><strong>GitHub, Inc.</strong> (États-Unis) — hébergement des pages. <a href="https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Politique de confidentialité GitHub</a></li>
+      <li><strong>Render Services, Inc.</strong> (États-Unis) — hébergement du backend. <a href="https://render.com/privacy" target="_blank" rel="noopener noreferrer">Politique de confidentialité Render</a></li>
+    </ul>
+    <p>Ces transferts vers des pays tiers (États-Unis) s'effectuent dans le cadre de garanties appropriées (clauses contractuelles types ou certification du Data Privacy Framework).</p>
+
+    <h2>4. Durée de conservation</h2>
+    <p>
+      Les données liées à un achat (email, token d'accès) sont conservées pendant la durée de l'accès à la formation (accès à vie) et jusqu'à 5 ans après la dernière commande, conformément aux obligations légales comptables et fiscales.
+    </p>
+
+    <h2>5. Vos droits</h2>
+    <p>Conformément au RGPD, vous disposez des droits suivants concernant vos données :</p>
+    <ul>
+      <li><strong>Droit d'accès</strong> — obtenir une copie des données vous concernant</li>
+      <li><strong>Droit de rectification</strong> — corriger des données inexactes</li>
+      <li><strong>Droit à l'effacement</strong> — demander la suppression de vos données (sous réserve des obligations légales de conservation)</li>
+      <li><strong>Droit à la portabilité</strong> — recevoir vos données dans un format structuré</li>
+      <li><strong>Droit d'opposition</strong> — vous opposer à un traitement fondé sur l'intérêt légitime</li>
+    </ul>
+    <p>
+      Pour exercer ces droits, contactez-nous à <a href="mailto:multimind.team@gmail.com">multimind.team@gmail.com</a>. Nous répondons dans un délai maximum de 30 jours. Vous disposez également du droit d'introduire une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">CNIL</a>.
+    </p>
+
+    <h2>6. Cookies</h2>
+    <p>
+      FormaElan n'utilise pas de cookies de traçage ou publicitaires. Un cookie de session peut être créé par votre navigateur lors de la navigation, mais il ne contient aucune donnée personnelle et n'est pas exploité à des fins d'analyse ou de ciblage.
+    </p>
+
+    <h2>7. Sécurité</h2>
+    <p>
+      Les paiements sont intégralement sécurisés par Stripe (protocole TLS, conformité PCI-DSS). FormaElan ne stocke à aucun moment les informations bancaires de ses clients.
+    </p>
+
+    <div class="legal-footer">
+      <a href="index.html">Accueil</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="cgv.html">CGV</a> · <a href="contact.html">Contact</a>
+    </div>
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -521,13 +521,13 @@
       <table class="rm-table">
         <thead><tr><th>#</th><th>Tâche</th><th>Effort</th></tr></thead>
         <tbody>
-          <tr>
-            <td class="rm-num">01</td>
+          <tr style="opacity:0.6;">
+            <td class="rm-num" style="text-decoration:line-through;">01</td>
             <td>
-              <div class="rm-title">Pages légales</div>
-              <div class="rm-detail">4 pages à créer : Mentions légales (nom, adresse, SIRET), CGV (droit de rétractation 14j, modalités d'accès), Politique de confidentialité (RGPD, données Stripe), Contact. Mettre à jour tous les <code>href="#"</code> dans les footers de toutes les pages.</div>
+              <div class="rm-title">Pages légales ✅ <span style="font-size:0.75rem;color:#1A9E8F;font-weight:600;">Fait — 18/05/2026</span></div>
+              <div class="rm-detail">4 pages créées : <code>mentions-legales.html</code>, <code>cgv.html</code>, <code>politique-confidentialite.html</code>, <code>contact.html</code>. Footers mis à jour. Garantie 30j supprimée. Reste à compléter : nom, adresse, SIRET dans les fichiers légaux.</div>
             </td>
-            <td class="rm-effort">~3h</td>
+            <td class="rm-effort">Compléter info</td>
           </tr>
         </tbody>
       </table>
@@ -564,13 +564,21 @@
             </td>
             <td class="rm-effort">~2h</td>
           </tr>
-          <tr>
-            <td class="rm-num">05</td>
+          <tr style="opacity:0.6;">
+            <td class="rm-num" style="text-decoration:line-through;">05</td>
             <td>
-              <div class="rm-title">Email incorrect dans cancel.html</div>
-              <div class="rm-detail"><code>contact@formaElan.fr</code> est hardcodé dans cancel.html mais cette adresse n'existe pas encore. Remplacer par <code>multimind.team@gmail.com</code> en attendant le domaine.</div>
+              <div class="rm-title">Email incorrect dans cancel.html ✅ <span style="font-size:0.75rem;color:#1A9E8F;font-weight:600;">Fait — 18/05/2026</span></div>
+              <div class="rm-detail">Email corrigé : <code>multimind.team@gmail.com</code>.</div>
             </td>
-            <td class="rm-effort">5 min</td>
+            <td class="rm-effort">—</td>
+          </tr>
+          <tr>
+            <td class="rm-num">32</td>
+            <td>
+              <div class="rm-title">Confirmation waiver droit de rétractation au checkout</div>
+              <div class="rm-detail">Les CGV excluent le droit de rétractation mais aucun mécanisme ne collecte l'accord explicite de l'acheteur. Ajouter une page intermédiaire avant le redirect Stripe avec une case à cocher : "J'accepte que l'accès débute immédiatement et renonce à mon droit de rétractation." Pour être solide juridiquement avant les premières ventes réelles.</div>
+            </td>
+            <td class="rm-effort">~1h</td>
           </tr>
         </tbody>
       </table>

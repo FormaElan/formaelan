@@ -24,7 +24,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
-| 1 | Pages légales | Créer 4 pages : Mentions légales (nom, adresse, SIRET), CGV (droit de rétractation 14j, modalités d'accès), Politique de confidentialité (RGPD, données collectées par Stripe), Contact. Mettre à jour tous les `href="#"` dans les footers. | ~3h |
+| 1 | Pages légales ✅ | ~~Créer 4 pages légales + footer links~~ — **Fait (18/05)** : `mentions-legales.html`, `cgv.html`, `politique-confidentialite.html`, `contact.html` créées. Footers mis à jour. Garantie 30j supprimée. Il reste à remplir les `[À compléter]` : nom, adresse, SIRET dans les 3 fichiers légaux. | Remplir info |
 
 ---
 
@@ -35,7 +35,10 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 | 2 | Webhook Stripe — secret | Dans Stripe Dashboard → Webhooks → copier le signing secret → l'ajouter dans Render Environment Variables (`STRIPE_WEBHOOK_SECRET`). Sans ça, n'importe qui peut forger un faux événement de paiement. | 15 min |
 | 3 | Clés Stripe live | Stripe Dashboard → basculer en mode Live → copier `sk_live_...` et `pk_live_...` → mettre à jour Render + `js/stripe.js`. À faire le jour J uniquement, pas avant. | 30 min |
 | 4 | Email post-achat (Resend) | Créer un compte Resend (gratuit 300 emails/jour) → ajouter la dépendance au backend → dans le webhook `checkout.session.completed`, envoyer un email avec le lien d'accès direct (`success.html?session_id=xxx`). Sans ça, un acheteur qui ferme la page sans noter son token perd définitivement son accès. | ~2h |
-| 5 | Email cancel.html incorrect | `contact@formaElan.fr` est hardcodé dans cancel.html mais cette adresse n'existe pas encore. Remplacer par `multimind.team@gmail.com` en attendant le domaine. | 5 min |
+| 5 | Email cancel.html incorrect ✅ | ~~Remplacer `contact@formaElan.fr`~~ — **Fait (18/05).** | — |
+| 25 | Rate limiting `/create-checkout-session` | Sans protection, un bot peut spammer des centaines de sessions Checkout → coûts Stripe + alertes fraude. Ajouter `express-rate-limit` : max 5 requêtes/min par IP. Npm, zéro dépendance tierce. | 30 min |
+| 32 | Confirmation explicite waiver droit de rétractation | Les CGV stipulent l'exclusion du droit de rétractation, mais aucun mécanisme ne collecte l'accord explicite de l'acheteur au moment du paiement. Pour être juridiquement solide : ajouter une page intermédiaire avant le redirect Stripe avec une case à cocher "J'accepte que l'accès débute immédiatement et renonce à mon droit de rétractation" — ou utiliser un custom field Stripe. Sans ça, un acheteur pourrait contester. | ~1h |
+| 26 | Render : tokens éphémères (critique) | `access-tokens.json` est écrit sur le disque Render qui se réinitialise à chaque restart (free tier spin-down après ~15 min d'inactivité). Les tokens sont perdus. Atténuation actuelle : le fallback Stripe dans `/get-access` régénère le token si le client a son URL `?session_id=` → dépendance critique à la tâche #4 (Resend). Solution propre : activer un Render Disk ($7/mois) ou SQLite persistant. À décider avant 1ère vente réelle. | ~1h |
 
 ---
 
@@ -43,7 +46,9 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
-| 6 | Image OG manquante | Créer le dossier `img/` et une image `og-cover.jpg` (1200×630px). Sans elle, aucun aperçu visuel sur LinkedIn/Facebook/Twitter quand une page est partagée. Impact direct sur l'acquisition. | ~1h |
+| 6 | Image OG manquante | Créer une image `og-cover.jpg` (1200×630px). Sans elle, aucun aperçu visuel sur LinkedIn/Facebook/Twitter quand une page est partagée. Impact direct sur l'acquisition. | ~1h |
+| 27 | Favicon manquant | Aucun fichier favicon ni `<link rel="icon">`. Onglets vides + erreur 404 silencieuse dans les DevTools. Créer un favicon SVG ou ICO 32×32 à partir du logo ⚡. | 15 min |
+| 28 | Page 404 custom | GitHub Pages affiche une 404 générique si une URL n'existe pas. Créer un `404.html` branded (logo + lien retour) pour garder les visiteurs sur le site. | 30 min |
 | 7 | Supprimer formations/seo-saas.html | Ancienne version monolithique de la formation, obsolète. Risque d'être indexée par Google comme doublon du contenu payant. | 5 min |
 | 8 | formation-template.html public | `pages/formation-template.html` est accessible publiquement sur GitHub Pages. Page vide/technique qui ne devrait pas être visible. Soit la supprimer, soit la mettre en noindex. | 10 min |
 | 24 | Refonte graphique globale | Moderniser l'ensemble du site au-delà des cartes formations : animations scroll sur le hero, micro-interactions sur les features, transitions de sections fluides, visuels plus attractifs. Objectif : site visuellement compétitif face aux plateformes type Udemy. Flip cards formations (3D néon) : ✅ fait (18/05). | ~4h |
@@ -67,6 +72,8 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 | 12 | Tests mobile | Tester le tunnel complet (page de vente → Stripe → success.html → chapitre) sur téléphone. Vérifier la lisibilité des pages de vente et des chapitres. | ~1h |
 | 13 | Contrôle qualité formations | Lancer `/auditer_formation` sur les 5 formations — navigation, SVGs, liens internes, conformité CSS. | ~2h |
 | 14 | Analytics | Ajouter Plausible ou Umami (léger, RGPD, gratuit en self-host ou ~9€/mois Plausible cloud). Sans analytics, impossible de savoir d'où viennent les visiteurs ni quelle page de vente convertit. | ~1h |
+| 29 | Monitoring Render (UptimeRobot) | Sans surveillance, une panne backend passe inaperçue. UptimeRobot (gratuit, ping toutes les 5 min) envoie une alerte email si `/health` ne répond plus. Inscription en 5 min. | 15 min |
+| 30 | Test Safari / cross-browser (flip cards) | `backface-visibility: hidden` avec `preserve-3d` peut se comporter différemment sur Safari/WebKit. Tester les flip cards sur Safari iOS et macOS avant le lancement. | 30 min |
 
 ---
 
@@ -80,6 +87,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 | 16 | Configurer DNS GitHub Pages | Dans OVH : ajouter les 4 enregistrements A de GitHub Pages + CNAME `www`. Dans GitHub repo Settings → Pages → Custom domain → `formaelan.fr`. HTTPS automatique (Let's Encrypt). | ~30 min |
 | 17 | Mettre à jour SITE_URL sur Render | Changer `SITE_URL=https://formaelan.fr` dans Render Environment. Tester le tunnel complet sur le vrai domaine. | 15 min |
 | 18 | Mettre à jour l'email contact | Créer `contact@formaelan.fr` (inclus avec OVH) et remplacer `multimind.team@gmail.com` partout dans le site. | 30 min |
+| 31 | Sitemap.xml | Créer un sitemap listant les 5 pages de vente + index. Soumettre dans Google Search Console après migration formaelan.fr. Accélère l'indexation des nouvelles URLs. | 15 min |
 
 ---
 
