@@ -5,12 +5,13 @@
 
 require('dotenv').config();
 
-const express  = require('express');
-const cors     = require('cors');
-const crypto   = require('crypto');
-const fs       = require('fs');
-const path     = require('path');
-const stripe   = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const express    = require('express');
+const cors       = require('cors');
+const crypto     = require('crypto');
+const fs         = require('fs');
+const path       = require('path');
+const nodemailer = require('nodemailer');
+const stripe     = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app  = express();
 const PORT = process.env.PORT || 4242;
@@ -23,6 +24,15 @@ const PRICE_MAP = {
   'copywriting-ecom':  process.env.PRICE_COPYWRITING_ECOM,
   'seo-ecom':          process.env.PRICE_SEO_ECOM,
   'optimiser-ia':      process.env.PRICE_OPTIMISER_IA,
+};
+
+// ── Noms lisibles des formations ────────────────────────────
+const FORMATION_NAMES = {
+  'seo-saas':         'SEO pour SaaS',
+  'ia-freelance':     'IA pour Freelance',
+  'copywriting-ecom': 'Copywriting E-commerce',
+  'seo-ecom':         'SEO pour E-commerce',
+  'optimiser-ia':     'Optimiser son IA',
 };
 
 // ── Premier chapitre par slug (pour le lien d'accès) ───────
@@ -60,6 +70,52 @@ function saveTokens() {
 }
 
 loadTokens();
+
+// ── Mailer Gmail ────────────────────────────────────────────
+const mailer = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+});
+
+async function sendAccessEmail(email, slug, sessionId) {
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+    console.warn('[Mail] GMAIL_USER ou GMAIL_APP_PASSWORD absent — email non envoyé');
+    return;
+  }
+  const formation = FORMATION_NAMES[slug] || slug;
+  const accessUrl = `${process.env.SITE_URL}/success.html?session_id=${encodeURIComponent(sessionId)}`;
+
+  await mailer.sendMail({
+    from: `"FormaElan" <${process.env.GMAIL_USER}>`,
+    to: email,
+    subject: `Ton accès à "${formation}" est prêt`,
+    html: `
+      <div style="font-family:sans-serif;max-width:520px;margin:0 auto;color:#1a1a2e;">
+        <div style="background:#0D1B3E;padding:24px 32px;border-radius:12px 12px 0 0;">
+          <span style="color:#1A9E8F;font-size:1.4rem;font-weight:800;">⚡ FormaElan</span>
+        </div>
+        <div style="background:#f7f8fa;padding:32px;border-radius:0 0 12px 12px;border:1px solid #e5e7eb;">
+          <h2 style="margin:0 0 16px;font-size:1.2rem;">Ton accès est prêt ✅</h2>
+          <p style="margin:0 0 8px;">Formation achetée : <strong>${formation}</strong></p>
+          <p style="margin:0 0 24px;color:#6b7280;">Clique sur le bouton ci-dessous pour accéder à ta formation :</p>
+          <a href="${accessUrl}"
+             style="display:inline-block;background:#1A9E8F;color:#fff;padding:14px 28px;
+                    border-radius:8px;text-decoration:none;font-weight:700;font-size:1rem;">
+            ▶ Accéder à la formation
+          </a>
+          <p style="margin:24px 0 0;font-size:0.8rem;color:#9ca3af;">
+            Conserve cet email — ce lien te permet de retrouver ta formation à tout moment.<br/>
+            Une question ? Réponds à cet email ou écris-nous à ${process.env.GMAIL_USER}
+          </p>
+        </div>
+      </div>
+    `,
+  });
+  console.log(`[Mail] Email envoyé → ${email} (${slug})`);
+}
 
 // ── Middlewares ─────────────────────────────────────────────
 app.use(cors({
@@ -196,6 +252,9 @@ app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) => {
         });
         saveTokens();
         console.log(`✓ Paiement confirmé — Formation : ${slug} — Email : ${email}`);
+        if (email) sendAccessEmail(email, slug, session.id).catch(err =>
+          console.error('[Mail] Erreur envoi :', err.message)
+        );
       }
       break;
     }

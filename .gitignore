@@ -2,6 +2,7 @@
 backend/.env
 backend/.env.*
 !backend/.env.example
+backend/access-tokens.json
 
 # ── Dépendances ─────────────────────────────────────────
 backend/node_modules/

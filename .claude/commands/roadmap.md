@@ -33,7 +33,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
-| 2 | Webhook Stripe — secret | Dans Stripe Dashboard → Webhooks → copier le signing secret → l'ajouter dans Render Environment Variables (`STRIPE_WEBHOOK_SECRET`). Sans ça, n'importe qui peut forger un faux événement de paiement. | 15 min |
+| 2 | Webhook Stripe — secret ✅ | ~~Stripe Dashboard → Webhooks → signing secret → Render `STRIPE_WEBHOOK_SECRET`~~ — **Fait (18/05).** | — |
 | 3 | Clés Stripe live | Stripe Dashboard → basculer en mode Live → copier `sk_live_...` et `pk_live_...` → mettre à jour Render + `js/stripe.js`. À faire le jour J uniquement, pas avant. | 30 min |
 | 4 | Email post-achat (Resend) | Créer un compte Resend (gratuit 300 emails/jour) → ajouter la dépendance au backend → dans le webhook `checkout.session.completed`, envoyer un email avec le lien d'accès direct (`success.html?session_id=xxx`). Sans ça, un acheteur qui ferme la page sans noter son token perd définitivement son accès. | ~2h |
 | 5 | Email cancel.html incorrect ✅ | ~~Remplacer `contact@formaElan.fr`~~ — **Fait (18/05).** | — |
