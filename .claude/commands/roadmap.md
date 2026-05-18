@@ -22,6 +22,10 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 - Email post-achat — code Nodemailer prêt dans server.js, en attente config Zimbra formaelan.fr (18/05)
 - access-tokens.json ajouté au .gitignore — sécurité données personnelles (18/05)
 - formaelan.fr acheté — OVH, 5,99€ TTC, 1 an, Zimbra Starter inclus, installation en cours (18/05)
+- DNS GitHub Pages configuré — 4 enregistrements A + CNAME www, DNS check OK, HTTPS Let's Encrypt actif (18/05)
+- SITE_URL mis à jour sur Render → https://formaelan.fr (18/05)
+- Tunnel paiement validé sur formaelan.fr — carte test 4242, Stripe → success.html OK (18/05)
+- UptimeRobot configuré — ping /health toutes les 5 min, cold start résolu (18/05)
 
 ---
 
@@ -52,8 +56,8 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
 | 15 | Acheter formaelan.fr ✅ | ~~OVH~~ — **Fait (18/05)** : 5,99€ TTC, 1 an, Zimbra Starter inclus. Installation en cours sur OVH. | — |
-| 16 | Configurer DNS GitHub Pages | Attendre que formaelan.fr soit actif sur OVH (statut "Actif"). Puis dans OVH Zone DNS : ajouter 4 enregistrements A pointant vers GitHub Pages IPs + CNAME `www`. Dans GitHub repo Settings → Pages → Custom domain → `formaelan.fr`. HTTPS automatique (Let's Encrypt, ~24h). | ~30 min |
-| 17 | Mettre à jour SITE_URL sur Render | Après DNS propagé : changer `SITE_URL=https://formaelan.fr` dans Render Environment. Tester tunnel complet sur le vrai domaine. | 15 min |
+| 16 | Configurer DNS GitHub Pages ✅ | OVH Zone DNS : 4 A records GitHub Pages + CNAME www → formaelan.github.io. HTTPS Let's Encrypt actif. **Fait (18/05).** | — |
+| 17 | Mettre à jour SITE_URL sur Render ✅ | `SITE_URL=https://formaelan.fr` dans Render Environment. Tunnel validé sur formaelan.fr. **Fait (18/05).** | — |
 | 18 | Configurer email contact@formaelan.fr | OVH → Zimbra Starter → créer compte `contact@formaelan.fr`. Récupérer les paramètres SMTP. Mettre à jour Render : `GMAIL_USER=contact@formaelan.fr` + `GMAIL_APP_PASSWORD`. Remplacer `multimind.team@gmail.com` dans server.js et les pages HTML. | 45 min |
 | 31 | Sitemap.xml | Créer un sitemap listant les 5 pages de vente + index. Soumettre dans Google Search Console après migration formaelan.fr. | 15 min |
 
@@ -89,7 +93,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 | 12 | Tests mobile | Tunnel complet sur téléphone : page de vente → Stripe → success.html → chapitre. | ~1h |
 | 13 | Contrôle qualité formations | Lancer `/auditer_formation` sur les 5 formations. | ~2h |
 | 14 | Analytics | Plausible ou Umami (RGPD, léger). Sans analytics impossible de savoir d'où viennent les visiteurs. | ~1h |
-| 29 | Monitoring Render (UptimeRobot) | Ping /health toutes les 5 min, alerte email si panne. Gratuit, 5 min d'inscription. | 15 min |
+| 29 | Monitoring Render (UptimeRobot) ✅ | Ping /health toutes les 5 min, alerte email si panne. **Fait (18/05).** | — |
 | 30 | Test Safari / cross-browser | Flip cards : tester `backface-visibility` sur Safari iOS/macOS. | 30 min |
 
 ---
