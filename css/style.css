@@ -743,6 +743,73 @@ section { padding: 6rem 2rem; }
   font-size: 0.83rem;
 }
 
+/* ── Mobile : cartes aplaties (no hover) ── */
+@media (hover: none) {
+  .flip-wrap {
+    height: auto;
+    perspective: none;
+  }
+
+  .flip-inner {
+    transform: none !important;
+    -webkit-transform-style: flat;
+    transform-style: flat;
+    position: static;
+    height: auto;
+  }
+
+  .flip-face {
+    position: static;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+    border-radius: 0;
+    height: auto;
+  }
+
+  .flip-front { border-radius: var(--radius) var(--radius) 0 0; }
+  .flip-hint  { display: none; }
+
+  .flip-back {
+    transform: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1.1rem 1.4rem 1.4rem;
+    border-radius: 0 0 var(--radius) var(--radius);
+    color: var(--text-primary);
+  }
+
+  /* Remplace les fonds dégradés sombres par une teinte accent légère */
+  .c-indigo .flip-back { background: rgba(99,102,241,0.07);  border: 1px solid rgba(99,102,241,0.2);  border-top: none; }
+  .c-cyan .flip-back   { background: rgba(34,211,238,0.07);  border: 1px solid rgba(34,211,238,0.2);  border-top: none; }
+  .c-orange .flip-back { background: rgba(251,146,60,0.07);  border: 1px solid rgba(251,146,60,0.2);  border-top: none; }
+  .c-blue .flip-back   { background: rgba(59,130,246,0.07);  border: 1px solid rgba(59,130,246,0.2);  border-top: none; }
+  .c-purple .flip-back { background: rgba(167,139,250,0.07); border: 1px solid rgba(167,139,250,0.2); border-top: none; }
+
+  /* Masque les doublons (titre et prix déjà visibles dans le recto) */
+  .flip-back h3,
+  .flip-back p,
+  .flip-back-footer .price { display: none; }
+
+  /* Objectifs */
+  .flip-obj { margin-top: 0; }
+  .flip-obj li { color: var(--text-secondary); opacity: 1; }
+
+  /* CTA pleine largeur */
+  .flip-back-footer {
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top-color: var(--border-glass);
+    justify-content: center;
+  }
+  .flip-back-footer .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.88rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
 /* ============================================================
    SECTION POURQUOI (Features)
    ============================================================ */
