@@ -302,6 +302,20 @@
       margin-bottom: 1rem;
     }
 
+    .doc-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      position: absolute;
+      top: 1.2rem;
+      left: 1.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .doc-back-btn:hover { color: var(--teal); }
+
     .footer-doc {
       text-align: center;
       padding: 2rem;
@@ -323,7 +337,8 @@
 <!-- ══════════════════════════════════════════
      HEADER
 ══════════════════════════════════════════ -->
-<header class="doc-header">
+<header class="doc-header" style="position:relative;">
+  <a href="index.html" class="doc-back-btn">← Accueil</a>
   <div class="logo">⚡ <span>Forma</span>Elan</div>
   <h1>Projet FormaElan</h1>
   <p class="subtitle">Document interne — Vue d'ensemble & Roadmap détaillée · Mis à jour le 18/05/2026</p>

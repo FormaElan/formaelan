@@ -24,6 +24,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
+| 33 | Décision structure légale | Choisir entre : (A) micro-entrepreneur — gratuit, 22% charges, nom visible dans mentions légales ; (B) SASU "FormaElan" — ~200€ création + ~50€/mois, nom de société visible au lieu du nom perso ; (C) Lemon Squeezy merchant of record — 0€ création, 5% de frais, leur nom comme vendeur légal, aucune immatriculation. Décision à prendre avant les premières ventes réelles. | Décision |
 | 1 | Pages légales ✅ | ~~Créer 4 pages légales + footer links~~ — **Fait (18/05)** : `mentions-legales.html`, `cgv.html`, `politique-confidentialite.html`, `contact.html` créées. Footers mis à jour. Garantie 30j supprimée. Il reste à remplir les `[À compléter]` : nom, adresse, SIRET dans les 3 fichiers légaux. | Remplir info |
 
 ---
