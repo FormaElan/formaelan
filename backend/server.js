@@ -10,8 +10,9 @@ const cors       = require('cors');
 const crypto     = require('crypto');
 const fs         = require('fs');
 const path       = require('path');
-const { Resend } = require('resend');
-const stripe     = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const { Resend }   = require('resend');
+const rateLimit    = require('express-rate-limit');
+const stripe       = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -128,10 +129,19 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', mode: 'test', stripe: '✓ connecté', tokens: tokenStore.size });
 });
 
+// ── Rate limiting ────────────────────────────────────────────
+const checkoutLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Trop de tentatives. Réessaie dans une minute.' },
+});
+
 // ── Créer une Stripe Checkout Session ───────────────────────
 // POST /create-checkout-session
 // Body : { slug: "optimiser-ia" }
-app.post('/create-checkout-session', async (req, res) => {
+app.post('/create-checkout-session', checkoutLimiter, async (req, res) => {
   const { slug } = req.body;
 
   const priceId = PRICE_MAP[slug];
