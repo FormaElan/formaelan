@@ -37,17 +37,6 @@
       transition: opacity 0.2s;
     }
     .access-link:hover { opacity: 0.9; }
-    .token-display {
-      margin-top: 0.8rem;
-      padding: 0.6rem 0.8rem;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-glass);
-      border-radius: 6px;
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-      font-family: monospace;
-      word-break: break-all;
-    }
     .loading-state {
       color: var(--text-secondary);
       font-size: 0.88rem;
@@ -86,11 +75,10 @@
 
   <div class="result-page">
     <div class="result-card">
-      <div class="result-icon success">🎉</div>
+      <div class="result-icon success">✅</div>
       <h1>Paiement confirmé !</h1>
-      <p>
-        Bravo ! Ton accès a bien été activé.<br />
-        Clique sur le bouton ci-dessous pour accéder à ta formation immédiatement.
+      <p style="color:var(--text-secondary);margin-bottom:1.5rem;">
+        Ton accès est activé. Tu peux commencer maintenant.
       </p>
 
       <!-- Zone d'accès — remplie dynamiquement -->
@@ -99,11 +87,12 @@
       </div>
 
       <div style="padding:0.9rem 1rem;background:var(--accent-glow);border:1px solid var(--border-glow);
-                  border-radius:var(--radius-sm);margin-top:1rem;font-size:0.85rem;color:var(--text-secondary);">
-        💡 <strong>Conserve ce lien</strong> ou note ton token d'accès — il te permet de retrouver ta formation à tout moment.
+                  border-radius:var(--radius-sm);margin-top:1.2rem;font-size:0.83rem;color:var(--text-secondary);
+                  text-align:center;line-height:1.6;">
+        📬 Un email de confirmation t'a été envoyé — il contient ton lien d'accès permanent.
       </div>
 
-      <a href="index.html" class="btn btn-secondary" style="width:100%;justify-content:center;margin-top:1.2rem;">
+      <a href="index.html" class="btn btn-secondary" style="width:100%;justify-content:center;margin-top:1rem;">
         ← Voir toutes les formations
       </a>
     </div>
@@ -147,15 +136,10 @@
 
         zone.innerHTML = `
           <div class="access-box">
-            <h3>🔓 Ton accès est prêt</h3>
+            <h3>Formation débloquée</h3>
             <a href="${chapterUrl}" class="access-link">
-              ▶ Accéder à la formation maintenant
+              ▶ Commencer la formation maintenant
             </a>
-            <div class="token-display">
-              <strong>Token d'accès :</strong> ${data.token}<br/>
-              <strong>Formation :</strong> ${data.slug}<br/>
-              ${data.email ? `<strong>Email :</strong> ${data.email}` : ''}
-            </div>
           </div>`;
 
       } catch (err) {

@@ -17,6 +17,57 @@ const FormaElanStripe = (() => {
   // Warm-up ping — réveille le serveur Render dès le chargement de la page
   fetch(`${CONFIG.backendUrl}/health`).catch(() => {});
 
+  // ── Waiver rétractation ────────────────────────────────
+  function _injectWaiver() {
+    const card = document.getElementById('acheter');
+    const btn  = document.getElementById('btnAcheter');
+    if (!card || !btn || document.getElementById('waiverCheckbox')) return;
+
+    const wrapper = document.createElement('div');
+    wrapper.id = 'waiverWrapper';
+    wrapper.style.cssText = [
+      'margin:0.75rem 0',
+      'padding:0.75rem 0.9rem',
+      'background:rgba(242,108,58,0.05)',
+      'border:1px solid rgba(242,108,58,0.22)',
+      'border-radius:8px',
+      'font-size:0.78rem',
+      'line-height:1.55',
+      'transition:outline 0.25s',
+    ].join(';');
+    wrapper.innerHTML = `
+      <label style="display:flex;gap:0.6rem;align-items:flex-start;cursor:pointer;">
+        <input type="checkbox" id="waiverCheckbox"
+          style="margin-top:3px;flex-shrink:0;accent-color:#F26C3A;width:14px;height:14px;" />
+        <span style="color:var(--text-secondary);">
+          Je comprends que l'accès à la formation commence <strong>immédiatement</strong>
+          après le paiement et j'accepte expressément de renoncer à mon droit de
+          rétractation de 14 jours
+          <span style="font-size:0.72rem;">(art. L221-28 Code de la consommation)</span>.
+        </span>
+      </label>`;
+    card.insertBefore(wrapper, btn);
+  }
+
+  function _checkWaiver() {
+    const checkbox = document.getElementById('waiverCheckbox');
+    if (!checkbox) return true;
+    if (checkbox.checked) return true;
+    const wrapper = document.getElementById('waiverWrapper');
+    if (wrapper) {
+      wrapper.style.outline = '2px solid rgba(242,108,58,0.7)';
+      wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      setTimeout(() => { if (wrapper) wrapper.style.outline = ''; }, 2200);
+    }
+    return false;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _injectWaiver);
+  } else {
+    _injectWaiver();
+  }
+
   // ── Lancer le paiement ─────────────────────────────────
   async function checkout(slug, prix, titre) {
 
@@ -24,6 +75,8 @@ const FormaElanStripe = (() => {
       _showStubModal(slug, prix, titre);
       return;
     }
+
+    if (!_checkWaiver()) return;
 
     // ── Mode LIVE ──────────────────────────────────────────
     try {
