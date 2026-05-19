@@ -528,6 +528,7 @@
         `${f.modules} modules structurés`,
         'Accès à vie + mises à jour',
         f.certif ? 'Certificat de réussite' : null,
+        ...(f.bonus || []),
         'Ressources téléchargeables',
         '🔒 Paiement sécurisé par Stripe',
       ].filter(Boolean);

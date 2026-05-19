@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Audit IA — Application · SEO pour SaaS · FormaElan</title>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/formations.css"/>
+</head>
+<body>
+
+<nav class="r-nav">
+  <a href="../../index.html" class="r-nav-logo"><span>Forma</span>Elan</a>
+  <div class="r-breadcrumb">
+    <a href="../../index.html">Accueil</a> /
+    <a href="../../pages/seo-saas.html">SEO pour SaaS</a> /
+    <span>Chapitre 9</span>
+  </div>
+</nav>
+
+<div class="r-layout">
+
+  <aside class="r-sidebar">
+    <div class="r-sidebar-title">Sommaire</div>
+    <a href="ch1-fondamentaux.html" class="r-ch-link"><div class="r-ch-num">1</div>Fondamentaux SEO SaaS</a>
+    <a href="ch2-mots-cles.html" class="r-ch-link"><div class="r-ch-num">2</div>Mots-clés intent-driven</a>
+    <a href="ch3-content-clusters.html" class="r-ch-link"><div class="r-ch-num">3</div>Content Clusters</a>
+    <a href="ch4-seo-technique.html" class="r-ch-link"><div class="r-ch-num">4</div>SEO Technique</a>
+    <a href="ch5-link-building.html" class="r-ch-link"><div class="r-ch-num">5</div>Link Building B2B</a>
+    <a href="ch6-contenu-convertit.html" class="r-ch-link"><div class="r-ch-num">6</div>Contenu qui convertit</a>
+    <a href="ch7-mesure-reporting.html" class="r-ch-link"><div class="r-ch-num">7</div>Mesure &amp; Reporting</a>
+    <a href="ch8-automatisation-ia.html" class="r-ch-link"><div class="r-ch-num">8</div>Automatisation &amp; IA</a>
+    <a href="ch9-audit-ia.html" class="r-ch-link active"><div class="r-ch-num">9</div>Audit IA — Application</a>
+    <div class="r-sidebar-sep"></div>
+    <a href="../../pages/seo-saas.html" class="r-ch-link" style="font-size:.78rem;color:var(--muted)">← Page de la formation</a>
+  </aside>
+
+  <main class="r-main">
+    <section class="r-chapter" id="ch9">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">9</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 9</div>
+          <h2>Audit IA — Applique la formation à ton SaaS</h2>
+          <div class="dur">⏱ 10 min · Outil pratique</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Tu as les connaissances. Maintenant, passe à l'audit réel. Ce prompt condense les 8 modules de la formation en une checklist de 40 points vérifiables. Donne-le à ton IA avec le contexte de ton SaaS — elle te dit exactement ce qui est en place, ce qui est partiel, et ce qui manque.
+      </div>
+
+      <!-- Figure 9.1 : Mode d'emploi -->
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 180" role="img" aria-label="Mode d'emploi du prompt d'audit IA">
+          <rect width="640" height="180" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Comment utiliser ce prompt d'audit</text>
+
+          <rect x="20"  y="44" width="130" height="100" rx="10" fill="rgba(26,158,143,.1)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="85"  y="70"  text-anchor="middle" fill="#1A9E8F" font-size="22" font-family="Inter">①</text>
+          <text x="85"  y="92"  text-anchor="middle" fill="#E2E8F0" font-size="9" font-weight="700" font-family="Inter">Copie le prompt</text>
+          <text x="85"  y="107" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Ctrl+A dans la zone</text>
+          <text x="85"  y="120" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">puis Ctrl+C</text>
+
+          <polygon points="153,92 161,87 161,97" fill="#475569"/>
+          <line x1="150" y1="92" x2="160" y2="92" stroke="#475569" stroke-width="1.5"/>
+
+          <rect x="165" y="44" width="130" height="100" rx="10" fill="rgba(99,102,241,.1)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="230" y="70"  text-anchor="middle" fill="#6366F1" font-size="22" font-family="Inter">②</text>
+          <text x="230" y="92"  text-anchor="middle" fill="#E2E8F0" font-size="9" font-weight="700" font-family="Inter">Ouvre Claude ou ChatGPT</text>
+          <text x="230" y="107" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Colle le prompt</text>
+          <text x="230" y="120" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Remplace [TON SAAS]</text>
+
+          <polygon points="298,92 306,87 306,97" fill="#475569"/>
+          <line x1="295" y1="92" x2="305" y2="92" stroke="#475569" stroke-width="1.5"/>
+
+          <rect x="310" y="44" width="130" height="100" rx="10" fill="rgba(245,158,11,.1)" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="375" y="70"  text-anchor="middle" fill="#F59E0B" font-size="22" font-family="Inter">③</text>
+          <text x="375" y="92"  text-anchor="middle" fill="#E2E8F0" font-size="9" font-weight="700" font-family="Inter">Réponds aux questions</text>
+          <text x="375" y="107" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">L'IA te posera 3 questions</text>
+          <text x="375" y="120" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">sur ton SaaS d'abord</text>
+
+          <polygon points="443,92 451,87 451,97" fill="#475569"/>
+          <line x1="440" y1="92" x2="450" y2="92" stroke="#475569" stroke-width="1.5"/>
+
+          <rect x="455" y="44" width="165" height="100" rx="10" fill="rgba(34,197,94,.1)" stroke="#22C55E" stroke-width="1.5"/>
+          <text x="537" y="70"  text-anchor="middle" fill="#22C55E" font-size="22" font-family="Inter">④</text>
+          <text x="537" y="92"  text-anchor="middle" fill="#E2E8F0" font-size="9" font-weight="700" font-family="Inter">Audit complet ✅ ⚠️ ❌</text>
+          <text x="537" y="107" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">40 points vérifiés</text>
+          <text x="537" y="120" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">+ 3 actions prioritaires</text>
+        </svg>
+      </div>
+
+      <h3>Ce que l'audit vérifie</h3>
+      <p>Le prompt couvre les 8 modules de la formation — du positionnement stratégique à l'automatisation. Pour chaque point, l'IA indique :</p>
+
+      <div class="r-keybox">
+        <div><strong>✅ Intégré</strong> — appliqué correctement, rien à faire</div>
+        <div><strong>⚠️ Partiel</strong> — présent mais à améliorer, avec explication concrète</div>
+        <div><strong>❌ Manquant</strong> — pas encore en place, avec les premières étapes</div>
+        <div style="margin-top:.5rem;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.08)"><strong>Résultat final</strong> — 3 actions prioritaires (impact élevé, effort faible)</div>
+      </div>
+
+      <h3>Prompt d'audit — SEO pour SaaS</h3>
+      <p>Copie l'intégralité du texte ci-dessous et colle-le dans Claude ou ChatGPT :</p>
+
+      <div class="audit-block">
+        <div class="audit-header">
+          <div class="audit-icon">🤖</div>
+          <div>
+            <h3>Audit IA complet — 8 modules · 40 points</h3>
+            <p>Sélectionne tout (Ctrl+A) · Copie (Ctrl+C) · Colle dans Claude ou ChatGPT · Remplace [DÉCRIS TON SAAS ICI]</p>
+          </div>
+        </div>
+        <textarea class="audit-textarea" readonly>Tu es un expert SEO spécialisé dans les SaaS B2B. J'ai suivi la formation "SEO pour SaaS" de FormaElan et je veux que tu audites mon SaaS pour vérifier que tous les points sont correctement appliqués.
+
+Mon SaaS : [DÉCRIS TON SAAS ICI : URL, cible, secteur, stade de croissance]
+
+Format d'audit attendu — pour chaque point :
+✅ Intégré — appliqué correctement
+⚠️ Partiel — présent mais à améliorer (explique comment)
+❌ Manquant — pas encore en place (explique par où commencer)
+
+À la fin, donne-moi les 3 actions prioritaires (impact élevé, effort faible).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MODULE 1 — FONDAMENTAUX & POSITIONNEMENT
+- Le ratio de contenu respecte 40% TOFU / 40% MOFU / 20% BOFU
+- Chaque article cible un ICP précis, pas une audience générique
+- Les métriques suivies sont orientées revenu : % visiteurs SEO → trial/signup (pas trafic total ni positions moyennes)
+- La courbe de croissance du trafic est analysée mois par mois
+
+MODULE 2 — MOTS-CLÉS INTENT-DRIVEN
+- La seed list est construite à partir des problèmes ICP (pas des fonctionnalités produit)
+- Les mots-clés sont classifiés TOFU/MOFU/BOFU avec intention claire
+- La priorisation utilise le score : (Impact business × 3) + Volume - (KD × 2)
+- Le sweet spot KD < 30 + intent BOFU est exploité en priorité
+- Les pages "Alternative à [concurrent]" et comparatifs sont dans la roadmap
+- Un Keyword Gap Analysis a été réalisé contre les concurrents directs
+
+MODULE 3 — CONTENT CLUSTERS
+- L'architecture Hub & Spoke est en place : 1 pilier (3-5k mots) + min. 5 satellites par cluster
+- Les liens bidirectionnels pilier ↔ satellite sont présents dans chaque article
+- Le calendrier de publication échelonne les satellites (max 2/semaine sur 6 semaines)
+- Chaque satellite cible un mot-clé MOFU/BOFU ou longue traîne distinct
+
+MODULE 4 — SEO TECHNIQUE
+- Core Web Vitals dans les seuils : LCP < 2,5s · INP < 200ms · CLS < 0,1
+- Robots.txt bloque /app/, /dashboard/, /settings/, /user/, /account/
+- Les pages applicatives authentifiées ont un meta noindex
+- Les canonical sont en place sur les pages avec paramètres URL
+- Structured data implémentée : SoftwareApplication (homepage), FAQ (landing pages), Article (blog)
+- Images compressées (WebP — cause n°1 du mauvais LCP)
+
+MODULE 5 — LINK BUILDING B2B
+- Le profil de backlinks inclut des domaines DR 40+ minimum
+- Le SaaS est référencé sur G2, Capterra ou équivalent (backlink DR 80-90)
+- Les intégrations marketplace (HubSpot, Zapier, Notion…) génèrent des backlinks DR élevé
+- Une stratégie de guest posting est active : 2-3 articles/mois sur blogs lus par l'ICP
+- L'outreach respecte le ratio "eux/toi" 70/30 avec max 1 relance
+
+MODULE 6 — CONTENU QUI CONVERTIT
+- Chaque H1 est un intent-match exact (contient le mot-clé, répond à la requête)
+- Les hooks (100-150 mots) confirment que l'article répond à la question du visiteur
+- Les CTAs sont contextuels — pas des bandeaux génériques
+- Les pages "Alternative à [concurrent]" suivent les 5 sections du template
+- Les articles sont mis à jour tous les 6-12 mois
+- Les données dans les comparatifs sont vérifiables (G2, Capterra, documentation officielle)
+
+MODULE 7 — MESURE & REPORTING
+- Google Search Console est configuré et vérifié
+- Les filtres BOFU sont actifs dans GSC : "alternative", "vs", "prix", "intégration"
+- Les near-wins (positions 4-15, impressions > 500) sont identifiés et optimisés en priorité
+- La matrice Impact/Effort est mise à jour mensuellement
+- Le rythme de reporting est respecté : hebdomadaire (15 min) · mensuel (1h) · trimestriel (2h)
+
+MODULE 8 — AUTOMATISATION & IA
+- Un workflow automatisé détecte les near-wins GSC chaque semaine
+- L'IA est utilisée pour générer des briefs structurés (pas la rédaction finale)
+- Le prompt de brief IA intègre : mot-clé + ICP + analyse top 3 concurrents + angle différenciant
+- Au moins une tâche SEO répétitive est automatisée (monitoring, alertes, rapports)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Commence par me poser 3 questions sur mon SaaS pour avoir le contexte nécessaire, puis réalise l'audit complet module par module.</textarea>
+        <p class="audit-hint">Sélectionne tout (Ctrl+A) · Copie (Ctrl+C) · Colle dans Claude ou ChatGPT</p>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="ch8-automatisation-ia.html">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Automatisation &amp; IA</span>
+          </div>
+        </a>
+        <a href="../../pages/seo-saas.html" class="next">
+          <div>
+            <span class="ch-label">Fin de la formation</span>
+            <span class="ch-name">Retour à la page SEO pour SaaS</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

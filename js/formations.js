@@ -145,7 +145,12 @@ const FORMATIONS = [
       "Checklist SEO technique pour SaaS",
       "50 idées de content clusters par verticale",
       "Scripts de prospection link building B2B",
-      "Dashboard Data Studio SEO prêt à l'emploi"
+      "Dashboard Data Studio SEO prêt à l'emploi",
+      "🤖 Prompt d'audit IA — 40 points vérifiés sur ton SaaS"
+    ],
+
+    bonus: [
+      "🤖 Audit IA inclus — fais vérifier les 40 points de la formation sur ton SaaS"
     ],
 
     faq: [
