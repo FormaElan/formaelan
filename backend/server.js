@@ -71,25 +71,27 @@ function saveTokens() {
 
 loadTokens();
 
-// ── Mailer Gmail ────────────────────────────────────────────
+// ── Mailer Zimbra OVH ────────────────────────────────────────
 const mailer = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'ssl0.ovh.net',
+  port: 465,
+  secure: true,
   auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_APP_PASSWORD,
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASSWORD,
   },
 });
 
 async function sendAccessEmail(email, slug, sessionId) {
-  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-    console.warn('[Mail] GMAIL_USER ou GMAIL_APP_PASSWORD absent — email non envoyé');
+  if (!process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
+    console.warn('[Mail] SMTP_USER ou SMTP_PASSWORD absent — email non envoyé');
     return;
   }
   const formation = FORMATION_NAMES[slug] || slug;
   const accessUrl = `${process.env.SITE_URL}/success.html?session_id=${encodeURIComponent(sessionId)}`;
 
   await mailer.sendMail({
-    from: `"FormaElan" <${process.env.GMAIL_USER}>`,
+    from: `"FormaElan" <${process.env.SMTP_USER}>`,
     to: email,
     subject: `Ton accès à "${formation}" est prêt`,
     html: `
@@ -108,7 +110,7 @@ async function sendAccessEmail(email, slug, sessionId) {
           </a>
           <p style="margin:24px 0 0;font-size:0.8rem;color:#9ca3af;">
             Conserve cet email — ce lien te permet de retrouver ta formation à tout moment.<br/>
-            Une question ? Réponds à cet email ou écris-nous à ${process.env.GMAIL_USER}
+            Une question ? Réponds à cet email ou écris-nous à ${process.env.SMTP_USER}
           </p>
         </div>
       </div>
