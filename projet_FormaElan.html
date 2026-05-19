@@ -342,7 +342,7 @@
   <a href="index.html" class="doc-back-btn">← Accueil</a>
   <div class="logo">⚡ <span>Forma</span>Elan</div>
   <h1>Projet FormaElan</h1>
-  <p class="subtitle">Document interne — Vue d'ensemble & Roadmap détaillée · Mis à jour le 18/05/2026</p>
+  <p class="subtitle">Document interne — Vue d'ensemble & Roadmap détaillée · Mis à jour le 20/05/2026</p>
   <div class="phase-badge"><div class="dot"></div> Phase 1 — Lancement MVP en cours</div>
 </header>
 
@@ -375,7 +375,7 @@
        CATALOGUE
   ══════════════════════════════════════════ -->
   <section class="section">
-    <h2><span class="label">Catalogue</span><br>5 formations en ligne</h2>
+    <h2><span class="label">Catalogue</span><br>6 formations en ligne</h2>
     <div class="formations-grid">
 
       <div class="formation-card">
@@ -410,7 +410,14 @@
         <div class="f-title">Optimiser son IA</div>
         <div class="f-meta">7 modules · 6h · Tous niveaux</div>
         <div class="f-price">39 €</div>
-        <div class="f-status">✓ En ligne — 7 ch.</div>
+        <div class="f-status">✓ En ligne — 7 ch. + audit IA</div>
+      </div>
+
+      <div class="formation-card" style="border-color:rgba(236,72,153,0.3);">
+        <div class="f-title" style="color:#EC4899;">SEO pour Créateurs</div>
+        <div class="f-meta">8 modules · 7h · Débutant–Intermédiaire</div>
+        <div class="f-price">49 €</div>
+        <div class="f-status">✓ En ligne — 8 ch. + audit IA + 8 SVGs</div>
       </div>
 
     </div>
@@ -511,7 +518,7 @@
        ROADMAP
   ══════════════════════════════════════════ -->
   <section class="section">
-    <h2><span class="label">Roadmap</span><br>Phase 1 — 23 tâches avant la première vente</h2>
+    <h2><span class="label">Roadmap</span><br>Phase 1 — tâches avant la première vente</h2>
 
 
     <!-- Réalisé -->
@@ -519,15 +526,58 @@
       <div class="rm-section-title">✅ Réalisé</div>
       <div class="rm-done">
         <ul>
-          <li>5 formations complètes en ligne (SEO SaaS, IA Freelance, Copywriting Ecom, SEO Ecom, Optimiser IA)</li>
-          <li>Backend Stripe — token d'accès, webhook, PRICE_MAP 5 slugs</li>
+          <li>6 formations complètes en ligne (SEO SaaS, IA Freelance, Copywriting Ecom, SEO Ecom, Optimiser IA, SEO Créateurs)</li>
+          <li>Audit IA ajouté à toutes les formations (ch10 / ch8 / ch9 selon formation)</li>
+          <li>Backend Stripe — token d'accès, webhook, PRICE_MAP 6 slugs</li>
           <li>Site complet — index, pages de vente, success/cancel</li>
           <li>GitHub configuré — FormaElan/formaelan (public)</li>
           <li>Backend déployé sur Render (free tier) — formaelan.onrender.com (18/05)</li>
           <li>Tunnel paiement validé — CORS, URL chapitre, boutons hero câblés Stripe (18/05)</li>
           <li>Warm-up ping — réveille Render dès le chargement de chaque page de vente (18/05)</li>
+          <li>Pages légales créées — mentions-legales.html, cgv.html, politique-confidentialite.html, contact.html (18/05)</li>
+          <li>Webhook Stripe secret configuré (18/05) · UptimeRobot ping /health toutes 5 min (18/05)</li>
+          <li>formaelan.fr acheté OVH · DNS GitHub Pages configuré · HTTPS Let's Encrypt actif (18/05)</li>
+          <li>SITE_URL Render → formaelan.fr · Tunnel validé sur domaine final (18/05)</li>
+          <li>Email Resend — DKIM Verified, RESEND_API_KEY Render, DNS SPF/DMARC OVH (19/05)</li>
+          <li>Démarches INPI Guichet-unique lancées — en attente SIRET (20/05)</li>
+          <li>Formation SEO Créateurs — 9 chapitres complets + 8 SVGs (20/05)</li>
         </ul>
       </div>
+    </div>
+
+
+    <!-- Formation 6 -->
+    <div class="rm-section">
+      <div class="rm-section-title"><span class="tag tag-orange">Formation 6</span> À finaliser — SEO pour Créateurs</div>
+      <table class="rm-table">
+        <thead><tr><th>#</th><th>Tâche</th><th>Effort</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rm-num">34</td>
+            <td>
+              <div class="rm-title">Stripe — créer produit seo-createurs</div>
+              <div class="rm-detail">Créer le produit Stripe "SEO pour Créateurs de Contenu" (49€), récupérer le PRICE_ID, ajouter <code>PRICE_SEO_CREATEURS=price_xxx</code> dans Render Environment et dans <code>.env</code> local. Le <code>server.js</code> est déjà prêt (PRICE_MAP, FORMATION_NAMES, FIRST_CHAPTER).</div>
+            </td>
+            <td class="rm-effort">15 min</td>
+          </tr>
+          <tr>
+            <td class="rm-num">35</td>
+            <td>
+              <div class="rm-title">Revoir la grille tarifaire</div>
+              <div class="rm-detail">Avec 6 formations : cohérence des prix (29€/39€/49€), logique de valeur perçue. Comparer aux concurrents FR (Udemy, OpenClassrooms, formations indépendantes). Envisager bundle ou tarification dynamique. Décision avant toute campagne d'acquisition.</div>
+            </td>
+            <td class="rm-effort">1h réflexion</td>
+          </tr>
+          <tr>
+            <td class="rm-num">36</td>
+            <td>
+              <div class="rm-title">Prompt Perplexity — veille opportunités formations</div>
+              <div class="rm-detail">Créé : <code>Sources/perplexity-veille-formations.md</code>. Prompt structuré pour analyser le marché FR (tendances, niches émergentes, concurrents, prix) et identifier 5-10 opportunités de nouvelles formations. À relancer tous les 2-3 mois.</div>
+            </td>
+            <td class="rm-effort">1h / trimestre</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
 
@@ -827,7 +877,7 @@
 </div>
 
 <footer class="footer-doc">
-  Document interne FormaElan · Mis à jour le 18/05/2026 · Non indexé (noindex)
+  Document interne FormaElan · Mis à jour le 20/05/2026 · Non indexé (noindex)
 </footer>
 
 </body>

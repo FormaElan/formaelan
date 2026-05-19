@@ -34,6 +34,16 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 ---
 
+### 🟠 Formation 6 — À finaliser
+
+| # | Tâche | Détail | Effort |
+|---|---|---|---|
+| 34 | Stripe — formation seo-createurs | Créer le produit Stripe pour "SEO pour Créateurs de Contenu" (49€), récupérer PRICE_ID, ajouter `PRICE_SEO_CREATEURS=price_xxx` dans Render Environment et dans `.env` local. server.js déjà prêt (PRICE_MAP, FORMATION_NAMES, FIRST_CHAPTER). | 15 min |
+| 35 | Revoir la grille tarifaire | Avec 6 formations : cohérence des prix (29€ / 39€ / 49€), logique de valeur perçue. Envisager bundle ou tarification dynamique. Comparer aux concurrents FR (Udemy, OpenClassrooms, formations indépendantes). Décision avant toute campagne d'acquisition. | 1h réflexion |
+| 36 | Prompt Perplexity — veille opportunités formations | Créer un fichier `Sources/perplexity-veille-formations.md` contenant un prompt structuré pour Perplexity : analyser le marché des formations FR (tendances, niches émergentes, volumes de recherche, concurrents, prix), identifier 5-10 opportunités de nouvelles formations alignées avec FormaElan. À relancer tous les 2-3 mois. | 1h |
+
+---
+
 ### 🔴 Bloquants légaux (avant toute vente réelle)
 
 | # | Tâche | Détail | Effort |

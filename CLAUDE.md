@@ -2,7 +2,7 @@
 
 ## Vision
 Plateforme de vente de formations en ligne (SEO · IA · Copywriting).
-**Phase actuelle : Phase 1 — Lancement MVP** (Phase 0 complète, 5 formations en ligne)
+**Phase actuelle : Phase 1 — Lancement MVP** (Phase 0 complète, 6 formations en ligne)
 
 ---
 
@@ -29,7 +29,8 @@ FormaElan/
 | 2 | `ia-freelance` | 49€ | ✅ 9 ch. | 13/05/2026 |
 | 3 | `copywriting-ecom` | 29€ | ✅ 7 ch. | 13/05/2026 |
 | 4 | `seo-ecom` | 39€ | ✅ 8 ch. + 16 SVGs | 13/05/2026 |
-| 5 | `optimiser-ia` | 39€ | ✅ 7 ch. | 13/05/2026 |
+| 5 | `optimiser-ia` | 39€ | ✅ 7 ch. + audit IA | 13/05/2026 |
+| 6 | `seo-createurs` | 49€ | ✅ 8 ch. + audit IA + 8 SVGs | 20/05/2026 |
 
 ---
 

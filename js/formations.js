@@ -325,7 +325,12 @@ const FORMATIONS = [
       "Template Custom GPT prêt à personnaliser",
       "Workflow Make : onboarding client automatique",
       "Modèle de proposition tarifaire 'IA-powered'",
-      "Liste de 50 outils IA par cas d'usage"
+      "Liste de 50 outils IA par cas d'usage",
+      "🤖 Prompt d'audit IA — 36 points vérifiés sur ton activité freelance"
+    ],
+
+    bonus: [
+      "🤖 Audit IA inclus — vérifie ton stack et tes workflows sur les 9 modules"
     ],
 
     faq: [
@@ -486,7 +491,12 @@ const FORMATIONS = [
       "Séquence email abandon panier prête à importer (Klaviyo/Mailchimp)",
       "Banque de 100 hooks publicitaires Meta testés",
       "Checklist de relecture copy avant publication",
-      "Guide complet des biais cognitifs appliqués à l'e-commerce"
+      "Guide complet des biais cognitifs appliqués à l'e-commerce",
+      "🤖 Prompt d'audit IA — 28 points vérifiés sur le copy de ta boutique"
+    ],
+
+    bonus: [
+      "🤖 Audit IA inclus — fais auditer le copy de ta boutique sur les 7 modules"
     ],
 
     faq: [
@@ -656,7 +666,12 @@ const FORMATIONS = [
       "Checklist technique Shopify 2025",
       "Template de description produit SEO (x10 formats)",
       "Script de détection duplicate content automatique",
-      "Dashboard GA4 e-commerce prêt à l'emploi"
+      "Dashboard GA4 e-commerce prêt à l'emploi",
+      "🤖 Prompt d'audit IA — 32 points vérifiés sur le SEO de ta boutique"
+    ],
+
+    bonus: [
+      "🤖 Audit IA inclus — 32 points vérifiés sur le SEO de ta boutique"
     ],
 
     faq: [
@@ -817,7 +832,12 @@ const FORMATIONS = [
       "Template bibliothèque de prompts personnels (Notion / Google Docs)",
       "Comparatif modèles IA 2026 (Google Sheet mis à jour trimestriellement)",
       "Plan d'action 30 jours (checklist imprimable)",
-      "30 prompts optimisés prêts à l'emploi par cas d'usage"
+      "30 prompts optimisés prêts à l'emploi par cas d'usage",
+      "🤖 Prompt d'audit IA — 28 points vérifiés sur ton usage IA"
+    ],
+
+    bonus: [
+      "🤖 Audit IA inclus — vérifie que tu appliques les 7 modules à ton usage"
     ],
 
     faq: [
@@ -845,6 +865,181 @@ const FORMATIONS = [
 
     certif: true,
     stripeProductId: "prod_optimiser_ia_placeholder"
+  },
+
+  // ──────────────────────────────────────────────────────────
+  //  6. SEO POUR CRÉATEURS DE CONTENU
+  // ──────────────────────────────────────────────────────────
+  {
+    id: "seo-createurs",
+    slug: "seo-createurs",
+    titre: "SEO pour Créateurs de Contenu",
+    sousTitre: "Rankez sur Google, YouTube et Pinterest — 3 moteurs, 1 système",
+    description: "Stratégie SEO multi-plateforme pour formateurs, coachs et créateurs : référencement Google pour ton site, YouTube SEO pour tes vidéos, Pinterest SEO pour ta niche visuelle. Un système unifié pour attirer un trafic qualifié sans pub.",
+    icon: "🎬",
+    categorie: "SEO",
+    niveau: "Débutant à Intermédiaire",
+    duree: "7h",
+    modules: 8,
+    etudiants: 0,
+    note: 0,
+    avis: 0,
+    prix: 49,
+    prixAncien: 97,
+    badge: "new",
+    couleur: "linear-gradient(135deg, rgba(236,72,153,0.3), rgba(139,92,246,0.2))",
+    couleurGlow: "rgba(236,72,153,0.5)",
+
+    formateur: {
+      nom: "L'équipe FormaElan",
+      role: "Praticiens actifs · Formateurs",
+      bio: "Cette formation est créée par des praticiens qui appliquent ces méthodes au quotidien. Chaque module est construit à partir d'expériences terrain concrètes, pas de théorie creuse.",
+      avatar: "FE",
+      stats: [
+        { val: "6",    label: "formations disponibles" },
+        { val: "100%", label: "méthodes testées en conditions réelles" },
+        { val: "2026", label: "contenu à jour" }
+      ]
+    },
+
+    avantApres: [
+      { avant: "Tu publies du contenu mais personne ne te trouve", apres: "Un flux constant de trafic qualifié depuis 3 moteurs de recherche" },
+      { avant: "Tes vidéos YouTube ne rankent pas malgré le travail investi", apres: "Une méthode d'optimisation YouTube reproductible sur chaque vidéo" },
+      { avant: "Tu crées du contenu sans stratégie cross-plateforme", apres: "Un contenu pilier décliné en 3 formats — 3× plus de portée, même effort" },
+      { avant: "Ton seul canal d'acquisition est la pub ou les réseaux sociaux", apres: "SEO Google + YouTube + Pinterest = trafic organique prévisible et gratuit" }
+    ],
+
+    programme: [
+      {
+        titre: "Le créateur de contenu et le SEO en 2026",
+        duree: "40 min",
+        lecons: [
+          "Les 3 moteurs de recherche du créateur (Google, YouTube, Pinterest)",
+          "Pourquoi le SEO SaaS et e-commerce ne s'appliquent pas directement",
+          "Ce que font différemment les créateurs qui vendent le mieux"
+        ]
+      },
+      {
+        titre: "Recherche de mots-clés multi-plateforme",
+        duree: "55 min",
+        lecons: [
+          "Keywords Google vs YouTube vs Pinterest : logiques différentes",
+          "Outils gratuits : Google Trends, TubeBuddy Free, Pinterest Trends",
+          "Construire une seed list depuis les problèmes réels de ton audience"
+        ]
+      },
+      {
+        titre: "SEO Google pour créateurs",
+        duree: "60 min",
+        lecons: [
+          "Optimiser ton site et tes pages de vente de formations",
+          "Blog de créateur : articles qui attirent ET qui convertissent",
+          "Structured data pour les formations en ligne (Course, FAQ, Person)"
+        ]
+      },
+      {
+        titre: "YouTube SEO",
+        duree: "65 min",
+        lecons: [
+          "Titres, descriptions et tags : les signaux qui rankent",
+          "Watch time, engagement et algorithme expliqués simplement",
+          "Playlists et end screens pour maximiser la session et la conversion"
+        ]
+      },
+      {
+        titre: "Pinterest SEO",
+        duree: "50 min",
+        lecons: [
+          "Boards optimisés et Rich Pins pour les formations en ligne",
+          "Titres et descriptions d'épingles orientés recherche",
+          "Stratégie de publication pour créer de la vélocité organique"
+        ]
+      },
+      {
+        titre: "Contenu qui convertit — du trafic aux ventes",
+        duree: "55 min",
+        lecons: [
+          "Le funnel de contenu créateur : curiosité → confiance → achat",
+          "Articles, vidéos et épingles orientés conversion sans forcer la vente",
+          "CTAs naturels qui ne brisent pas l'expérience de contenu"
+        ]
+      },
+      {
+        titre: "Synergie inter-plateformes",
+        duree: "45 min",
+        lecons: [
+          "Créer un contenu pilier et le décliner sur Google, YouTube, Pinterest",
+          "Repurposing intelligent : 1 idée = 3 formats = 3× plus de portée",
+          "Calendrier éditorial cross-plateforme reproductible"
+        ]
+      },
+      {
+        titre: "Mesure et optimisation multi-plateforme",
+        duree: "40 min",
+        lecons: [
+          "GSC + YouTube Analytics + Pinterest Analytics : KPIs essentiels",
+          "Identifier les contenus qui convertissent vs. ceux qui attirent seulement",
+          "Matrice impact/effort pour prioriser tes actions SEO chaque mois"
+        ]
+      }
+    ],
+
+    objectifs: [
+      "Ranker sur Google avec un site de formations et un blog stratégique",
+      "Optimiser chaque vidéo YouTube pour l'algorithme et la conversion",
+      "Utiliser Pinterest comme canal d'acquisition organique pour ta niche",
+      "Décliner un contenu pilier sur 3 plateformes sans effort supplémentaire",
+      "Mesurer le ROI de ton SEO multi-plateforme",
+      "Construire un système d'acquisition organique durable sans pub"
+    ],
+
+    pourQui: [
+      "Formateurs et coachs qui vendent des formations en ligne",
+      "Blogueurs et YouTubeurs voulant monétiser leur audience par le SEO",
+      "Créateurs cherchant à réduire leur dépendance aux réseaux sociaux payants",
+      "Entrepreneurs du savoir (ebooks, masterclass, programmes en ligne)"
+    ],
+
+    prerequis: "Avoir un site web ou une chaîne YouTube (ou les deux). Les bases du SEO on-page sont un plus mais pas obligatoires.",
+
+    ressources: [
+      "Template de keyword research multi-plateforme (Google Sheets)",
+      "Checklist d'optimisation YouTube — vidéo par vidéo",
+      "Modèle de calendrier éditorial cross-plateforme (Notion)",
+      "Guide des structured data pour formateurs (JSON-LD prêts à copier)",
+      "Dashboard de suivi SEO multi-plateforme (Google Sheets)",
+      "🤖 Prompt d'audit IA — 32 points vérifiés sur ta présence multi-plateforme"
+    ],
+
+    faq: [
+      {
+        q: "Je n'ai qu'un blog, pas de YouTube ni Pinterest — est-ce utile ?",
+        r: "Oui. Le module SEO Google (chapitre 3) s'applique indépendamment. La formation est conçue pour être modulaire : tu commences par ton canal existant et tu ajoutes les autres quand tu es prêt."
+      },
+      {
+        q: "Est-ce que Pinterest fonctionne vraiment pour les formations ?",
+        r: "Oui, pour les niches éducation, développement personnel, marketing, cuisine, design, bien-être. Si ton audience est visuelle ou féminine, Pinterest est souvent sous-exploité — les résultats arrivent plus vite qu'en SEO Google."
+      },
+      {
+        q: "En combien de temps voit-on des résultats sur YouTube ?",
+        r: "Les premières améliorations de classement sur des mots-clés de niche sont visibles en 4-8 semaines. La croissance d'une chaîne prend 3-6 mois — l'optimisation accélère la courbe, elle ne la remplace pas."
+      },
+      {
+        q: "J'ai déjà suivi une formation SEO — est-ce redondant ?",
+        r: "Non. La formation se concentre sur les spécificités des créateurs : pages de formations, vidéos YouTube, épingles Pinterest, et la synergie entre les 3. Les formations SEO classiques ne couvrent pas YouTube ni Pinterest."
+      },
+      {
+        q: "Y a-t-il un accès à vie ?",
+        r: "Oui. Accès permanent, mises à jour comprises. Le SEO multi-plateforme évolue — on met à jour tous les trimestres, inclus dans ton achat."
+      }
+    ],
+
+    certif: true,
+    stripeProductId: "prod_seo_createurs_placeholder",
+
+    bonus: [
+      "🤖 Audit IA inclus — 32 points vérifiés sur ta présence multi-plateforme"
+    ]
   }
 ];
 

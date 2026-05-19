@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Audit IA — Application · Optimiser son IA · FormaElan</title>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/formations.css"/>
+</head>
+<body>
+
+<nav class="r-nav">
+  <a href="../../index.html" class="r-nav-logo"><span>Forma</span>Elan</a>
+  <div class="r-breadcrumb">
+    <a href="../../index.html">Accueil</a> /
+    <a href="../../pages/optimiser-ia.html">Optimiser son IA</a> /
+    <span>Chapitre 8</span>
+  </div>
+</nav>
+
+<div class="r-layout">
+
+  <aside class="r-sidebar">
+    <div class="r-sidebar-title">Sommaire</div>
+    <a href="ch1-sous-exploites-ia.html" class="r-ch-link"><div class="r-ch-num">1</div>Pourquoi tu sous-exploites ton IA</a>
+    <a href="ch2-tokens-contexte.html" class="r-ch-link"><div class="r-ch-num">2</div>Tokens & contexte</a>
+    <a href="ch3-prompt-bases.html" class="r-ch-link"><div class="r-ch-num">3</div>Prompt Engineering — bases</a>
+    <a href="ch4-prompt-avance.html" class="r-ch-link"><div class="r-ch-num">4</div>Prompt Engineering — avancé</a>
+    <a href="ch5-choisir-modele.html" class="r-ch-link"><div class="r-ch-num">5</div>Choisir le bon modèle</a>
+    <a href="ch6-reduire-couts.html" class="r-ch-link"><div class="r-ch-num">6</div>Réduire ses coûts</a>
+    <a href="ch7-systeme-ia-personnel.html" class="r-ch-link"><div class="r-ch-num">7</div>Ton système IA personnel</a>
+    <a href="ch8-audit-ia.html" class="r-ch-link active"><div class="r-ch-num">8</div>Audit IA — Application</a>
+    <div class="r-sidebar-sep"></div>
+    <a href="../../pages/optimiser-ia.html" class="r-ch-link" style="font-size:.78rem;color:var(--muted)">← Page de la formation</a>
+  </aside>
+
+  <main class="r-main">
+    <section class="r-chapter" id="ch8">
+      <div class="r-ch-header">
+        <div class="r-ch-badge">8</div>
+        <div class="r-ch-meta">
+          <div class="num">Chapitre 8</div>
+          <h2>Audit IA — Applique la formation à ton usage quotidien</h2>
+          <div class="dur">⏱ 10 min · Outil pratique</div>
+        </div>
+      </div>
+
+      <div class="r-intro">
+        Tu as les connaissances. Maintenant, passe à l'audit réel. Ce prompt condense les 7 modules de la formation en une checklist de 28 points vérifiables. Donne-le à ton IA avec le contexte de ton usage — elle te dit exactement ce qui est en place, ce qui est partiel, et ce qui manque.
+      </div>
+
+      <div class="r-svg-wrap">
+        <svg viewBox="0 0 640 180" role="img" aria-label="Mode d'emploi du prompt d'audit IA">
+          <rect width="640" height="180" fill="#1E293B"/>
+          <text x="320" y="22" text-anchor="middle" fill="#94A3B8" font-size="11" font-weight="600" font-family="Inter">Comment utiliser ce prompt d'audit</text>
+
+          <rect x="20"  y="44" width="130" height="100" rx="10" fill="rgba(26,158,143,.1)" stroke="#1A9E8F" stroke-width="1.5"/>
+          <text x="85"  y="70"  text-anchor="middle" fill="#1A9E8F" font-size="22" font-family="Inter">①</text>
+          <text x="85"  y="92"  text-anchor="middle" fill="#E2E8F0" font-size="9" font-weight="700" font-family="Inter">Copie le prompt</text>
+          <text x="85"  y="107" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Ctrl+A dans la zone</text>
+          <text x="85"  y="120" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">puis Ctrl+C</text>
+
+          <polygon points="153,92 161,87 161,97" fill="#475569"/>
+          <line x1="150" y1="92" x2="160" y2="92" stroke="#475569" stroke-width="1.5"/>
+
+          <rect x="165" y="44" width="130" height="100" rx="10" fill="rgba(99,102,241,.1)" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="230" y="70"  text-anchor="middle" fill="#6366F1" font-size="22" font-family="Inter">②</text>
+          <text x="230" y="92"  text-anchor="middle" fill="#E2E8F0" font-size="9" font-weight="700" font-family="Inter">Ouvre Claude ou ChatGPT</text>
+          <text x="230" y="107" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Colle le prompt</text>
+          <text x="230" y="120" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Remplace [TON USAGE]</text>
+
+          <polygon points="298,92 306,87 306,97" fill="#475569"/>
+          <line x1="295" y1="92" x2="305" y2="92" stroke="#475569" stroke-width="1.5"/>
+
+          <rect x="310" y="44" width="130" height="100" rx="10" fill="rgba(245,158,11,.1)" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="375" y="70"  text-anchor="middle" fill="#F59E0B" font-size="22" font-family="Inter">③</text>
+          <text x="375" y="92"  text-anchor="middle" fill="#E2E8F0" font-size="9" font-weight="700" font-family="Inter">Réponds aux questions</text>
+          <text x="375" y="107" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">L'IA te posera 3 questions</text>
+          <text x="375" y="120" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">sur ton usage actuel d'abord</text>
+
+          <polygon points="443,92 451,87 451,97" fill="#475569"/>
+          <line x1="440" y1="92" x2="450" y2="92" stroke="#475569" stroke-width="1.5"/>
+
+          <rect x="455" y="44" width="165" height="100" rx="10" fill="rgba(34,197,94,.1)" stroke="#22C55E" stroke-width="1.5"/>
+          <text x="537" y="70"  text-anchor="middle" fill="#22C55E" font-size="22" font-family="Inter">④</text>
+          <text x="537" y="92"  text-anchor="middle" fill="#E2E8F0" font-size="9" font-weight="700" font-family="Inter">Audit complet ✅ ⚠️ ❌</text>
+          <text x="537" y="107" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">28 points vérifiés</text>
+          <text x="537" y="120" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">+ 3 actions prioritaires</text>
+        </svg>
+      </div>
+
+      <h3>Ce que l'audit vérifie</h3>
+      <p>Le prompt couvre les 7 modules de la formation — du diagnostic de ton usage au système IA personnel. Pour chaque point, l'IA indique :</p>
+
+      <div class="r-keybox">
+        <div><strong>✅ Intégré</strong> — appliqué correctement, rien à faire</div>
+        <div><strong>⚠️ Partiel</strong> — présent mais à améliorer, avec explication concrète</div>
+        <div><strong>❌ Manquant</strong> — pas encore en place, avec les premières étapes</div>
+        <div style="margin-top:.5rem;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.08)"><strong>Résultat final</strong> — 3 actions prioritaires (impact élevé, effort faible)</div>
+      </div>
+
+      <h3>Prompt d'audit — Optimiser son IA</h3>
+      <p>Copie l'intégralité du texte ci-dessous et colle-le dans Claude ou ChatGPT :</p>
+
+      <div class="audit-block">
+        <div class="audit-header">
+          <div class="audit-icon">🤖</div>
+          <div>
+            <h3>Audit IA complet — 7 modules · 28 points</h3>
+            <p>Sélectionne tout (Ctrl+A) · Copie (Ctrl+C) · Colle dans Claude ou ChatGPT · Remplace [DÉCRIS TON USAGE ICI]</p>
+          </div>
+        </div>
+        <textarea class="audit-textarea" readonly>Tu es un expert en prompt engineering et optimisation des workflows IA. J'ai suivi la formation "Optimiser son IA" de FormaElan et je veux que tu audites mon utilisation actuelle de l'IA.
+
+Mon usage IA actuel : [DÉCRIS TON USAGE ICI : outils utilisés (ChatGPT/Claude/Gemini/autre), fréquence d'utilisation, principales tâches déléguées à l'IA, budget mensuel si pertinent]
+
+Format d'audit attendu — pour chaque point :
+✅ Intégré — appliqué correctement
+⚠️ Partiel — présent mais à améliorer (explique comment)
+❌ Manquant — pas encore en place (explique par où commencer)
+
+À la fin, donne-moi les 3 actions prioritaires (impact élevé, effort faible).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MODULE 1 — DIAGNOSTIC DE SON USAGE IA
+- Les 5 principales tâches répétitives bénéficiant le plus de l'IA sont identifiées
+- La distinction est claire entre tâches où l'IA excelle (synthèse, rédaction, structure) et tâches où elle échoue (calculs complexes, données temps réel)
+- L'IA n'est plus utilisée "à l'instinct" — il y a une logique claire d'activation selon la tâche
+
+MODULE 2 — TOKENS & GESTION DU CONTEXTE
+- La notion de token et son impact sur la qualité et le coût des réponses est comprise
+- Les signes de context rot sont identifiés (réponses qui dérivent, contradictions, perte de cohérence)
+- La décision "nouvelle conversation vs. continuer" est consciente et méthodique
+- Des messages de synthèse sont utilisés pour compresser le contexte sans le perdre
+
+MODULE 3 — PROMPT ENGINEERING — BASES (CADRE RCTF)
+- Tous les prompts professionnels spécifient un Rôle, un Contexte, une Tâche et un Format
+- Le few-shot prompting (exemples dans le prompt) est utilisé pour calibrer le style des réponses
+- Les réponses génériques ou hors-sujet au premier essai sont rares
+- Les prompts sont rédigés dans la langue de la tâche attendue
+
+MODULE 4 — PROMPT ENGINEERING — AVANCÉ
+- Des system prompts ou instructions persistantes sont configurés pour les usages récurrents
+- Les prompts itératifs (draft → amélioration → format final) sont pratiqués
+- Le chain-of-thought ("réfléchis étape par étape") est utilisé pour les tâches d'analyse complexe
+- Les prompts sont évalués selon une grille de critères (pertinence, complétude, format, ton)
+
+MODULE 5 — CHOISIR LE BON MODÈLE
+- Le modèle le plus puissant n'est pas choisi par défaut — il y a une logique de sélection
+- Les modèles légers (GPT-4o mini, Claude Haiku) sont utilisés pour les tâches simples et répétitives
+- Les forces et limites réelles des 3 principaux modèles sont connues (GPT-4o, Claude, Gemini)
+- Des outils spécialisés (Perplexity pour la recherche, GitHub Copilot pour le code) sont utilisés quand pertinent
+
+MODULE 6 — RÉDUIRE SES COÛTS & OPTIMISER SON WORKFLOW
+- Des instructions persistantes sont configurées (Custom GPT ou Project Claude) pour les activités récurrentes
+- Une bibliothèque de prompts personnels est maintenue et organisée (Notion, Google Doc ou autre)
+- Des fichiers de contexte compensent l'absence de mémoire native de l'IA
+- Le coût mensuel IA est proportionnel à la valeur produite — pas de dépense fantôme
+
+MODULE 7 — TON SYSTÈME IA PERSONNEL
+- Un fichier de contexte personnel est partagé avec l'IA à chaque nouvelle session critique
+- La veille IA est structurée : 15 minutes par semaine, 2-3 sources ciblées maximum
+- Un plan d'action concret (30 jours) a été défini pour ancrer les nouvelles habitudes IA
+- L'usage IA s'améliore continuellement — les gains sont mesurés au moins informellement
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Commence par me poser 3 questions sur mon usage actuel pour avoir le contexte nécessaire, puis réalise l'audit complet module par module.</textarea>
+        <p class="audit-hint">Sélectionne tout (Ctrl+A) · Copie (Ctrl+C) · Colle dans Claude ou ChatGPT</p>
+      </div>
+
+      <div class="r-ch-nav">
+        <a href="ch7-systeme-ia-personnel.html">
+          <div>
+            <span class="ch-label">Chapitre précédent</span>
+            <span class="ch-name">Ton système IA personnel</span>
+          </div>
+        </a>
+        <a href="../../pages/optimiser-ia.html" class="next">
+          <div>
+            <span class="ch-label">Fin de la formation</span>
+            <span class="ch-name">Retour à la page Optimiser son IA</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

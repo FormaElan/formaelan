@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="pageTitle">Optimiser son IA — FormaElan</title>
-  <meta name="description" id="pageDesc" content="Obtenez des résultats 3× meilleurs sans changer d'outil. Maîtrise les tokens, le prompt engineering RCTF, le choix de modèle et construis ton système IA personnel." />
+  <title id="pageTitle">Formation — FormaElan</title>
+  <meta name="description" id="pageDesc" content="Formation FormaElan" />
   <!-- Canonical -->
   <link rel="canonical" id="pageCanonical" href="https://formaelan.fr/pages/" />
   <!-- Open Graph -->
@@ -27,6 +27,7 @@
   <style>
     /* ── Sections spécifiques aux pages formation ── */
 
+    /* Barre de progression sticky */
     .progress-bar {
       position: fixed;
       top: 70px; left: 0;
@@ -38,6 +39,7 @@
       box-shadow: 0 0 8px var(--accent-glow);
     }
 
+    /* Formateur */
     .formateur-card {
       display: flex;
       gap: 2rem;
@@ -66,6 +68,7 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .formateur-stat .lbl { font-size: 0.75rem; color: var(--text-secondary); }
 
+    /* Avant / Après */
     .avant-apres-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -93,6 +96,7 @@
     .avant-item .ico { color: #ef4444; flex-shrink: 0; }
     .apres-item .ico { color: #22c55e; flex-shrink: 0; }
 
+    /* Ressources */
     .ressources-list li {
       display: flex; align-items: center; gap: 0.7rem;
       padding: 0.75rem 1rem;
@@ -110,6 +114,7 @@
     }
     .ressources-list li .r-icon { font-size: 1.1rem; flex-shrink: 0; }
 
+    /* FAQ */
     .faq-item {
       border: 1px solid var(--border-glass);
       border-radius: var(--radius-sm);
@@ -141,6 +146,7 @@
     }
     .faq-item.open .faq-reponse { display: block; }
 
+    /* Onglets contenu */
     .tabs-bar {
       display: flex;
       gap: 0.5rem;
@@ -167,6 +173,7 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
+    /* Sticky sidebar desktop */
     @media (min-width: 901px) {
       .sticky-sidebar { position: sticky; top: 90px; }
     }
@@ -179,6 +186,7 @@
 </head>
 <body>
 
+  <!-- Barre de lecture -->
   <div class="progress-bar" id="progressBar"></div>
 
   <!-- NAVBAR -->
@@ -213,6 +221,7 @@
 
     <div class="formation-hero-inner">
 
+      <!-- Gauche : infos -->
       <div>
         <div class="formation-breadcrumb">
           <a href="../index.html">Accueil</a> /
@@ -232,8 +241,7 @@
         <div class="formation-meta-row">
           <div class="meta-item">⏱ <strong id="metaDuree"></strong></div>
           <div class="meta-item">📚 <strong id="metaModules"></strong> modules</div>
-          <div class="meta-item">👥 <strong id="metaEtudiants"></strong> étudiants</div>
-          <div class="meta-item" id="metaNoteRow"></div>
+          <div class="meta-item">📶 <strong id="metaNiveau"></strong></div>
         </div>
 
         <div style="display:flex;gap:1rem;flex-wrap:wrap;">
@@ -251,6 +259,7 @@
             <div class="discount-badge" id="discountBadge"></div>
           </div>
 
+          <!-- Bouton branché sur stripe.js -->
           <button class="btn btn-primary" id="btnAcheter"
             style="width:100%;justify-content:center;margin-bottom:0.8rem;font-size:1rem;">
             🔒 Accéder maintenant
@@ -282,6 +291,7 @@
   <div style="background:var(--bg-secondary);padding:4rem 0;">
     <div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
 
+      <!-- Onglets -->
       <div class="tabs-bar">
         <button class="tab-btn active" data-tab="programme">📚 Programme</button>
         <button class="tab-btn" data-tab="objectifs">🎯 Objectifs</button>
@@ -297,6 +307,7 @@
         <!-- COLONNE PRINCIPALE -->
         <div>
 
+          <!-- Programme -->
           <div class="tab-panel active" id="tab-programme">
             <div class="formation-section">
               <h2 id="programme">Programme complet</h2>
@@ -304,6 +315,7 @@
             </div>
           </div>
 
+          <!-- Objectifs -->
           <div class="tab-panel" id="tab-objectifs">
             <div class="formation-section">
               <h2>Ce que tu vas maîtriser</h2>
@@ -322,6 +334,7 @@
             </div>
           </div>
 
+          <!-- Formateur -->
           <div class="tab-panel" id="tab-formateur">
             <div class="formation-section">
               <h2>Ton formateur</h2>
@@ -329,6 +342,7 @@
             </div>
           </div>
 
+          <!-- Avant / Après -->
           <div class="tab-panel" id="tab-avantapres">
             <div class="formation-section">
               <h2>Avant / Après la formation</h2>
@@ -348,6 +362,7 @@
             </div>
           </div>
 
+          <!-- Ressources -->
           <div class="tab-panel" id="tab-ressources">
             <div class="formation-section">
               <h2>Ressources incluses</h2>
@@ -358,6 +373,7 @@
             </div>
           </div>
 
+          <!-- FAQ -->
           <div class="tab-panel" id="tab-faq">
             <div class="formation-section">
               <h2>Questions fréquentes</h2>
@@ -365,9 +381,9 @@
             </div>
           </div>
 
-        </div>
+        </div><!-- fin colonne principale -->
 
-        <!-- COLONNE DROITE : mini card recap -->
+        <!-- COLONNE DROITE : mini card recap visible depuis onglets -->
         <div class="sticky-sidebar" style="padding-top:0.5rem;">
           <div class="payment-card" style="margin-top:0;">
             <div style="text-align:center;margin-bottom:1rem;">
@@ -385,7 +401,7 @@
           </div>
         </div>
 
-      </div>
+      </div><!-- fin two-col-layout -->
     </div>
   </div>
 
@@ -396,13 +412,13 @@
   <section class="cta-section" style="padding:5rem 2rem;">
     <div class="hero-orb hero-orb-1"></div>
     <div class="hero-orb hero-orb-2"></div>
-    <div class="cta-box reveal">
-      <div class="hero-badge" style="margin-bottom:1.2rem;">
-        <div class="dot"></div>
-        Paiement sécurisé par Stripe
-      </div>
-      <h2 class="cta-title" id="ctaTitle"></h2>
-      <p class="cta-subtitle" id="ctaSubtitle"></p>
+      <div class="cta-box reveal">
+        <div class="hero-badge" style="margin-bottom:1.2rem;">
+          <div class="dot"></div>
+          Paiement sécurisé par Stripe
+        </div>
+        <h2 class="cta-title" id="ctaTitle"></h2>
+        <p class="cta-subtitle" id="ctaSubtitle"></p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
         <button class="btn btn-primary btn-lg" id="btnAcheterCta">🔒 Je m'inscris maintenant</button>
         <a href="../index.html" class="btn btn-secondary">Voir d'autres formations</a>
@@ -455,6 +471,7 @@
   <script src="../js/main.js"></script>
   <script>
 
+    // ── 0. Récupérer la formation selon le slug ──────────────
     const slug = window.location.pathname.split('/').pop().replace('.html', '');
     const f    = FORMATION_BY_SLUG[slug];
 
@@ -464,6 +481,7 @@
         + '<a href="../index.html" class="btn btn-primary">← Retour à l\'accueil</a></div>';
     } else {
 
+      // ── 1. Meta & titres ──────────────────────────────────
       document.getElementById('pageTitle').textContent       = `${f.titre} — FormaElan`;
       document.getElementById('pageDesc').content            = f.sousTitre;
 
@@ -487,13 +505,13 @@
       document.getElementById('formationIntro').textContent  = f.sousTitre;
       document.getElementById('metaDuree').textContent       = f.duree;
       document.getElementById('metaModules').textContent     = f.modules;
-      document.getElementById('metaEtudiants').textContent   = f.etudiants.toLocaleString('fr-FR');
-      document.getElementById('metaNoteRow').innerHTML       =
-        `⭐ <strong>${f.note}/5</strong> <span style="color:var(--text-secondary);font-size:.82rem;">(${f.avis} avis)</span>`;
+      document.getElementById('metaNiveau').textContent      = f.niveau;
 
+      // Hero couleur
       document.getElementById('formationHero').style.background =
         `linear-gradient(160deg, var(--bg-primary) 0%, var(--bg-secondary) 100%)`;
 
+      // ── 2. Carte paiement ─────────────────────────────────
       const disc = Math.round((1 - f.prix / f.prixAncien) * 100);
       ['', '2'].forEach(sfx => {
         const pm = document.getElementById('prixMain'  + sfx);
@@ -504,8 +522,9 @@
       document.getElementById('discountBadge').textContent =
         `🎉 ${disc}% de réduction — Offre limitée`;
 
+
       const inclus = [
-        `${f.duree} de contenu`,
+        `${f.duree} de contenu vidéo HD`,
         `${f.modules} modules structurés`,
         'Accès à vie + mises à jour',
         f.certif ? 'Certificat de réussite' : null,
@@ -524,6 +543,7 @@
         });
       });
 
+      // ── 3. Boutons acheter → stripe.js ────────────────────
       ['btnAcheter', 'btnAcheter2', 'btnAcheterCta', 'btnAcheterHero'].forEach(id => {
         const btn = document.getElementById(id);
         if (btn) btn.addEventListener('click', () => {
@@ -535,6 +555,7 @@
         });
       });
 
+      // ── 4. Programme (accordéon) ──────────────────────────
       f.programme.forEach((mod, i) => {
         const div = document.createElement('div');
         div.className = 'programme-module';
@@ -557,6 +578,7 @@
         document.getElementById('programmeAccordeon').appendChild(div);
       });
 
+      // ── 5. Objectifs ──────────────────────────────────────
       f.objectifs.forEach(obj => {
         const div = document.createElement('div');
         div.className = 'objectif-item';
@@ -564,6 +586,7 @@
         document.getElementById('objectifsGrid').appendChild(div);
       });
 
+      // Pour qui
       f.pourQui.forEach(item => {
         const div = document.createElement('div');
         div.className = 'objectif-item';
@@ -573,6 +596,7 @@
 
       document.getElementById('prerequisText').textContent = f.prerequis;
 
+      // ── 6. Formateur ──────────────────────────────────────
       const fc = document.getElementById('formateurCard');
       fc.innerHTML = `
         <div class="formateur-avatar">${f.formateur.avatar}</div>
@@ -589,6 +613,7 @@
           </div>
         </div>`;
 
+      // ── 7. Avant / Après ──────────────────────────────────
       const aag = document.getElementById('avantApresGrid');
       f.avantApres.forEach(aa => {
         const row = document.createElement('div');
@@ -600,6 +625,7 @@
         aag.appendChild(row);
       });
 
+      // ── 8. Ressources ─────────────────────────────────────
       const icons = ['📊','🤖','📋','⚙️','📈','📝','🔧'];
       f.ressources.forEach((r, i) => {
         const li = document.createElement('li');
@@ -607,6 +633,7 @@
         document.getElementById('ressourcesList').appendChild(li);
       });
 
+      // ── 9. FAQ (accordéon) ────────────────────────────────
       f.faq.forEach(item => {
         const div = document.createElement('div');
         div.className = 'faq-item';
@@ -624,11 +651,13 @@
         document.getElementById('faqAccordeon').appendChild(div);
       });
 
+      // ── 10. CTA bas ───────────────────────────────────────
       document.getElementById('ctaTitle').innerHTML =
         `Prêt à maîtriser <span class="gradient-text">${f.titre}</span> ?`;
       document.getElementById('ctaSubtitle').textContent =
-        `Rejoins ${f.etudiants.toLocaleString('fr-FR')} étudiants et commence dès aujourd'hui.`;
+        `Accède immédiatement au contenu complet et commence dès aujourd'hui.`;
 
+      // ── 11. Onglets ───────────────────────────────────────
       document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -638,8 +667,9 @@
         });
       });
 
-    }
+    } // fin if(f)
 
+    // ── 12. Barre de progression lecture ──────────────────
     window.addEventListener('scroll', () => {
       const docH = document.documentElement.scrollHeight - window.innerHeight;
       const pct  = docH > 0 ? (window.scrollY / docH * 100) : 0;

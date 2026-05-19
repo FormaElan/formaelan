@@ -603,6 +603,9 @@ section { padding: 6rem 2rem; }
 .c-purple .flip-back    { background: linear-gradient(135deg, #2e1065 0%, #5b21b6 100%); border: 1px solid rgba(167,139,250,0.5); }
 .c-purple:hover .flip-front { box-shadow: 0 0 0 1px rgba(167,139,250,0.45), 0 16px 48px rgba(167,139,250,0.25); }
 
+.c-pink .flip-back      { background: linear-gradient(135deg, #500724 0%, #9d174d 100%); border: 1px solid rgba(236,72,153,0.5); }
+.c-pink:hover .flip-front   { box-shadow: 0 0 0 1px rgba(236,72,153,0.45), 0 16px 48px rgba(236,72,153,0.25); }
+
 /* ── Image recto ── */
 .flip-img {
   height: 200px;
@@ -784,6 +787,7 @@ section { padding: 6rem 2rem; }
   .c-orange .flip-back { background: rgba(251,146,60,0.07);  border: 1px solid rgba(251,146,60,0.2);  border-top: none; }
   .c-blue .flip-back   { background: rgba(59,130,246,0.07);  border: 1px solid rgba(59,130,246,0.2);  border-top: none; }
   .c-purple .flip-back { background: rgba(167,139,250,0.07); border: 1px solid rgba(167,139,250,0.2); border-top: none; }
+  .c-pink .flip-back   { background: rgba(236,72,153,0.07);  border: 1px solid rgba(236,72,153,0.2);  border-top: none; }
 
   /* Masque les doublons (titre et prix déjà visibles dans le recto) */
   .flip-back h3,

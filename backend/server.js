@@ -27,6 +27,7 @@ const PRICE_MAP = {
   'copywriting-ecom':  process.env.PRICE_COPYWRITING_ECOM,
   'seo-ecom':          process.env.PRICE_SEO_ECOM,
   'optimiser-ia':      process.env.PRICE_OPTIMISER_IA,
+  'seo-createurs':     process.env.PRICE_SEO_CREATEURS,
 };
 
 // ── Noms lisibles des formations ────────────────────────────
@@ -36,6 +37,7 @@ const FORMATION_NAMES = {
   'copywriting-ecom': 'Copywriting E-commerce',
   'seo-ecom':         'SEO pour E-commerce',
   'optimiser-ia':     'Optimiser son IA',
+  'seo-createurs':    'SEO pour Créateurs de Contenu',
 };
 
 // ── Premier chapitre par slug (pour le lien d'accès) ───────
@@ -45,6 +47,7 @@ const FIRST_CHAPTER = {
   'copywriting-ecom': 'formations/copywriting-ecom/ch1-psychologie-achat.html',
   'seo-ecom':         'formations/seo-ecom/ch1-specificites-seo-ecom.html',
   'optimiser-ia':     'formations/optimiser-ia/ch1-sous-exploites-ia.html',
+  'seo-createurs':    'formations/seo-createurs/ch1-createurs-seo-2026.html',
 };
 
 // ── Stockage des tokens d'accès ─────────────────────────────
