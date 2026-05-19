@@ -10,8 +10,10 @@ const cors       = require('cors');
 const crypto     = require('crypto');
 const fs         = require('fs');
 const path       = require('path');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 const stripe     = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const app  = express();
 const PORT = process.env.PORT || 4242;
@@ -71,27 +73,17 @@ function saveTokens() {
 
 loadTokens();
 
-// ── Mailer Zimbra OVH ────────────────────────────────────────
-const mailer = nodemailer.createTransport({
-  host: 'ssl0.ovh.net',
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASSWORD,
-  },
-});
-
+// ── Mailer Resend ─────────────────────────────────────────────
 async function sendAccessEmail(email, slug, sessionId) {
-  if (!process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
-    console.warn('[Mail] SMTP_USER ou SMTP_PASSWORD absent — email non envoyé');
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('[Mail] RESEND_API_KEY absent — email non envoyé');
     return;
   }
   const formation = FORMATION_NAMES[slug] || slug;
   const accessUrl = `${process.env.SITE_URL}/success.html?session_id=${encodeURIComponent(sessionId)}`;
 
-  await mailer.sendMail({
-    from: `"FormaElan" <${process.env.SMTP_USER}>`,
+  await resend.emails.send({
+    from: 'FormaElan <contact@formaelan.fr>',
     to: email,
     subject: `Ton accès à "${formation}" est prêt`,
     html: `
@@ -110,7 +102,7 @@ async function sendAccessEmail(email, slug, sessionId) {
           </a>
           <p style="margin:24px 0 0;font-size:0.8rem;color:#9ca3af;">
             Conserve cet email — ce lien te permet de retrouver ta formation à tout moment.<br/>
-            Une question ? Réponds à cet email ou écris-nous à ${process.env.SMTP_USER}
+            Une question ? Réponds à cet email ou écris-nous à contact@formaelan.fr
           </p>
         </div>
       </div>
