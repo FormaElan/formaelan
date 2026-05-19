@@ -82,7 +82,7 @@ async function sendAccessEmail(email, slug, sessionId) {
   const formation = FORMATION_NAMES[slug] || slug;
   const accessUrl = `${process.env.SITE_URL}/success.html?session_id=${encodeURIComponent(sessionId)}`;
 
-  await resend.emails.send({
+  const { error: mailError } = await resend.emails.send({
     from: 'FormaElan <contact@formaelan.fr>',
     to: email,
     subject: `Ton accès à "${formation}" est prêt`,
@@ -108,6 +108,9 @@ async function sendAccessEmail(email, slug, sessionId) {
       </div>
     `,
   });
+  if (mailError) {
+    throw new Error(`Resend ${mailError.statusCode} — ${mailError.message}`);
+  }
   console.log(`[Mail] Email envoyé → ${email} (${slug})`);
 }
 
