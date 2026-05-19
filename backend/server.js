@@ -115,6 +115,9 @@ async function sendAccessEmail(email, slug, sessionId) {
   console.log(`[Mail] Email envoyé → ${email} (${slug})`);
 }
 
+// ── Trust proxy (Render) ────────────────────────────────────
+app.set('trust proxy', 1);
+
 // ── Middlewares ─────────────────────────────────────────────
 app.use(cors({
   origin: process.env.SITE_URL
@@ -122,6 +125,67 @@ app.use(cors({
     : '*',
   methods: ['GET', 'POST'],
 }));
+
+// ── Webhook Stripe — AVANT express.json() ───────────────────
+// Stripe requiert le body brut (Buffer) pour vérifier la signature.
+// express.json() consommerait le body avant que express.raw() puisse le lire.
+app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) => {
+  const sig           = req.headers['stripe-signature'];
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+  let event;
+  if (webhookSecret) {
+    try {
+      event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+    } catch (err) {
+      console.error('[Webhook] Signature invalide :', err.message);
+      return res.status(400).send(`Webhook Error: ${err.message}`);
+    }
+  } else {
+    try {
+      event = JSON.parse(req.body);
+    } catch {
+      event = req.body;
+    }
+    console.warn('[Webhook] STRIPE_WEBHOOK_SECRET absent — signature non vérifiée');
+  }
+
+  switch (event.type) {
+
+    case 'checkout.session.completed': {
+      const session = event.data.object;
+      const slug    = session.metadata?.formation_slug;
+      const email   = session.customer_details?.email || '';
+      const token   = crypto.randomUUID();
+
+      if (slug) {
+        tokenStore.set(session.id, {
+          token,
+          slug,
+          email,
+          createdAt: new Date().toISOString(),
+        });
+        saveTokens();
+        console.log(`✓ Paiement confirmé — Formation : ${slug} — Email : ${email}`);
+        if (email) sendAccessEmail(email, slug, session.id).catch(err =>
+          console.error('[Mail] Erreur envoi :', err.message)
+        );
+      }
+      break;
+    }
+
+    case 'payment_intent.payment_failed': {
+      console.log('✗ Paiement échoué :', event.data.object.id);
+      break;
+    }
+
+    default:
+      // Ignorer les autres événements
+  }
+
+  res.json({ received: true });
+});
+
 app.use(express.json());
 
 // ── Health check ────────────────────────────────────────────
@@ -217,66 +281,6 @@ app.get('/get-access', async (req, res) => {
   }
 });
 
-// ── Webhook Stripe ───────────────────────────────────────────
-// POST /webhook
-// Génère et stocke le token dès la confirmation de paiement
-app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) => {
-  const sig           = req.headers['stripe-signature'];
-  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-
-  let event;
-  if (webhookSecret) {
-    try {
-      event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
-    } catch (err) {
-      console.error('[Webhook] Signature invalide :', err.message);
-      return res.status(400).send(`Webhook Error: ${err.message}`);
-    }
-  } else {
-    // Mode développement sans signature
-    try {
-      event = JSON.parse(req.body);
-    } catch {
-      event = req.body;
-    }
-    console.warn('[Webhook] STRIPE_WEBHOOK_SECRET absent — signature non vérifiée');
-  }
-
-  switch (event.type) {
-
-    case 'checkout.session.completed': {
-      const session = event.data.object;
-      const slug    = session.metadata?.formation_slug;
-      const email   = session.customer_details?.email || '';
-      const token   = crypto.randomUUID();
-
-      if (slug) {
-        tokenStore.set(session.id, {
-          token,
-          slug,
-          email,
-          createdAt: new Date().toISOString(),
-        });
-        saveTokens();
-        console.log(`✓ Paiement confirmé — Formation : ${slug} — Email : ${email}`);
-        if (email) sendAccessEmail(email, slug, session.id).catch(err =>
-          console.error('[Mail] Erreur envoi :', err.message)
-        );
-      }
-      break;
-    }
-
-    case 'payment_intent.payment_failed': {
-      console.log('✗ Paiement échoué :', event.data.object.id);
-      break;
-    }
-
-    default:
-      // Ignorer les autres événements
-  }
-
-  res.json({ received: true });
-});
 
 // ── Démarrage ───────────────────────────────────────────────
 app.listen(PORT, () => {
