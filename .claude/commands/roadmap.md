@@ -26,6 +26,11 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 - SITE_URL mis à jour sur Render → https://formaelan.fr (18/05)
 - Tunnel paiement validé sur formaelan.fr — carte test 4242, Stripe → success.html OK (18/05)
 - UptimeRobot configuré — ping /health toutes les 5 min, cold start résolu (18/05)
+- Zimbra contact@formaelan.fr créé sur OVH (19/05)
+- Email post-achat migré de Nodemailer/SMTP vers Resend API (19/05)
+- Resend : DKIM formaelan.fr Verified, RESEND_API_KEY dans Render (19/05)
+- DNS Resend ajoutés sur OVH : resend._domainkey TXT, send TXT SPF, _dmarc TXT (19/05)
+- Fix : détection erreur Resend (SDK retourne data/error sans throw) (19/05)
 
 ---
 
@@ -42,9 +47,9 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
-| 2 | Webhook Stripe — secret ✅ | ~~Stripe Dashboard → Webhooks → signing secret → Render `STRIPE_WEBHOOK_SECRET`~~ — **Fait (18/05).** | — |
+| 2 | Webhook Stripe — secret ⚠️ | Variable `STRIPE_WEBHOOK_SECRET` absente de Render (logs confirment). Stripe Dashboard → Developers → Webhooks → endpoint → Signing secret → copier dans Render Environment. Sans ça, la signature webhook n'est pas vérifiée (risque sécurité). | 10 min |
 | 3 | Clés Stripe live | Stripe Dashboard → basculer en mode Live → copier `sk_live_...` et `pk_live_...` → mettre à jour Render + `js/stripe.js`. À faire le jour J uniquement, pas avant. | 30 min |
-| 4 | Email post-achat — config Zimbra | Code Nodemailer prêt dans server.js ✅. Il reste : (1) attendre que formaelan.fr soit actif sur OVH ; (2) configurer `contact@formaelan.fr` via Zimbra Starter OVH ; (3) ajouter `GMAIL_USER=contact@formaelan.fr` + `GMAIL_APP_PASSWORD=xxx` dans Render Environment. Zimbra utilise SMTP Gmail-compatible. | 30 min |
+| 4 | Email post-achat — finaliser Resend | Resend configuré (DKIM Verified, API key dans Render) ✅. Il reste : (1) attendre propagation DNS SPF `send` TXT → Verified sur Resend (peut prendre 2-24h) ; (2) retenter achat test après verification ; (3) supprimer SMTP_USER + SMTP_PASSWORD obsolètes de Render. MX `send` non ajouté (OVH bloquait) — optionnel pour les bounces. | 15 min |
 | 25 | Rate limiting `/create-checkout-session` | Sans protection, un bot peut spammer des centaines de sessions Checkout → coûts Stripe + alertes fraude. Ajouter `express-rate-limit` : max 5 requêtes/min par IP. Npm, zéro dépendance tierce. | 30 min |
 | 32 | Waiver droit de rétractation | Les CGV stipulent l'exclusion du droit de rétractation, mais aucun mécanisme ne collecte l'accord explicite. Ajouter une case à cocher avant le redirect Stripe : "J'accepte que l'accès débute immédiatement et renonce à mon droit de rétractation". | ~1h |
 | 26 | Render : tokens éphémères | `access-tokens.json` effacé à chaque restart Render (spin-down ~15 min inactivité). Atténuation : fallback Stripe dans `/get-access` régénère le token via `session_id` → dépendance à l'email #4 (l'acheteur doit avoir son URL). Solution propre : Render Disk ($7/mois) ou SQLite. À décider avant 1ère vente réelle. | ~1h |
@@ -58,7 +63,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 | 15 | Acheter formaelan.fr ✅ | ~~OVH~~ — **Fait (18/05)** : 5,99€ TTC, 1 an, Zimbra Starter inclus. Installation en cours sur OVH. | — |
 | 16 | Configurer DNS GitHub Pages ✅ | OVH Zone DNS : 4 A records GitHub Pages + CNAME www → formaelan.github.io. HTTPS Let's Encrypt actif. **Fait (18/05).** | — |
 | 17 | Mettre à jour SITE_URL sur Render ✅ | `SITE_URL=https://formaelan.fr` dans Render Environment. Tunnel validé sur formaelan.fr. **Fait (18/05).** | — |
-| 18 | Configurer email contact@formaelan.fr | OVH → Zimbra Starter → créer compte `contact@formaelan.fr`. Récupérer les paramètres SMTP. Mettre à jour Render : `GMAIL_USER=contact@formaelan.fr` + `GMAIL_APP_PASSWORD`. Remplacer `multimind.team@gmail.com` dans server.js et les pages HTML. | 45 min |
+| 18 | Configurer email contact@formaelan.fr ✅ | Zimbra créé. Resend configuré (DKIM Verified). Attente propagation SPF → voir tâche #4. **Partiellement fait (19/05).** | — |
 | 31 | Sitemap.xml | Créer un sitemap listant les 5 pages de vente + index. Soumettre dans Google Search Console après migration formaelan.fr. | 15 min |
 
 ---
