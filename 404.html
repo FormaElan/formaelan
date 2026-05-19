@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page introuvable — FormaElan</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    .error-code {
+      font-size: 5rem;
+      font-weight: 800;
+      line-height: 1;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-logo">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text"><span>Forma</span>Elan</div>
+    </a>
+    <div class="navbar-actions">
+      <label class="theme-toggle" title="Changer le thème">
+        <input type="checkbox" id="themeToggleInput" />
+        <div class="track"><div class="thumb">🌙</div></div>
+      </label>
+    </div>
+  </nav>
+
+  <div class="hero-grid" style="position:fixed;inset:0;pointer-events:none;z-index:0;"></div>
+  <div class="hero-orb hero-orb-1" style="position:fixed;"></div>
+
+  <div class="result-page">
+    <div class="result-card">
+      <div class="error-code">404</div>
+      <h1>Page introuvable</h1>
+      <p style="color:var(--text-secondary);margin-bottom:1.5rem;">
+        Cette page n'existe pas ou a été déplacée.<br />
+        Retrouve toutes les formations depuis l'accueil.
+      </p>
+      <div style="display:flex;gap:0.8rem;flex-direction:column;">
+        <a href="/" class="btn btn-primary" style="justify-content:center;">
+          ⚡ Voir les formations
+        </a>
+        <a href="javascript:history.back()" class="btn btn-secondary" style="justify-content:center;">
+          ← Page précédente
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
