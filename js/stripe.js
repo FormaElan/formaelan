@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 //  FormaElan — stripe.js  (frontend)
 //  Clé publique TEST configurée — mode stub jusqu'aux Price IDs
 // ============================================================
@@ -98,7 +98,7 @@ const FormaElanStripe = (() => {
 
     } catch (err) {
       console.error('[FormaElan Stripe]', err.message);
-      _showError('Une erreur est survenue. Réessaie ou écris-nous à multimind.team@gmail.com');
+      _showError('Une erreur est survenue. Réessaie ou écris-nous à contact@formaelan.fr');
     } finally {
       _showLoader(false);
     }

@@ -124,7 +124,7 @@
         if (!res.ok || data.error) {
           zone.innerHTML = `<div class="error-state">
             Impossible de récupérer ton accès : ${data.error || 'erreur inconnue'}.<br/>
-            <strong>Contacte-nous</strong> à <a href="mailto:multimind.team@gmail.com">multimind.team@gmail.com</a>
+            <strong>Contacte-nous</strong> à <a href="mailto:contact@formaelan.fr">contact@formaelan.fr</a>
             en précisant ton email Stripe.
           </div>`;
           return;
@@ -146,7 +146,7 @@
       } catch (err) {
         zone.innerHTML = `<div class="error-state">
           Erreur de connexion au serveur (${err.message}).<br/>
-          Si le problème persiste, contacte <a href="mailto:multimind.team@gmail.com">multimind.team@gmail.com</a>.
+          Si le problème persiste, contacte <a href="mailto:contact@formaelan.fr">contact@formaelan.fr</a>.
         </div>`;
       }
     })();

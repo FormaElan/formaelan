@@ -294,6 +294,10 @@
   <script src="js/formations.js"></script>
   <script src="js/main.js"></script>
   <script>
+    // Sync compteur hero avec le nombre réel de formations
+    const _counterEl = document.querySelector('.hero-stats [data-counter]');
+    if (_counterEl) _counterEl.dataset.counter = FORMATIONS.length;
+
     // Génération dynamique des cartes formations
     const grid = document.getElementById('formationsGrid');
 
