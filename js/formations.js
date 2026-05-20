@@ -887,6 +887,7 @@ const FORMATIONS = [
     prix: 49,
     prixAncien: 97,
     badge: "new",
+    img: "seo-createurs.svg",
     couleur: "linear-gradient(135deg, rgba(236,72,153,0.3), rgba(139,92,246,0.2))",
     couleurGlow: "rgba(236,72,153,0.5)",
 

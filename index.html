@@ -98,7 +98,7 @@
 
       <div class="hero-stats">
         <div class="hero-stat">
-          <div class="number"><span data-counter="5">0</span></div>
+          <div class="number"><span data-counter="6">0</span></div>
           <div class="label">Formations disponibles</div>
         </div>
         <div class="hero-stat">
@@ -328,7 +328,7 @@
           <div class="flip-face flip-front">
             <div class="card-badge badge-${f.badge}">${badgeLabel(f.badge)}</div>
             <div class="flip-img">
-              <img src="img/formations/${f.slug}.jpg" alt="${f.titre}" width="400" height="200" loading="lazy">
+              <img src="img/formations/${f.img || f.slug + '.jpg'}" alt="${f.titre}" width="400" height="200" loading="lazy">
             </div>
             <div class="flip-front-body">
               <div class="card-category">${f.categorie}</div>
