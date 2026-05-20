@@ -746,8 +746,8 @@ section { padding: 6rem 2rem; }
   font-size: 0.83rem;
 }
 
-/* ── Mobile : cartes aplaties (no hover) ── */
-@media (hover: none) {
+/* ── Mobile : cartes aplaties (no hover / écran étroit) ── */
+@media (hover: none), (max-width: 768px) {
   .flip-wrap {
     height: auto;
     perspective: none;
@@ -1467,3 +1467,54 @@ body.page-ready {
 .mb-1 { margin-bottom: 0.5rem; }
 .mb-2 { margin-bottom: 1rem; }
 .hidden { display: none; }
+
+/* ============================================================
+   ANIMATIONS — SHIMMER · FLOAT · SCROLL PROGRESS
+   ============================================================ */
+
+/* Barre de progression scroll */
+#feScrollProgress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--teal), #6366f1, #22d3ee);
+  z-index: 9999;
+  pointer-events: none;
+  transition: width 0.1s linear;
+}
+
+/* Shimmer sur les textes gradient */
+@keyframes feShimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.hero-title .gradient-text,
+.section-title .gradient-text,
+.cta-title .gradient-text {
+  background: linear-gradient(90deg, var(--teal) 0%, #6366f1 33%, #22d3ee 66%, var(--teal) 100%);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: feShimmer 6s linear infinite;
+}
+
+/* Float staggeré sur les stats hero */
+@keyframes feFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+.hero-stat:nth-child(1) { animation: feFloat 4s ease-in-out 0s    infinite; }
+.hero-stat:nth-child(2) { animation: feFloat 4s ease-in-out 0.5s  infinite; }
+.hero-stat:nth-child(3) { animation: feFloat 4s ease-in-out 1s    infinite; }
+.hero-stat:nth-child(4) { animation: feFloat 4s ease-in-out 1.5s  infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title .gradient-text,
+  .section-title .gradient-text,
+  .cta-title .gradient-text { animation: none; }
+  .hero-stat { animation: none !important; }
+}

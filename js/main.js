@@ -295,7 +295,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ----------------------------------------------------------
-  // 10. TRANSITIONS DE PAGE (fade in/out)
+  // 10. BARRE DE PROGRESSION SCROLL
+  // ----------------------------------------------------------
+  const _prog = document.createElement('div');
+  _prog.id = 'feScrollProgress';
+  document.body.prepend(_prog);
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const total = h.scrollHeight - window.innerHeight;
+    _prog.style.width = total > 0 ? (h.scrollTop / total * 100) + '%' : '0%';
+  }, { passive: true });
+
+  // ----------------------------------------------------------
+  // 11. TRANSITIONS DE PAGE (fade in/out)
   // ----------------------------------------------------------
   // Fade in à l'arrivée
   requestAnimationFrame(() => document.body.classList.add('page-ready'));
