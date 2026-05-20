@@ -285,6 +285,156 @@ app.get('/get-access', async (req, res) => {
 });
 
 
+// ── Noms lisibles des formations (partagé) ─────────────────
+const FORMATION_TITLES = FORMATION_NAMES; // alias
+
+// ── Rate limiter certificat ─────────────────────────────────
+const certificatLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Trop de demandes. Réessaie dans une heure.' },
+});
+
+// ── Envoyer un certificat par email ─────────────────────────
+// POST /send-certificate
+// Body : { email, nom, slug, score, date, certId }
+app.post('/send-certificate', certificatLimiter, async (req, res) => {
+  const { email, nom, slug, score, date, certId } = req.body;
+
+  // Validation
+  if (!email || !nom || !slug || score === undefined || !date || !certId) {
+    return res.status(400).json({ error: 'Paramètres manquants.' });
+  }
+  if (!FORMATION_NAMES[slug]) {
+    return res.status(400).json({ error: `Formation inconnue : ${slug}` });
+  }
+  if (Number(score) < 70) {
+    return res.status(400).json({ error: 'Score insuffisant pour obtenir un certificat.' });
+  }
+
+  const formation = FORMATION_NAMES[slug];
+  const certUrl   = `${process.env.SITE_URL}/certificat.html?slug=${encodeURIComponent(slug)}&nom=${encodeURIComponent(nom)}&score=${encodeURIComponent(score)}&date=${encodeURIComponent(date)}&id=${encodeURIComponent(certId)}`;
+
+  const months = ['janvier','février','mars','avril','mai','juin',
+                  'juillet','août','septembre','octobre','novembre','décembre'];
+  function formatDate(iso) {
+    const [y, m, d] = (iso || '').split('-');
+    return `${parseInt(d)} ${months[parseInt(m)-1]} ${y}`;
+  }
+  const dateFormatted = formatDate(date);
+
+  const certHtml = `
+    <table width="100%" cellpadding="0" cellspacing="0" border="0"
+           style="max-width:620px;margin:0 auto;font-family:'Helvetica Neue',Arial,sans-serif;color:#1a1a2e;">
+
+      <!-- Header -->
+      <tr>
+        <td style="background:linear-gradient(135deg,#0D1B3E,#1A3260);
+                   padding:24px 32px;border-radius:12px 12px 0 0;">
+          <span style="color:#1A9E8F;font-size:1.3rem;font-weight:900;">⚡ FormaElan</span>
+        </td>
+      </tr>
+
+      <!-- Teal stripe -->
+      <tr>
+        <td style="height:4px;background:linear-gradient(90deg,#1A9E8F,#22d3c8,#1A9E8F);"></td>
+      </tr>
+
+      <!-- Body -->
+      <tr>
+        <td style="background:#f9fafb;padding:36px 40px;border:1px solid #e5e7eb;border-top:none;">
+
+          <p style="margin:0 0 8px;font-size:.8rem;font-weight:700;letter-spacing:.12em;
+                    text-transform:uppercase;color:#1A9E8F;">
+            Certificat officiel FormaElan
+          </p>
+
+          <h1 style="margin:0 0 4px;font-size:1.8rem;font-weight:900;color:#0D1B3E;line-height:1.2;">
+            Certificat de Réussite
+          </h1>
+
+          <div style="width:50px;height:3px;background:#1A9E8F;border-radius:2px;margin:16px 0 24px;"></div>
+
+          <p style="margin:0 0 4px;font-size:.85rem;color:#6b7280;">Décerné à</p>
+          <p style="margin:0 0 20px;font-size:1.6rem;font-weight:800;color:#0D1B3E;">${nom}</p>
+
+          <p style="margin:0 0 6px;font-size:.85rem;color:#6b7280;">pour avoir complété la formation</p>
+          <div style="display:inline-block;background:rgba(26,158,143,.1);border:1px solid rgba(26,158,143,.3);
+                      border-radius:8px;padding:10px 20px;margin-bottom:28px;">
+            <span style="font-size:1.1rem;font-weight:700;color:#0D1B3E;">${formation}</span>
+          </div>
+
+          <!-- Meta -->
+          <table width="100%" cellpadding="0" cellspacing="0" border="0"
+                 style="margin-bottom:28px;text-align:center;">
+            <tr>
+              <td style="padding:12px;border-right:1px solid #e5e7eb;">
+                <div style="font-size:1.4rem;font-weight:800;color:#0D1B3E;">${score}%</div>
+                <div style="font-size:.72rem;color:#9ca3af;text-transform:uppercase;letter-spacing:.06em;margin-top:3px;">Score obtenu</div>
+              </td>
+              <td style="padding:12px;">
+                <div style="font-size:1.4rem;font-weight:800;color:#0D1B3E;">${dateFormatted}</div>
+                <div style="font-size:.72rem;color:#9ca3af;text-transform:uppercase;letter-spacing:.06em;margin-top:3px;">Date d'obtention</div>
+              </td>
+            </tr>
+          </table>
+
+          <p style="margin:0 0 24px;font-size:.82rem;color:#6b7280;line-height:1.7;">
+            Ce certificat atteste la réussite du quiz de certification avec un score ≥ 70 %.
+            Il peut être valorisé sur <strong>LinkedIn</strong>, <strong>Malt</strong>
+            ou tout portfolio client.
+          </p>
+
+          <a href="${certUrl}"
+             style="display:inline-block;background:linear-gradient(135deg,#1A9E8F,#0d7a6e);
+                    color:#fff;padding:14px 28px;border-radius:9px;text-decoration:none;
+                    font-weight:700;font-size:.95rem;">
+            📄 Voir mon certificat en ligne
+          </a>
+
+          <p style="margin:24px 0 0;font-size:.75rem;color:#9ca3af;line-height:1.6;">
+            Identifiant : <strong>${certId}</strong><br/>
+            Une question ? Réponds à cet email ou écris-nous à contact@formaelan.fr
+          </p>
+        </td>
+      </tr>
+
+      <!-- Footer -->
+      <tr>
+        <td style="background:#f3f4f6;padding:14px 32px;border-radius:0 0 12px 12px;
+                   border:1px solid #e5e7eb;border-top:none;
+                   font-size:.72rem;color:#9ca3af;text-align:center;">
+          © 2026 FormaElan · contact@formaelan.fr
+        </td>
+      </tr>
+    </table>`;
+
+  try {
+    if (!process.env.RESEND_API_KEY) {
+      console.warn('[Certif] RESEND_API_KEY absent — email non envoyé');
+      return res.json({ ok: true, certId, note: 'Email non envoyé (clé absente)' });
+    }
+
+    const { error: mailError } = await resend.emails.send({
+      from:    'FormaElan <contact@formaelan.fr>',
+      to:      email,
+      subject: `🏆 Ton certificat FormaElan — ${formation}`,
+      html:    certHtml,
+    });
+
+    if (mailError) throw new Error(`Resend ${mailError.statusCode} — ${mailError.message}`);
+
+    console.log(`[Certif] Certificat envoyé → ${email} (${slug}, ${score}%)`);
+    res.json({ ok: true, certId });
+
+  } catch (err) {
+    console.error('[Certif] Erreur envoi :', err.message);
+    res.status(500).json({ error: 'Erreur lors de l\'envoi de l\'email. Réessaie dans quelques instants.' });
+  }
+});
+
 // ── Démarrage ───────────────────────────────────────────────
 app.listen(PORT, () => {
   console.log('');

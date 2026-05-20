@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Certificat de réussite — FormaElan</title>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .certif-page-wrap {
+      max-width: 900px; margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+    .certif-actions {
+      display: flex; gap: 1rem; justify-content: center;
+      margin-bottom: 2.5rem; flex-wrap: wrap;
+    }
+    .certif-action-btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .75rem 1.6rem; border-radius: 10px; font-weight: 700;
+      font-size: .88rem; cursor: pointer; transition: all .2s;
+      text-decoration: none;
+    }
+    .certif-action-primary {
+      background: linear-gradient(135deg, #1A9E8F, #0d7a6e);
+      color: #fff; border: none;
+    }
+    .certif-action-primary:hover { opacity: .9; }
+    .certif-action-secondary {
+      background: transparent; color: var(--text-secondary);
+      border: 1px solid var(--border-glass);
+    }
+    .certif-action-secondary:hover {
+      border-color: var(--text-accent); color: var(--text-primary);
+    }
+
+    /* ── Certificate card ── */
+    .certif-card {
+      background: #fff; color: #1a1a2e;
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,.35);
+      font-family: 'Inter', sans-serif;
+    }
+    .certif-header {
+      background: linear-gradient(135deg, #0D1B3E 0%, #1A3260 100%);
+      padding: 2rem 2.5rem 1.8rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .certif-logo-text {
+      font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: -.01em;
+    }
+    .certif-logo-text span { color: #1A9E8F; }
+    .certif-logo-icon { font-size: 1.5rem; margin-right: .4rem; }
+    .certif-header-right {
+      text-align: right; font-size: .78rem; color: rgba(255,255,255,.55);
+      line-height: 1.6;
+    }
+
+    /* Teal accent stripe */
+    .certif-stripe {
+      height: 5px;
+      background: linear-gradient(90deg, #1A9E8F 0%, #22d3c8 50%, #1A9E8F 100%);
+    }
+
+    .certif-body { padding: 3rem 3.5rem 2.5rem; text-align: center; }
+
+    .certif-type {
+      font-size: .72rem; font-weight: 800; letter-spacing: .15em;
+      text-transform: uppercase; color: #1A9E8F; margin-bottom: .8rem;
+    }
+    .certif-main-title {
+      font-size: 2.2rem; font-weight: 900; color: #0D1B3E;
+      line-height: 1.2; margin-bottom: 1.8rem;
+    }
+    .certif-divider {
+      width: 60px; height: 3px; border-radius: 2px;
+      background: linear-gradient(90deg, #1A9E8F, #22d3c8);
+      margin: 0 auto 1.8rem;
+    }
+    .certif-presented { font-size: .85rem; color: #6b7280; margin-bottom: .5rem; }
+    .certif-name {
+      font-size: 2rem; font-weight: 800; color: #0D1B3E;
+      margin-bottom: 1.6rem; letter-spacing: -.02em;
+    }
+    .certif-for { font-size: .85rem; color: #6b7280; margin-bottom: .5rem; }
+    .certif-formation-name {
+      font-size: 1.25rem; font-weight: 700; color: #0D1B3E;
+      background: rgba(26,158,143,.08);
+      border: 1px solid rgba(26,158,143,.25);
+      border-radius: 10px; padding: .8rem 1.6rem;
+      display: inline-block; margin-bottom: 2rem;
+    }
+
+    .certif-meta {
+      display: flex; justify-content: center; gap: 3rem;
+      margin-bottom: 2.5rem; flex-wrap: wrap;
+    }
+    .certif-meta-item { text-align: center; }
+    .certif-meta-val {
+      font-size: 1.3rem; font-weight: 800; color: #0D1B3E; display: block;
+    }
+    .certif-meta-label {
+      font-size: .72rem; color: #9ca3af; text-transform: uppercase;
+      letter-spacing: .06em; margin-top: .15rem;
+    }
+
+    .certif-conditions {
+      font-size: .75rem; color: #9ca3af; line-height: 1.6;
+      max-width: 520px; margin: 0 auto 2rem;
+    }
+
+    .certif-footer {
+      background: #f9fafb; padding: 1.2rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: .75rem; color: #9ca3af; gap: 1rem; flex-wrap: wrap;
+    }
+    .certif-id { font-family: 'JetBrains Mono', monospace; letter-spacing: .04em; }
+    .certif-seal {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: linear-gradient(135deg, #0D1B3E, #1A3260);
+      border: 2px solid #1A9E8F;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
+    }
+
+    /* Error state */
+    .certif-error {
+      text-align: center; padding: 4rem 2rem;
+    }
+    .certif-error h2 { margin-bottom: .75rem; }
+    .certif-error p { color: var(--text-secondary); margin-bottom: 2rem; }
+
+    @media print {
+      .navbar, .certif-actions, .certif-page-wrap > p { display: none !important; }
+      body { background: #fff !important; }
+      .certif-page-wrap { padding: 0; }
+      .certif-card { box-shadow: none; border: 1px solid #e5e7eb; }
+    }
+
+    @media (max-width: 600px) {
+      .certif-body { padding: 2rem 1.5rem 1.5rem; }
+      .certif-main-title { font-size: 1.5rem; }
+      .certif-name { font-size: 1.4rem; }
+      .certif-meta { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar no-print">
+    <a href="index.html" class="navbar-logo">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text"><span>Forma</span>Elan</div>
+    </a>
+    <div class="navbar-actions">
+      <label class="theme-toggle" title="Changer le thème">
+        <input type="checkbox" id="themeToggleInput"/>
+        <div class="track"><div class="thumb">🌙</div></div>
+      </label>
+    </div>
+  </nav>
+
+  <div class="certif-page-wrap">
+    <div id="certifApp"></div>
+  </div>
+
+  <script src="js/formations.js"></script>
+  <script>
+    (function () {
+      const p      = new URLSearchParams(location.search);
+      const slug   = p.get('slug');
+      const nom    = p.get('nom');
+      const score  = p.get('score');
+      const date   = p.get('date');
+      const certId = p.get('id') || '—';
+      const app    = document.getElementById('certifApp');
+
+      const f = FORMATION_BY_SLUG[slug];
+
+      function formatDate(iso) {
+        if (!iso) return '—';
+        const [y, m, d] = iso.split('-');
+        const months = ['janvier','février','mars','avril','mai','juin',
+                        'juillet','août','septembre','octobre','novembre','décembre'];
+        return `${parseInt(d)} ${months[parseInt(m)-1]} ${y}`;
+      }
+
+      if (!f || !nom || !score) {
+        app.innerHTML = `
+          <div class="certif-error">
+            <div style="font-size:3rem;margin-bottom:1rem">⚠️</div>
+            <h2>Données de certificat manquantes</h2>
+            <p>Ce lien est invalide ou incomplet. Passe d'abord le quiz de certification.</p>
+            <a href="index.html" style="color:var(--text-accent)">← Retour à l'accueil</a>
+          </div>`;
+        return;
+      }
+
+      const dateFormatted = formatDate(date);
+
+      app.innerHTML = `
+        <div class="certif-actions no-print">
+          <button onclick="window.print()" class="certif-action-btn certif-action-primary">
+            🖨️ Imprimer / Enregistrer en PDF
+          </button>
+          <a href="pages/${slug}.html" class="certif-action-btn certif-action-secondary">
+            ← Retour à la formation
+          </a>
+        </div>
+
+        <div class="certif-card">
+          <div class="certif-header">
+            <div>
+              <div class="certif-logo-text">
+                <span class="certif-logo-icon">⚡</span><span>Forma</span>Elan
+              </div>
+              <div style="font-size:.75rem;color:rgba(255,255,255,.5);margin-top:.3rem;">
+                formations-en-ligne.formaelan.fr
+              </div>
+            </div>
+            <div class="certif-header-right">
+              Délivré le ${dateFormatted}<br/>
+              Certificat authentifié<br/>
+              ${certId}
+            </div>
+          </div>
+
+          <div class="certif-stripe"></div>
+
+          <div class="certif-body">
+            <div class="certif-type">FormaElan · Certificat officiel</div>
+            <div class="certif-main-title">Certificat<br/>de Réussite</div>
+            <div class="certif-divider"></div>
+
+            <div class="certif-presented">Décerné à</div>
+            <div class="certif-name">${nom}</div>
+
+            <div class="certif-for">pour avoir complété la formation</div>
+            <div class="certif-formation-name">${f.titre}</div>
+
+            <div class="certif-meta">
+              <div class="certif-meta-item">
+                <span class="certif-meta-val">${score}%</span>
+                <span class="certif-meta-label">Score obtenu</span>
+              </div>
+              <div class="certif-meta-item">
+                <span class="certif-meta-val">${f.modules}</span>
+                <span class="certif-meta-label">Modules validés</span>
+              </div>
+              <div class="certif-meta-item">
+                <span class="certif-meta-val">${f.duree}</span>
+                <span class="certif-meta-label">Durée de formation</span>
+              </div>
+              <div class="certif-meta-item">
+                <span class="certif-meta-val">${dateFormatted}</span>
+                <span class="certif-meta-label">Date d'obtention</span>
+              </div>
+            </div>
+
+            <div class="certif-conditions">
+              Ce certificat atteste la réussite du quiz de certification avec un score ≥ 70 %,
+              après avoir suivi l'intégralité des modules de la formation. Il peut être valorisé
+              sur LinkedIn, Malt ou tout portfolio client.
+            </div>
+          </div>
+
+          <div class="certif-footer">
+            <div>
+              <div style="font-weight:700;color:#374151;margin-bottom:.2rem;">FormaElan</div>
+              <div>Formations en ligne pour entrepreneurs du numérique</div>
+              <div>contact@formaelan.fr</div>
+            </div>
+            <div class="certif-seal">⚡</div>
+            <div style="text-align:right;">
+              <div style="font-weight:600;color:#374151;margin-bottom:.2rem;">Identifiant</div>
+              <div class="certif-id">${certId}</div>
+            </div>
+          </div>
+        </div>`;
+    })();
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>

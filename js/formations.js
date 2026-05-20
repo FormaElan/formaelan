@@ -172,6 +172,17 @@ const FORMATIONS = [
       },
     ],
 
+    quiz: [
+      { q: "Qu'est-ce qu'un mot-clé BOFU en SEO SaaS ?", r: ["Un article de blog informatif", "Un mot-clé ciblant une intention d'achat ou de comparaison", "Un contenu de veille sectorielle", "Une page de documentation produit"], a: 1 },
+      { q: "Qu'est-ce qu'un content cluster ?", r: ["Un groupe de concurrents à analyser", "Une page pilier reliée par maillage interne à des pages satellites thématiques", "Un rapport Google Search Console", "Un type de balise HTML sémantique"], a: 1 },
+      { q: "Quelle métrique reflète le mieux le ROI SEO d'un SaaS ?", r: ["Le nombre total de sessions organiques", "Le taux de rebond des articles de blog", "Les leads qualifiés (MQL) générés depuis le canal organique", "Le Domain Rating du site"], a: 2 },
+      { q: "Pourquoi mettre en noindex les pages /app d'un SaaS ?", r: ["Pour les masquer aux visiteurs non connectés", "Pour éviter que Google indexe des pages privées sans valeur SEO", "Pour améliorer la vitesse globale du site", "Pour respecter le RGPD"], a: 1 },
+      { q: "Quel profil de mot-clé cibler en priorité pour un SaaS early-stage ?", r: ["Volume très élevé, KD élevé", "Volume moyen, intention transactionnelle, KD < 30", "Mots-clés génériques et courts (1-2 mots)", "Mots-clés de tendances et veille sectorielle"], a: 1 },
+      { q: "Quel est l'avantage principal d'une page « Alternative à [concurrent] » ?", r: ["Elle copie la stratégie du concurrent", "Elle génère uniquement du trafic informationnel", "Elle cible des prospects en phase de comparaison et de décision finale", "Elle améliore la vitesse de chargement du site"], a: 2 },
+      { q: "En quoi consiste le digital PR en link building B2B ?", r: ["Acheter des liens sur des annuaires", "Obtenir des backlinks via des angles éditoriaux intéressants pour la presse tech", "Publier des communiqués de presse payants sur des wire services", "Partager du contenu régulièrement sur LinkedIn"], a: 1 },
+      { q: "Dans les automatisations SEO, qu'est-ce que le « context rot » ?", r: ["Une erreur de crawl causée par un bot IA", "La dégradation progressive de la qualité des réponses dans une longue session IA", "Un algorithme Google pénalisant le contenu généré par IA", "Un problème de redirection 301 en chaîne"], a: 1 },
+    ],
+
     certif: true,
     stripeProductId: "prod_seo_saas_placeholder"
   },
@@ -356,6 +367,17 @@ const FORMATIONS = [
       }
     ],
 
+    quiz: [
+      { q: "Quel est le principal avantage compétitif d'un freelance qui maîtrise l'IA ?", r: ["Remplacer tous ses clients par des automatisations", "Produire plus vite, livrer de meilleure qualité, justifier des tarifs plus élevés", "Travailler moins d'heures sans changer ses tarifs", "Éviter complètement la prospection"], a: 1 },
+      { q: "Qu'est-ce qu'un Custom GPT ?", r: ["Un modèle IA développé de zéro par un développeur", "Un plugin Notion pour organiser ses projets", "Une instance ChatGPT configurée avec des instructions et données propres à ton activité", "Un outil de veille automatisée sur les tendances IA"], a: 2 },
+      { q: "Comment l'IA améliore-t-elle concrètement la prospection d'un freelance ?", r: ["En envoyant des emails en masse à des listes achetées", "En créant des publicités Facebook automatiquement", "En personnalisant les messages de prospection selon le profil de chaque prospect", "En remplaçant intégralement le CRM"], a: 2 },
+      { q: "Comment valoriser l'IA dans son positionnement tarifaire ?", r: ["En gonflant les devis sans explication", "En cachant les heures réellement travaillées grâce à l'IA", "En proposant uniquement des forfaits annuels plus chers", "En livrant plus vite et mieux, et en construisant une offre explicitement « IA-powered »"], a: 3 },
+      { q: "Quelle plateforme no-code est présentée pour automatiser l'onboarding client ?", r: ["Notion", "Trello", "Make (ex-Integromat)", "Canva"], a: 2 },
+      { q: "Qu'est-ce qu'un SOP assisté par IA dans un contexte freelance ?", r: ["Un contrat standard de prestation de service", "Un type de prompt avancé pour les LLMs", "Un outil de planification de projets clients", "Une procédure opérationnelle standard documentée et optimisée grâce à l'IA"], a: 3 },
+      { q: "Quelle est la meilleure façon de créer un revenu complémentaire avec l'IA ?", r: ["Vendre l'accès à son compte ChatGPT personnel", "Créer et vendre des templates, prompts ou automatisations réutilisables", "Donner des formations gratuites pour se faire connaître", "Publier des posts LinkedIn sur l'IA"], a: 1 },
+      { q: "Pourquoi maintenir une veille IA régulière est essentiel pour un freelance ?", r: ["Pour paraître expert sur les réseaux sociaux", "Pour accéder à des offres promotionnelles sur les outils", "Pour éviter les bugs des versions gratuites", "Pour rester compétitif à mesure que les outils et les usages évoluent rapidement"], a: 3 },
+    ],
+
     certif: true,
     stripeProductId: "prod_ia_freelance_placeholder"
   },
@@ -520,6 +542,17 @@ const FORMATIONS = [
         q: "Puis-je utiliser cette formation si j'accompagne des clients e-commerce ?",
         r: "Oui, la formation est parfaite pour les freelances et agences qui gèrent du contenu e-commerce pour leurs clients."
       }
+    ],
+
+    quiz: [
+      { q: "Que signifie la structure PAS en copywriting ?", r: ["Produit, Avantages, Specs", "Problème, Agitation, Solution", "Prix, Audience, Storytelling", "Page, Accroche, Structure"], a: 1 },
+      { q: "Quel est l'objectif principal d'une fiche produit bien rédigée ?", r: ["Augmenter le nombre de références (SKUs) en catalogue", "Réduire les retours produits grâce à une meilleure description", "Apparaître sur Google ET convaincre l'acheteur de passer commande", "Compresser les images pour améliorer la vitesse"], a: 2 },
+      { q: "Quand envoyer le premier email d'abandon panier ?", r: ["7 jours après l'abandon, pour ne pas paraître insistant", "Uniquement le lendemain matin", "Un seul email, sans relance", "Dans l'heure qui suit l'abandon, puis une séquence sur 3-5 jours"], a: 3 },
+      { q: "Qu'est-ce qu'un « hook » dans une publicité Meta Ads ?", r: ["Un lien d'affiliation intégré à la pub", "Un coupon de réduction automatique", "Le bouton CTA principal de la publicité", "La première phrase ou visuel qui stoppe le scroll et capte l'attention"], a: 3 },
+      { q: "Quel biais cognitif exploite la « preuve sociale » dans le copywriting ?", r: ["La rareté — ce qui est rare est désirable", "La réciprocité — rendre pour recevoir", "L'autorité — faire confiance aux experts", "Le conformisme — on achète ce que les autres ont acheté et apprécié"], a: 3 },
+      { q: "Qu'est-ce que la « voix de marque » dans un contexte e-commerce ?", r: ["Le narrateur d'une publicité audio ou vidéo", "La FAQ et les conditions de vente du produit", "Une description légale des garanties proposées", "Le style, le ton et la personnalité cohérents de tous les textes de la marque"], a: 3 },
+      { q: "Quel KPI mesure directement l'efficacité du copy d'une fiche produit ?", r: ["Le nombre de visiteurs uniques sur la page", "Le taux de conversion de la page produit", "Le temps moyen passé sur la page", "Le nombre de partages sur les réseaux sociaux"], a: 1 },
+      { q: "Comment fonctionne un test A/B appliqué au copy ?", r: ["On compare deux sites concurrents sur le même produit", "On envoie deux emails différents à la même personne", "On change le produit mis en avant selon les saisons", "On teste deux versions d'un texte simultanément sur deux groupes de visiteurs"], a: 3 },
     ],
 
     certif: true,
@@ -697,6 +730,17 @@ const FORMATIONS = [
       }
     ],
 
+    quiz: [
+      { q: "Qu'est-ce que le « duplicate content » dans un site e-commerce ?", r: ["Des fiches produits copiées d'un site concurrent", "Des pages identiques ou très similaires créées par les filtres et facettes de navigation", "Des images utilisées sur plusieurs pages produits", "Des métas dupliquées sur les réseaux sociaux"], a: 1 },
+      { q: "À quoi sert le Schema Markup de type « Product » ?", r: ["À accélérer le chargement des images produits", "À sécuriser les transactions de paiement en ligne", "À créer des catégories automatiquement dans Shopify", "À afficher des rich snippets (prix, stock, avis) directement dans les résultats Google"], a: 3 },
+      { q: "Qu'est-ce que le « crawl budget » d'un site e-commerce ?", r: ["Le budget marketing alloué aux campagnes Google Shopping", "Le coût d'un audit SEO réalisé par un prestataire", "Le nombre de redirections autorisées par mois par Google", "Le nombre de pages que Google peut crawler sur ton site dans un temps donné"], a: 3 },
+      { q: "Pourquoi optimiser les textes de catégories est-il important en SEO ?", r: ["Pour remplacer les descriptions de produits individuels", "Pour que Shopify génère les métas automatiquement", "Pour réduire le taux de rebond uniquement", "Pour aider Google à comprendre la thématique de la catégorie et améliorer le classement"], a: 3 },
+      { q: "Comment obtenir des backlinks sans budget pour un site e-commerce ?", r: ["Acheter des liens sur des plateformes comme Fiverr", "Publier plus souvent sur Instagram et Pinterest", "Augmenter le budget Google Shopping pour plus de visibilité", "Récupérer les mentions non linkées et activer des partenariats avec des affiliés"], a: 3 },
+      { q: "Qu'est-ce qu'un maillage interne efficace en e-commerce ?", r: ["Un réseau physique de boutiques partenaires", "Un plugin de recommandations produits automatiques", "Un système de filtres dynamiques par prix ou couleur", "Des liens internes reliant les articles de blog aux pages produits et catégories pertinentes"], a: 3 },
+      { q: "Quel rapport GA4 est le plus utile pour piloter le SEO e-commerce ?", r: ["Le rapport Démographie des utilisateurs", "Le rapport Technologie (navigateurs, appareils)", "Le rapport Engagement → Pages vues", "Le rapport Acquisition → Trafic organique couplé aux conversions e-commerce"], a: 3 },
+      { q: "Pourquoi les URLs avec paramètres créent-elles du duplicate content ?", r: ["Parce qu'elles sont trop longues pour être indexées", "Parce que Google pénalise systématiquement tous les paramètres d'URL", "Parce que les canonicals ne fonctionnent pas sur les CMS e-commerce", "Parce que chaque combinaison de filtres génère une URL distincte pointant vers un contenu quasi-identique"], a: 3 },
+    ],
+
     certif: true,
     stripeProductId: "prod_seo_ecom_placeholder"
   },
@@ -861,6 +905,17 @@ const FORMATIONS = [
         q: "En quoi c'est différent des tutoriels gratuits sur YouTube ?",
         r: "La formation suit une progression pédagogique cohérente, du diagnostic à la mise en système. Les tutoriels couvrent des astuces isolées — ici, tu construis une méthode complète et réutilisable immédiatement."
       }
+    ],
+
+    quiz: [
+      { q: "Qu'est-ce qu'un « token » dans le contexte des LLMs comme ChatGPT ?", r: ["Un mot de passe d'accès à l'IA", "Un crédit de paiement consommé à chaque requête", "L'unité de base traitée par le modèle — environ 3/4 d'un mot en français", "Une ligne de code source du modèle"], a: 2 },
+      { q: "Qu'est-ce que la « fenêtre de contexte » d'un modèle IA ?", r: ["La taille d'écran recommandée pour utiliser l'IA confortablement", "Le délai de réponse maximal du modèle", "Le nombre de requêtes autorisées par jour sur un compte gratuit", "La quantité totale d'informations qu'un modèle peut traiter dans une seule conversation"], a: 3 },
+      { q: "Dans le cadre RCTF, que signifie la lettre « R » ?", r: ["Résultat attendu de la tâche", "Reformulation de la requête initiale", "Ressources disponibles à fournir à l'IA", "Rôle que tu attribues à l'IA dans ton prompt"], a: 3 },
+      { q: "Qu'est-ce que le « few-shot prompting » ?", r: ["Donner très peu de contexte pour tester la créativité de l'IA", "Utiliser le modèle le moins puissant pour économiser des crédits", "Limiter le nombre de réponses que l'IA peut générer", "Fournir des exemples concrets dans le prompt pour calibrer le style et la structure attendus"], a: 3 },
+      { q: "Quel est le principal symptôme du « context rot » ?", r: ["L'IA refuse de répondre à certaines questions sensibles", "Le coût en tokens par requête augmente progressivement", "L'IA commence à halluciner uniquement des noms propres", "Les réponses deviennent de moins en moins précises et cohérentes au fil d'une longue session"], a: 3 },
+      { q: "Quelle est la différence clé entre GPT-4o et un modèle léger comme GPT-4o mini ?", r: ["GPT-4o mini est plus créatif mais moins fiable sur les faits", "GPT-4o ne peut pas traiter les images contrairement au modèle mini", "GPT-4o mini est réservé aux développeurs via l'API uniquement", "Les modèles légers sont plus rapides et moins coûteux, au prix d'un moindre raisonnement complexe"], a: 3 },
+      { q: "À quoi sert un « fichier de contexte » personnel dans un workflow IA ?", r: ["À stocker ses mots de passe de manière sécurisée", "À compresser les conversations trop longues automatiquement", "À partager son historique de conversation avec un collègue", "À fournir à l'IA un contexte persistant sur ton activité sans tout réexpliquer à chaque session"], a: 3 },
+      { q: "Quelle cadence de veille IA est recommandée dans la formation ?", r: ["Plusieurs heures par jour pour ne rien manquer", "Un sprint intensif d'une journée par mois", "Uniquement lors des grandes annonces de nouveaux modèles", "15 minutes par semaine sur des sources sélectionnées et fiables"], a: 3 },
     ],
 
     certif: true,
@@ -1033,6 +1088,17 @@ const FORMATIONS = [
         q: "Y a-t-il un accès à vie ?",
         r: "Oui. Accès permanent, mises à jour comprises. Le SEO multi-plateforme évolue — on met à jour tous les trimestres, inclus dans ton achat."
       }
+    ],
+
+    quiz: [
+      { q: "Quels sont les 3 moteurs de recherche ciblés dans cette formation ?", r: ["Google, Bing et DuckDuckGo", "Google, YouTube et Pinterest", "Google, Instagram et TikTok", "YouTube, Pinterest et LinkedIn"], a: 1 },
+      { q: "Quelle est la particularité des mots-clés YouTube par rapport à Google ?", r: ["Il n'y a aucune différence de logique entre les deux", "YouTube ne permet pas réellement le référencement naturel", "Google n'indexe pas les vidéos YouTube dans ses résultats", "YouTube cible des intentions d'apprentissage vidéo ('comment faire X') plus que des requêtes informationnelles textuelles"], a: 3 },
+      { q: "Qu'est-ce qu'un « Rich Pin » sur Pinterest ?", r: ["Une épingle boostée et mise en avant par la publicité Pinterest", "Un format d'épingle horizontal spécifique au mobile", "Une épingle partagée et validée par plusieurs comptes", "Une épingle enrichie de métadonnées extraites du site (prix, description, disponibilité)"], a: 3 },
+      { q: "Comment le « watch time » influence-t-il l'algorithme YouTube ?", r: ["Il ne joue aucun rôle — seul le nombre de vues compte", "Le watch time n'influence que la recommandation aux abonnés existants", "Il détermine uniquement la durée maximale recommandée pour les vidéos", "Plus les spectateurs regardent longtemps, plus YouTube distribue la vidéo à de nouvelles audiences"], a: 3 },
+      { q: "Qu'est-ce que le Structured Data de type « Course » pour un formateur ?", r: ["Un format de cours vidéo imposé par Google pour les MOOC", "Un outil Google dédié aux formateurs et certifications", "Une certification en ligne délivrée directement par Google", "Un balisage JSON-LD qui aide Google à identifier ta formation et l'afficher dans les résultats enrichis"], a: 3 },
+      { q: "Dans le modèle « 1 idée → 3 formats », que signifie le repurposing ?", r: ["Supprimer un contenu existant et le remplacer par un nouveau", "Republier exactement le même contenu sans modification sur toutes les plateformes", "Créer trois idées totalement distinctes depuis une seule plateforme", "Adapter un contenu pilier en plusieurs formats pour plusieurs plateformes (article, vidéo, épingle)"], a: 3 },
+      { q: "Quel est l'avantage principal de Pinterest pour un créateur de formations ?", r: ["La portée immédiate grâce à un algorithme social très puissant", "Pinterest permet des lives interactifs avec son audience", "Pinterest est le seul réseau social sans algorithme de distribution", "C'est un moteur de recherche visuel — une épingle peut générer du trafic pendant des mois sans pub"], a: 3 },
+      { q: "Comment interpréter un contenu avec un trafic élevé mais zéro conversion ?", r: ["C'est toujours positif — le trafic finira par convertir avec le temps", "Il faut augmenter le budget pub sur ce contenu pour accélérer les conversions", "C'est uniquement un problème de vitesse de chargement à corriger", "Le contenu attire une audience hors-cible ou manque de CTA vers une offre pertinente"], a: 3 },
     ],
 
     certif: true,

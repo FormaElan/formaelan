@@ -193,6 +193,16 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .tag-mofu{background:rgba(99,102,241,.2);color:#818cf8;border-radius:4px;padding:.1rem .4rem;font-size:.75rem;font-weight:700}
 .tag-bofu{background:rgba(242,108,58,.2);color:var(--orange);border-radius:4px;padding:.1rem .4rem;font-size:.75rem;font-weight:700}
 
+/* ── CERTIFICATION CTA ── */
+.r-certif-cta{text-align:center;margin:2.5rem 0;padding:2.2rem 2rem;border-radius:var(--radius);background:linear-gradient(135deg,rgba(26,158,143,.08),rgba(99,102,241,.06));border:1px solid rgba(26,158,143,.3)}
+.r-certif-cta-icon{font-size:2.2rem;margin-bottom:.7rem}
+.r-certif-cta h3{font-size:1.2rem;font-weight:800;margin-bottom:.5rem}
+.r-certif-cta p{font-size:.87rem;color:var(--muted);line-height:1.65;margin:.3rem auto 1.4rem;max-width:480px}
+.r-certif-btn{display:inline-block;padding:.85rem 2rem;border-radius:10px;background:linear-gradient(135deg,var(--teal),#0d7a6e);color:#fff;font-weight:700;font-size:.9rem;text-decoration:none;transition:opacity .2s}
+.r-certif-btn:hover{opacity:.88;color:#fff}
+.r-ch-link.quiz-link{color:var(--teal);font-weight:600}
+.r-ch-link.quiz-link:hover{background:rgba(26,158,143,.1)}
+
 /* ── AUDIT IA ── */
 .audit-block{background:rgba(26,158,143,.05);border:1px solid rgba(26,158,143,.25);border-radius:var(--radius);padding:1.5rem;margin:2.5rem 0}
 .audit-header{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.2rem}
