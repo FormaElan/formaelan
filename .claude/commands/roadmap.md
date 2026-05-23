@@ -10,37 +10,34 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 ### ✅ Réalisé
 
-- 5 formations complètes en ligne (SEO SaaS, IA Freelance, Copywriting Ecom, SEO Ecom, Optimiser IA)
-- Backend Stripe opérationnel — token d'accès, webhook, PRICE_MAP 5 slugs
-- Site complet — index, pages de vente, success/cancel
+- 6 formations complètes en ligne (SEO SaaS, IA Freelance, Copywriting Ecom, SEO Ecom, Optimiser IA, SEO Créateurs)
+- Backend Stripe opérationnel — token d'accès, webhook, PRICE_MAP 6 slugs
+- Site complet — index, pages de vente, success/cancel, quiz, certificat
 - GitHub configuré — FormaElan/formaelan (public)
 - Backend déployé sur Render (free tier) — https://formaelan.onrender.com (18/05)
 - Tunnel paiement validé en mode test — carte 4242, token généré, accès formation OK (18/05)
 - Warm-up ping — réveille Render dès le chargement de chaque page de vente (18/05)
 - Pages légales créées — mentions-legales.html, cgv.html, politique-confidentialite.html, contact.html (18/05)
-- Webhook Stripe secret configuré — STRIPE_WEBHOOK_SECRET ajouté dans Render Environment (18/05)
-- Email post-achat — code Nodemailer prêt dans server.js, en attente config Zimbra formaelan.fr (18/05)
-- access-tokens.json ajouté au .gitignore — sécurité données personnelles (18/05)
-- formaelan.fr acheté — OVH, 5,99€ TTC, 1 an, Zimbra Starter inclus, installation en cours (18/05)
-- DNS GitHub Pages configuré — 4 enregistrements A + CNAME www, DNS check OK, HTTPS Let's Encrypt actif (18/05)
+- Webhook Stripe secret configuré — STRIPE_WEBHOOK_SECRET dans Render Environment (18/05)
+- Email post-achat — Resend configuré, DKIM Verified (19/05)
+- access-tokens.json ajouté au .gitignore (18/05)
+- formaelan.fr acheté — OVH, 5,99€ TTC, 1 an, Zimbra Starter (18/05)
+- DNS GitHub Pages configuré — 4 A records + CNAME www, HTTPS Let's Encrypt (18/05)
 - SITE_URL mis à jour sur Render → https://formaelan.fr (18/05)
-- Tunnel paiement validé sur formaelan.fr — carte test 4242, Stripe → success.html OK (18/05)
-- UptimeRobot configuré — ping /health toutes les 5 min, cold start résolu (18/05)
-- Zimbra contact@formaelan.fr créé sur OVH (19/05)
-- Email post-achat migré de Nodemailer/SMTP vers Resend API (19/05)
-- Resend : DKIM formaelan.fr Verified, RESEND_API_KEY dans Render (19/05)
-- DNS Resend ajoutés sur OVH : resend._domainkey TXT, send TXT SPF, _dmarc TXT (19/05)
-- Fix : détection erreur Resend (SDK retourne data/error sans throw) (19/05)
-
----
-
-### 🟠 Formation 6 — À finaliser
-
-| # | Tâche | Détail | Effort |
-|---|---|---|---|
-| 34 | Stripe — formation seo-createurs | Créer le produit Stripe pour "SEO pour Créateurs de Contenu" (49€), récupérer PRICE_ID, ajouter `PRICE_SEO_CREATEURS=price_xxx` dans Render Environment et dans `.env` local. server.js déjà prêt (PRICE_MAP, FORMATION_NAMES, FIRST_CHAPTER). | 15 min |
-| 35 | Revoir la grille tarifaire | Avec 6 formations : cohérence des prix (29€ / 39€ / 49€), logique de valeur perçue. Envisager bundle ou tarification dynamique. Comparer aux concurrents FR (Udemy, OpenClassrooms, formations indépendantes). Décision avant toute campagne d'acquisition. | 1h réflexion |
-| 36 | Prompt Perplexity — veille opportunités formations | Créer un fichier `Sources/perplexity-veille-formations.md` contenant un prompt structuré pour Perplexity : analyser le marché des formations FR (tendances, niches émergentes, volumes de recherche, concurrents, prix), identifier 5-10 opportunités de nouvelles formations alignées avec FormaElan. À relancer tous les 2-3 mois. | 1h |
+- Tunnel paiement validé sur formaelan.fr (18/05)
+- UptimeRobot configuré — ping /health toutes les 5 min (18/05)
+- Zimbra contact@formaelan.fr créé (19/05)
+- Resend : DKIM Verified, SPF, DMARC configurés (19/05)
+- Rate limiting /create-checkout-session — express-rate-limit 5 req/min (fait)
+- Waiver droit de rétractation — case à cocher avant Stripe (stripe.js, fait)
+- Sitemap.xml — 6 pages de vente + index (fait)
+- Favicon favicon.svg (fait)
+- Page 404 custom 404.html (fait)
+- Quiz de certification — quiz.js + certificat.html + /send-certificate backend (fait)
+- robots.txt — formations/ + success/cancel/quiz/projet_FormaElan disallowed (23/05)
+- CSS flip cards 3D — bug transition box-shadow corrigé (23/05)
+- formation-template.html noindexé (fait)
+- Démarches INPI Guichet-unique lancées (20/05) — en attente SIRET
 
 ---
 
@@ -48,8 +45,8 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
-| 33 | Décision structure légale | Choisir entre : (A) micro-entrepreneur — gratuit, 22% charges, nom visible dans mentions légales ; (B) SASU "FormaElan" — ~200€ création + ~50€/mois, nom de société visible au lieu du nom perso ; (C) Lemon Squeezy merchant of record — 0€ création, 5% de frais, leur nom comme vendeur légal, aucune immatriculation. Décision à prendre avant les premières ventes réelles. | Décision |
-| 1 | Remplir infos légales | Pages créées ✅. Il reste à remplir les `[À compléter]` : nom, adresse, SIRET dans `mentions-legales.html`, `cgv.html`, `politique-confidentialite.html`. À faire après décision #33. | 15 min |
+| 33 | Décision structure légale | Démarches Guichet-unique INPI lancées 20/05. Choisir : (A) micro-entrepreneur — gratuit, 22% charges, nom visible dans mentions légales ; (B) SASU "FormaElan" — ~200€ création ; (C) Lemon Squeezy merchant of record — 5% frais, aucune immat. Décision à prendre avant premières ventes réelles. | Décision |
+| 1 | Remplir infos légales | Remplir les `[À compléter]` dans mentions-legales.html, cgv.html, politique-confidentialite.html — après décision #33 et réception SIRET. | 15 min |
 
 ---
 
@@ -57,24 +54,10 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
-| 2 | Webhook Stripe — secret ⚠️ | Variable `STRIPE_WEBHOOK_SECRET` absente de Render (logs confirment). Stripe Dashboard → Developers → Webhooks → endpoint → Signing secret → copier dans Render Environment. Sans ça, la signature webhook n'est pas vérifiée (risque sécurité). | 10 min |
-| 3 | Clés Stripe live | Stripe Dashboard → basculer en mode Live → copier `sk_live_...` et `pk_live_...` → mettre à jour Render + `js/stripe.js`. À faire le jour J uniquement, pas avant. | 30 min |
-| 4 | Email post-achat — finaliser Resend | Resend configuré (DKIM Verified, API key dans Render) ✅. Il reste : (1) attendre propagation DNS SPF `send` TXT → Verified sur Resend (peut prendre 2-24h) ; (2) retenter achat test après verification ; (3) supprimer SMTP_USER + SMTP_PASSWORD obsolètes de Render. MX `send` non ajouté (OVH bloquait) — optionnel pour les bounces. | 15 min |
-| 25 | Rate limiting `/create-checkout-session` | Sans protection, un bot peut spammer des centaines de sessions Checkout → coûts Stripe + alertes fraude. Ajouter `express-rate-limit` : max 5 requêtes/min par IP. Npm, zéro dépendance tierce. | 30 min |
-| 32 | Waiver droit de rétractation | Les CGV stipulent l'exclusion du droit de rétractation, mais aucun mécanisme ne collecte l'accord explicite. Ajouter une case à cocher avant le redirect Stripe : "J'accepte que l'accès débute immédiatement et renonce à mon droit de rétractation". | ~1h |
-| 26 | Render : tokens éphémères | `access-tokens.json` effacé à chaque restart Render (spin-down ~15 min inactivité). Atténuation : fallback Stripe dans `/get-access` régénère le token via `session_id` → dépendance à l'email #4 (l'acheteur doit avoir son URL). Solution propre : Render Disk ($7/mois) ou SQLite. À décider avant 1ère vente réelle. | ~1h |
-
----
-
-### 🟢 Domaine + migration (EN COURS)
-
-| # | Tâche | Détail | Effort |
-|---|---|---|---|
-| 15 | Acheter formaelan.fr ✅ | ~~OVH~~ — **Fait (18/05)** : 5,99€ TTC, 1 an, Zimbra Starter inclus. Installation en cours sur OVH. | — |
-| 16 | Configurer DNS GitHub Pages ✅ | OVH Zone DNS : 4 A records GitHub Pages + CNAME www → formaelan.github.io. HTTPS Let's Encrypt actif. **Fait (18/05).** | — |
-| 17 | Mettre à jour SITE_URL sur Render ✅ | `SITE_URL=https://formaelan.fr` dans Render Environment. Tunnel validé sur formaelan.fr. **Fait (18/05).** | — |
-| 18 | Configurer email contact@formaelan.fr ✅ | Zimbra créé. Resend configuré (DKIM Verified). Attente propagation SPF → voir tâche #4. **Partiellement fait (19/05).** | — |
-| 31 | Sitemap.xml | Créer un sitemap listant les 5 pages de vente + index. Soumettre dans Google Search Console après migration formaelan.fr. | 15 min |
+| 3 | Clés Stripe live | Stripe Dashboard → basculer en mode Live → `sk_live_...` dans Render + `pk_live_...` dans js/stripe.js. À faire le jour J uniquement. | 30 min |
+| 4 | Email post-achat — finaliser Resend | Attendre propagation DNS SPF `send` TXT → Verified sur Resend. Retenter achat test. Supprimer SMTP_USER + SMTP_PASSWORD obsolètes de Render. | 15 min |
+| 34 | Stripe — formation seo-createurs | Créer le produit Stripe "SEO pour Créateurs de Contenu" (49€), récupérer PRICE_ID, ajouter `PRICE_SEO_CREATEURS=price_xxx` dans Render + `.env` local. server.js déjà prêt. | 15 min |
+| 26 | Render : tokens éphémères | access-tokens.json effacé à chaque restart Render (~15 min inactivité). Fallback Stripe atténue. Solution propre : Render Disk ($7/mois) ou SQLite. | ~1h |
 
 ---
 
@@ -82,12 +65,9 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
-| 6 | Image OG manquante | Créer `og-cover.jpg` (1200×630px). Sans elle, aucun aperçu visuel sur LinkedIn/Facebook/Twitter. Impact direct sur l'acquisition. | ~1h |
-| 27 | Favicon manquant | Aucun favicon ni `<link rel="icon">`. Onglets vides + erreur 404 silencieuse. Créer SVG ou ICO 32×32 à partir du logo ⚡. | 15 min |
-| 28 | Page 404 custom | GitHub Pages affiche une 404 générique. Créer `404.html` branded. | 30 min |
-| 7 | Supprimer formations/seo-saas.html | Ancienne version monolithique obsolète. Risque doublon contenu indexé par Google. | 5 min |
-| 8 | formation-template.html public | `pages/formation-template.html` accessible publiquement. Supprimer ou noindex. | 10 min |
-| 24 | Refonte graphique globale | Animations scroll hero, micro-interactions, transitions sections. Flip cards 3D ✅ fait (18/05). | ~4h |
+| 6 | Image OG manquante ⚠️ | Créer `img/og-cover.jpg` (1200×630px). Sans elle, aucun aperçu visuel sur LinkedIn/Facebook/Twitter lors du partage de formaelan.fr. Impact direct acquisition. | ~1h |
+| 35 | Revoir grille tarifaire | Avec 6 formations : cohérence des prix (29€ / 39€ / 49€), logique de valeur perçue. Comparer concurrents FR. Décision avant campagne acquisition. | 1h réflexion |
+| 36 | Prompt Perplexity — veille | Créer Sources/perplexity-veille-formations.md : prompt structuré pour analyser marché formations FR, identifier 5-10 nouvelles opportunités. À relancer tous les 2-3 mois. | 1h |
 
 ---
 
@@ -95,9 +75,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
-| 9 | Chapitres accessibles sans paiement | HTML chapitres publics — URL directe suffit. Acceptable Phase 1 (obscurité). Solution Phase 2 : token dans URL ou vérification côté serveur. | Phase 2 |
-| 10 | Certificat de réussite | Promis dans pages de vente mais aucun mécanisme. Pour Phase 1 : conditionner à "bientôt disponible" ou retirer. | Décision |
-| 11 | robots.txt | Sans robots.txt, Google indexe les chapitres (contenu payant public). Ajouter noindex sur `formations/`. | 15 min |
+| 9 | Chapitres accessibles sans paiement | HTML chapitres publics — URL directe suffit. Acceptable Phase 1 (obscurité). Solution Phase 2 : token dans URL. | Phase 2 |
 
 ---
 
@@ -106,10 +84,9 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
 | 12 | Tests mobile | Tunnel complet sur téléphone : page de vente → Stripe → success.html → chapitre. | ~1h |
-| 13 | Contrôle qualité formations | Lancer `/auditer_formation` sur les 5 formations. | ~2h |
+| 13 | Contrôle qualité formations | Lancer `/auditer_formation` sur les 6 formations. | ~2h |
 | 14 | Analytics | Plausible ou Umami (RGPD, léger). Sans analytics impossible de savoir d'où viennent les visiteurs. | ~1h |
-| 29 | Monitoring Render (UptimeRobot) ✅ | Ping /health toutes les 5 min, alerte email si panne. **Fait (18/05).** | — |
-| 30 | Test Safari / cross-browser | Flip cards : tester `backface-visibility` sur Safari iOS/macOS. | 30 min |
+| 30 | Test Safari / cross-browser | Flip cards : tester `backface-visibility` + transitions sur Safari iOS/macOS. | 30 min |
 
 ---
 
@@ -117,7 +94,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
-| 19 | SEO on-page final | Balises meta, OG tags, schema Course. À faire après migration formaelan.fr. | ~2h |
+| 19 | SEO on-page final | Balises meta, OG tags, schema Course. Priorité après og-cover.jpg. | ~2h |
 | 20 | LinkedIn personnel | Post de valeur (astuce concrète) avec mention naturelle. Pas un post "j'ai lancé". | ~1h |
 | 21 | Groupes Facebook/Discord | 5 groupes actifs (freelance FR, SEO France, IA francophone). Valeur d'abord, formation ensuite. | Continu |
 | 22 | Product Hunt | Description, visuels, tagline. Génère 200-500 visites en 24h. | ~2h |
@@ -127,8 +104,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 ### ❌ Hors scope Phase 1
 
-- SEO organique (3-6 mois) — Phase 2 après formaelan.fr
-- Analyse SEO approfondie — inutile tant que le site est sur GitHub Pages
+- SEO organique (3-6 mois) — Phase 2
 - Pub payante — trop tôt sans conversion prouvée
 - Twitter / Instagram — audience trop longue à construire
 - Système de compte utilisateur / espace membre — Phase 2

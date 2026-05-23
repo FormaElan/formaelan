@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
 </head>
 <body>
 
@@ -347,7 +347,7 @@
                 <span class="price-old">${f.prixAncien} €</span>
               </div>
             </div>
-            <div class="flip-hint">Survoler pour en savoir plus →</div>
+            <div class="flip-hint">Cliquer pour en savoir plus →</div>
           </div>
           <div class="flip-face flip-back">
             <div>
@@ -357,13 +357,22 @@
             <ul class="flip-obj">${obj3}</ul>
             <div class="flip-back-footer">
               <span class="price">${f.prix} €</span>
-              <a href="pages/${f.slug}.html" class="btn btn-primary">Voir la formation</a>
+              <button class="btn btn-primary flip-btn">Voir la formation</button>
             </div>
           </div>
         </div>
       `;
-      wrap.addEventListener('click', e => {
-        if (!e.target.closest('a')) window.location.href = `pages/${f.slug}.html`;
+      // Bouton : navigation uniquement, ne remonte pas à wrap
+      const btn = wrap.querySelector('.flip-btn');
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        document.body.classList.remove('page-ready');
+        setTimeout(() => { window.location.href = `pages/${f.slug}.html`; }, 380);
+      });
+
+      // Clic carte (hors bouton) = flip / unflip
+      wrap.addEventListener('click', () => {
+        wrap.classList.toggle('is-flipped');
       });
       grid.appendChild(wrap);
     });

@@ -555,8 +555,7 @@ section { padding: 6rem 2rem; }
   transition: transform 0.4s ease-in-out;
 }
 
-.flip-wrap:hover .flip-inner,
-.flip-wrap:focus-within .flip-inner {
+.flip-wrap.is-flipped .flip-inner {
   transform: rotateY(180deg);
 }
 
@@ -585,6 +584,37 @@ section { padding: 6rem 2rem; }
   justify-content: space-between;
   padding: 1.8rem;
   color: #fff;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Face arrière active */
+.flip-wrap.is-flipped .flip-back {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+}
+
+.flip-wrap.is-flipped .flip-back .flip-btn {
+  pointer-events: auto;
+}
+
+/* Face avant inactive quand retourné */
+.flip-wrap.is-flipped .flip-front {
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Face avant active par défaut */
+.flip-front {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  transition: box-shadow 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
 }
 
 /* ── Thèmes néon par formation ── */
@@ -620,7 +650,7 @@ section { padding: 6rem 2rem; }
   transition: transform 0.4s ease;
 }
 
-.flip-wrap:hover .flip-img img { transform: scale(1.06); }
+.flip-wrap.is-flipped .flip-img img { transform: scale(1.06); }
 
 /* ── Corps recto ── */
 .flip-front-body {
@@ -746,73 +776,6 @@ section { padding: 6rem 2rem; }
   font-size: 0.83rem;
 }
 
-/* ── Mobile : cartes aplaties (no hover / écran étroit) ── */
-@media (hover: none), (max-width: 768px) {
-  .flip-wrap {
-    height: auto;
-    perspective: none;
-  }
-
-  .flip-inner {
-    transform: none !important;
-    -webkit-transform-style: flat;
-    transform-style: flat;
-    position: static;
-    height: auto;
-  }
-
-  .flip-face {
-    position: static;
-    -webkit-backface-visibility: visible;
-    backface-visibility: visible;
-    border-radius: 0;
-    height: auto;
-  }
-
-  .flip-front { border-radius: var(--radius) var(--radius) 0 0; }
-  .flip-hint  { display: none; }
-
-  .flip-back {
-    transform: none;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1.1rem 1.4rem 1.4rem;
-    border-radius: 0 0 var(--radius) var(--radius);
-    color: var(--text-primary);
-  }
-
-  /* Remplace les fonds dégradés sombres par une teinte accent légère */
-  .c-indigo .flip-back { background: rgba(99,102,241,0.07);  border: 1px solid rgba(99,102,241,0.2);  border-top: none; }
-  .c-cyan .flip-back   { background: rgba(34,211,238,0.07);  border: 1px solid rgba(34,211,238,0.2);  border-top: none; }
-  .c-orange .flip-back { background: rgba(251,146,60,0.07);  border: 1px solid rgba(251,146,60,0.2);  border-top: none; }
-  .c-blue .flip-back   { background: rgba(59,130,246,0.07);  border: 1px solid rgba(59,130,246,0.2);  border-top: none; }
-  .c-purple .flip-back { background: rgba(167,139,250,0.07); border: 1px solid rgba(167,139,250,0.2); border-top: none; }
-  .c-pink .flip-back   { background: rgba(236,72,153,0.07);  border: 1px solid rgba(236,72,153,0.2);  border-top: none; }
-
-  /* Masque les doublons (titre et prix déjà visibles dans le recto) */
-  .flip-back h3,
-  .flip-back p,
-  .flip-back-footer .price { display: none; }
-
-  /* Objectifs */
-  .flip-obj { margin-top: 0; }
-  .flip-obj li { color: var(--text-secondary); opacity: 1; }
-
-  /* CTA pleine largeur */
-  .flip-back-footer {
-    margin-top: 1rem;
-    padding-top: 0.8rem;
-    border-top-color: var(--border-glass);
-    justify-content: center;
-  }
-  .flip-back-footer .btn {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-    font-size: 0.88rem;
-    padding: 0.75rem 1rem;
-  }
-}
 
 /* ============================================================
    SECTION POURQUOI (Features)

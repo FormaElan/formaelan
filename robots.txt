@@ -1,5 +1,9 @@
 User-agent: *
 Disallow: /formations/
+Disallow: /success.html
+Disallow: /cancel.html
+Disallow: /quiz.html
+Disallow: /projet_FormaElan.html
 Allow: /
 
 Sitemap: https://formaelan.fr/sitemap.xml
