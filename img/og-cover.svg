@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <!-- Fond dégradé -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#0a0a0f"/>
+      <stop offset="50%"  stop-color="#0d0d20"/>
+      <stop offset="100%" stop-color="#0a0a0f"/>
+    </linearGradient>
+
+    <!-- Dégradé accent (teal → indigo → cyan) -->
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#1A9E8F"/>
+      <stop offset="50%"  stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+
+    <!-- Orbe gauche -->
+    <radialGradient id="orb1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#6366f1" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Orbe droite -->
+    <radialGradient id="orb2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#1A9E8F" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#1A9E8F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fond -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Orbes décoratifs -->
+  <ellipse cx="200"  cy="200"  rx="380" ry="300" fill="url(#orb1)"/>
+  <ellipse cx="1050" cy="430"  rx="320" ry="260" fill="url(#orb2)"/>
+
+  <!-- Grille de points (ambiance tech) -->
+  <pattern id="grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+    <circle cx="0" cy="0" r="1" fill="rgba(255,255,255,0.06)"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Barre accent supérieure -->
+  <rect x="80" y="68" width="120" height="4" rx="2" fill="url(#accent)"/>
+
+  <!-- Logo ⚡ + FormaElan -->
+  <text x="80" y="130" font-family="'Inter', 'Segoe UI', system-ui, sans-serif"
+        font-size="42" font-weight="900" fill="#1A9E8F">⚡</text>
+  <text x="132" y="130" font-family="'Inter', 'Segoe UI', system-ui, sans-serif"
+        font-size="42" font-weight="300" fill="#f0f0ff">Forma</text>
+  <text x="280" y="130" font-family="'Inter', 'Segoe UI', system-ui, sans-serif"
+        font-size="42" font-weight="900" fill="#f0f0ff">Elan</text>
+
+  <!-- Titre principal -->
+  <text x="80" y="260" font-family="'Inter', 'Segoe UI', system-ui, sans-serif"
+        font-size="72" font-weight="900" fill="#f0f0ff" letter-spacing="-1">
+    Formations en ligne
+  </text>
+  <text x="80" y="348" font-family="'Inter', 'Segoe UI', system-ui, sans-serif"
+        font-size="72" font-weight="900" letter-spacing="-1">
+    <tspan fill="url(#accent)">SEO · IA · Copywriting</tspan>
+  </text>
+
+  <!-- Sous-titre -->
+  <text x="80" y="416" font-family="'Inter', 'Segoe UI', system-ui, sans-serif"
+        font-size="26" font-weight="400" fill="rgba(255,255,255,0.55)">
+    Des méthodes concrètes pour développer ton activité en ligne
+  </text>
+
+  <!-- Badges formation -->
+  <!-- Badge 1 -->
+  <rect x="80"  y="472" width="190" height="44" rx="8"
+        fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.35)" stroke-width="1"/>
+  <text x="175" y="499" font-family="'Inter', 'Segoe UI', system-ui, sans-serif"
+        font-size="15" font-weight="700" fill="#a5b4fc" text-anchor="middle">SEO pour SaaS</text>
+
+  <!-- Badge 2 -->
+  <rect x="284" y="472" width="200" height="44" rx="8"
+        fill="rgba(34,211,238,0.12)" stroke="rgba(34,211,238,0.3)" stroke-width="1"/>
+  <text x="384" y="499" font-family="'Inter', 'Segoe UI', system-ui, sans-serif"
+        font-size="15" font-weight="700" fill="#67e8f9" text-anchor="middle">IA pour Freelance</text>
+
+  <!-- Badge 3 -->
+  <rect x="498" y="472" width="232" height="44" rx="8"
+        fill="rgba(251,146,60,0.12)" stroke="rgba(251,146,60,0.3)" stroke-width="1"/>
+  <text x="614" y="499" font-family="'Inter', 'Segoe UI', system-ui, sans-serif"
+        font-size="15" font-weight="700" fill="#fdba74" text-anchor="middle">Copywriting E-commerce</text>
+
+  <!-- Badge 4 -->
+  <rect x="744" y="472" width="200" height="44" rx="8"
+        fill="rgba(59,130,246,0.12)" stroke="rgba(59,130,246,0.3)" stroke-width="1"/>
+  <text x="844" y="499" font-family="'Inter', 'Segoe UI', system-ui, sans-serif"
+        font-size="15" font-weight="700" fill="#93c5fd" text-anchor="middle">SEO E-commerce</text>
+
+  <!-- Badge 5 — Optimiser IA -->
+  <rect x="80"  y="528" width="190" height="44" rx="8"
+        fill="rgba(26,158,143,0.12)" stroke="rgba(26,158,143,0.3)" stroke-width="1"/>
+  <text x="175" y="555" font-family="'Inter', 'Segoe UI', system-ui, sans-serif"
+        font-size="15" font-weight="700" fill="#5eead4" text-anchor="middle">Optimiser son IA</text>
+
+  <!-- Badge 6 — SEO Créateurs -->
+  <rect x="284" y="528" width="226" height="44" rx="8"
+        fill="rgba(236,72,153,0.12)" stroke="rgba(236,72,153,0.3)" stroke-width="1"/>
+  <text x="397" y="555" font-family="'Inter', 'Segoe UI', system-ui, sans-serif"
+        font-size="15" font-weight="700" fill="#f9a8d4" text-anchor="middle">SEO Créateurs</text>
+
+  <!-- URL domaine -->
+  <text x="1120" y="599" font-family="'Inter', 'Segoe UI', system-ui, sans-serif"
+        font-size="18" font-weight="600" fill="rgba(255,255,255,0.30)" text-anchor="end">
+    formaelan.fr
+  </text>
+
+  <!-- Ligne de séparation basse -->
+  <rect x="80" y="608" width="1040" height="1" fill="rgba(255,255,255,0.06)"/>
+</svg>
