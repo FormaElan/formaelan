@@ -15,7 +15,11 @@ const FormaElanStripe = (() => {
   };
 
   // Warm-up ping — réveille le serveur Render dès le chargement de la page
-  fetch(`${CONFIG.backendUrl}/health`).catch(() => {});
+  // Garde la promesse pour savoir si le serveur est prêt au moment du checkout
+  let _warmupDone = false;
+  const _warmup = fetch(`${CONFIG.backendUrl}/health`)
+    .then(() => { _warmupDone = true; })
+    .catch(() => { _warmupDone = true; });
 
   // ── Waiver rétractation ────────────────────────────────
   function _injectWaiver() {
@@ -82,11 +86,28 @@ const FormaElanStripe = (() => {
     try {
       _showLoader(true);
 
-      const response = await fetch(`${CONFIG.backendUrl}/create-checkout-session`, {
+      // Si le warm-up n'est pas terminé, on attend qu'il se finisse (max 8s)
+      if (!_warmupDone) {
+        await Promise.race([_warmup, new Promise(r => setTimeout(r, 8000))]);
+      }
+
+      const _doCheckout = () => fetch(`${CONFIG.backendUrl}/create-checkout-session`, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({ slug })
       });
+
+      let response = await _doCheckout();
+
+      // Retry unique si cold start (503/502/504)
+      if (response.status === 503 || response.status === 502 || response.status === 504) {
+        _showLoader(false);
+        _showWakeup();
+        await new Promise(r => setTimeout(r, 4000));
+        _hideWakeup();
+        _showLoader(true);
+        response = await _doCheckout();
+      }
 
       if (!response.ok) {
         const data = await response.json().catch(() => ({}));
@@ -173,6 +194,25 @@ const FormaElanStripe = (() => {
 
     document.body.appendChild(modal);
     modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+  }
+
+  // ── Toast "serveur en démarrage" (cold start Render) ──
+  function _showWakeup() {
+    if (document.getElementById('feWakeup')) return;
+    const t = document.createElement('div');
+    t.id = 'feWakeup';
+    t.style.cssText = `
+      position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);
+      background:#0D1B3E;color:#fff;padding:1rem 1.5rem;border-radius:10px;
+      font-size:.88rem;font-weight:600;z-index:9999;
+      border:1px solid rgba(26,158,143,0.4);
+      box-shadow:0 4px 24px rgba(0,0,0,0.4);max-width:90%;text-align:center;`;
+    t.textContent = '⏳ Connexion au serveur en cours, encore quelques secondes…';
+    document.body.appendChild(t);
+  }
+  function _hideWakeup() {
+    const t = document.getElementById('feWakeup');
+    if (t) t.remove();
   }
 
   // ── Loader plein écran ─────────────────────────────────
