@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aperçu gratuit — IA pour Freelance | FormaElan</title>
+  <meta name="description" content="Découvrez gratuitement un extrait de la formation IA pour Freelance : apprenez à générer 50 messages de prospection personnalisés en 2h par semaine." />
+  <link rel="canonical" href="https://formaelan.fr/pages/apercu-ia-freelance.html" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="FormaElan" />
+  <meta property="og:locale"      content="fr_FR" />
+  <meta property="og:url"         content="https://formaelan.fr/pages/apercu-ia-freelance.html" />
+  <meta property="og:title"       content="Aperçu gratuit — IA pour Freelance | FormaElan" />
+  <meta property="og:description" content="Extrait réel de la formation : le pipeline de prospection IA qui génère 50 contacts personnalisés en 2h par semaine." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* ── Styles spécifiques à la page aperçu ── */
+
+    .apercu-hero {
+      padding: 7rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .apercu-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 20%, rgba(99,102,241,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .apercu-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(99,102,241,0.35);
+      background: rgba(99,102,241,0.08);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-accent);
+      margin-bottom: 1.5rem;
+    }
+    .apercu-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.12;
+      margin-bottom: 1.2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .apercu-hero .sub {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.65;
+    }
+    .apercu-hero .sub strong {
+      color: var(--text-primary);
+    }
+
+    /* ── Barre de progression du contenu ── */
+    .apercu-toc {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .toc-step {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+    }
+    .toc-step .num {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--gradient-accent);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── Section conteneur ── */
+    .apercu-section {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+    }
+    .apercu-block {
+      margin-bottom: 4rem;
+    }
+    .apercu-block h2 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .apercu-block .block-intro {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
+    }
+
+    /* ── Divider numéroté ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .section-divider .num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--gradient-accent);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 16px var(--accent-glow);
+    }
+    .section-divider h2 {
+      margin: 0;
+      font-size: 1.35rem;
+    }
+    .section-divider .line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-glass);
+    }
+
+    /* ── Pipeline SVG container ── */
+    .pipeline-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      overflow-x: auto;
+    }
+
+    /* ── Prompt formula ── */
+    .prompt-formula {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .prompt-formula::before {
+      content: 'PROMPT RÉEL UTILISÉ EN FORMATION';
+      position: absolute;
+      top: -10px;
+      left: 1.5rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-accent);
+      background: var(--bg-secondary);
+      padding: 0 0.5rem;
+    }
+    .prompt-formula code {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--text-primary);
+      display: block;
+      white-space: pre-wrap;
+    }
+    .prompt-formula .prompt-var {
+      color: var(--cyan);
+      font-style: italic;
+    }
+
+    /* ── Résultat exemple ── */
+    .result-card {
+      background: rgba(26,158,143,0.05);
+      border: 1px solid rgba(26,158,143,0.25);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .result-card .result-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.8rem;
+    }
+    .result-card p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    .result-card strong {
+      color: var(--text-primary);
+    }
+
+    /* ── Exercice ── */
+    .exercice-card {
+      background: rgba(242,108,58,0.05);
+      border: 1px solid rgba(242,108,58,0.25);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .exercice-card .ex-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+    .exercice-card .ex-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: rgba(242,108,58,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .exercice-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin: 0 0 0.15rem;
+    }
+    .exercice-card .ex-duration {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+    .exercice-steps {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: ex-counter;
+    }
+    .exercice-steps li {
+      counter-increment: ex-counter;
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(242,108,58,0.12);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+    .exercice-steps li:last-child { border-bottom: none; }
+    .exercice-steps li::before {
+      content: counter(ex-counter);
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(242,108,58,0.2);
+      color: var(--orange);
+      font-size: 0.75rem;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .exercice-steps li strong { color: var(--text-primary); }
+
+    /* ── Résultats chiffrés ── */
+    .stats-trio {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+    .stat-card .val {
+      font-size: 2rem;
+      font-weight: 900;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-card .lbl {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* ── Compétences ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+      margin-bottom: 2rem;
+    }
+    .skill-item {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      padding: 0.9rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-sm);
+      font-size: 0.87rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      transition: border-color var(--transition);
+    }
+    .skill-item:hover { border-color: var(--border-glow); }
+    .skill-item .sk-icon { color: var(--teal); flex-shrink: 0; font-size: 1rem; }
+
+    /* ── CTA bloc ── */
+    .cta-bloc {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .cta-bloc::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-bloc h2 {
+      font-size: 1.7rem;
+      font-weight: 900;
+      margin-bottom: 0.7rem;
+    }
+    .cta-bloc .cta-sub {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .cta-price {
+      font-size: 2.8rem;
+      font-weight: 900;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 0.3rem;
+      line-height: 1;
+    }
+    .cta-price-note {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.8rem;
+    }
+    .cta-includes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .cta-includes span {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .cta-includes span::before {
+      content: '✓';
+      color: var(--teal);
+      font-weight: 700;
+    }
+    .cta-link-back {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .cta-link-back:hover { color: var(--text-primary); }
+
+    @media (max-width: 640px) {
+      .stats-trio { grid-template-columns: 1fr 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .apercu-toc { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="../index.html" class="navbar-logo">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text"><span>Forma</span>Elan</div>
+    </a>
+    <ul class="navbar-links">
+      <li><a href="../index.html#formations">Formations</a></li>
+      <li><a href="ia-freelance.html">Page formation</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <label class="theme-toggle" title="Changer le thème">
+        <input type="checkbox" id="themeToggleInput" />
+        <div class="track"><div class="thumb">🌙</div></div>
+      </label>
+      <a href="ia-freelance.html" class="btn-nav">← Formation complète</a>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════ -->
+  <header class="apercu-hero">
+    <div class="apercu-badge">Aperçu gratuit · Extrait réel</div>
+
+    <h1>Ce que tu apprendras dans<br><span style="background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">IA pour Freelance</span></h1>
+
+    <p class="sub">
+      Pas un résumé marketing. Un vrai extrait du chapitre 3 — avec le prompt exact,
+      le pipeline de prospection, et <strong>un exercice à faire maintenant</strong>.<br>
+      Durée de lecture : environ 8 minutes.
+    </p>
+
+    <nav class="apercu-toc" aria-label="Contenu de cet aperçu">
+      <div class="toc-step"><div class="num">1</div> Le problème</div>
+      <div class="toc-step"><div class="num">2</div> Le pipeline IA</div>
+      <div class="toc-step"><div class="num">3</div> Le prompt exact</div>
+      <div class="toc-step"><div class="num">4</div> Exercice pratique</div>
+      <div class="toc-step"><div class="num">5</div> La suite</div>
+    </nav>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       CONTENU PRINCIPAL
+  ═══════════════════════════════════════════════════════ -->
+  <main class="apercu-section">
+
+
+    <!-- ── 1. Le problème ──────────────────────────────────── -->
+    <article class="apercu-block" id="section-probleme">
+      <div class="section-divider">
+        <div class="num">1</div>
+        <h2>Le problème avec la prospection freelance</h2>
+        <div class="line"></div>
+      </div>
+
+      <p class="block-intro">
+        La plupart des freelances envoient le même message copié-collé à 50 contacts.
+        Résultat : 1 à 2% de réponses, parfois moins. Ce n'est pas un problème de volume —
+        c'est un problème de personnalisation à l'échelle.
+      </p>
+
+      <div class="stats-trio">
+        <div class="stat-card reveal">
+          <span class="val">1-2%</span>
+          <div class="lbl">Taux de réponse moyen, message générique</div>
+        </div>
+        <div class="stat-card reveal">
+          <span class="val">8-12%</span>
+          <div class="lbl">Taux de réponse avec message personnalisé IA</div>
+        </div>
+        <div class="stat-card reveal">
+          <span class="val">2h</span>
+          <div class="lbl">Pour contacter 50 prospects/semaine avec ce pipeline</div>
+        </div>
+      </div>
+
+      <p style="color:var(--text-secondary);font-size:0.93rem;line-height:1.65;">
+        Le chapitre 3 de la formation détaille un pipeline complet : sourcing → enrichissement → personnalisation → séquence → suivi.
+        Chaque étape est automatisée au maximum. Tu gardes la main sur la stratégie,
+        l'IA gère la production.
+      </p>
+    </article>
+
+
+    <!-- ── 2. Le pipeline ──────────────────────────────────── -->
+    <article class="apercu-block" id="section-pipeline">
+      <div class="section-divider">
+        <div class="num">2</div>
+        <h2>Le pipeline de prospection IA</h2>
+        <div class="line"></div>
+      </div>
+
+      <p class="block-intro">
+        Cinq étapes, enchaînées. Chacune réduit le travail manuel — sans éliminer ton jugement.
+      </p>
+
+      <!-- Pipeline SVG -->
+      <div class="pipeline-container">
+        <svg viewBox="0 0 760 120" xmlns="http://www.w3.org/2000/svg"
+             role="img" aria-label="Pipeline en 5 étapes : Sourcing, Enrichissement, Personnalisation, Séquence, Suivi IA"
+             style="width:100%;max-width:760px;display:block;margin:0 auto;overflow:visible;">
+          <defs>
+            <linearGradient id="pipeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="#6366f1"/>
+              <stop offset="100%" stop-color="#1A9E8F"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Connecteurs -->
+          <line x1="120" y1="60" x2="158" y2="60" stroke="#6366f1" stroke-width="2" stroke-dasharray="4 3" opacity="0.5"/>
+          <line x1="270" y1="60" x2="308" y2="60" stroke="#6366f1" stroke-width="2" stroke-dasharray="4 3" opacity="0.5"/>
+          <line x1="420" y1="60" x2="458" y2="60" stroke="#6366f1" stroke-width="2" stroke-dasharray="4 3" opacity="0.5"/>
+          <line x1="570" y1="60" x2="608" y2="60" stroke="#6366f1" stroke-width="2" stroke-dasharray="4 3" opacity="0.5"/>
+
+          <!-- Étape 1 : Sourcing -->
+          <rect x="10" y="30" width="110" height="58" rx="10" fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.4)" stroke-width="1.5"/>
+          <text x="65" y="55" text-anchor="middle" font-family="Inter,sans-serif" font-size="18" fill="#6366f1">🔍</text>
+          <text x="65" y="72" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#c7d2fe">Sourcing</text>
+          <text x="65" y="83" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#94a3b8">LinkedIn / Apollo</text>
+
+          <!-- Étape 2 : Enrichissement -->
+          <rect x="160" y="30" width="110" height="58" rx="10" fill="rgba(99,102,241,0.1)" stroke="rgba(99,102,241,0.35)" stroke-width="1.5"/>
+          <text x="215" y="55" text-anchor="middle" font-family="Inter,sans-serif" font-size="18" fill="#6366f1">⚙️</text>
+          <text x="215" y="72" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#c7d2fe">Enrichissement</text>
+          <text x="215" y="83" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#94a3b8">Clay.run</text>
+
+          <!-- Étape 3 : Personnalisation -->
+          <rect x="310" y="30" width="110" height="58" rx="10" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.3)" stroke-width="1.5"/>
+          <text x="365" y="55" text-anchor="middle" font-family="Inter,sans-serif" font-size="18" fill="#6366f1">✍️</text>
+          <text x="365" y="72" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#c7d2fe">Personnalisation</text>
+          <text x="365" y="83" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#94a3b8">Claude / ChatGPT</text>
+
+          <!-- Étape 4 : Séquence -->
+          <rect x="460" y="30" width="110" height="58" rx="10" fill="rgba(26,158,143,0.1)" stroke="rgba(26,158,143,0.3)" stroke-width="1.5"/>
+          <text x="515" y="55" text-anchor="middle" font-family="Inter,sans-serif" font-size="18" fill="#1A9E8F">📨</text>
+          <text x="515" y="72" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#99f6e4">Séquence</text>
+          <text x="515" y="83" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#94a3b8">Make / Zapier</text>
+
+          <!-- Étape 5 : Suivi IA -->
+          <rect x="610" y="30" width="110" height="58" rx="10" fill="rgba(26,158,143,0.12)" stroke="rgba(26,158,143,0.35)" stroke-width="1.5"/>
+          <text x="665" y="55" text-anchor="middle" font-family="Inter,sans-serif" font-size="18" fill="#1A9E8F">🤖</text>
+          <text x="665" y="72" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#99f6e4">Suivi IA</text>
+          <text x="665" y="83" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#94a3b8">Google Sheets</text>
+        </svg>
+      </div>
+
+      <div class="result-card">
+        <div class="result-label">Ce que produit ce pipeline</div>
+        <p>
+          <strong>500 prospects identifiés</strong> → enrichissement automatique des données →
+          <strong>messages personnalisés générés</strong> par IA (nom, secteur, déclencheur récent) →
+          séquence envoyée → suivi automatisé à J+3 et J+7 si pas de réponse.<br><br>
+          Résultat observé : <strong>8 à 12 rendez-vous qualifiés pour 100 messages envoyés</strong>,
+          contre 1-2 avec un message générique.
+        </p>
+      </div>
+
+      <p style="color:var(--text-secondary);font-size:0.88rem;line-height:1.6;font-style:italic;">
+        La formation détaille chaque outil : comment configurer Clay.run, quels champs enrichir en priorité,
+        et comment connecter Make pour automatiser l'envoi. Ce sont des manipulations que tu fais une fois,
+        et qui tournent ensuite seules.
+      </p>
+    </article>
+
+
+    <!-- ── 3. Le prompt ────────────────────────────────────── -->
+    <article class="apercu-block" id="section-prompt">
+      <div class="section-divider">
+        <div class="num">3</div>
+        <h2>Le prompt exact — structure 3 lignes</h2>
+        <div class="line"></div>
+      </div>
+
+      <p class="block-intro">
+        Ce prompt est utilisé directement dans la formation. Il génère un message LinkedIn court,
+        personnalisé, qui ne ressemble pas à un template. Tu remplis les variables,
+        l'IA écrit le message.
+      </p>
+
+      <div class="prompt-formula">
+        <code>Tu es un expert en prospection B2B pour freelances.
+
+Génère un message LinkedIn de prospection en <span class="prompt-var">[langue]</span>
+pour <span class="prompt-var">[prénom prospect]</span>, qui est <span class="prompt-var">[poste]</span>
+chez <span class="prompt-var">[entreprise]</span>.
+
+Structure exacte — 3 lignes :
+1. Accroche personnalisée sur <span class="prompt-var">[élément spécifique : publication récente / actualité entreprise / changement de poste]</span>
+2. Lien avec ce que je fais (1 phrase max) : <span class="prompt-var">[ta valeur en une ligne]</span>
+3. Appel à l'action minimal (question ouverte, pas de lien, pas de pitch produit)
+
+Ton : direct, professionnel, non commercial.
+Longueur : 60 mots maximum.
+Ne pas utiliser les mots : "synergies", "opportunité", "proposition", "accompagnement".</code>
+      </div>
+
+      <div class="result-card">
+        <div class="result-label">Exemple de sortie générée</div>
+        <p>
+          "Vu ton post sur l'expansion de Leroy Merlin au Portugal — vous recrutez vite.
+          J'aide les équipes e-commerce à produire 3× plus de contenu SEO sans augmenter les effectifs.
+          Est-ce que la productivité éditoriale est un sujet sur lequel tu travailles en ce moment ?"
+        </p>
+      </div>
+
+      <p style="color:var(--text-secondary);font-size:0.88rem;line-height:1.6;">
+        Dans la formation, tu apprendras aussi comment automatiser l'injection des variables via Clay.run —
+        le message est généré pour chaque contact individuellement, à partir des données enrichies.
+        Plus besoin de copier-coller.
+      </p>
+    </article>
+
+
+    <!-- ── 4. Exercice ─────────────────────────────────────── -->
+    <article class="apercu-block" id="section-exercice">
+      <div class="section-divider">
+        <div class="num">4</div>
+        <h2>Exercice pratique</h2>
+        <div class="line"></div>
+      </div>
+
+      <p class="block-intro">
+        Fais cet exercice maintenant. Durée réelle : 12 à 15 minutes.
+        Tu auras un message de prospection prêt à envoyer à la fin.
+      </p>
+
+      <div class="exercice-card">
+        <div class="ex-header">
+          <div class="ex-icon">✍️</div>
+          <div>
+            <h3>Ton premier message de prospection IA</h3>
+            <div class="ex-duration">⏱ 12-15 min · Niveau : débutant</div>
+          </div>
+        </div>
+
+        <ol class="exercice-steps">
+          <li>
+            <strong>Identifie un prospect concret.</strong> Va sur LinkedIn, trouve une personne à qui tu veux écrire.
+            Prends note de : son prénom, son poste, le nom de son entreprise,
+            et <em>une chose récente</em> qu'elle a publiée ou une actualité sur son entreprise.
+          </li>
+          <li>
+            <strong>Ouvre ChatGPT ou Claude.</strong> Copie le prompt ci-dessus.
+            Remplace chaque variable entre crochets par les informations que tu as relevées.
+            Laisse le champ "élément spécifique" avec ce que tu as trouvé au step 1.
+          </li>
+          <li>
+            <strong>Génère 3 variantes.</strong> Demande à l'IA de proposer 3 versions du même message —
+            avec des accroches différentes. Observe laquelle semble la plus naturelle.
+          </li>
+          <li>
+            <strong>Évalue le résultat.</strong> Le message fait-il moins de 60 mots ?
+            Est-ce qu'il évite les mots bannis ? Se lit-il comme un vrai message humain,
+            pas comme un template ?
+          </li>
+          <li>
+            <strong>Ajuste si besoin.</strong> Demande à l'IA de reformuler l'accroche avec un angle différent,
+            ou de rendre le ton plus direct. Itère une ou deux fois maximum.
+          </li>
+        </ol>
+      </div>
+
+      <div class="result-card">
+        <div class="result-label">Objectif de l'exercice</div>
+        <p>
+          Tu dois repartir avec <strong>un message prêt à envoyer</strong> — pas une ébauche.
+          Si tu passes plus de 15 minutes, c'est que tu sur-optimises.
+          Un bon message de prospection se juge à l'envoi, pas à la relecture.
+        </p>
+      </div>
+    </article>
+
+
+    <!-- ── 5. La suite ─────────────────────────────────────── -->
+    <article class="apercu-block" id="section-suite">
+      <div class="section-divider">
+        <div class="num">5</div>
+        <h2>Ce que tu maîtriseras après la formation complète</h2>
+        <div class="line"></div>
+      </div>
+
+      <p class="block-intro">
+        10 chapitres. Des exemples réels. Pas de rembourrage.
+        Chaque chapitre débouche sur une compétence utilisable immédiatement.
+      </p>
+
+      <div class="skills-grid">
+        <div class="skill-item reveal">
+          <span class="sk-icon">✓</span>
+          Choisir 2-3 outils IA adaptés à ton activité sans tester 20 plateformes
+        </div>
+        <div class="skill-item reveal">
+          <span class="sk-icon">✓</span>
+          Générer des messages de prospection personnalisés à grande échelle
+        </div>
+        <div class="skill-item reveal">
+          <span class="sk-icon">✓</span>
+          Livrer tes missions 30 à 50% plus vite grâce aux assistants IA spécialisés
+        </div>
+        <div class="skill-item reveal">
+          <span class="sk-icon">✓</span>
+          Créer des visuels professionnels sans designer avec Midjourney et Canva IA
+        </div>
+        <div class="skill-item reveal">
+          <span class="sk-icon">✓</span>
+          Automatiser les tâches répétitives avec Make et Zapier (zéro code)
+        </div>
+        <div class="skill-item reveal">
+          <span class="sk-icon">✓</span>
+          Construire une offre "augmentée par l'IA" qui justifie des tarifs plus élevés
+        </div>
+        <div class="skill-item reveal">
+          <span class="sk-icon">✓</span>
+          Générer un premier revenu passif à partir de tes compétences existantes
+        </div>
+        <div class="skill-item reveal">
+          <span class="sk-icon">✓</span>
+          Rester à jour face aux évolutions rapides des outils IA (veille structurée)
+        </div>
+      </div>
+
+      <div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.2);border-radius:var(--radius-sm);padding:1.2rem 1.5rem;font-size:0.88rem;color:var(--text-secondary);line-height:1.65;">
+        <strong style="color:var(--text-primary);">Budget outil :</strong>
+        40€/mois couvrent 90% des besoins d'un freelance avec l'IA.
+        La formation te montre comment éviter les abonnements inutiles et maximiser ce que tu paies déjà.
+      </div>
+    </article>
+
+
+    <!-- ── CTA ─────────────────────────────────────────────── -->
+    <section id="cta" aria-label="Accéder à la formation complète">
+      <div class="cta-bloc reveal">
+        <h2>Accéder à la formation complète</h2>
+        <p class="cta-sub">
+          10 chapitres. Accès immédiat. Paiement unique — pas d'abonnement.
+        </p>
+
+        <span class="cta-price">49€</span>
+        <p class="cta-price-note">Paiement unique · Accès à vie · Certificat de réussite inclus</p>
+
+        <div class="cta-includes">
+          <span>10 chapitres</span>
+          <span>Ressources téléchargeables</span>
+          <span>Quiz de validation</span>
+          <span>Certificat 70%+</span>
+          <span>Accès à vie</span>
+        </div>
+
+        <button onclick="FormaElanStripe.checkout('ia-freelance', 49, 'IA pour Freelance')"
+          class="btn btn-primary btn-lg" style="min-width:260px;justify-content:center;">
+          Accéder maintenant — 49€
+        </button>
+
+        <br>
+        <a href="ia-freelance.html" class="cta-link-back">
+          Voir le programme détaillé →
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon" style="font-size:1rem;">⚡</div>
+          <div class="logo-text"><span>Forma</span>Elan</div>
+        </div>
+        <p class="footer-tagline">Formations pratiques pour progresser vite.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Formations">
+        <h4>Formations</h4>
+        <ul>
+          <li><a href="seo-saas.html">SEO pour SaaS</a></li>
+          <li><a href="ia-freelance.html">IA pour Freelance</a></li>
+          <li><a href="copywriting-ecom.html">Copywriting E-commerce</a></li>
+          <li><a href="seo-ecom.html">SEO pour E-commerce</a></li>
+          <li><a href="optimiser-ia.html">Optimiser son IA</a></li>
+          <li><a href="seo-createurs.html">SEO pour Créateurs</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Légal">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="../mentions-legales.html">Mentions légales</a></li>
+          <li><a href="../cgv.html">CGV</a></li>
+          <li><a href="../politique-confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Contact">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@formaelan.fr">contact@formaelan.fr</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 FormaElan — Tous droits réservés</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/stripe.js"></script>
+</body>
+</html>

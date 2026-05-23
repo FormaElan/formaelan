@@ -13,7 +13,7 @@ FormaElan/
 ├── backend/            (server.js, .env)
 ├── css/                (style.css, formations.css)
 ├── formations/         (1 répertoire par formation, 1 HTML par chapitre)
-├── js/                 (main.js, stripe.js)
+├── js/                 (main.js, stripe.js, formations.js, quiz.js)
 ├── pages/              (pages de vente)
 ├── .claude/commands/   (skills Claude Code)
 └── index.html, success.html, cancel.html
@@ -26,7 +26,7 @@ FormaElan/
 | # | Slug | Prix | Statut | Dernière MAJ |
 |---|---|---|---|---|
 | 1 | `seo-saas` | 49€ | ✅ 8 ch. + 17 SVGs | 13/05/2026 |
-| 2 | `ia-freelance` | 49€ | ✅ 9 ch. | 13/05/2026 |
+| 2 | `ia-freelance` | 49€ | ✅ 10 ch. + aperçu gratuit | 23/05/2026 |
 | 3 | `copywriting-ecom` | 29€ | ✅ 7 ch. | 13/05/2026 |
 | 4 | `seo-ecom` | 39€ | ✅ 8 ch. + 16 SVGs | 13/05/2026 |
 | 5 | `optimiser-ia` | 39€ | ✅ 7 ch. + audit IA | 13/05/2026 |
@@ -90,7 +90,7 @@ FormaElan/
 
 - Orange rare : 1 seul point d'ancrage par écran, jamais saupoudré
 - Palette : `#0D1B3E` navy · `#1A9E8F` teal · `#F26C3A` orange · `#F7F8FA` fond clair
-- Typo : Syne (titres) · DM Sans (corps) · JetBrains Mono (code)
+- Typo : Inter (titres + corps, Google Fonts) · JetBrains Mono (code)
 - Espace négatif généreux — cohérence inter-pages stricte
 
 ---
