@@ -51,28 +51,71 @@ const FIRST_CHAPTER = {
 };
 
 // ── Stockage des tokens d'accès ─────────────────────────────
-// Clé : session_id Stripe  |  Valeur : { token, slug, email, createdAt }
+// Primaire  : Upstash Redis (si UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN)
+// Secondaire: fichier JSON local (fallback — éphémère sur Render free tier)
+// En cas de redeploy Render sans Redis : /get-access re-vérifie Stripe directement.
 const tokenStore = new Map();
 const TOKEN_FILE  = path.join(__dirname, 'access-tokens.json');
+
+const UPSTASH_URL   = process.env.UPSTASH_REDIS_REST_URL;
+const UPSTASH_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
+const USE_REDIS     = !!(UPSTASH_URL && UPSTASH_TOKEN);
+
+if (USE_REDIS) {
+  console.log('[Tokens] Upstash Redis actif');
+} else {
+  console.log('[Tokens] Stockage fichier local (configurer Upstash pour la persistance)');
+}
+
+async function redisSave(sessionId, entry) {
+  if (!USE_REDIS) return;
+  try {
+    await fetch(`${UPSTASH_URL}/set/token:${sessionId}/${encodeURIComponent(JSON.stringify(entry))}`, {
+      headers: { Authorization: `Bearer ${UPSTASH_TOKEN}` }
+    });
+  } catch (e) {
+    console.error('[Redis] Erreur écriture :', e.message);
+  }
+}
+
+async function redisGet(sessionId) {
+  if (!USE_REDIS) return null;
+  try {
+    const r = await fetch(`${UPSTASH_URL}/get/token:${sessionId}`, {
+      headers: { Authorization: `Bearer ${UPSTASH_TOKEN}` }
+    });
+    const { result } = await r.json();
+    return result ? JSON.parse(decodeURIComponent(result)) : null;
+  } catch (e) {
+    console.error('[Redis] Erreur lecture :', e.message);
+    return null;
+  }
+}
 
 function loadTokens() {
   try {
     if (fs.existsSync(TOKEN_FILE)) {
       const data = JSON.parse(fs.readFileSync(TOKEN_FILE, 'utf8'));
       Object.entries(data).forEach(([k, v]) => tokenStore.set(k, v));
-      console.log(`[Tokens] ${tokenStore.size} token(s) chargé(s)`);
+      console.log(`[Tokens] ${tokenStore.size} token(s) chargé(s) depuis fichier`);
     }
   } catch (e) {
-    console.error('[Tokens] Erreur chargement :', e.message);
+    console.error('[Tokens] Erreur chargement fichier :', e.message);
   }
 }
 
-function saveTokens() {
+function saveTokensFile() {
   try {
     fs.writeFileSync(TOKEN_FILE, JSON.stringify(Object.fromEntries(tokenStore), null, 2));
   } catch (e) {
-    console.error('[Tokens] Erreur sauvegarde :', e.message);
+    console.error('[Tokens] Erreur sauvegarde fichier :', e.message);
   }
+}
+
+async function saveTokens(sessionId, entry) {
+  tokenStore.set(sessionId, entry);
+  saveTokensFile();
+  await redisSave(sessionId, entry);
 }
 
 loadTokens();
@@ -132,25 +175,23 @@ app.use(cors({
 // ── Webhook Stripe — AVANT express.json() ───────────────────
 // Stripe requiert le body brut (Buffer) pour vérifier la signature.
 // express.json() consommerait le body avant que express.raw() puisse le lire.
-app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) => {
+app.post('/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
   const sig           = req.headers['stripe-signature'];
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
+  // Rejeter systématiquement si la clé webhook n'est pas configurée.
+  // Sans elle, n'importe qui peut forger un checkout.session.completed.
+  if (!webhookSecret) {
+    console.error('[Webhook] STRIPE_WEBHOOK_SECRET absent — requête rejetée (403)');
+    return res.status(403).json({ error: 'Webhook non autorisé : STRIPE_WEBHOOK_SECRET manquant.' });
+  }
+
   let event;
-  if (webhookSecret) {
-    try {
-      event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
-    } catch (err) {
-      console.error('[Webhook] Signature invalide :', err.message);
-      return res.status(400).send(`Webhook Error: ${err.message}`);
-    }
-  } else {
-    try {
-      event = JSON.parse(req.body);
-    } catch {
-      event = req.body;
-    }
-    console.warn('[Webhook] STRIPE_WEBHOOK_SECRET absent — signature non vérifiée');
+  try {
+    event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+  } catch (err) {
+    console.error('[Webhook] Signature invalide :', err.message);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
   switch (event.type) {
@@ -162,13 +203,8 @@ app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) => {
       const token   = crypto.randomUUID();
 
       if (slug) {
-        tokenStore.set(session.id, {
-          token,
-          slug,
-          email,
-          createdAt: new Date().toISOString(),
-        });
-        saveTokens();
+        const entry = { token, slug, email, createdAt: new Date().toISOString() };
+        await saveTokens(session.id, entry);
         console.log(`✓ Paiement confirmé — Formation : ${slug} — Email : ${email}`);
         if (email) sendAccessEmail(email, slug, session.id).catch(err =>
           console.error('[Mail] Erreur envoi :', err.message)
@@ -248,8 +284,8 @@ app.get('/get-access', async (req, res) => {
     return res.status(400).json({ error: 'session_id manquant' });
   }
 
-  // 1. Chercher dans le store local (mis à jour par le webhook)
-  const stored = tokenStore.get(session_id);
+  // 1. Chercher dans Redis (si configuré), puis en mémoire locale
+  const stored = (await redisGet(session_id)) || tokenStore.get(session_id);
   if (stored) {
     return res.json({
       slug:    stored.slug,
@@ -273,8 +309,7 @@ app.get('/get-access', async (req, res) => {
     const email = session.customer_details?.email || '';
 
     const entry = { token, slug, email, createdAt: new Date().toISOString() };
-    tokenStore.set(session_id, entry);
-    saveTokens();
+    await saveTokens(session_id, entry);
 
     return res.json({ slug, token, email, chapter: FIRST_CHAPTER[slug] || null });
 
