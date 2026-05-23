@@ -3,6 +3,15 @@
 //  Dark/Light mode · Animations · Navbar · Accordéons
 // ============================================================
 
+// Warm-up Render backend dès l'arrivée sur la homepage
+// → le serveur a 30-60s d'avance avant que l'utilisateur clique "Acheter"
+(function () {
+  const _b = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+    ? 'http://localhost:4242'
+    : 'https://formaelan.onrender.com';
+  fetch(_b + '/health').catch(() => {});
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // ----------------------------------------------------------
