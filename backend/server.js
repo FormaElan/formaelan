@@ -205,9 +205,17 @@ async function sendAccessEmail(email, slug, sessionId) {
                     border-radius:8px;text-decoration:none;font-weight:700;font-size:1rem;">
             ▶ Accéder à la formation
           </a>
-          <p style="margin:24px 0 0;font-size:0.8rem;color:#9ca3af;">
-            Conserve cet email — ce lien te permet de retrouver ta formation à tout moment.<br/>
-            Une question ? Réponds à cet email ou écris-nous à contact@formaelan.fr
+          <div style="margin:24px 0 0;padding:14px 16px;background:#fff7ed;
+                      border:1px solid #fed7aa;border-radius:8px;color:#7c2d12;
+                      font-size:0.86rem;line-height:1.6;">
+            <strong>Important : conserve cet email.</strong><br/>
+            C'est ton lien d'accès personnel à la formation. Ajoute-le à tes favoris
+            ou archive cet email dans un dossier dédié pour le retrouver facilement.
+          </div>
+          <p style="margin:16px 0 0;font-size:0.8rem;color:#9ca3af;line-height:1.6;">
+            Si tu perds ce mail, réponds-nous à contact@formaelan.fr avec l'adresse utilisée lors du paiement :
+            nous pourrons vérifier l'achat et te renvoyer ton accès.<br/>
+            Une question ? Réponds simplement à cet email.
           </p>
         </div>
       </div>
@@ -217,6 +225,31 @@ async function sendAccessEmail(email, slug, sessionId) {
     throw new Error(`Resend ${mailError.statusCode} — ${mailError.message}`);
   }
   console.log(`[Mail] Email envoyé → ${email} (${slug})`);
+}
+
+async function findPaidCheckoutSessionByEmail(email, slug = '') {
+  const normalizedEmail = email.trim().toLowerCase();
+  let found = null;
+
+  await stripe.checkout.sessions
+    .list({ limit: 100 })
+    .autoPagingEach(session => {
+      const sessionEmail = (session.customer_details?.email || session.customer_email || '').toLowerCase();
+      const sessionSlug = session.metadata?.formation_slug || '';
+
+      if (
+        session.payment_status === 'paid' &&
+        sessionEmail === normalizedEmail &&
+        (!slug || sessionSlug === slug)
+      ) {
+        found = session;
+        return false;
+      }
+
+      return true;
+    });
+
+  return found;
 }
 
 // ── Trust proxy (Render) ────────────────────────────────────
@@ -336,6 +369,52 @@ app.post('/create-checkout-session', checkoutLimiter, async (req, res) => {
   } catch (err) {
     console.error('[Stripe] Erreur création session :', err.message);
     res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/admin/resend-access', async (req, res) => {
+  const adminSecret = process.env.ACCESS_ADMIN_SECRET;
+  const providedSecret = req.headers['x-admin-secret'];
+
+  if (!adminSecret || providedSecret !== adminSecret) {
+    return res.status(403).json({ error: 'Accès admin refusé.' });
+  }
+
+  const email = String(req.body.email || '').trim().toLowerCase();
+  const slug = String(req.body.slug || '').trim();
+
+  if (!email || !email.includes('@')) {
+    return res.status(400).json({ error: 'Email client invalide.' });
+  }
+
+  if (slug && !FIRST_CHAPTER[slug]) {
+    return res.status(400).json({ error: 'Formation inconnue.' });
+  }
+
+  try {
+    const session = await findPaidCheckoutSessionByEmail(email, slug);
+
+    if (!session) {
+      return res.status(404).json({
+        error: slug
+          ? `Aucun achat payé trouvé pour ${email} sur ${slug}.`
+          : `Aucun achat payé trouvé pour ${email}.`,
+      });
+    }
+
+    const sessionSlug = session.metadata?.formation_slug;
+    await resolvePaidAccess(session.id);
+    await sendAccessEmail(email, sessionSlug, session.id);
+
+    res.json({
+      status: 'resent',
+      email,
+      slug: sessionSlug,
+      session_id: session.id,
+    });
+  } catch (err) {
+    console.error('[Admin] Erreur renvoi accès :', err.message);
+    res.status(500).json({ error: 'Impossible de renvoyer l’accès.' });
   }
 });
 
