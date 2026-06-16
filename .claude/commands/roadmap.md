@@ -38,6 +38,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 - CSS flip cards 3D — bug transition box-shadow corrigé (23/05)
 - formation-template.html noindexé (fait)
 - Protection des chapitres — contenu déplacé hors `/formations`, servi par Render via `session_id + token` (16/06)
+- Email d'accès renforcé + renvoi admin — message "conserver cet email" ajouté, endpoint `/admin/resend-access` protégé par `ACCESS_ADMIN_SECRET` déployé (16/06)
 
 ---
 
@@ -67,6 +68,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
 | ~~9~~ | ~~Chapitres accessibles sans paiement~~ | ~~✅ Corrigé le 16/06/2026 — les chapitres sont dans `_private/formations` et servis par `/formation/:slug/:chapter` après validation `session_id + token`.~~ | ~~Fait~~ |
+| ~~41~~ | ~~Renvoi d'accès client perdu~~ | ~~✅ Corrigé le 16/06/2026 — `POST /admin/resend-access` retrouve une session Stripe payée par email et renvoie le lien d'accès via Resend. À activer avec `ACCESS_ADMIN_SECRET` dans Render.~~ | ~~Fait~~ |
 
 ---
 
