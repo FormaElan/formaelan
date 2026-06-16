@@ -37,16 +37,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 - robots.txt — formations/ + success/cancel/quiz/projet_FormaElan disallowed (23/05)
 - CSS flip cards 3D — bug transition box-shadow corrigé (23/05)
 - formation-template.html noindexé (fait)
-- Démarches INPI Guichet-unique lancées (20/05) — en attente SIRET
-
----
-
-### 🔴 Bloquants légaux (avant toute vente réelle)
-
-| # | Tâche | Détail | Effort |
-|---|---|---|---|
-| 33 | Décision structure légale | Démarches Guichet-unique INPI lancées 20/05. Choisir : (A) micro-entrepreneur — gratuit, 22% charges, nom visible dans mentions légales ; (B) SASU "FormaElan" — ~200€ création ; (C) Lemon Squeezy merchant of record — 5% frais, aucune immat. Décision à prendre avant premières ventes réelles. | Décision |
-| 1 | Remplir infos légales | Remplir les `[À compléter]` dans mentions-legales.html, cgv.html, politique-confidentialite.html — après décision #33 et réception SIRET. | 15 min |
+- Protection des chapitres — contenu déplacé hors `/formations`, servi par Render via `session_id + token` (16/06)
 
 ---
 
@@ -54,9 +45,9 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
-| 3 | Clés Stripe live | Stripe Dashboard → basculer en mode Live → `sk_live_...` dans Render + `pk_live_...` dans js/stripe.js. À faire le jour J uniquement. | 30 min |
+| 3 | Stripe live | Stripe Dashboard → mode Live → recréer les 6 produits/prix live → `STRIPE_SECRET_KEY=sk_live_...`, 6 `PRICE_*` live et `STRIPE_WEBHOOK_SECRET=whsec_...` live dans Render. Remplacer aussi l'ancienne `pk_test_...` dans `js/stripe.js` pour éviter toute confusion. À faire le jour J uniquement. | 45 min |
 | 4 | Email post-achat — finaliser Resend | Attendre propagation DNS SPF `send` TXT → Verified sur Resend. Retenter achat test. Supprimer SMTP_USER + SMTP_PASSWORD obsolètes de Render. | 15 min |
-| 34 | Stripe — formation seo-createurs | Créer le produit Stripe "SEO pour Créateurs de Contenu" (49€), récupérer PRICE_ID, ajouter `PRICE_SEO_CREATEURS=price_xxx` dans Render + `.env` local. server.js déjà prêt. | 15 min |
+| ~~34~~ | ~~Stripe — formation seo-createurs~~ | ~~✅ Fait le 31/05/2026 — `PRICE_SEO_CREATEURS=price_1Td40NGnMFelvstEUutMpx4X` dans Render + `.env`.~~ | ~~15 min~~ |
 | 26 | Render : tokens éphémères | access-tokens.json effacé à chaque restart Render (~15 min inactivité). Fallback Stripe atténue. Solution propre : Render Disk ($7/mois) ou SQLite. | ~1h |
 
 ---
@@ -65,7 +56,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
-| 6 | Image OG manquante ⚠️ | Créer `img/og-cover.jpg` (1200×630px). Sans elle, aucun aperçu visuel sur LinkedIn/Facebook/Twitter lors du partage de formaelan.fr. Impact direct acquisition. | ~1h |
+| ~~6~~ | ~~Image OG~~ | ~~✅ Fait — `img/og-cover.png` existant (1200×630px), design soigné, conforme.~~ | ~~~1h~~ |
 | 35 | Revoir grille tarifaire | Avec 6 formations : cohérence des prix (29€ / 39€ / 49€), logique de valeur perçue. Comparer concurrents FR. Décision avant campagne acquisition. | 1h réflexion |
 | 36 | Prompt Perplexity — veille | Créer Sources/perplexity-veille-formations.md : prompt structuré pour analyser marché formations FR, identifier 5-10 nouvelles opportunités. À relancer tous les 2-3 mois. | 1h |
 
@@ -75,7 +66,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
-| 9 | Chapitres accessibles sans paiement | HTML chapitres publics — URL directe suffit. Acceptable Phase 1 (obscurité). Solution Phase 2 : token dans URL. | Phase 2 |
+| ~~9~~ | ~~Chapitres accessibles sans paiement~~ | ~~✅ Corrigé le 16/06/2026 — les chapitres sont dans `_private/formations` et servis par `/formation/:slug/:chapter` après validation `session_id + token`.~~ | ~~Fait~~ |
 
 ---
 
@@ -94,10 +85,13 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
+| 37 | **Envoyer 1ère publication LinkedIn** | Post de présentation FormaElan prêt : `doc_interne/reseaux-sociaux/linkedin-post-01-presentation-formaelan.md` (version finale révisée). Copier-coller le texte sur LinkedIn, ajouter le lien aperçu en 1er commentaire. Puis attendre 2-4 jours avant post #02 (aperçu IA Freelance). | 5 min |
+| 38 | **Créer les comptes réseaux sociaux + diffuser post #01** | Créer les profils manquants : Twitter/X, Instagram, TikTok, YouTube (LinkedIn déjà actif). Adapter le post de présentation au format de chaque réseau (Twitter = thread, Instagram = visuel + caption, TikTok = vidéo courte à créer ou ignorer Phase 1). Diffuser sur tous les canaux textuels dès que LinkedIn est posté. | ~2h |
 | 19 | SEO on-page final | Balises meta, OG tags, schema Course. Priorité après og-cover.jpg. | ~2h |
-| 20 | LinkedIn personnel | Post de valeur (astuce concrète) avec mention naturelle. Pas un post "j'ai lancé". | ~1h |
+| 20 | LinkedIn — post #02 aperçu IA | Post formation IA pour Freelance prêt : `doc_interne/reseaux-sociaux/linkedin-post-02-apercu-ia-freelance.md`. À poster 2-4 jours après le post #37. | 5 min |
 | 21 | Groupes Facebook/Discord | 5 groupes actifs (freelance FR, SEO France, IA francophone). Valeur d'abord, formation ensuite. | Continu |
 | 22 | Product Hunt | Description, visuels, tagline. Génère 200-500 visites en 24h. | ~2h |
+| 39 | **Agent commercial IA** | Script/agent autonome qui : (1) identifie des prospects qualifiés (freelances, e-commerçants, créateurs FR) via LinkedIn/Apollo, (2) enrichit les données (poste, entreprise, déclencheur récent), (3) génère un message personnalisé via le prompt du chapitre 3 IA Freelance, (4) prépare une liste d'envoi. Peut être un script Python + Claude API ou un workflow Make. Scope Phase 1 = prototype manuel guidé. Scope Phase 2 = automatisation complète. | ~4h proto |
 | 23 | Première vente réelle | — | Objectif |
 
 ---
@@ -108,5 +102,13 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 - Pub payante — trop tôt sans conversion prouvée
 - Twitter / Instagram — audience trop longue à construire
 - Système de compte utilisateur / espace membre — Phase 2
+
+---
+
+### 🔲 Phase 2 — À faire après lancement
+
+| # | Tâche | Détail | Effort |
+|---|---|---|---|
+| 40 | Mise à jour formations SEO — AI Overviews | Ajouter un chapitre ou une section dans les 3 formations SEO (SaaS, E-commerce, Créateurs) sur l'expansion des AI Overviews Google I/O 2026 : impact sur le CTR, stratégies d'adaptation (featured snippets, schema markup, contenu de marque). Google May 2026 core update = contexte déclencheur. | ~2h |
 
 ---

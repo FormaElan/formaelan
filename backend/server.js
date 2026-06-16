@@ -42,13 +42,28 @@ const FORMATION_NAMES = {
 
 // ── Premier chapitre par slug (pour le lien d'accès) ───────
 const FIRST_CHAPTER = {
-  'seo-saas':         'formations/seo-saas/ch1-fondamentaux.html',
-  'ia-freelance':     'formations/ia-freelance/ch1-ia-2026.html',
-  'copywriting-ecom': 'formations/copywriting-ecom/ch1-psychologie-achat.html',
-  'seo-ecom':         'formations/seo-ecom/ch1-specificites-seo-ecom.html',
-  'optimiser-ia':     'formations/optimiser-ia/ch1-sous-exploites-ia.html',
-  'seo-createurs':    'formations/seo-createurs/ch1-createurs-seo-2026.html',
+  'seo-saas':         'ch1-fondamentaux.html',
+  'ia-freelance':     'ch1-ia-2026.html',
+  'copywriting-ecom': 'ch1-psychologie-achat.html',
+  'seo-ecom':         'ch1-specificites-seo-ecom.html',
+  'optimiser-ia':     'ch1-sous-exploites-ia.html',
+  'seo-createurs':    'ch1-createurs-seo-2026.html',
 };
+
+const FORMATION_CONTENT_ROOT = path.join(__dirname, '..', '_private', 'formations');
+
+function siteUrl() {
+  return (process.env.SITE_URL || 'https://formaelan.fr').replace(/\/$/, '');
+}
+
+function requestBaseUrl(req) {
+  return `${req.protocol}://${req.get('host')}`;
+}
+
+function protectedChapterUrl(req, slug, chapter, sessionId, token) {
+  const qs = new URLSearchParams({ session_id: sessionId, token });
+  return `${requestBaseUrl(req)}/formation/${encodeURIComponent(slug)}/${encodeURIComponent(chapter)}?${qs}`;
+}
 
 // ── Stockage des tokens d'accès ─────────────────────────────
 // Primaire  : Upstash Redis (si UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN)
@@ -116,6 +131,49 @@ async function saveTokens(sessionId, entry) {
   tokenStore.set(sessionId, entry);
   saveTokensFile();
   await redisSave(sessionId, entry);
+}
+
+async function resolvePaidAccess(sessionId) {
+  const stored = (await redisGet(sessionId)) || tokenStore.get(sessionId);
+  if (stored) return stored;
+
+  const session = await stripe.checkout.sessions.retrieve(sessionId);
+
+  if (session.payment_status !== 'paid') {
+    const err = new Error('Paiement non confirmé');
+    err.statusCode = 402;
+    throw err;
+  }
+
+  const slug = session.metadata?.formation_slug;
+  if (!slug || !FIRST_CHAPTER[slug]) {
+    const err = new Error('Formation introuvable pour cette session');
+    err.statusCode = 404;
+    throw err;
+  }
+
+  const entry = {
+    token: crypto.randomUUID(),
+    slug,
+    email: session.customer_details?.email || '',
+    createdAt: new Date().toISOString(),
+  };
+
+  await saveTokens(sessionId, entry);
+  return entry;
+}
+
+function rewriteProtectedChapterHtml(html, req, slug, sessionId, token) {
+  const publicSite = siteUrl();
+  const qs = new URLSearchParams({ session_id: sessionId, token }).toString();
+  const protectedBase = `${requestBaseUrl(req)}/formation/${encodeURIComponent(slug)}/`;
+
+  return html
+    .replace(/href="\.\.\/\.\.\/css\/formations\.css"/g, `href="${publicSite}/css/formations.css"`)
+    .replace(/href="\.\.\/\.\.\/index\.html"/g, `href="${publicSite}/index.html"`)
+    .replace(/href="\.\.\/\.\.\/pages\/([^"]+)"/g, `href="${publicSite}/pages/$1"`)
+    .replace(/href="\.\.\/\.\.\/quiz\.html\?slug=([^"]+)"/g, `href="${publicSite}/quiz.html?slug=$1"`)
+    .replace(/href="(ch[0-9]+-[a-z0-9-]+\.html)"/g, `href="${protectedBase}$1?${qs}"`);
 }
 
 loadTokens();
@@ -229,7 +287,14 @@ app.use(express.json());
 
 // ── Health check ────────────────────────────────────────────
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', mode: 'test', stripe: '✓ connecté', tokens: tokenStore.size });
+  const stripeMode = process.env.STRIPE_SECRET_KEY?.startsWith('sk_live_') ? 'live' : 'test';
+  res.json({
+    status: 'ok',
+    mode: stripeMode,
+    stripe: '✓ connecté',
+    tokens: tokenStore.size,
+    protectedContent: fs.existsSync(FORMATION_CONTENT_ROOT),
+  });
 });
 
 // ── Rate limiting ────────────────────────────────────────────
@@ -284,38 +349,61 @@ app.get('/get-access', async (req, res) => {
     return res.status(400).json({ error: 'session_id manquant' });
   }
 
-  // 1. Chercher dans Redis (si configuré), puis en mémoire locale
-  const stored = (await redisGet(session_id)) || tokenStore.get(session_id);
-  if (stored) {
-    return res.json({
-      slug:    stored.slug,
-      token:   stored.token,
-      email:   stored.email,
-      chapter: FIRST_CHAPTER[stored.slug] || null,
-    });
-  }
-
-  // 2. Fallback : interroger Stripe directement
-  // (utile si le webhook n'a pas encore été reçu au moment où l'utilisateur arrive)
   try {
-    const session = await stripe.checkout.sessions.retrieve(session_id);
+    const access = await resolvePaidAccess(session_id);
+    const chapter = FIRST_CHAPTER[access.slug] || null;
 
-    if (session.payment_status !== 'paid') {
-      return res.status(402).json({ error: 'Paiement non confirmé' });
-    }
-
-    const slug  = session.metadata?.formation_slug;
-    const token = crypto.randomUUID();
-    const email = session.customer_details?.email || '';
-
-    const entry = { token, slug, email, createdAt: new Date().toISOString() };
-    await saveTokens(session_id, entry);
-
-    return res.json({ slug, token, email, chapter: FIRST_CHAPTER[slug] || null });
-
+    return res.json({
+      slug: access.slug,
+      token: access.token,
+      email: access.email,
+      chapter,
+      accessUrl: chapter
+        ? protectedChapterUrl(req, access.slug, chapter, session_id, access.token)
+        : null,
+    });
   } catch (err) {
     console.error('[Access] Erreur Stripe retrieve :', err.message);
-    return res.status(500).json({ error: 'Impossible de vérifier la session.' });
+    return res.status(err.statusCode || 500).json({
+      error: err.statusCode ? err.message : 'Impossible de vérifier la session.',
+    });
+  }
+});
+
+app.get('/formation/:slug/:chapter', async (req, res) => {
+  const { slug, chapter } = req.params;
+  const { session_id, token } = req.query;
+
+  if (!/^[a-z0-9-]+$/.test(slug) || !/^ch[0-9]+-[a-z0-9-]+\.html$/.test(chapter)) {
+    return res.status(404).send('Chapitre introuvable.');
+  }
+
+  if (!session_id || !token) {
+    return res.status(401).send('Accès réservé aux acheteurs. Utilise le lien reçu après paiement.');
+  }
+
+  try {
+    const access = await resolvePaidAccess(session_id);
+
+    if (access.slug !== slug || access.token !== token) {
+      return res.status(403).send('Accès non autorisé pour cette formation.');
+    }
+
+    const chapterPath = path.resolve(FORMATION_CONTENT_ROOT, slug, chapter);
+    const slugRoot = path.resolve(FORMATION_CONTENT_ROOT, slug);
+
+    if (!chapterPath.startsWith(slugRoot + path.sep) || !fs.existsSync(chapterPath)) {
+      return res.status(404).send('Chapitre introuvable.');
+    }
+
+    const html = fs.readFileSync(chapterPath, 'utf8');
+    const protectedHtml = rewriteProtectedChapterHtml(html, req, slug, session_id, token);
+
+    res.set('Cache-Control', 'private, no-store');
+    res.type('html').send(protectedHtml);
+  } catch (err) {
+    console.error('[Formation] Accès refusé :', err.message);
+    return res.status(err.statusCode || 500).send(err.statusCode ? err.message : 'Impossible de vérifier l’accès.');
   }
 });
 

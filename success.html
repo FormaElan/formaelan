@@ -130,10 +130,7 @@
           return;
         }
 
-        const baseUrl = window.location.href.replace(/success\.html.*$/, '');
-        const chapterUrl = data.chapter
-          ? `${baseUrl}${data.chapter}`
-          : `${baseUrl}index.html`;
+        const chapterUrl = data.accessUrl || 'index.html';
 
         zone.innerHTML = `
           <div class="access-box">
