@@ -1,6 +1,6 @@
 ﻿// ============================================================
 //  FormaElan — stripe.js  (frontend)
-//  Clé publique TEST configurée — mode stub jusqu'aux Price IDs
+//  Checkout Stripe via session créée côté backend
 // ============================================================
 
 const FormaElanStripe = (() => {
@@ -8,7 +8,6 @@ const FormaElanStripe = (() => {
   const _IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 
   const CONFIG = {
-    publicKey:  'pk_test_51TUtLOGnMFelvstENY6I6Q7OzLpDnk4ErPsHb3hsdLUSuOLtvsHHI6U8lqk8bvNvoBv9A7PEYAE4zjThmRU98yRA00steWWzZZ',
     backendUrl: _IS_LOCAL ? 'http://localhost:4242' : 'https://formaelan.onrender.com',
     siteUrl:    window.location.origin,
     mode: 'live'
@@ -182,7 +181,7 @@ const FormaElanStripe = (() => {
           1. Stripe Dashboard → Catalogue → copie les <code>price_xxx</code><br/>
           2. Colle-les dans <code>backend/.env</code><br/>
           3. Lance <code>npm install && node server.js</code> dans /backend<br/>
-          4. Change <code>mode: 'live'</code> dans stripe.js
+          4. Redémarre le backend et teste le checkout
         </div>
 
         <button onclick="document.getElementById('stripeStubModal').remove()"

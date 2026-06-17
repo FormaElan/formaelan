@@ -14,7 +14,6 @@ Date: 2026-06-17
 
 Depuis Stripe Live:
 
-- `pk_live_...`
 - `sk_live_...`
 - `whsec_...` du webhook live
 - 6 Price IDs live:
@@ -45,11 +44,8 @@ Depuis Render:
 5. Redeployer Render.
 6. Verifier:
    `https://formaelan.onrender.com/health`
-7. Remplacer la cle publique dans `js/stripe.js`:
-   `pk_test_...` -> `pk_live_...`
-8. Commit + push.
-9. Faire un achat live reel a faible montant si possible.
-10. Verifier:
+7. Faire un achat live reel a faible montant si possible.
+8. Verifier:
    - redirection Stripe
    - retour `success.html`
    - lien chapitre protege
