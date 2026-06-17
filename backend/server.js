@@ -71,6 +71,19 @@ function publicQuizUrl(slug, sessionId, token) {
   return `${siteUrl()}/quiz.html?${qs}`;
 }
 
+function envPresent(name) {
+  return Boolean(process.env[name] && !String(process.env[name]).includes('REMPLACER'));
+}
+
+function pricesConfigured() {
+  return Object.fromEntries(
+    Object.entries(PRICE_MAP).map(([slug, priceId]) => [
+      slug,
+      Boolean(priceId && !String(priceId).includes('REMPLACER') && String(priceId).startsWith('price_'))
+    ])
+  );
+}
+
 function maskEmail(email) {
   const [name = '', domain = ''] = String(email || '').split('@');
   if (!domain) return '(email invalide)';
@@ -368,12 +381,22 @@ app.use(express.json());
 // ── Health check ────────────────────────────────────────────
 app.get('/health', (req, res) => {
   const stripeMode = process.env.STRIPE_SECRET_KEY?.startsWith('sk_live_') ? 'live' : 'test';
+  const priceStatus = pricesConfigured();
   res.json({
     status: 'ok',
     mode: stripeMode,
     stripe: '✓ connecté',
     tokens: tokenStore.size,
     protectedContent: fs.existsSync(FORMATION_CONTENT_ROOT),
+    config: {
+      siteUrl: siteUrl(),
+      webhookSecret: envPresent('STRIPE_WEBHOOK_SECRET'),
+      resend: envPresent('RESEND_API_KEY'),
+      adminSecret: envPresent('ACCESS_ADMIN_SECRET'),
+      redis: USE_REDIS,
+      pricesConfigured: priceStatus,
+      allPricesConfigured: Object.values(priceStatus).every(Boolean),
+    },
   });
 });
 
