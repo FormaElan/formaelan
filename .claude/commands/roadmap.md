@@ -39,6 +39,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 - formation-template.html noindexé (fait)
 - Protection des chapitres — contenu déplacé hors `/formations`, servi par Render via `session_id + token` (16/06)
 - Email d'accès renforcé + renvoi admin — message "conserver cet email" ajouté, endpoint `/admin/resend-access` protégé par `ACCESS_ADMIN_SECRET` déployé (16/06)
+- Audit pré-live complet — sécurité, Stripe, légal, SEO/social preview, dépendances npm et stratégie réseaux sociaux départ zéro analysés (16/06)
 
 ---
 
@@ -46,6 +47,11 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
+| 42 | Protéger le certificat | `/send-certificate` vérifie seulement le score envoyé par le navigateur. Exiger `session_id + token` valides et lier le certificat à un achat Stripe payé avant envoi email/génération lien. | ~1h30 |
+| 43 | Retirer `projet_FormaElan.html` du public | La page répond 200 sur `https://formaelan.fr/projet_FormaElan.html` malgré robots.txt et contient des infos internes/obsolètes. Supprimer du site publié ou l'exclure via `_config.yml`/déplacement hors racine. | 15 min |
+| 44 | Corriger dépendances npm | `npm audit --omit=dev` remonte 3 vulnérabilités modérées (`nodemailer`, `express/qs`). Lancer `npm audit fix`, vérifier `package-lock.json`, puis retester backend. | 30 min |
+| 45 | Durcir légal avant vente réelle | Mentions légales : identité éditeur à compléter. CGV : vérifier TVA/franchise, accès à vie, renonciation au droit de rétractation avec case explicite avant Stripe. Politique confidentialité : ajouter Resend comme sous-traitant et clarifier token/session. | ~1h |
+| 46 | Headers sécurité backend | Ajouter `helmet` ou headers équivalents pour les pages servies par Render (`X-Content-Type-Options`, `X-Frame-Options`, CSP raisonnable). Ajouter logs/rate limit sur `/admin/resend-access`. | ~45 min |
 | 3 | Stripe live | Stripe Dashboard → mode Live → recréer les 6 produits/prix live → `STRIPE_SECRET_KEY=sk_live_...`, 6 `PRICE_*` live et `STRIPE_WEBHOOK_SECRET=whsec_...` live dans Render. Remplacer aussi l'ancienne `pk_test_...` dans `js/stripe.js` pour éviter toute confusion. À faire le jour J uniquement. | 45 min |
 | 4 | Email post-achat — finaliser Resend | Attendre propagation DNS SPF `send` TXT → Verified sur Resend. Retenter achat test. Supprimer SMTP_USER + SMTP_PASSWORD obsolètes de Render. | 15 min |
 | ~~34~~ | ~~Stripe — formation seo-createurs~~ | ~~✅ Fait le 31/05/2026 — `PRICE_SEO_CREATEURS=price_1Td40NGnMFelvstEUutMpx4X` dans Render + `.env`.~~ | ~~15 min~~ |
@@ -58,6 +64,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
 | ~~6~~ | ~~Image OG~~ | ~~✅ Fait — `img/og-cover.png` existant (1200×630px), design soigné, conforme.~~ | ~~~1h~~ |
+| 47 | SEO/social preview statique | Les pages de vente ont encore title/meta/OG/canonical génériques côté HTML puis modifiés par JS. Rendre les métas statiques par page, ajouter schema.org Course, intégrer l'aperçu gratuit au sitemap. | ~2h |
 | 35 | Revoir grille tarifaire | Avec 6 formations : cohérence des prix (29€ / 39€ / 49€), logique de valeur perçue. Comparer concurrents FR. Décision avant campagne acquisition. | 1h réflexion |
 | 36 | Prompt Perplexity — veille | Créer Sources/perplexity-veille-formations.md : prompt structuré pour analyser marché formations FR, identifier 5-10 nouvelles opportunités. À relancer tous les 2-3 mois. | 1h |
 
@@ -88,8 +95,8 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 | # | Tâche | Détail | Effort |
 |---|---|---|---|
 | 37 | **Envoyer 1ère publication LinkedIn** | Post de présentation FormaElan prêt : `doc_interne/reseaux-sociaux/linkedin-post-01-presentation-formaelan.md` (version finale révisée). Copier-coller le texte sur LinkedIn, ajouter le lien aperçu en 1er commentaire. Puis attendre 2-4 jours avant post #02 (aperçu IA Freelance). | 5 min |
-| 38 | **Créer les comptes réseaux sociaux + diffuser post #01** | Créer les profils manquants : Twitter/X, Instagram, TikTok, YouTube (LinkedIn déjà actif). Adapter le post de présentation au format de chaque réseau (Twitter = thread, Instagram = visuel + caption, TikTok = vidéo courte à créer ou ignorer Phase 1). Diffuser sur tous les canaux textuels dès que LinkedIn est posté. | ~2h |
-| 19 | SEO on-page final | Balises meta, OG tags, schema Course. Priorité après og-cover.jpg. | ~2h |
+| 38 | **Stratégie réseaux sociaux départ zéro** | Ne pas publier comme si l'audience existait déjà. Priorité : profil LinkedIn personnel + 15-20 commentaires utiles/jour sur comptes ciblés. 4 posts LinkedIn/semaine orientés valeur. Instagram/TikTok/Shorts = recyclage découverte (carousels/reels courts), pas canal principal de vente au départ. | Continu |
+| 19 | SEO on-page final | Voir tâche 47 : métas statiques, OG tags, canonical, schema Course, sitemap. | ~2h |
 | 20 | LinkedIn — post #02 aperçu IA | Post formation IA pour Freelance prêt : `doc_interne/reseaux-sociaux/linkedin-post-02-apercu-ia-freelance.md`. À poster 2-4 jours après le post #37. | 5 min |
 | 21 | Groupes Facebook/Discord | 5 groupes actifs (freelance FR, SEO France, IA francophone). Valeur d'abord, formation ensuite. | Continu |
 | 22 | Product Hunt | Description, visuels, tagline. Génère 200-500 visites en 24h. | ~2h |
@@ -102,7 +109,7 @@ Dis-moi le numéro ou le nom de la tâche que tu veux lancer.
 
 - SEO organique (3-6 mois) — Phase 2
 - Pub payante — trop tôt sans conversion prouvée
-- Twitter / Instagram — audience trop longue à construire
+- Twitter / Instagram — pas canal principal Phase 1, uniquement recyclage et preuve de présence
 - Système de compte utilisateur / espace membre — Phase 2
 
 ---

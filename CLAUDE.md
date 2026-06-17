@@ -23,6 +23,13 @@ Lire d'abord `../CONTEXTE_SESSION.md`.
 - Renvoi client : `/admin/resend-access`, protégé par `ACCESS_ADMIN_SECRET`.
 - Certificat : `/send-certificate`.
 
+## Alertes pré-live
+- Ne pas passer Stripe live avant correction des bloquants de la roadmap.
+- `/send-certificate` doit être relié à un achat payé (`session_id + token`), pas seulement au score envoyé par le navigateur.
+- `projet_FormaElan.html` est encore public en production et doit être retiré.
+- Pages de vente : métas SEO/social à rendre statiques, pas seulement injectées par JS.
+- Stratégie réseaux sociaux : départ de zéro abonné, priorité LinkedIn profil personnel + commentaires ciblés.
+
 ## Conventions
 - HTML/CSS/JS vanilla.
 - CSS site : `css/style.css`.

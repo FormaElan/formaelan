@@ -13,6 +13,11 @@
   <meta property="og:url"         content="https://formaelan.fr/pages/apercu-ia-freelance.html" />
   <meta property="og:title"       content="Aperçu gratuit — IA pour Freelance | FormaElan" />
   <meta property="og:description" content="Extrait réel de la formation : le pipeline de prospection IA qui génère 50 contacts personnalisés en 2h par semaine." />
+  <meta property="og:image"       content="https://formaelan.fr/img/og-cover.png" />
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Aperçu gratuit — IA pour Freelance | FormaElan" />
+  <meta name="twitter:description" content="Extrait réel de la formation : le pipeline de prospection IA qui génère 50 contacts personnalisés en 2h par semaine." />
+  <meta name="twitter:image"       content="https://formaelan.fr/img/og-cover.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
@@ -42,13 +47,13 @@
       background: rgba(99,102,241,0.08);
       font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0;
       text-transform: uppercase;
       color: var(--text-accent);
       margin-bottom: 1.5rem;
     }
     .apercu-hero h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: 3.1rem;
       font-weight: 900;
       line-height: 1.12;
       margin-bottom: 1.2rem;
@@ -172,7 +177,7 @@
       left: 1.5rem;
       font-size: 0.65rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0;
       color: var(--text-accent);
       background: var(--bg-secondary);
       padding: 0 0.5rem;
@@ -201,7 +206,7 @@
     .result-card .result-label {
       font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0;
       text-transform: uppercase;
       color: var(--teal);
       margin-bottom: 0.8rem;
@@ -410,10 +415,99 @@
     }
     .cta-link-back:hover { color: var(--text-primary); }
 
+    @media (max-width: 1024px) {
+      .apercu-hero {
+        padding: 6.5rem 1.5rem 3.25rem;
+      }
+      .apercu-hero h1 {
+        font-size: 2.55rem;
+      }
+      .apercu-section {
+        padding: 0 1.5rem 4rem;
+      }
+      .apercu-block {
+        margin-bottom: 3.25rem;
+      }
+      .cta-bloc {
+        padding: 2.25rem 1.5rem;
+      }
+    }
+
     @media (max-width: 640px) {
-      .stats-trio { grid-template-columns: 1fr 1fr; }
+      .apercu-hero {
+        padding: 5.25rem 1rem 2.5rem;
+        text-align: left;
+      }
+      .apercu-hero h1 {
+        font-size: 2.05rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+      }
+      .apercu-hero .sub {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0 0 1.5rem;
+      }
+      .apercu-section {
+        padding: 0 1rem 3rem;
+      }
+      .apercu-block {
+        margin-bottom: 2.75rem;
+      }
+      .apercu-block h2 {
+        font-size: 1.28rem;
+      }
+      .section-divider {
+        gap: 0.75rem;
+        align-items: flex-start;
+        margin-bottom: 1.4rem;
+      }
+      .section-divider h2 {
+        font-size: 1.15rem;
+        line-height: 1.25;
+      }
+      .section-divider .num {
+        width: 32px;
+        height: 32px;
+      }
+      .section-divider .line { display: none; }
+      .pipeline-container,
+      .prompt-formula,
+      .result-card,
+      .exercice-card,
+      .cta-bloc {
+        padding: 1.15rem;
+        border-radius: 12px;
+      }
+      .prompt-formula::before {
+        left: 1rem;
+        max-width: calc(100% - 2rem);
+        line-height: 1.2;
+      }
+      .prompt-formula code {
+        font-size: 0.78rem;
+        line-height: 1.65;
+      }
+      .exercice-card .ex-header {
+        align-items: flex-start;
+      }
+      .stats-trio { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr; }
       .apercu-toc { display: none; }
+      .stat-card { padding: 1.15rem 1rem; }
+      .stat-card .val { font-size: 1.65rem; }
+      .cta-bloc h2 { font-size: 1.35rem; }
+      .cta-price { font-size: 2.25rem; }
+      .cta-includes {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.45rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .apercu-hero h1 { font-size: 1.88rem; }
+      .cta-price { font-size: 2rem; }
     }
   </style>
 </head>
@@ -615,6 +709,7 @@ Structure exacte — 3 lignes :
 3. Appel à l'action minimal (question ouverte, pas de lien, pas de pitch produit)
 
 Ton : direct, professionnel, non commercial.
+Vouvoyer le prospect.
 Longueur : 60 mots maximum.
 Ne pas utiliser les mots : "synergies", "opportunité", "proposition", "accompagnement".</code>
       </div>
@@ -622,9 +717,9 @@ Ne pas utiliser les mots : "synergies", "opportunité", "proposition", "accompag
       <div class="result-card">
         <div class="result-label">Exemple de sortie générée</div>
         <p>
-          "Vu ton post sur l'expansion de Leroy Merlin au Portugal — vous recrutez vite.
+          "Vu votre post sur l'expansion de Leroy Merlin au Portugal — vous recrutez vite.
           J'aide les équipes e-commerce à produire 3× plus de contenu SEO sans augmenter les effectifs.
-          Est-ce que la productivité éditoriale est un sujet sur lequel tu travailles en ce moment ?"
+          Est-ce que la productivité éditoriale est un sujet sur lequel vous travaillez en ce moment ?"
         </p>
       </div>
 
@@ -660,9 +755,9 @@ Ne pas utiliser les mots : "synergies", "opportunité", "proposition", "accompag
 
         <ol class="exercice-steps">
           <li>
-            <strong>Identifie un prospect concret.</strong> Va sur LinkedIn, trouve une personne à qui tu veux écrire.
+            <strong>Identifie un prospect concret.</strong> <span>Va sur LinkedIn, trouve une personne à qui tu veux écrire.
             Prends note de : son prénom, son poste, le nom de son entreprise,
-            et <em>une chose récente</em> qu'elle a publiée ou une actualité sur son entreprise.
+            et <em>une chose récente</em> qu'elle a publiée ou une actualité sur son entreprise.</span>
           </li>
           <li>
             <strong>Ouvre ChatGPT ou Claude.</strong> Copie le prompt ci-dessus.
@@ -736,7 +831,7 @@ Ne pas utiliser les mots : "synergies", "opportunité", "proposition", "accompag
         </div>
         <div class="skill-item reveal">
           <span class="sk-icon">✓</span>
-          Générer un premier revenu passif à partir de tes compétences existantes
+          Créer un premier actif numérique à partir de tes compétences existantes
         </div>
         <div class="skill-item reveal">
           <span class="sk-icon">✓</span>

@@ -476,29 +476,54 @@
       document.getElementById('formationIntro').textContent  = f.sousTitre;
       document.getElementById('metaDuree').textContent       = f.duree;
       document.getElementById('metaModules').textContent     = f.modules;
-      document.getElementById('metaEtudiants').textContent   = f.etudiants.toLocaleString('fr-FR');
-      document.getElementById('metaNoteRow').innerHTML       =
-        `⭐ <strong>${f.note}/5</strong> <span style="color:var(--text-secondary);font-size:.82rem;">(${f.avis} avis)</span>`;
+      const _metaEtu = document.getElementById('metaEtudiants');
+      if (_metaEtu) {
+        if (f.etudiants) {
+          _metaEtu.textContent = f.etudiants.toLocaleString('fr-FR');
+        } else {
+          _metaEtu.closest('.meta-item')?.remove();
+        }
+      }
+      const _metaNote = document.getElementById('metaNoteRow');
+      if (_metaNote) {
+        if (f.note) {
+          _metaNote.innerHTML = `⭐ <strong>${f.note}/5</strong> <span style="color:var(--text-secondary);font-size:.82rem;">(${f.avis} avis)</span>`;
+        } else {
+          _metaNote.closest('.meta-item')?.remove();
+        }
+      }
 
       // Hero couleur
       document.getElementById('formationHero').style.background =
         `linear-gradient(160deg, var(--bg-primary) 0%, var(--bg-secondary) 100%)`;
 
       // ── 2. Carte paiement ─────────────────────────────────
-      const disc = Math.round((1 - f.prix / f.prixAncien) * 100);
       ['', '2'].forEach(sfx => {
         const pm = document.getElementById('prixMain'  + sfx);
         const pa = document.getElementById('prixAncien'+ sfx);
         if (pm) pm.textContent = `${f.prix} €`;
-        if (pa) pa.textContent = `Prix original : ${f.prixAncien} €`;
+        if (pa) {
+          if (f.prixAncien) {
+            pa.textContent = `Prix original : ${f.prixAncien} €`;
+          } else {
+            pa.remove();
+          }
+        }
       });
-      document.getElementById('discountBadge').textContent =
-        `🎉 ${disc}% de réduction — Offre limitée`;
+      const _discBadge = document.getElementById('discountBadge');
+      if (_discBadge) {
+        if (f.prixAncien) {
+          const disc = Math.round((1 - f.prix / f.prixAncien) * 100);
+          _discBadge.textContent = `🎉 ${disc}% de réduction — Offre limitée`;
+        } else {
+          _discBadge.remove();
+        }
+      }
 
 
       const inclus = [
-        `${f.duree} de contenu vidéo HD`,
-        `${f.modules} modules structurés`,
+        `${f.duree} de contenu textuel (chapitres + exercices)`,
+        `${f.chapitres || f.modules} chapitres structurés`,
         'Accès à vie + mises à jour',
         f.certif ? 'Certificat de réussite' : null,
         'Ressources téléchargeables',
@@ -625,9 +650,11 @@
 
       // ── 10. CTA bas ───────────────────────────────────────
       document.getElementById('ctaTitle').innerHTML =
-        `Prêt à maîtriser <span class="gradient-text">${f.titre}</span> ?`;
+        `Prêt à maîtriser <span class="gradient-text">${f.titre}</span>`;
       document.getElementById('ctaSubtitle').textContent =
-        `Rejoins ${f.etudiants.toLocaleString('fr-FR')} étudiants et commence dès aujourd'hui.`;
+        f.etudiants
+          ? `Rejoins ${f.etudiants.toLocaleString('fr-FR')} étudiants et commence dès aujourd'hui.`
+          : 'Commence dès aujourd\'hui — accès immédiat.';
 
       // ── 11. Onglets ───────────────────────────────────────
       document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -651,4 +678,3 @@
   </script>
 </body>
 </html>
-

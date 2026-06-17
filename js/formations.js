@@ -17,16 +17,11 @@ const FORMATIONS = [
     icon: "🚀",
     categorie: "Visibilité sur Google",
     niveau: "Intermédiaire",
-    duree: "6h30",
+    duree: "4h",
     modules: 8,
-    etudiants: 1240,
-    note: 4.9,
-    avis: 312,
     prix: 49,
-    prixAncien: 97,
-    badge: "bestseller",
-    couleur: "linear-gradient(135deg, rgba(99,102,241,0.4), rgba(139,92,246,0.2))",
-    couleurGlow: "rgba(99,102,241,0.5)",
+    couleur: "linear-gradient(135deg, rgba(26,158,143,0.4), rgba(19,124,114,0.2))",
+    couleurGlow: "rgba(26,158,143,0.5)",
 
     formateur: {
       nom: "L'équipe FormaElan",
@@ -34,7 +29,7 @@ const FORMATIONS = [
       bio: "Cette formation est créée par des praticiens qui appliquent ces méthodes au quotidien. Chaque module est construit à partir d'expériences terrain concrètes, pas de théorie creuse.",
       avatar: "FE",
       stats: [
-        { val: "5",    label: "formations disponibles" },
+        { val: "6",    label: "formations disponibles" },
         { val: "100%", label: "méthodes testées en conditions réelles" },
         { val: "2026", label: "contenu à jour" }
       ]
@@ -44,13 +39,13 @@ const FORMATIONS = [
       { avant: "Ton blog reçoit 200 visites/mois sans conversions", apres: "Un flux constant de leads qualifiés depuis Google" },
       { avant: "Tu ne sais pas sur quels mots-clés te positionner", apres: "Une roadmap SEO claire avec des opportunités priorisées" },
       { avant: "Tu publies du contenu sans stratégie", apres: "Un système de content clusters qui s'auto-renforce" },
-      { avant: "Ton CAC pub monte, ton organique stagne", apres: "SEO = canal d'acquisition prévisible et rentable" }
+      { avant: "Ton CAC pub monte, ton organique stagne", apres: "Un canal organique mesurable qui réduit progressivement la dépendance à la publicité" }
     ],
 
     programme: [
       {
         titre: "Fondamentaux SEO pour SaaS",
-        duree: "45 min",
+        duree: "30 min",
         lecons: [
           "Différences SEO SaaS vs SEO classique",
           "Comprendre le funnel d'acquisition organique",
@@ -59,7 +54,7 @@ const FORMATIONS = [
       },
       {
         titre: "Recherche de mots-clés intent-driven",
-        duree: "55 min",
+        duree: "35 min",
         lecons: [
           "Identifier les mots-clés à forte intention d'achat",
           "Competitor gap analysis avec Semrush / Ahrefs",
@@ -68,7 +63,7 @@ const FORMATIONS = [
       },
       {
         titre: "Architecture de contenu & Content Clusters",
-        duree: "50 min",
+        duree: "30 min",
         lecons: [
           "Créer des clusters thématiques efficaces",
           "Pages piliers vs pages satellites",
@@ -77,7 +72,7 @@ const FORMATIONS = [
       },
       {
         titre: "SEO technique pour SaaS",
-        duree: "45 min",
+        duree: "25 min",
         lecons: [
           "Core Web Vitals & performance",
           "Gestion des pages /app (no-index, canonical)",
@@ -86,7 +81,7 @@ const FORMATIONS = [
       },
       {
         titre: "Link Building B2B",
-        duree: "60 min",
+        duree: "35 min",
         lecons: [
           "Stratégie de guest posting B2B",
           "Digital PR et relations presse tech",
@@ -95,7 +90,7 @@ const FORMATIONS = [
       },
       {
         titre: "Contenu SEO qui convertit",
-        duree: "50 min",
+        duree: "30 min",
         lecons: [
           "Rédiger pour Google ET pour les ICP",
           "Landing pages SEO haute conversion",
@@ -104,7 +99,7 @@ const FORMATIONS = [
       },
       {
         titre: "Mesure & Reporting SEO",
-        duree: "40 min",
+        duree: "25 min",
         lecons: [
           "Setup Google Search Console avancé",
           "Tableaux de bord Data Studio",
@@ -113,7 +108,7 @@ const FORMATIONS = [
       },
       {
         titre: "Automatisation & IA au service du SEO",
-        duree: "45 min",
+        duree: "30 min",
         lecons: [
           "Générateurs de briefs avec GPT-4",
           "Détection d'opportunités SEO automatisée",
@@ -193,22 +188,19 @@ const FORMATIONS = [
   {
     id: "ia-freelance",
     slug: "ia-freelance",
+    apercu: "apercu-ia-freelance.html",
     titre: "IA pour Freelance",
     sousTitre: "Automatise ta prospection, accélère tes livrables, justifie des tarifs plus élevés",
-    description: "Tu travailles en indépendant et tu veux faire plus avec le même temps ? Cette formation te montre comment intégrer l'IA dans ton quotidien : écrire plus vite, prospecter sans effort, livrer mieux — et donc facturer plus. De ChatGPT aux outils d'automatisation, tout est expliqué pas à pas.",
+    description: "Tu travailles en indépendant et tu veux faire plus avec le même temps ? Cette formation te montre comment intégrer l'IA dans ton quotidien : écrire plus vite, personnaliser ta prospection, livrer mieux — et construire une offre plus solide. De ChatGPT aux outils d'automatisation, tout est expliqué pas à pas.",
     icon: "🤖",
     categorie: "Intelligence Artificielle",
     niveau: "Débutant à Intermédiaire",
-    duree: "8h",
-    modules: 9,
-    etudiants: 2100,
-    note: 4.8,
-    avis: 487,
+    duree: "3h",
+    modules: 10,
+    chapitres: 10,
     prix: 49,
-    prixAncien: 97,
-    badge: "popular",
-    couleur: "linear-gradient(135deg, rgba(34,211,238,0.3), rgba(99,102,241,0.2))",
-    couleurGlow: "rgba(34,211,238,0.5)",
+    couleur: "linear-gradient(135deg, rgba(26,158,143,0.3), rgba(19,124,114,0.2))",
+    couleurGlow: "rgba(26,158,143,0.5)",
 
     formateur: {
       nom: "L'équipe FormaElan",
@@ -216,7 +208,7 @@ const FORMATIONS = [
       bio: "Cette formation est créée par des praticiens qui appliquent ces méthodes au quotidien. Chaque module est construit à partir d'expériences terrain concrètes, pas de théorie creuse.",
       avatar: "FE",
       stats: [
-        { val: "5",    label: "formations disponibles" },
+        { val: "6",    label: "formations disponibles" },
         { val: "100%", label: "méthodes testées en conditions réelles" },
         { val: "2026", label: "contenu à jour" }
       ]
@@ -225,14 +217,14 @@ const FORMATIONS = [
     avantApres: [
       { avant: "Tu passes 3h à rédiger un rapport client", apres: "Le même rapport en 30 min, de meilleure qualité" },
       { avant: "La prospection te prend 2h par semaine", apres: "Messages personnalisés générés et envoyés automatiquement" },
-      { avant: "Tu n'oses pas augmenter tes tarifs", apres: "Tu proposes une offre 'IA-powered' qui justifie +40%" },
+      { avant: "Tu n'oses pas augmenter tes tarifs", apres: "Tu proposes une offre plus cadrée, plus rapide à livrer, et plus facile à défendre commercialement" },
       { avant: "Tu travailles 50h/semaine pour joindre les deux bouts", apres: "35h/semaine avec plus de clients et de revenus" }
     ],
 
     programme: [
       {
         titre: "L'IA en 2026 — ce qui change pour les freelances",
-        duree: "40 min",
+        duree: "20 min",
         lecons: [
           "État des lieux des outils IA accessibles",
           "Ce que l'IA ne remplacera PAS (ton avantage)",
@@ -241,7 +233,7 @@ const FORMATIONS = [
       },
       {
         titre: "Maîtriser ChatGPT & Claude",
-        duree: "70 min",
+        duree: "30 min",
         lecons: [
           "Prompt engineering pour des résultats professionnels",
           "Créer des Custom GPTs pour son activité",
@@ -250,7 +242,7 @@ const FORMATIONS = [
       },
       {
         titre: "Automatiser sa prospection",
-        duree: "55 min",
+        duree: "25 min",
         lecons: [
           "IA pour rédiger des messages de prospection personnalisés",
           "Enrichissement automatique de leads",
@@ -259,7 +251,7 @@ const FORMATIONS = [
       },
       {
         titre: "Livrer plus vite, livrer mieux",
-        duree: "60 min",
+        duree: "25 min",
         lecons: [
           "Créer des templates IA pour tes livrables récurrents",
           "Révision et amélioration de contenu avec l'IA",
@@ -268,7 +260,7 @@ const FORMATIONS = [
       },
       {
         titre: "IA pour la création visuelle",
-        duree: "55 min",
+        duree: "20 min",
         lecons: [
           "Midjourney & DALL-E pour tes projets clients",
           "Générer des maquettes et wireframes avec l'IA",
@@ -277,7 +269,7 @@ const FORMATIONS = [
       },
       {
         titre: "Automatisations no-code (Make / n8n)",
-        duree: "65 min",
+        duree: "25 min",
         lecons: [
           "Créer tes premiers workflows automatisés",
           "Connecter ton CRM, email, facturation",
@@ -286,7 +278,7 @@ const FORMATIONS = [
       },
       {
         titre: "Positionner ton offre IA",
-        duree: "45 min",
+        duree: "15 min",
         lecons: [
           "Comment valoriser l'IA dans ton tarif",
           "Construire une offre 'IA-powered'",
@@ -294,17 +286,17 @@ const FORMATIONS = [
         ]
       },
       {
-        titre: "Développer un revenu passif avec l'IA",
-        duree: "50 min",
+        titre: "Créer des actifs numériques avec l'IA",
+        duree: "20 min",
         lecons: [
-          "Vendre des templates, prompts, automatisations",
+          "Vendre des templates, prompts ou automatisations utiles",
           "Créer un micro-SaaS avec l'IA",
           "Monétiser ton expertise IA"
         ]
       },
       {
         titre: "Veille & évolution — rester à la pointe",
-        duree: "30 min",
+        duree: "15 min",
         lecons: [
           "Sources de veille IA pour freelances",
           "Tester de nouveaux outils efficacement",
@@ -351,7 +343,7 @@ const FORMATIONS = [
       },
       {
         q: "Les outils IA ne vont-ils pas remplacer les freelances ?",
-        r: "Non — mais les freelances qui utilisent l'IA vont remplacer ceux qui ne l'utilisent pas. C'est exactement ce que cette formation t'enseigne : rester irremplaçable."
+        r: "L'IA ne remplace pas automatiquement un bon freelance, mais elle change les attentes clients : vitesse, clarté, qualité de livrable. Cette formation t'aide à garder ton expertise au centre tout en utilisant l'IA comme levier."
       },
       {
         q: "Est-ce que ça marche pour mon métier spécifique ?",
@@ -394,14 +386,9 @@ const FORMATIONS = [
     icon: "✍️",
     categorie: "Rédaction qui vend",
     niveau: "Débutant à Avancé",
-    duree: "7h",
+    duree: "3h30",
     modules: 7,
-    etudiants: 1850,
-    note: 4.9,
-    avis: 421,
     prix: 29,
-    prixAncien: 59,
-    badge: "new",
     couleur: "linear-gradient(135deg, rgba(245,158,11,0.3), rgba(239,68,68,0.2))",
     couleurGlow: "rgba(245,158,11,0.5)",
 
@@ -411,7 +398,7 @@ const FORMATIONS = [
       bio: "Cette formation est créée par des praticiens qui appliquent ces méthodes au quotidien. Chaque module est construit à partir d'expériences terrain concrètes, pas de théorie creuse.",
       avatar: "FE",
       stats: [
-        { val: "5",    label: "formations disponibles" },
+        { val: "6",    label: "formations disponibles" },
         { val: "100%", label: "méthodes testées en conditions réelles" },
         { val: "2026", label: "contenu à jour" }
       ]
@@ -427,7 +414,7 @@ const FORMATIONS = [
     programme: [
       {
         titre: "Psychologie de l'achat en ligne",
-        duree: "55 min",
+        duree: "30 min",
         lecons: [
           "Les 7 déclencheurs d'achat universels",
           "Biais cognitifs au service du copy",
@@ -436,7 +423,7 @@ const FORMATIONS = [
       },
       {
         titre: "Fiches produits qui convertissent",
-        duree: "65 min",
+        duree: "35 min",
         lecons: [
           "La structure PAS et FAB pour les produits",
           "Titres, bullets points et descriptions irrésistibles",
@@ -445,7 +432,7 @@ const FORMATIONS = [
       },
       {
         titre: "Emails e-commerce haute performance",
-        duree: "60 min",
+        duree: "35 min",
         lecons: [
           "Séquence de bienvenue qui vend",
           "Abandon panier : récupérer 15%+ de ventes perdues",
@@ -454,7 +441,7 @@ const FORMATIONS = [
       },
       {
         titre: "Landing pages & pages catégories",
-        duree: "55 min",
+        duree: "30 min",
         lecons: [
           "Structure d'une landing page qui convertit",
           "Hero section, preuves sociales, CTA",
@@ -463,7 +450,7 @@ const FORMATIONS = [
       },
       {
         titre: "Copywriting pour les publicités",
-        duree: "60 min",
+        duree: "30 min",
         lecons: [
           "Hooks Meta Ads qui stoppent le scroll",
           "Google Shopping : titres et descriptions",
@@ -472,7 +459,7 @@ const FORMATIONS = [
       },
       {
         titre: "Storytelling & branding éditorial",
-        duree: "50 min",
+        duree: "25 min",
         lecons: [
           "Construire une voix de marque cohérente",
           "Story produit qui crée l'attachement",
@@ -481,7 +468,7 @@ const FORMATIONS = [
       },
       {
         titre: "Mesurer et optimiser son copy",
-        duree: "35 min",
+        duree: "25 min",
         lecons: [
           "KPIs du copywriter e-commerce",
           "Interpréter les heatmaps et sessions recordings",
@@ -567,18 +554,13 @@ const FORMATIONS = [
     slug: "seo-ecom",
     titre: "SEO pour E-commerce",
     sousTitre: "Référence ta boutique sur Google et attire des clients sans payer chaque clic",
-    description: "Ta boutique vit sous perfusion de pub payante ? Cette formation t'explique comment faire apparaître tes produits sur Google gratuitement — pages produits, catégories, technique, contenu. Compatible Shopify, WooCommerce et PrestaShop.",
+    description: "Ta boutique dépend trop de la publicité payante ? Cette formation t'explique comment construire une visibilité organique sur Google — pages produits, catégories, technique, contenu. Compatible Shopify, WooCommerce et PrestaShop.",
     icon: "🛒",
     categorie: "Référencement e-commerce",
     niveau: "Intermédiaire",
-    duree: "7h30",
+    duree: "4h",
     modules: 8,
-    etudiants: 980,
-    note: 4.7,
-    avis: 198,
     prix: 39,
-    prixAncien: 79,
-    badge: "new",
     couleur: "linear-gradient(135deg, rgba(34,197,94,0.3), rgba(16,185,129,0.2))",
     couleurGlow: "rgba(34,197,94,0.5)",
 
@@ -588,7 +570,7 @@ const FORMATIONS = [
       bio: "Cette formation est créée par des praticiens qui appliquent ces méthodes au quotidien. Chaque module est construit à partir d'expériences terrain concrètes, pas de théorie creuse.",
       avatar: "FE",
       stats: [
-        { val: "5",    label: "formations disponibles" },
+        { val: "6",    label: "formations disponibles" },
         { val: "100%", label: "méthodes testées en conditions réelles" },
         { val: "2026", label: "contenu à jour" }
       ]
@@ -604,7 +586,7 @@ const FORMATIONS = [
     programme: [
       {
         titre: "Spécificités SEO e-commerce",
-        duree: "45 min",
+        duree: "25 min",
         lecons: [
           "SEO e-commerce vs SEO blog : les différences clés",
           "Auditer une boutique e-commerce",
@@ -613,7 +595,7 @@ const FORMATIONS = [
       },
       {
         titre: "Mots-clés e-commerce",
-        duree: "55 min",
+        duree: "30 min",
         lecons: [
           "Identifier les mots-clés transactionnels",
           "Analyse de la concurrence e-commerce",
@@ -622,7 +604,7 @@ const FORMATIONS = [
       },
       {
         titre: "Optimisation pages produits",
-        duree: "60 min",
+        duree: "35 min",
         lecons: [
           "Titre, meta description, H1 parfaits",
           "Descriptions produits SEO-friendly",
@@ -631,7 +613,7 @@ const FORMATIONS = [
       },
       {
         titre: "SEO des pages catégories",
-        duree: "55 min",
+        duree: "30 min",
         lecons: [
           "Architecture de catégories optimisée",
           "Textes de catégories qui rankent",
@@ -640,7 +622,7 @@ const FORMATIONS = [
       },
       {
         titre: "SEO Technique Shopify & WooCommerce",
-        duree: "65 min",
+        duree: "35 min",
         lecons: [
           "Vitesse de chargement : étapes clés",
           "Schema Markup pour les produits",
@@ -649,7 +631,7 @@ const FORMATIONS = [
       },
       {
         titre: "Contenu éditorial e-commerce",
-        duree: "50 min",
+        duree: "30 min",
         lecons: [
           "Blog e-commerce : sujets qui attirent les acheteurs",
           "Guides d'achat et comparatifs",
@@ -658,7 +640,7 @@ const FORMATIONS = [
       },
       {
         titre: "Link Building e-commerce",
-        duree: "55 min",
+        duree: "30 min",
         lecons: [
           "Obtenir des backlinks sans budget",
           "Partenariats influenceurs et affiliés",
@@ -667,7 +649,7 @@ const FORMATIONS = [
       },
       {
         titre: "Reporting & Optimisation continue",
-        duree: "45 min",
+        duree: "25 min",
         lecons: [
           "Search Console pour l'e-commerce",
           "Google Analytics 4 : tracking e-commerce",
@@ -753,19 +735,14 @@ const FORMATIONS = [
     slug: "optimiser-ia",
     titre: "Optimiser son IA",
     sousTitre: "Prompts avancés, choix de modèles, workflows — tire le vrai potentiel de l'IA au quotidien",
-    description: "Tu utilises ChatGPT ou Claude mais tu obtiens des résultats décevants ? Cette formation t'explique pourquoi — et comment y remédier. Comment formuler tes demandes, choisir le bon outil, construire des habitudes qui te font gagner du temps chaque semaine. En 5 heures.",
+    description: "Tu utilises ChatGPT ou Claude mais tu obtiens des résultats décevants ? Cette formation t'explique pourquoi — et comment y remédier. Comment formuler tes demandes, choisir le bon outil, construire des habitudes qui te font gagner du temps chaque semaine. En 3h30.",
     icon: "⚡",
     categorie: "Intelligence Artificielle",
     niveau: "Débutant à Intermédiaire",
-    duree: "5h10",
+    duree: "3h30",
     modules: 7,
-    etudiants: 870,
-    note: 4.8,
-    avis: 156,
     prix: 39,
-    prixAncien: 79,
-    badge: "new",
-    couleur: "linear-gradient(135deg, rgba(26,158,143,0.3), rgba(99,102,241,0.2))",
+    couleur: "linear-gradient(135deg, rgba(26,158,143,0.3), rgba(19,124,114,0.2))",
     couleurGlow: "rgba(26,158,143,0.5)",
 
     formateur: {
@@ -774,7 +751,7 @@ const FORMATIONS = [
       bio: "Cette formation est créée par des praticiens qui appliquent ces méthodes au quotidien. Chaque module est construit à partir d'expériences terrain concrètes, pas de théorie creuse.",
       avatar: "FE",
       stats: [
-        { val: "5",    label: "formations disponibles" },
+        { val: "6",    label: "formations disponibles" },
         { val: "100%", label: "méthodes testées en conditions réelles" },
         { val: "2026", label: "contenu à jour" }
       ]
@@ -790,7 +767,7 @@ const FORMATIONS = [
     programme: [
       {
         titre: "Pourquoi tu sous-exploites ton IA",
-        duree: "35 min",
+        duree: "25 min",
         lecons: [
           "Les 5 erreurs que font 90% des utilisateurs",
           "Ce que l'IA peut (et ne peut pas) faire pour toi",
@@ -799,7 +776,7 @@ const FORMATIONS = [
       },
       {
         titre: "Tokens & contexte",
-        duree: "45 min",
+        duree: "30 min",
         lecons: [
           "Qu'est-ce qu'un token ? Impact sur les coûts et la qualité",
           "La fenêtre de contexte : ce que l'IA voit et oublie",
@@ -808,7 +785,7 @@ const FORMATIONS = [
       },
       {
         titre: "Prompt Engineering — les bases",
-        duree: "55 min",
+        duree: "35 min",
         lecons: [
           "Le cadre RCTF : Rôle, Contexte, Tâche, Format",
           "Few-shot prompting : calibrer ton style avec des exemples",
@@ -817,7 +794,7 @@ const FORMATIONS = [
       },
       {
         titre: "Prompt Engineering — avancé",
-        duree: "50 min",
+        duree: "35 min",
         lecons: [
           "System prompts et instructions persistantes",
           "Prompts itératifs : affiner en plusieurs passes",
@@ -826,7 +803,7 @@ const FORMATIONS = [
       },
       {
         titre: "Choisir le bon modèle",
-        duree: "40 min",
+        duree: "25 min",
         lecons: [
           "GPT-4o vs Claude vs Gemini : forces et limites réelles",
           "Modèles légers vs puissants : arbre de décision",
@@ -835,7 +812,7 @@ const FORMATIONS = [
       },
       {
         titre: "Réduire ses coûts, optimiser son workflow",
-        duree: "45 min",
+        duree: "30 min",
         lecons: [
           "Custom GPTs et Projects Claude : instructions persistantes",
           "Construire sa bibliothèque de prompts personnels",
@@ -844,7 +821,7 @@ const FORMATIONS = [
       },
       {
         titre: "Ton système IA personnel",
-        duree: "40 min",
+        duree: "30 min",
         lecons: [
           "Construire son fichier de contexte personnel",
           "Veille IA efficace : 15 min/semaine suffisent",
@@ -930,18 +907,13 @@ const FORMATIONS = [
     slug: "seo-createurs",
     titre: "SEO pour Créateurs de Contenu",
     sousTitre: "Deviens visible sur Google, YouTube et Pinterest — trafic organique sans pub",
-    description: "Tu crées du contenu — articles, vidéos, publications — mais tu dois payer la pub pour attirer des visiteurs ? Cette formation t'apprend à être trouvé gratuitement sur Google, YouTube et Pinterest, en même temps, avec une seule stratégie.",
+    description: "Tu crées du contenu — articles, vidéos, publications — mais ta visibilité dépend trop des algorithmes sociaux ou de la publicité ? Cette formation t'apprend à être trouvé sur Google, YouTube et Pinterest avec une stratégie organique cohérente.",
     icon: "🎬",
     categorie: "Visibilité multi-plateforme",
     niveau: "Débutant à Intermédiaire",
-    duree: "7h",
+    duree: "3h",
     modules: 8,
-    etudiants: 0,
-    note: 0,
-    avis: 0,
     prix: 49,
-    prixAncien: 97,
-    badge: "new",
     img: "seo-createurs.svg",
     couleur: "linear-gradient(135deg, rgba(236,72,153,0.3), rgba(139,92,246,0.2))",
     couleurGlow: "rgba(236,72,153,0.5)",
@@ -961,14 +933,14 @@ const FORMATIONS = [
     avantApres: [
       { avant: "Tu publies du contenu mais personne ne te trouve", apres: "Un flux constant de trafic qualifié depuis 3 moteurs de recherche" },
       { avant: "Tes vidéos YouTube ne rankent pas malgré le travail investi", apres: "Une méthode d'optimisation YouTube reproductible sur chaque vidéo" },
-      { avant: "Tu crées du contenu sans stratégie cross-plateforme", apres: "Un contenu pilier décliné en 3 formats — 3× plus de portée, même effort" },
-      { avant: "Ton seul canal d'acquisition est la pub ou les réseaux sociaux", apres: "SEO Google + YouTube + Pinterest = trafic organique prévisible et gratuit" }
+      { avant: "Tu crées du contenu sans stratégie cross-plateforme", apres: "Un contenu pilier décliné en plusieurs formats, avec une méthode de réutilisation claire" },
+      { avant: "Ton seul canal d'acquisition est la pub ou les réseaux sociaux", apres: "SEO Google + YouTube + Pinterest = des sources de trafic organique que tu peux suivre et améliorer" }
     ],
 
     programme: [
       {
         titre: "Le créateur de contenu et le SEO en 2026",
-        duree: "40 min",
+        duree: "20 min",
         lecons: [
           "Les 3 moteurs de recherche du créateur (Google, YouTube, Pinterest)",
           "Pourquoi le SEO SaaS et e-commerce ne s'appliquent pas directement",
@@ -977,7 +949,7 @@ const FORMATIONS = [
       },
       {
         titre: "Recherche de mots-clés multi-plateforme",
-        duree: "55 min",
+        duree: "25 min",
         lecons: [
           "Keywords Google vs YouTube vs Pinterest : logiques différentes",
           "Outils gratuits : Google Trends, TubeBuddy Free, Pinterest Trends",
@@ -986,7 +958,7 @@ const FORMATIONS = [
       },
       {
         titre: "SEO Google pour créateurs",
-        duree: "60 min",
+        duree: "25 min",
         lecons: [
           "Optimiser ton site et tes pages de vente de formations",
           "Blog de créateur : articles qui attirent ET qui convertissent",
@@ -995,7 +967,7 @@ const FORMATIONS = [
       },
       {
         titre: "YouTube SEO",
-        duree: "65 min",
+        duree: "30 min",
         lecons: [
           "Titres, descriptions et tags : les signaux qui rankent",
           "Watch time, engagement et algorithme expliqués simplement",
@@ -1004,7 +976,7 @@ const FORMATIONS = [
       },
       {
         titre: "Pinterest SEO",
-        duree: "50 min",
+        duree: "20 min",
         lecons: [
           "Boards optimisés et Rich Pins pour les formations en ligne",
           "Titres et descriptions d'épingles orientés recherche",
@@ -1013,7 +985,7 @@ const FORMATIONS = [
       },
       {
         titre: "Contenu qui convertit — du trafic aux ventes",
-        duree: "55 min",
+        duree: "25 min",
         lecons: [
           "Le funnel de contenu créateur : curiosité → confiance → achat",
           "Articles, vidéos et épingles orientés conversion sans forcer la vente",
@@ -1022,16 +994,16 @@ const FORMATIONS = [
       },
       {
         titre: "Synergie inter-plateformes",
-        duree: "45 min",
+        duree: "20 min",
         lecons: [
           "Créer un contenu pilier et le décliner sur Google, YouTube, Pinterest",
-          "Repurposing intelligent : 1 idée = 3 formats = 3× plus de portée",
+          "Repurposing intelligent : 1 idée déclinée en article, vidéo et épingle",
           "Calendrier éditorial cross-plateforme reproductible"
         ]
       },
       {
         titre: "Mesure et optimisation multi-plateforme",
-        duree: "40 min",
+        duree: "15 min",
         lecons: [
           "GSC + YouTube Analytics + Pinterest Analytics : KPIs essentiels",
           "Identifier les contenus qui convertissent vs. ceux qui attirent seulement",
@@ -1044,7 +1016,7 @@ const FORMATIONS = [
       "Ranker sur Google avec un site de formations et un blog stratégique",
       "Optimiser chaque vidéo YouTube pour l'algorithme et la conversion",
       "Utiliser Pinterest comme canal d'acquisition organique pour ta niche",
-      "Décliner un contenu pilier sur 3 plateformes sans effort supplémentaire",
+      "Décliner un contenu pilier sur 3 plateformes avec un workflow clair",
       "Mesurer le ROI de ton SEO multi-plateforme",
       "Construire un système d'acquisition organique durable sans pub"
     ],

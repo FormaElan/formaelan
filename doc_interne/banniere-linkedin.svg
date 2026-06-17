@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1584" height="396" viewBox="0 0 1584 396">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0D1B3E"/>
+      <stop offset="65%" style="stop-color:#0e2a40"/>
+      <stop offset="100%" style="stop-color:#0f3a38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A9E8F;stop-opacity:0.22"/>
+      <stop offset="100%" style="stop-color:#137C72;stop-opacity:0.18"/>
+    </linearGradient>
+    <linearGradient id="accentLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1A9E8F"/>
+      <stop offset="100%" style="stop-color:#F26C3A"/>
+    </linearGradient>
+    <linearGradient id="tagConnector" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F26C3A"/>
+      <stop offset="50%" style="stop-color:#1A9E8F"/>
+      <stop offset="100%" style="stop-color:#1A9E8F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1584" height="396" fill="url(#bgGrad)"/>
+
+  <!-- Texture subtile — lignes diagonales droite -->
+  <g opacity="0.04">
+    <line x1="900" y1="-50" x2="1650" y2="500" stroke="#1A9E8F" stroke-width="1.5"/>
+    <line x1="950" y1="-50" x2="1700" y2="500" stroke="#1A9E8F" stroke-width="1.5"/>
+    <line x1="1000" y1="-50" x2="1750" y2="500" stroke="#1A9E8F" stroke-width="1.5"/>
+    <line x1="1050" y1="-50" x2="1800" y2="500" stroke="#1A9E8F" stroke-width="1.5"/>
+    <line x1="1100" y1="-50" x2="1850" y2="500" stroke="#1A9E8F" stroke-width="1.5"/>
+    <line x1="1150" y1="-50" x2="1900" y2="500" stroke="#1A9E8F" stroke-width="1.5"/>
+    <line x1="1200" y1="-50" x2="1950" y2="500" stroke="#1A9E8F" stroke-width="1.5"/>
+  </g>
+
+  <!-- ══ ZONE GAUCHE : LOGO ══ -->
+  <!-- Logo FormaElan — wordmark -->
+  <text x="60" y="86" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="36" font-weight="700" fill="#1A9E8F" letter-spacing="-0.5">Forma</text>
+  <text x="192" y="86" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="36" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">Elan</text>
+
+  <!-- ══ ZONE CENTRE : ACCROCHE + TITRE ══ -->
+  <!-- Point orange + accroche -->
+  <circle cx="62" cy="144" r="6" fill="#F26C3A"/>
+  <text x="80" y="150" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="500" fill="#F26C3A" letter-spacing="0.3">Formations courtes et concrètes</text>
+
+  <!-- Titre principal -->
+  <text x="60" y="214" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="54" font-weight="800" fill="#FFFFFF" letter-spacing="-1">SEO, IA, copywriting :</text>
+  <text x="60" y="278" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="54" font-weight="800" fill="#1A9E8F" letter-spacing="-1">apprends ce qui sert vraiment.</text>
+
+  <!-- Description -->
+  <text x="60" y="320" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#FFFFFF" opacity="0.65">Des chapitres pratiques, des exercices applicables,</text>
+  <text x="60" y="342" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#FFFFFF" opacity="0.65">un format pensé pour les indépendants.</text>
+
+  <!-- Tags -->
+  <!-- SEO pill -->
+  <rect x="60" y="360" width="66" height="26" rx="13" fill="#0D1B3E" stroke="#1A9E8F" stroke-width="1.2" opacity="0.9"/>
+  <text x="93" y="377" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#1A9E8F" text-anchor="middle">SEO</text>
+
+  <!-- Connecteur -->
+  <rect x="130" y="371" width="20" height="2" rx="1" fill="url(#tagConnector)" opacity="0.6"/>
+
+  <!-- IA pill -->
+  <rect x="154" y="360" width="48" height="26" rx="13" fill="#0D1B3E" stroke="#F26C3A" stroke-width="1.2" opacity="0.9"/>
+  <text x="178" y="377" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#F26C3A" text-anchor="middle">IA</text>
+
+  <!-- Connecteur -->
+  <rect x="206" y="371" width="20" height="2" rx="1" fill="#1A9E8F" opacity="0.6"/>
+
+  <!-- Copywriting pill -->
+  <rect x="230" y="360" width="118" height="26" rx="13" fill="#0D1B3E" stroke="#1A9E8F" stroke-width="1.2" opacity="0.9"/>
+  <text x="289" y="377" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#1A9E8F" text-anchor="middle">Copywriting</text>
+
+  <!-- ══ ZONE DROITE : CARTE INFO ══ -->
+  <!-- Carte fond -->
+  <rect x="1250" y="50" width="290" height="280" rx="12" fill="url(#cardGrad)" stroke="#1A9E8F" stroke-width="1" stroke-opacity="0.3"/>
+
+  <!-- FORMAT -->
+  <text x="1280" y="105" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="#1A9E8F" letter-spacing="2">FORMAT</text>
+  <text x="1280" y="130" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" fill="#FFFFFF">3 à 4 h par formation</text>
+  <!-- Séparateur -->
+  <rect x="1280" y="148" width="230" height="1" fill="#1A9E8F" opacity="0.2"/>
+
+  <!-- MÉTHODE -->
+  <text x="1280" y="178" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="#1A9E8F" letter-spacing="2">MÉTHODE</text>
+  <text x="1280" y="203" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" fill="#FFFFFF">1 chapitre = 1 compétence</text>
+  <!-- Séparateur -->
+  <rect x="1280" y="221" width="230" height="1" fill="#1A9E8F" opacity="0.2"/>
+
+  <!-- ACCÈS -->
+  <text x="1280" y="251" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="#1A9E8F" letter-spacing="2">ACCÈS</text>
+  <text x="1280" y="276" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" fill="#FFFFFF">100 % en ligne, à vie</text>
+
+  <!-- formaelan.fr -->
+  <text x="1524" y="352" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="400" fill="#ffffff" opacity="0.35" text-anchor="end">formaelan.fr</text>
+
+  <!-- Barre accent bas -->
+  <rect x="0" y="390" width="1584" height="6" fill="url(#accentLine)" rx="0"/>
+</svg>

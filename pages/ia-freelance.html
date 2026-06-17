@@ -4,23 +4,48 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="pageTitle">Formation — FormaElan</title>
-  <meta name="description" id="pageDesc" content="Formation FormaElan" />
-  <!-- Canonical -->
-  <link rel="canonical" id="pageCanonical" href="https://formaelan.fr/pages/" />
-  <!-- Open Graph -->
-  <meta property="og:type"        content="website" />
+  <title id="pageTitle">Formation IA pour Freelance | Prospection et productivité - FormaElan</title>
+  <meta name="description" id="pageDesc" content="Intègre l’IA dans ton activité freelance : prompts, prospection personnalisée, livrables, automatisations no-code, offres IA et veille." />
+  <link rel="canonical" id="pageCanonical" href="https://formaelan.fr/pages/ia-freelance.html" />
+  <meta property="og:type"        content="product" />
   <meta property="og:site_name"   content="FormaElan" />
   <meta property="og:locale"      content="fr_FR" />
-  <meta property="og:url"         id="ogUrl"   content="" />
-  <meta property="og:title"       id="ogTitle" content="" />
-  <meta property="og:description" id="ogDesc"  content="" />
-  <meta property="og:image"       id="ogImage" content="" />
-  <!-- Twitter Card -->
+  <meta property="og:url"         id="ogUrl"   content="https://formaelan.fr/pages/ia-freelance.html" />
+  <meta property="og:title"       id="ogTitle" content="Formation IA pour Freelance | Prospection et productivité - FormaElan" />
+  <meta property="og:description" id="ogDesc"  content="Intègre l’IA dans ton activité freelance : prompts, prospection personnalisée, livrables, automatisations no-code, offres IA et veille." />
+  <meta property="og:image"       id="ogImage" content="https://formaelan.fr/img/formations/ia-freelance.jpg" />
   <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       id="twTitle" content="" />
-  <meta name="twitter:description" id="twDesc"  content="" />
-  <meta name="twitter:image"       id="twImage" content="" />
+  <meta name="twitter:title"       id="twTitle" content="Formation IA pour Freelance | Prospection et productivité - FormaElan" />
+  <meta name="twitter:description" id="twDesc"  content="Intègre l’IA dans ton activité freelance : prompts, prospection personnalisée, livrables, automatisations no-code, offres IA et veille." />
+  <meta name="twitter:image"       id="twImage" content="https://formaelan.fr/img/formations/ia-freelance.jpg" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Formation IA pour Freelance",
+  "description": "Intègre l’IA dans ton activité freelance : prompts, prospection personnalisée, livrables, automatisations no-code, offres IA et veille.",
+  "provider": {
+    "@type": "Organization",
+    "name": "FormaElan",
+    "url": "https://formaelan.fr/"
+  },
+  "url": "https://formaelan.fr/pages/ia-freelance.html",
+  "image": "https://formaelan.fr/img/formations/ia-freelance.jpg",
+  "inLanguage": "fr-FR",
+  "courseMode": "online",
+  "educationalLevel": "Débutant à intermédiaire",
+  "timeRequired": "PT3H",
+  "numberOfCredits": 10,
+  "about": "Intelligence artificielle",
+  "offers": {
+    "@type": "Offer",
+    "price": "49",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "url": "https://formaelan.fr/pages/ia-freelance.html"
+  }
+}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
@@ -249,6 +274,11 @@
           <button id="btnAcheterHero" class="btn btn-primary btn-lg">🔒 Accéder maintenant</button>
           <a href="#programme" class="btn btn-secondary">Voir le programme ↓</a>
         </div>
+        <p style="margin-top:0.9rem;font-size:0.85rem;">
+          <a href="apercu-ia-freelance.html" style="color:var(--cyan);font-weight:600;text-decoration:none;">
+            Voir un extrait gratuit avant d'acheter →
+          </a>
+        </p>
       </div>
 
       <!-- Droite : card paiement sticky -->
@@ -483,21 +513,6 @@
     } else {
 
       // ── 1. Meta & titres ──────────────────────────────────
-      document.getElementById('pageTitle').textContent       = `${f.titre} — FormaElan`;
-      document.getElementById('pageDesc').content            = f.sousTitre;
-
-      // ── SEO : canonical + Open Graph + Twitter ────────────
-      const BASE    = 'https://formaelan.fr';
-      const pageUrl = `${BASE}/pages/${slug}.html`;
-      const ogImg   = `${BASE}/img/og-cover.png`;
-      document.getElementById('pageCanonical').href  = pageUrl;
-      document.getElementById('ogUrl').content       = pageUrl;
-      document.getElementById('ogTitle').content     = `${f.titre} — FormaElan`;
-      document.getElementById('ogDesc').content      = f.description;
-      document.getElementById('ogImage').content     = ogImg;
-      document.getElementById('twTitle').content     = `${f.titre} — FormaElan`;
-      document.getElementById('twDesc').content      = f.description;
-      document.getElementById('twImage').content     = ogImg;
 
       document.getElementById('breadcrumbTitre').textContent  = f.titre;
       document.getElementById('metaCategorie').textContent   = f.categorie;
@@ -506,29 +521,54 @@
       document.getElementById('formationIntro').textContent  = f.sousTitre;
       document.getElementById('metaDuree').textContent       = f.duree;
       document.getElementById('metaModules').textContent     = f.modules;
-      document.getElementById('metaEtudiants').textContent   = f.etudiants.toLocaleString('fr-FR');
-      document.getElementById('metaNoteRow').innerHTML       =
-        `⭐ <strong>${f.note}/5</strong> <span style="color:var(--text-secondary);font-size:.82rem;">(${f.avis} avis)</span>`;
+      const _metaEtu = document.getElementById('metaEtudiants');
+      if (_metaEtu) {
+        if (f.etudiants) {
+          _metaEtu.textContent = f.etudiants.toLocaleString('fr-FR');
+        } else {
+          _metaEtu.closest('.meta-item')?.remove();
+        }
+      }
+      const _metaNote = document.getElementById('metaNoteRow');
+      if (_metaNote) {
+        if (f.note) {
+          _metaNote.innerHTML = `⭐ <strong>${f.note}/5</strong> <span style="color:var(--text-secondary);font-size:.82rem;">(${f.avis} avis)</span>`;
+        } else {
+          _metaNote.closest('.meta-item')?.remove();
+        }
+      }
 
       // Hero couleur
       document.getElementById('formationHero').style.background =
         `linear-gradient(160deg, var(--bg-primary) 0%, var(--bg-secondary) 100%)`;
 
       // ── 2. Carte paiement ─────────────────────────────────
-      const disc = Math.round((1 - f.prix / f.prixAncien) * 100);
       ['', '2'].forEach(sfx => {
         const pm = document.getElementById('prixMain'  + sfx);
         const pa = document.getElementById('prixAncien'+ sfx);
         if (pm) pm.textContent = `${f.prix} €`;
-        if (pa) pa.textContent = `Prix original : ${f.prixAncien} €`;
+        if (pa) {
+          if (f.prixAncien) {
+            pa.textContent = `Prix original : ${f.prixAncien} €`;
+          } else {
+            pa.remove();
+          }
+        }
       });
-      document.getElementById('discountBadge').textContent =
-        `🎉 ${disc}% de réduction — Offre limitée`;
+      const _discBadge = document.getElementById('discountBadge');
+      if (_discBadge) {
+        if (f.prixAncien) {
+          const disc = Math.round((1 - f.prix / f.prixAncien) * 100);
+          _discBadge.textContent = `🎉 ${disc}% de réduction — Offre limitée`;
+        } else {
+          _discBadge.remove();
+        }
+      }
 
 
       const inclus = [
-        `${f.duree} de contenu vidéo HD`,
-        `${f.modules} modules structurés`,
+        `${f.duree} de contenu textuel (chapitres + exercices)`,
+        `${f.chapitres || f.modules} chapitres structurés`,
         'Accès à vie + mises à jour',
         f.certif ? 'Certificat de réussite' : null,
         ...(f.bonus || []),
@@ -656,9 +696,11 @@
 
       // ── 10. CTA bas ───────────────────────────────────────
       document.getElementById('ctaTitle').innerHTML =
-        `Prêt à maîtriser <span class="gradient-text">${f.titre}</span> ?`;
+        `Prêt à maîtriser <span class="gradient-text">${f.titre}</span>`;
       document.getElementById('ctaSubtitle').textContent =
-        `Rejoins ${f.etudiants.toLocaleString('fr-FR')} étudiants et commence dès aujourd'hui.`;
+        f.etudiants
+          ? `Rejoins ${f.etudiants.toLocaleString('fr-FR')} étudiants et commence dès aujourd'hui.`
+          : 'Commence dès aujourd\'hui — accès immédiat.';
 
       // ── 11. Onglets ───────────────────────────────────────
       document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -682,4 +724,3 @@
   </script>
 </body>
 </html>
-

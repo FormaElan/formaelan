@@ -12,6 +12,7 @@ const fs         = require('fs');
 const path       = require('path');
 const { Resend }   = require('resend');
 const rateLimit    = require('express-rate-limit');
+const helmet       = require('helmet');
 const stripe       = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -63,6 +64,36 @@ function requestBaseUrl(req) {
 function protectedChapterUrl(req, slug, chapter, sessionId, token) {
   const qs = new URLSearchParams({ session_id: sessionId, token });
   return `${requestBaseUrl(req)}/formation/${encodeURIComponent(slug)}/${encodeURIComponent(chapter)}?${qs}`;
+}
+
+function publicQuizUrl(slug, sessionId, token) {
+  const qs = new URLSearchParams({ slug, session_id: sessionId, token });
+  return `${siteUrl()}/quiz.html?${qs}`;
+}
+
+function maskEmail(email) {
+  const [name = '', domain = ''] = String(email || '').split('@');
+  if (!domain) return '(email invalide)';
+  const visible = name.slice(0, 2);
+  return `${visible}${'*'.repeat(Math.max(1, name.length - visible.length))}@${domain}`;
+}
+
+async function verifyPaidAccess(sessionId, token, slug) {
+  if (!sessionId || !token) {
+    const err = new Error('Acces acheteur requis.');
+    err.statusCode = 401;
+    throw err;
+  }
+
+  const access = await resolvePaidAccess(sessionId);
+
+  if (access.slug !== slug || access.token !== token) {
+    const err = new Error('Acces non autorise pour cette formation.');
+    err.statusCode = 403;
+    throw err;
+  }
+
+  return access;
 }
 
 // ── Stockage des tokens d'accès ─────────────────────────────
@@ -172,7 +203,7 @@ function rewriteProtectedChapterHtml(html, req, slug, sessionId, token) {
     .replace(/href="\.\.\/\.\.\/css\/formations\.css"/g, `href="${publicSite}/css/formations.css"`)
     .replace(/href="\.\.\/\.\.\/index\.html"/g, `href="${publicSite}/index.html"`)
     .replace(/href="\.\.\/\.\.\/pages\/([^"]+)"/g, `href="${publicSite}/pages/$1"`)
-    .replace(/href="\.\.\/\.\.\/quiz\.html\?slug=([^"]+)"/g, `href="${publicSite}/quiz.html?slug=$1"`)
+    .replace(/href="\.\.\/\.\.\/quiz\.html\?slug=([^"]+)"/g, (_match, quizSlug) => `href="${publicQuizUrl(quizSlug, sessionId, token)}"`)
     .replace(/href="(ch[0-9]+-[a-z0-9-]+\.html)"/g, `href="${protectedBase}$1?${qs}"`);
 }
 
@@ -256,6 +287,22 @@ async function findPaidCheckoutSessionByEmail(email, slug = '') {
 app.set('trust proxy', 1);
 
 // ── Middlewares ─────────────────────────────────────────────
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      baseUri: ["'self'"],
+      frameAncestors: ["'none'"],
+      objectSrc: ["'none'"],
+      scriptSrc: ["'none'"],
+      styleSrc: ["'self'", "'unsafe-inline'", siteUrl()],
+      imgSrc: ["'self'", 'data:', siteUrl()],
+      fontSrc: ["'self'", 'data:'],
+      formAction: ["'self'"],
+    },
+  },
+}));
+
 app.use(cors({
   origin: process.env.SITE_URL
     ? new URL(process.env.SITE_URL).origin
@@ -339,6 +386,14 @@ const checkoutLimiter = rateLimit({
   message: { error: 'Trop de tentatives. Réessaie dans une minute.' },
 });
 
+const adminLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Trop de tentatives admin. Reessaie plus tard.' },
+});
+
 // ── Créer une Stripe Checkout Session ───────────────────────
 // POST /create-checkout-session
 // Body : { slug: "optimiser-ia" }
@@ -372,16 +427,19 @@ app.post('/create-checkout-session', checkoutLimiter, async (req, res) => {
   }
 });
 
-app.post('/admin/resend-access', async (req, res) => {
+app.post('/admin/resend-access', adminLimiter, async (req, res) => {
   const adminSecret = process.env.ACCESS_ADMIN_SECRET;
   const providedSecret = req.headers['x-admin-secret'];
 
   if (!adminSecret || providedSecret !== adminSecret) {
+    console.warn(`[Admin] Tentative refusee depuis ${req.ip}`);
     return res.status(403).json({ error: 'Accès admin refusé.' });
   }
 
   const email = String(req.body.email || '').trim().toLowerCase();
   const slug = String(req.body.slug || '').trim();
+
+  console.log(`[Admin] Demande renvoi acces depuis ${req.ip} pour ${maskEmail(email)} ${slug || '(slug non precise)'}`);
 
   if (!email || !email.includes('@')) {
     return res.status(400).json({ error: 'Email client invalide.' });
@@ -462,11 +520,7 @@ app.get('/formation/:slug/:chapter', async (req, res) => {
   }
 
   try {
-    const access = await resolvePaidAccess(session_id);
-
-    if (access.slug !== slug || access.token !== token) {
-      return res.status(403).send('Accès non autorisé pour cette formation.');
-    }
+    await verifyPaidAccess(session_id, token, slug);
 
     const chapterPath = path.resolve(FORMATION_CONTENT_ROOT, slug, chapter);
     const slugRoot = path.resolve(FORMATION_CONTENT_ROOT, slug);
@@ -501,12 +555,12 @@ const certificatLimiter = rateLimit({
 
 // ── Envoyer un certificat par email ─────────────────────────
 // POST /send-certificate
-// Body : { email, nom, slug, score, date, certId }
+// Body : { email, nom, slug, score, date, certId, session_id, token }
 app.post('/send-certificate', certificatLimiter, async (req, res) => {
-  const { email, nom, slug, score, date, certId } = req.body;
+  const { email, nom, slug, score, date, certId, session_id, token } = req.body;
 
   // Validation
-  if (!email || !nom || !slug || score === undefined || !date || !certId) {
+  if (!email || !nom || !slug || score === undefined || !date || !certId || !session_id || !token) {
     return res.status(400).json({ error: 'Paramètres manquants.' });
   }
   if (!FORMATION_NAMES[slug]) {
@@ -514,6 +568,23 @@ app.post('/send-certificate', certificatLimiter, async (req, res) => {
   }
   if (Number(score) < 70) {
     return res.status(400).json({ error: 'Score insuffisant pour obtenir un certificat.' });
+  }
+
+  let access;
+  try {
+    access = await verifyPaidAccess(session_id, token, slug);
+  } catch (err) {
+    console.warn(`[Certif] Acces refuse depuis ${req.ip} pour ${slug || '(slug manquant)'} : ${err.message}`);
+    return res.status(err.statusCode || 500).json({ error: err.message || 'Acces impossible a verifier.' });
+  }
+
+  const normalizedEmail = String(email).trim().toLowerCase();
+  const purchaseEmail = String(access.email || '').trim().toLowerCase();
+
+  if (purchaseEmail && normalizedEmail !== purchaseEmail) {
+    return res.status(403).json({
+      error: "Utilise l'adresse email de l'achat pour recevoir le certificat.",
+    });
   }
 
   const formation = FORMATION_NAMES[slug];

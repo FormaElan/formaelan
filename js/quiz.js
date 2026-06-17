@@ -14,6 +14,8 @@
 
   const params   = new URLSearchParams(location.search);
   const slug     = params.get('slug');
+  const sessionId = params.get('session_id');
+  const accessToken = params.get('token');
   const app      = document.getElementById('quizApp');
 
   // ── Helpers ────────────────────────────────────────────────
@@ -35,6 +37,14 @@
     return new Date().toISOString().slice(0, 10);
   }
 
+  function accessQuery() {
+    return new URLSearchParams({
+      slug,
+      session_id: sessionId,
+      token: accessToken,
+    }).toString();
+  }
+
   // ── Init ───────────────────────────────────────────────────
   function init() {
     if (!slug || !FORMATION_BY_SLUG[slug]) {
@@ -44,6 +54,17 @@
           <h2>Formation introuvable</h2>
           <p>Aucune formation correspondant à « ${slug || '(vide)'} ».</p>
           <a href="index.html" class="qz-btn">← Retour à l'accueil</a>
+        </div>`;
+      return;
+    }
+
+    if (!sessionId || !accessToken) {
+      app.innerHTML = `
+        <div class="qz-error">
+          <div class="qz-error-icon">🔒</div>
+          <h2>Quiz reserve aux acheteurs</h2>
+          <p>Ouvre le quiz depuis ton chapitre de formation protege afin de conserver ton acces.</p>
+          <a href="index.html" class="qz-btn">← Retour a l'accueil</a>
         </div>`;
       return;
     }
@@ -184,7 +205,7 @@
         <h2>${pct}% de bonnes réponses</h2>
         <p>Il te faut ${Math.round(PASS_SCORE * 100)}% pour obtenir le certificat (tu as ${correct}/${total}).<br/>
            Relis les sections en rouge ci-dessus, puis retente le quiz.</p>
-        <a href="quiz.html?slug=${slug}" class="qz-btn qz-btn-secondary">
+        <a href="quiz.html?${accessQuery()}" class="qz-btn qz-btn-secondary">
           Retenter le quiz
         </a>
         <a href="pages/${slug}.html" class="qz-btn">
@@ -213,7 +234,16 @@
       const res = await fetch(`${BACKEND}/send-certificate`, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ email, nom, slug, score, date, certId }),
+        body:    JSON.stringify({
+          email,
+          nom,
+          slug,
+          score,
+          date,
+          certId,
+          session_id: sessionId,
+          token: accessToken,
+        }),
       });
 
       if (!res.ok) {

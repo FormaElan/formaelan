@@ -2,3 +2,4 @@ exclude:
   - _private
   - backend
   - node_modules
+  - projet_FormaElan.html

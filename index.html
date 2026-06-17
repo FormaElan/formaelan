@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=3" />
+  <link rel="stylesheet" href="css/style.css?v=4" />
 </head>
 <body>
 
@@ -79,8 +79,8 @@
       </div>
 
       <h1 class="hero-title">
-        Passe au niveau<br />
-        <span class="gradient-text">supérieur</span> en ligne
+        SEO, IA, copywriting —<br />
+        <span class="gradient-text">apprends</span> ce qui sert vraiment.
       </h1>
 
       <p class="hero-subtitle">
@@ -91,8 +91,8 @@
         <a href="#formations" class="btn btn-primary btn-lg">
           Découvrir les formations ↓
         </a>
-        <a href="#temoignages" class="btn btn-secondary btn-lg">
-          Voir les avis
+        <a href="pages/apercu-ia-freelance.html" class="btn btn-secondary btn-lg">
+          Voir un aperçu gratuit
         </a>
       </div>
 
@@ -117,6 +117,26 @@
     </div>
   </section>
 
+  <section class="proof-strip" aria-label="Ce qui rend FormaElan vérifiable">
+    <div class="proof-inner">
+      <div class="proof-item">
+        <div class="proof-kicker">Extrait réel</div>
+        <strong>Aperçu gratuit IA Freelance</strong>
+        <span>Lis un chapitre avant d'acheter, sans inscription.</span>
+      </div>
+      <div class="proof-item">
+        <div class="proof-kicker">Pas de mise en scène</div>
+        <strong>Aucun faux témoignage</strong>
+        <span>Les preuves viendront des premiers utilisateurs réels.</span>
+      </div>
+      <div class="proof-item">
+        <div class="proof-kicker">Contenu protégé</div>
+        <strong>Accès personnel après paiement</strong>
+        <span>Chapitres privés, email d'accès et certificat de réussite.</span>
+      </div>
+    </div>
+  </section>
+
 
   <!-- ======================================================
        FORMATIONS
@@ -126,7 +146,7 @@
       <div class="section-header reveal">
         <div class="section-tag">⚡ Nos formations</div>
         <h2 class="section-title">
-          Choisissez votre<br /><span class="gradient-text">transformation</span>
+          Choisissez votre <span class="gradient-text">transformation</span>
         </h2>
         <p class="section-subtitle">
           Des programmes intensifs et directement applicables, créés par des praticiens actifs.
@@ -147,7 +167,7 @@
       <div class="section-header reveal">
         <div class="section-tag">💡 Notre différence</div>
         <h2 class="section-title">
-          Pourquoi <span class="gradient-text">FormaElan</span> ?
+          Pourquoi choisir <span class="gradient-text">FormaElan</span>
         </h2>
         <p class="section-subtitle">Des formations créées par des praticiens actifs — pour des résultats que tu peux mesurer.</p>
       </div>
@@ -196,7 +216,7 @@
       <div class="section-header reveal">
         <div class="section-tag">⚡ Simple et direct</div>
         <h2 class="section-title">
-          Comment ça <span class="gradient-text">fonctionne</span> ?
+          Comment ça <span class="gradient-text">fonctionne</span>
         </h2>
         <p class="section-subtitle">
           De la découverte à la formation en 3 étapes — aucune inscription préalable requise.
@@ -237,7 +257,7 @@
         Paiement sécurisé par Stripe
       </div>
       <h2 class="cta-title">
-        Prêt à <span class="gradient-text">progresser</span> ?
+        Prêt à <span class="gradient-text">progresser</span>
       </h2>
       <p class="cta-subtitle">
         Choisis ta formation, paie une fois, accède à vie. Sans abonnement, sans engagement.
@@ -327,10 +347,19 @@
       wrap.className = `flip-wrap reveal ${COLOR_CLASS[f.slug] || ''}`;
       wrap.dataset.delay = i * 100;
       const obj3 = (f.objectifs || []).slice(0, 3).map(o => `<li>${o}</li>`).join('');
+      const apercuHtml = f.apercu
+        ? `<a href="pages/${f.apercu}" class="apercu-chip" onclick="event.stopPropagation()">Aperçu gratuit →</a>`
+        : '';
+      const badgeHtml = f.badge
+        ? `<div class="card-badge badge-${f.badge}">${badgeLabel(f.badge)}</div>`
+        : '';
+      const prixAncienHtml = f.prixAncien
+        ? `<span class="price-old">${f.prixAncien} €</span>`
+        : '';
       wrap.innerHTML = `
         <div class="flip-inner">
           <div class="flip-face flip-front">
-            <div class="card-badge badge-${f.badge}">${badgeLabel(f.badge)}</div>
+            ${badgeHtml}
             <div class="flip-img">
               <img src="img/formations/${f.img || f.slug + '.jpg'}" alt="${f.titre}" width="400" height="200" loading="lazy">
             </div>
@@ -344,7 +373,7 @@
               </div>
               <div class="flip-price">
                 <span class="price">${f.prix} €</span>
-                <span class="price-old">${f.prixAncien} €</span>
+                ${prixAncienHtml}
               </div>
             </div>
             <div class="flip-hint">Cliquer pour en savoir plus →</div>
@@ -357,6 +386,7 @@
             <ul class="flip-obj">${obj3}</ul>
             <div class="flip-back-footer">
               <span class="price">${f.prix} €</span>
+              ${apercuHtml}
               <button class="btn btn-primary flip-btn">Voir la formation</button>
             </div>
           </div>
